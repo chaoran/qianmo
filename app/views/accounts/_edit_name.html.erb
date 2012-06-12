@@ -1,0 +1,11 @@
+<%= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put } do |f| %>
+	<div class="inputs">
+	<%= f.input :name, :label => "#{t :new_username}", :required => true, :input_html => { :class => 'span2' } %>
+	<%= hidden_field_tag :field, "name" %>
+	<%= f.input :current_password, :label => "#{t :current_passowrd}", 
+																 :hint => "#{t :why_current_password_is_needed}", :required => true %>
+	</div>
+	<div class="actions">
+		<%= f.button :wrapped, :cancel => edit_user_registration_path(current_user) %>
+	</div>
+<% end %>

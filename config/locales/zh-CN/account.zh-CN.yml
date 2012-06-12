@@ -1,0 +1,69 @@
+zh-CN:
+    username_introduction: '添加用户名可以让你的朋友通过以下地址访问你的主页:'
+    your_username: '你的用户名'
+    why_current_password_is_needed: '你需要输入当前密码来授权系统更改你的数据'
+    current_passowrd: '当前密码'
+    register_new_account: '注册新账号'
+    confirmed: '已验证'
+    unconfirmed: '未验证'
+    resend_confirmation_email: '重新发送验证邮件'
+    confirmation_email_goes_to: '验证邮件将会被发送到以下地址: '
+    reset_password_email: '发送密码重置邮件'
+    reset_passsword_email_sent: '密码重置邮件已经发送到你的邮箱: %{email}, 请点击邮件里的链接来重置你的账户密码。'
+    send: '发送'
+    remember_me: '记住我'
+    sign_up_account: '注册账号'
+    
+    join_now: '现在就加入'
+    join_slogan: '开始建造属于你的桃花源'
+    
+    # registrations#new
+    password: "密码"
+    confirm_password: "确认密码"
+    sign_up: '注册'
+    sign_up_title: '注册新账号'
+    
+    # shared/_links
+    sign_in: '登陆'
+    forgot_password: '忘记了密码?'
+    or: 或
+    
+    # session#new
+    sign_in_title: '登陆账号'
+    
+    new_password: "新密码"
+    confirm_new_password: "确认新密码"
+    current_password: "当前密码"
+    please_fillin_password: "请输入密码以保存所作的修改"
+    personal_url_introduction: "你的个人主页地址"
+    your_personal_url: "你的个人主页地址是"
+    
+    account: "账号"
+    
+    email: "邮箱"
+    registered_email: "注册邮箱"
+    bind_email: "绑定邮箱"
+    current_email: "当前邮箱"
+    new_email: "新邮箱"
+    
+    name: '名字'
+    username: "用户名"
+    add_username: "添加用户名"
+    new_username: "新用户名"
+    
+    cell_phone: "手机号"
+    registered_cell_phone: "注册手机号"
+    bind_cell_phone: "绑定手机号"
+    new_cell_phone: "新手机号"
+    
+    allow_blank: "可不填"
+    please_choose: "请选择"
+    
+    account_setting: "账户设置"
+    
+    errors:
+        messages:
+            email_format: "电子邮件地址格式不正确"
+            username_format: "用户名只能含有小写英文字母、阿拉伯数字和下划线'_'，且必须以英文字母开头"
+            password_mismatch: "所输入的密码不正确"
+    

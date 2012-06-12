@@ -1,0 +1,49 @@
+<div class='row'>
+	<div class='span3'>
+		<div id="avatar" class="thumbnail">
+			<%= image_tag @profile.avatar.url(:frontpage) %>
+			<div class="caption">
+				<%= link_to "#{t :edit_avatar}", new_user_profile_avatar_path(current_user), :remote => true, 
+																				 :class => "pull-right" %>
+				<p></p>
+			</div>
+		</div>
+	</div>
+	<div class='span9'>
+		<div id="basic_info">
+			<%= simple_fields_for @profile do |f| %>
+			<table class="table">
+				<thead>
+					<tr>
+						<td><h3 style="display: inline-block;"><%= t :basic_info %></h3></td>
+						<td style="border-top: none; display: block;">
+							<a href="<%= edit_user_profile_path(current_user) %>"
+								 class="btn btn-info pull-right">
+								<i class="icon-pencil"></i>
+								<%= t :edit %>
+							</a>
+						</td>
+					</tr>
+				</thead>
+				<tr>
+					<td><%= f.label :sex, :required => false %></td>
+					<td><%= to_sex(@profile.sex) %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :date_of_birth, :required => false %></td>
+					<td><%= @profile.date_of_birth %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :hometown, :required => false %></td>
+					<td><%= @profile.hometown %></td>
+				</tr>
+				<tr>
+					<td><%= f.label :current_city, :required => false %></td>
+					<td><%= @profile.current_city %></td>
+				</tr>
+			</table>
+			<% end %>
+		</div>
+	</div>
+</div>
+

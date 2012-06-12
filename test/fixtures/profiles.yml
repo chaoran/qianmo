@@ -1,0 +1,18 @@
+# encoding: UTF-8
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  real_name: "王小三"
+  sex: true
+  date_of_birth: 1985-05-24
+  hometown: "北京"
+  current_city: "上海"
+  account: one
+
+two:
+  real_name: "闪电侠"
+  sex: false
+  date_of_birth: 2012-05-24
+  hometown: "西安"
+  current_city: "西安"
+  account: two

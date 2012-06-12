@@ -1,0 +1,13 @@
+<%= simple_form_for [current_user, @profile], :html => { :class => "form-horizontal" } do |f| %>
+	<%= f.input :sex, :collection => [["#{t 'male'}", true], ["#{t 'female'}", false]], :prompt => ["t :please_choose", nil],
+	 									:input_html => { :class => "span2" }%>
+	<%= f.input :date_of_birth, :as => :date, 
+															:start_year => Date.today.year - 12, 
+	 														:end_year => Date.today.year - 90,
+	 														:prompt => true, :input_html => { :class => "span1" } %>
+	<%= f.input :hometown, :input_html => { :"data-provide" => "typeahead", 
+																						:class => "input-medium" } %>
+	<%= f.input :current_city, :input_html => { :"data-provide" => "typeahead", 
+                                          		:class => "input-medium" } %>
+  <%= f.button :wrapped, "#{t :save}", :cancel => user_profile_path(current_user) %>
+<% end %>

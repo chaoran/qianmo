@@ -9,5 +9,35 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery.Jcrop
  *= require_tree .
 */
+.grey {
+	color: #999999;
+}
+
+
+
+
+/* fix Jcrop and Twitter bootstrp conflict */
+.jcrop-holder img {max-width: none}
+#cropbox-preview { max-width: none }
+
+.small-thumb { width: 50px; height: 50px; }
+
+.navbar .nav.link-group > li > a {
+	padding: 4px 0px 0px;
+}
+
+.navbar .nav.link-group > li > a > img {
+	border-right: 1px solid #333;
+	border-bottom: 1px solid #333;
+}
+
+.navbar .nav.link-group .dropdown-toggle {
+	padding: 9px 10px 11px 0px;
+}
+
+.navbar .nav.link-group .divider-vertical {
+	margin-right: 7px;
+}

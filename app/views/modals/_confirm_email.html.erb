@@ -1,0 +1,28 @@
+<%= content_tag :div, :class => "modal fade", 
+ 											:id => "confirmationModal" do %>
+	<%= simple_form_for(resource, :as => resource_name, 
+																:url => confirmation_path(resource_name), 
+																:html => { :method => :post },
+																:remote => true) do |f| %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3><%= t :resend_confirmation_email %></h3>
+  </div>
+  <div class="modal-body">
+		  <div class="inputs">
+		    <%= label_tag "#{t :confirmation_email_goes_to}" %>
+				<span class="input-xlarge uneditable-input">
+					<%= current_user.confirmed? ? current_user.unconfirmed_email : current_user.email %>
+				</span>
+				<%= f.hidden_field :email, 
+					:value => "#{current_user.confirmed? ? current_user.unconfirmed_email : current_user.email}" %>
+		  </div>	
+  </div>
+  <div class="modal-footer">
+		<div class="actions">
+			<%= f.button :submit, "#{t :send}", :class => "btn-primary", :id => 'confirmation_send_button' %>
+    	<a href="#" class="btn" data-dismiss="modal"><%= t :cancel %></a>
+	  </div>
+  </div>
+	<% end %>
+<% end %>

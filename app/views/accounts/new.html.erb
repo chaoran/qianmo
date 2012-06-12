@@ -1,0 +1,35 @@
+<%= title "#{t :register_new_account}" %>
+<!-- Display a login form on register page's top bar -->
+<%= content_for :brand do %>
+	<a class="brand" href="#" style="margin-top: 5px; font-size: 35px; font-weight: bolder"><%= t :app_name %></a>
+<% end %>
+
+<%= content_for :topbar do %>
+	<%= render 'shared/login' %>
+<% end %>
+
+<div class="row">
+	<div class="span7">
+		 &nbsp;
+	</div>
+	<div class="span5">
+		<div class="hero-unit">
+			<div class="page-header">
+				<h2><%= t :join_now %></h2>
+				<p><%= t :join_slogan %></p>
+			</div>
+			<%= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f| %>
+				<%= f.error_notification %>
+				<div class="inputs">
+					<%= f.input :email %>
+					<%= f.input :name %>
+					<%= f.input :password %>
+					<%= f.input :password_confirmation, :required => true %>
+				</div>
+				<div class="actions">
+			    <%= f.button :submit, "#{t :sign_up}", :class => 'btn-success' %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

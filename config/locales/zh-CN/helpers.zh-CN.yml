@@ -1,0 +1,8 @@
+zh-CN:
+  helpers:
+    submit:
+      profile:
+        create: "创建"
+      account:
+        create: "注册"
+        update: "保存"

@@ -1,0 +1,38 @@
+zh-CN:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: '必填'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: 
+    # Labels and hints examples
+    labels:
+      defaults:
+        email: '邮件地址'
+        account: '账号'
+        password: '密码'
+        password_confirmation: '确认密码'
+        name: "真实姓名"
+      profile:
+        sex: "性别"
+        date_of_birth: "出生日期"
+        hometown: "家乡"
+        current_city: "现居城市"
+    buttons:
+      session:
+        create: '登陆'
+      cancel: '取消'
+    #     new:
+    #       email: 'E-mail to sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   defaults:
+    #     username: 'User name to sign in.'
+    #     password: 'No special characters, please.'
+

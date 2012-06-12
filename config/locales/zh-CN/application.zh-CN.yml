@@ -1,0 +1,17 @@
+zh-CN:
+    app_name: '阡陌'
+    app_slogan: '互联网上的桃花源'
+    
+    tasks: '任务列表'
+    news: '新鲜事'
+    my_page: '我的主页'
+    
+    search_bar_placeholder: '搜索任务/哥儿们/新鲜事'
+    my_account: '我的账户'
+    logout: '退出'
+    edit: '修改'
+    add: '添加'
+    cancel: '取消'
+    okay: '确定'
+    save: '保存'
+

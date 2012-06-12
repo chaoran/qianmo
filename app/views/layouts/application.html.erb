@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Qianmo</title>
+  <title><%= t :app_name %> - <%= content_for?(:title) ? yield(:title) : t(:app_slogan) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div class="navbar navbar-fixed-top">
+	  <div class="navbar-inner">
+	    <div class="container">
+					<%= render 'layouts/navigation' %>
+			</div>
+		</div>
+	</div>
+	<div class="container" <%= content_padding %>>
+		<div class='content'>
+			<div class='row'>
+				<div class='span12'>
+					<div id="alert-placeholder">					
+						<%= render 'layouts/messages' %>						
+					</div>
+					<%= yield %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="modal-placeholder">
+		<%= yield(:modal) if content_for?(:modal)  %>
+	</div>
 </body>
 </html>

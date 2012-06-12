@@ -18,12 +18,14 @@ group :assets do
   # gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+	gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
@@ -35,4 +37,17 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'debugger'
+
+# To validate form dynamically
+gem "client_side_validations"  
+gem "simple_form"
+
+# user management
+gem 'devise'
+
+# clip images
+gem "paperclip", "~> 3.0"
+gem 'remotipart', '~> 0.4'
+
+gem "omniauth-weibo-oauth2"

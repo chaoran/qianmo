@@ -1,4 +1,31 @@
 Qianmo::Application.routes.draw do
+  devise_for :users, :path => '',
+             :path_names => { :sign_in => "login", 
+                              :sign_up => "register",
+                              :sign_out => "logout",
+                            },
+             :controllers => { :registrations => "accounts",
+                               :passwords => "passwords", 
+                               :confirmations => "confirmations",
+                               :sessions => "sessions" }
+  
+  as :user do
+    root :to => 'accounts#new'
+  end
+    
+  resources :users, :path => '', :only => '' do 
+    resource :profile, :except => :destroy do 
+      resource :avatar, :only => [:new, :create, :edit, :update]
+    end
+  end  
+  
+  #root :to => 'accounts#new'
+  
+  #resources :accounts do
+  #  resource :profile, :except => :destroy 
+  #end
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

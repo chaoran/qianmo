@@ -1,0 +1,75 @@
+<%= title "#{t :account_setting}" %>
+<table class="table">
+		<tr>
+			<td><label for="name"><%= t :name %>:</label></td>
+			<% if @edit_field == "name" %>
+				<td><%= render "edit_name" %></td>
+			<% else %>
+				<td><span><%= current_user.name %></span></td>
+				<td><%= link_to "#{t :edit}", edit_user_registration_path(current_user, :field => "name") %></td>
+			<% end %>
+		</tr>
+		<tr>
+			<td><label for="email"><%= t :registered_email %>:</label></td>
+			<% if @edit_field == "email" %>
+				<td><%= render "edit_email" %></td>
+			<% else %>
+				<% if current_user.email.nil? || current_user.email.blank? %>
+					<td><%= link_to "#{t :bind_email}", edit_user_registration_path(current_user, :field => "email") %></td>
+				<% else %>
+					<td>
+						<%= current_user.email %>
+						<% if current_user.confirmed? %>
+							<span class="label label-success"><%= t :confirmed %></span>
+							<% unless current_user.unconfirmed_email.blank? %>
+								&nbsp;<%= current_user.unconfirmed_email %>
+								<%= link_to "#{t :unconfirmed}", new_user_confirmation_path, :remote => true,
+																								 :class => "label label-important" %>
+							<% end %>
+						<% else %>
+							<%= link_to "#{t :unconfirmed}", new_user_confirmation_path, :remote => true,
+																							 :class => "label label-important" %>
+						<% end %>
+						
+					</td>
+					<td><%= link_to "#{t :edit}", edit_user_registration_path(current_user, :field => "email") %></td>
+				<% end %>
+			<% end %>
+		</tr>
+		<tr>
+			<td><label for="username"><%= t :username %>:</label></td>
+			<% if @edit_field == "username" %>
+				<td><%= render "edit_username" %></td>
+			<% else %>
+				<% if current_user.username.blank? %>
+					<td>
+						<p class='grey'><%= t :username_introduction %></p>
+						<p class='grey indent'><%= personal_url(t :your_username) %></p>
+						</p>
+					</td>
+					<td><%= link_to "#{t :add}", edit_user_registration_path(current_user, :field => "username") %></td>
+				<% else %>
+					<td>
+						<p class='grey'><%= t :your_personal_url %>: </p>
+						<p class='grey indent'><%= personal_url(current_user.username) %></p>
+					</td>
+					<td><%= link_to "#{t :edit}", edit_user_registration_path(current_user, :field => "username") %></td>
+				<% end %>
+			<% end %>
+		</tr>
+	<tr>
+		<td>
+			<%= label_tag :password, "#{t :password}:" %>
+		</td>
+		<% if @edit_field == "password" %>
+			<td>
+				<%= render "edit_password"%>
+			</td>
+		<% else %>
+			<td><!--Reserved for password security level--></td>
+			<td>
+				<%= link_to "#{t :edit}", edit_user_registration_path(current_user, :field => "password") %>
+			</td>
+		<% end %>
+	</tr>
+</table>

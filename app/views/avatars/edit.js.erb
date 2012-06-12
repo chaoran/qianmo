@@ -1,0 +1,27 @@
+<%= remotipart_response do %>
+	$("#avatarModal").html("<%= escape_javascript( render 'crop') %>")
+	$("#avatarModal").modal("show")
+	$('#cropbox').Jcrop({
+		onChange: update_crop,
+  	onSelect: update_crop,
+  	setSelect: [0, 0, 100, 100],
+  	aspectRatio: 1
+	});
+	
+	function update_crop(coords) {
+	  var rx = 100/coords.w;
+	  var ry = 100/coords.h;
+	  $('#cropbox-preview').css({
+	    width: Math.round(rx * <%= @profile.avatar_geometry(:frontpage).width %>) + 'px',
+	    height: Math.round(ry * <%= @profile.avatar_geometry(:frontpage).height %>) + 'px',
+	    marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+	    marginTop: '-' + Math.round(ry * coords.y) + 'px'
+	  });
+	  //var scale = <%= @profile.avatar_geometry(:original).height %> / <%= @profile.avatar_geometry(:frontpage).height %>;
+	  $("#crop_x").val(Math.round(coords.x));
+	  $("#crop_y").val(Math.round(coords.y));
+	  $("#crop_w").val(Math.round(coords.w));
+	  $("#crop_h").val(Math.round(coords.h));
+	}
+<% end %>
+

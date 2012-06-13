@@ -16,7 +16,7 @@
 		  <li><%= link_to "#{t :news}" %></li>
 	    <li><%= link_to "#{t :tasks}" %></li>
 	  </ul>
-		<%= form_tag "#", :class => "navbar-search pull-left" do %>
+		<%= form_tag "#", :class => "navbar-search pull-left", :method => :get do %>
 			<%= text_field_tag 'search', nil, :placeholder => "#{t :search_bar_placeholder}", 
 																				:class => "search-query" %>
 		<% end %>

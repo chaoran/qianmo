@@ -42,6 +42,7 @@ zh-CN:
       updated: 'You updated your account successfully.'
       update_needs_confirmation: "你的注册邮箱已更改。但系统需要验证你的新邮箱地址，确认信已经发送到新的邮箱地址。"
       destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      destroyed: '你的账户已经成功删除。'
 
           
     unlocks:

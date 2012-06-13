@@ -1,0 +1,21 @@
+<%= content_tag :div, :class => "modal fade", 
+ 											:id => "destroyAccountModal" do %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3><%= t :account_deletion_confirmation %></h3>
+  </div>
+  <div class="modal-body">
+    <p>
+      <%= t :are_you_sure_deleting_account1 %>
+    </p>
+    <p>
+      <%= t :are_you_sure_deleting_account2, :app_name => "#{t :app_name}" %>
+    </p>
+  </div>
+  <div class="modal-footer">
+		<div class="actions">
+			<%= link_to "#{t :okay}", user_registration_path, :method => :delete, :class => "btn btn-danger" %>
+    	<a href="#" class="btn" data-dismiss="modal"><%= t :cancel %></a>
+	  </div>
+  </div>
+<% end %>

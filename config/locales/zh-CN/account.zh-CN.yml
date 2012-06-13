@@ -1,4 +1,14 @@
 zh-CN:
+    helpers:
+        label:
+            user:
+                email: "*邮件地址:"
+                name: "*真实姓名:"
+                password: "*密码:"
+                password_confirmation: "*密码确认:"
+    
+    delete_account: "删除我的账号"
+    
     username_introduction: '添加用户名可以让你的朋友通过以下地址访问你的主页:'
     your_username: '你的用户名'
     why_current_password_is_needed: '你需要输入当前密码来授权系统更改你的数据'
@@ -27,6 +37,7 @@ zh-CN:
     sign_in: '登陆'
     forgot_password: '忘记了密码?'
     or: 或
+    login_via_weibo: '用微博账号登陆'
     
     # session#new
     sign_in_title: '登陆账号'

@@ -1,12 +1,12 @@
-<%= form_for resource, :as => resource_name, 
-											 :url => session_path(resource_name), 
-											 :html => { :class => "navbar-form pull-right" } do |f| %>
-  <%= f.text_field :email, :autofocus => true, 
-                           :class => "span2", 
-                           :placeholder => "#{t :email}" %>
-  <%= f.password_field :password, :class => "span2", 
-                                  :placeholder => "#{t :password}" %>
-  <label><%= f.check_box :remember_me %><%= t :remember_me %></label>
-  <%= f.submit "#{t :sign_in}", :class => "btn btn-primary" %>
+<div class="nav pull-right">
+  <%= link_to "#{t :login_via_weibo}", user_omniauth_authorize_path(:weibo), :class => "btn btn-info" %>
+</div>
+<%= form_tag session_path(resource_name), :class => "navbar-form pull-right" do |f| %>
+  <%= text_field_tag :email, nil, :class => "span2", 
+                                 :placeholder => "#{t :email}" %>
+  <%= password_field_tag :password, nil, :class => "span2", 
+                         :placeholder => "#{t :password}" %>
+  <label><%= check_box_tag :remember_me %><%= t :remember_me %></label>
+  <%= submit_tag "#{t :sign_in}", :class => "btn btn-primary" %>
   <%= link_to "#{t :forgot_password}", new_user_password_path, :remote => true %>
 <% end %>

@@ -12,11 +12,4 @@ module ApplicationHelper
   def title(page_title)
     content_for(:title) { page_title }
   end
-
-  # add 20px padding on top of the main content div
-  @add_padding = false
-  
-  def content_padding
-    "style='padding-top: 20px;'" if @add_padding
-  end
 end

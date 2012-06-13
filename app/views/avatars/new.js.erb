@@ -1,2 +1,5 @@
 $("#modal-placeholder").html("<%= escape_javascript( render 'upload') %>")
 $("#avatarModal").modal("show")
+$('.btn-primary').click(function(){
+  $(this).addClass('loading disabled');
+});

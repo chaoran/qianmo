@@ -1,5 +1,7 @@
-<p>Welcome <%= @resource.email %>!</p>
+<p><%= @resource.name %>, <%= t :confirmation_email_1, :app_name => "#{t :app_name}" %></p>
 
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p><%= t :confirmation_email_2 %></p>
+<p>
+  <%= link_to "#{confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)}", 
+          confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
+</p>

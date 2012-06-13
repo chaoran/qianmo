@@ -53,8 +53,8 @@ zh-CN:
       failure: 'Could not authenticate you from %{kind} because "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: 'Confirmation instructions'
+        subject: '[阡陌网] 请验证你的邮件地址'
       reset_password_instructions:
-        subject: 'Reset password instructions'
+        subject: '[阡陌网] 密码重置链接'
       unlock_instructions:
         subject: 'Unlock Instructions'

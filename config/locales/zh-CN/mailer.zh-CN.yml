@@ -1,0 +1,8 @@
+zh-CN:
+    confirmation_email_1: "欢迎你加入%{app_name}网!"
+    confirmation_email_2: "请点击下面的链接来验证你的邮件地址。 如果下面的链接无法打开请将它复制到浏览器地址栏，然后按回车键。"
+    
+    hello: "你好"
+    
+    reset_password_email_1: "你在我们的网站上申请了重置你的账号密码, 请点击以下链接来重置你的密码: "
+    reset_password_email_2: "如果你没有申请过重置密码，请忽略这封邮件。你的密码不会被重置，如果你不点击上面的链接。"

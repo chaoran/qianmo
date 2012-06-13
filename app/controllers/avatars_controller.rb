@@ -8,11 +8,11 @@ class AvatarsController < ApplicationController
         format.html { redirect_to edit_user_profile_avatar_path(current_user) }
         format.js { render 'edit', :layout => false }
       end
-    else      
-      #respond_to do |format|
-      #  format.html { redirect_to 'edit' }
-      #  format.js { render 'new', :layout => false }
-      #end
+    else     
+      respond_to do |format|
+        format.html { redirect_to new_user_profile_avatar_path(current_user) }
+        format.js { render 'new_with_error', :layout => false }
+      end
     end
   end
 

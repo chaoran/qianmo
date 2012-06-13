@@ -13,6 +13,20 @@ module SimpleFormExtensions
       end
     end
   end
+  
+  class ErrorMessages < SimpleForm::ErrorNotification
+    def error_message
+      template.content_tag :ul do
+        object.errors.map do |key, value|
+          template.content_tag(:li, value)
+        end.join.html_safe
+      end
+    end
+  end
+  
+  def error_messages(options={})
+    ErrorMessages.new(self, options).render
+  end
 end
 
 SimpleForm::FormBuilder.send :include, SimpleFormExtensions

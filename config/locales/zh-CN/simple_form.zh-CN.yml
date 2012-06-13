@@ -18,11 +18,7 @@ zh-CN:
         password: '密码'
         password_confirmation: '确认密码'
         name: "真实姓名"
-      profile:
-        sex: "性别"
-        date_of_birth: "出生日期"
-        hometown: "家乡"
-        current_city: "现居城市"
+
     buttons:
       session:
         create: '登陆'

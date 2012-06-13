@@ -25,19 +25,4 @@
 
 .small-thumb { width: 50px; height: 50px; }
 
-.navbar .nav.link-group > li > a {
-	padding: 4px 0px 0px;
-}
 
-.navbar .nav.link-group > li > a > img {
-	border-right: 1px solid #333;
-	border-bottom: 1px solid #333;
-}
-
-.navbar .nav.link-group .dropdown-toggle {
-	padding: 9px 10px 11px 0px;
-}
-
-.navbar .nav.link-group .divider-vertical {
-	margin-right: 7px;
-}

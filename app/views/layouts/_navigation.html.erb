@@ -38,9 +38,11 @@
 			</li>
 		</ul>
 	<% else %>
-		<div class="pull-right">
-			<%= link_to "#{t :sign_up}", new_registration_path(resource_name), :class => "btn btn-success" %>
-			<%= link_to "#{t :sign_in}", new_session_path(resource_name), :class => "btn btn-primary" %>
-		</div>
+	  <div class="nav pull-right">
+	    <%= link_to "#{t :sign_up}", new_registration_path(resource_name), 
+	                                 :class => "btn btn-success" %>
+	    <%= link_to "#{t :sign_in}", new_session_path(resource_name), 
+	                                 :class => "btn btn-primary" %>
+	  </div>
 	<% end %>
 </div>

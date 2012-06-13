@@ -23,7 +23,7 @@ zh-CN:
     sign_up: '注册'
     sign_up_title: '注册新账号'
     
-    # shared/_links
+    # shared/_login
     sign_in: '登陆'
     forgot_password: '忘记了密码?'
     or: 或

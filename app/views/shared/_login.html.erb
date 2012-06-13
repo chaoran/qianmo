@@ -1,19 +1,12 @@
 <%= form_for resource, :as => resource_name, 
-															:url => session_path(resource_name), 
-															:html => { :class => "navbar-form pull-right", :style => "margin-top: 5px;" } do |f| %>
-<table>
-	<tbody>
-		<tr>
-			<td><%= f.text_field :email, :autofocus => true, :class => "span2", :placeholder => "#{t :email}" %></td>
-			<td><%= f.password_field :password, :class => "span2", :placeholder => "#{t :password}" %></td>
-			<td><%= f.submit "#{t :sign_in}", :class => "btn-primary" %></td>
-		</tr>
-		<tr>
-			<td><label class="checkbox"><%= f.check_box :remember_me %><%= t :remember_me %></label></td>
-			<td><%= link_to "#{t :forgot_password}", new_user_password_path, :remote => true %></td>
-		</tr>
-	</thead>
-</table>
+											 :url => session_path(resource_name), 
+											 :html => { :class => "navbar-form pull-right" } do |f| %>
+  <%= f.text_field :email, :autofocus => true, 
+                           :class => "span2", 
+                           :placeholder => "#{t :email}" %>
+  <%= f.password_field :password, :class => "span2", 
+                                  :placeholder => "#{t :password}" %>
+  <label><%= f.check_box :remember_me %><%= t :remember_me %></label>
+  <%= f.submit "#{t :sign_in}", :class => "btn btn-primary" %>
+  <%= link_to "#{t :forgot_password}", new_user_password_path, :remote => true %>
 <% end %>
-
-<% @add_padding = true %>

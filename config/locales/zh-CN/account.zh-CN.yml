@@ -12,6 +12,11 @@ zh-CN:
     are_you_sure_deleting_account1: "你确定要删除你的账号么? "
     are_you_sure_deleting_account2: "删除之后你在%{app_name}网上的一切信息都会被删除。账号删除之后将无法被恢复。"
     
+    create_new_password: "设置新密码"
+    
+    real_name: "真实姓名"
+    why_use_real_name: "阡陌网是一个实名制网站。使用真实姓名可以帮助你的朋友更快找到你。"
+    
     username_introduction: '添加用户名可以让你的朋友通过以下地址访问你的主页:'
     your_username: '你的用户名'
     why_current_password_is_needed: '你需要输入当前密码来授权系统更改你的数据'

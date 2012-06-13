@@ -4,7 +4,7 @@ zh-CN:
   errors:
     messages:
       expired: "has expired, please request a new one"
-      not_found: "你所输入的用户名不在我们的数据库中"
+      not_found: "你所输入的信息不在我们的数据库中"
       already_confirmed: "was already confirmed, please try signing in"
       not_locked: "was not locked"
       not_saved:
@@ -26,7 +26,7 @@ zh-CN:
       signed_out: '你已经成功退出你的账户'
     passwords:
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
-      updated: 'Your password was changed successfully. You are now signed in.'
+      updated: '你的密码已经修改成功。'
       updated_not_active: 'Your password was changed successfully.'
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
     confirmations:
@@ -35,13 +35,12 @@ zh-CN:
       user:
         confirmed: "你的邮箱: %{email}已经验证成功。"
     accounts:
-      signed_up: '你已经注册成功!'
+      signed_up: '你已经注册成功! 但你的邮件地址还没有验证。验证邮件已经发送到你的注册邮箱, 请点击邮件里的链接来验证你的邮箱。'
       signed_up_but_unconfirmed: 'A message with a confirmation link has been sent to your email address. Please open the link to activate your account.'
       signed_up_but_inactive: 'You have signed up successfully. However, we could not sign you in because your account is not yet activated.'
       signed_up_but_locked: 'You have signed up successfully. However, we could not sign you in because your account is locked.'
       updated: 'You updated your account successfully.'
       update_needs_confirmation: "你的注册邮箱已更改。但系统需要验证你的新邮箱地址，确认信已经发送到新的邮箱地址。"
-      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
       destroyed: '你的账户已经成功删除。'
 
           

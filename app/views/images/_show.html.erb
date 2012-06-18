@@ -1,0 +1,15 @@
+<% if @editable %>
+  <%= hidden_edit_button "image", 
+                         @page.image ? new_page_image_path(@page) %> 
+<% end %>
+<div id="page_image_show">
+  <% if controller.action_name == "new" || (@page.has_image && !@page.image) %>
+    <p><%= image_tag "fallback/300x300.gif" %></p>
+  <% elsif @page.has_image %>
+    <%= image_tag @page.image.img.url %>
+  <% end %>
+</div>
+
+
+
+

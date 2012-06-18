@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120618164909) do
+ActiveRecord::Schema.define(:version => 20120618192257) do
 
   create_table "billboards", :force => true do |t|
     t.string   "header"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(:version => 20120618164909) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "images", :force => true do |t|
+    t.integer  "page_id"
+    t.string   "img"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "images", ["page_id"], :name => "index_images_on_page_id"
 
   create_table "pages", :force => true do |t|
     t.string   "title"

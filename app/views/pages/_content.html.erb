@@ -17,12 +17,9 @@
   </div>
   <div class="span4">
     <div id='page_side_section'>
-      <% if content_for?(:page_actions) %>
-        <div class="alert alert-info">
-          <%= yield(:page_actions) %>
-        </div>
-      <% end %>
-      <%= render "pages/components/image" %>
+      <div id="page_has_image_display">
+        <%= render "images/show" %>
+      </div>
       <%= render "pages/components/attribute_group" %>
     </div>
   </div>

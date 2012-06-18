@@ -31,8 +31,10 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
+    carrierwave (0.6.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
     client_side_validations (3.1.4)
-    cocaine (0.2.1)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -57,11 +59,7 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    faraday (0.8.1)
-      multipart-post (~> 1.1)
-    hashie (1.2.0)
     hike (1.2.1)
-    httpauth (0.1)
     i18n (0.6.0)
     journey (1.0.3)
     jquery-rails (2.0.2)
@@ -80,27 +78,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.18)
     multi_json (1.3.6)
-    multipart-post (1.1.5)
-    oauth2 (0.6.1)
-      faraday (~> 0.7)
-      httpauth (~> 0.1)
-      multi_json (~> 1.3)
-    omniauth (1.1.0)
-      hashie (~> 1.2)
-      rack
-    omniauth-oauth2 (1.0.2)
-      oauth2 (~> 0.6.0)
-      omniauth (~> 1.0)
-    omniauth-weibo-oauth2 (0.2.0)
-      omniauth (~> 1.0)
-      omniauth-oauth2 (~> 1.0)
     orm_adapter (0.0.7)
-    paperclip (3.0.4)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (>= 0.0.2)
-      mime-types
     pg (0.13.2)
     polyglot (0.3.3)
     rack (1.4.1)
@@ -129,6 +107,7 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     remotipart (0.4.2)
+    rmagick (2.13.1)
     sass (3.1.19)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -165,16 +144,16 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
+  carrierwave
   client_side_validations
   coffee-rails (~> 3.2.1)
   debugger
   devise
   jquery-rails
-  omniauth-weibo-oauth2
-  paperclip (~> 3.0)
   pg
   rails (= 3.2.3)
   remotipart (~> 0.4)
+  rmagick
   sass-rails (~> 3.2.3)
   simple_form
   twitter-bootstrap-rails

@@ -46,7 +46,8 @@ gem "simple_form"
 gem 'devise'
 
 # clip images
-gem "paperclip", "~> 3.0"
+gem 'rmagick'
+gem 'carrierwave'
 gem 'remotipart', '~> 0.4'
 
-gem "omniauth-weibo-oauth2"
+

@@ -1,3 +1,22 @@
-<div class="modal fade" id="avatarModal">
-  <%= render 'upload_form' %>
+<% @modal_name = "avatar_modal" %>
+
+<%= simple_form_for current_user, :url => user_avatar_path(current_user),
+ 															:html => { :method => :post },
+ 															:remote => true do |f| %>
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">×</button>
+  <h3><%= t :edit_avatar %></h3>
 </div>
+<div class="modal-body">
+	<div class="inputs">
+		<%= f.input :avatar, :as => :file, :hint => "#{t :avatar_upload_hint}" %>
+		<%= f.input :remote_avatar_url, :label => "#{t :or_avatar_url}" %><br />
+  </div>
+</div>
+<div class="modal-footer">
+	<div class="actions">
+		<%= f.button :submit, "#{t :upload}", :class => "btn-primary" %>
+		<a href="#" class="btn" data-dismiss="modal"><%= t :cancel %></a>
+	</div>
+</div>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120618192257) do
+ActiveRecord::Schema.define(:version => 20120618220459) do
 
   create_table "billboards", :force => true do |t|
     t.string   "header"
@@ -53,10 +53,6 @@ ActiveRecord::Schema.define(:version => 20120618192257) do
     t.boolean  "has_attribute_group"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
   end
 
   add_index "pages", ["creator_id"], :name => "index_pages_on_creator_id"

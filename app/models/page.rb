@@ -4,10 +4,10 @@ class Page < ActiveRecord::Base
                   :twittable, :picturable, :commentable, :discussable, 
                   :ratable, :chatable, :checkinable
   belongs_to :creator, :polymorphic => true
+  has_one :image
   has_one :billboard
   has_one :whiteboard
   has_one :attribute_group
-  has_attached_file :image, :style => { :square => '300x300#' }
   has_many :posters
   
   attr_accessor :twittable, :picturable, :commentable, :discussable, :ratable, :chatable, :checkinable

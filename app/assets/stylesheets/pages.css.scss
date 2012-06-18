@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#page_billboard_edit > textarea {
-  width: 530px;
+.page-component {
+  position: relative;
+}
+
+.page-hidden-button {
+  position: absolute;
+  right: 0;
+  top: 0;
 }

@@ -1,6 +1,5 @@
 <% if @editable %>
-  <%= hidden_edit_button "image", 
-                         @page.image ? new_page_image_path(@page) %> 
+  <%= hidden_edit_button "image", new_page_image_path(@page) %> 
 <% end %>
 <div id="page_image_show">
   <% if controller.action_name == "new" || (@page.has_image && !@page.image) %>

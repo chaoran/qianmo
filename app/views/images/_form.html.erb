@@ -11,7 +11,8 @@
     </div>
     <div class="modal-body">
       <div class="inputs">
-        <%= f.input :img, :as => file %>
+        <%= f.input :img, :as => :file %>
+        <%= f.input :remote_img_url %><br />
       </div>	
     </div>
     <div class="modal-footer">

@@ -1,6 +1,6 @@
 <div class="row">
   <div class="span8">
-    <div id="page_header" class="page-header">
+    <div id="page_header" class="page-header page-component">
       <% if @editable %>
         <%= hidden_edit_button "header", edit_page_path(@page) %>
       <% end %>
@@ -9,7 +9,7 @@
       </div>
     </div>
     <div id="page_main_section">
-      <div class="hero-unit" id="page_has_billboard_display">
+      <div class="hero-unit page-component" id="page_has_billboard_display">
         <%= render "billboards/show" %>
       </div>
       <%= render "pages/components/posters" %>
@@ -17,7 +17,7 @@
   </div>
   <div class="span4">
     <div id='page_side_section'>
-      <div id="page_has_image_display">
+      <div class="page-component" id="page_has_image_display">
         <%= render "images/show" %>
       </div>
       <%= render "pages/components/attribute_group" %>

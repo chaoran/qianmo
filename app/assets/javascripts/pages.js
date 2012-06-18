@@ -72,4 +72,13 @@ jQuery(document).ready(function($) {
       $('#page_billboard_edit').hide();
     }
   );
+  
+  $('#page_has_image_display').hover(
+    function() {
+      $('#page_image_edit').show();
+    },
+    function() {
+      $('#page_image_edit').hide();
+    }
+  );
 });

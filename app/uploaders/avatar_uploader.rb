@@ -33,7 +33,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def scale(width, height)
     # Identify if this is a landscape picture
     pic = Magick::Image.read(@file.path).first
-    if pic.columns >= pic.rows
+    if pic.columns > pic.rows
       resize_to_fit(width, height)
     else
       resize_to_fill(width, height)

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :token_authenticatable, :registerable, 
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
          :omniauthable
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :remote_avatar_url
 
   has_one :profile
   has_many :pages, :as => :creator
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   
   validates_uniqueness_of :username, :email
   validates_presence_of :name, :email
-  
+  validates :avatar, :file_size => { :maximum => 0.5.megabytes.to_i }
   after_update :crop_avatar
   
   protected

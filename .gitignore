@@ -15,4 +15,4 @@
 /tmp
 
 # Ignore avatars
-/public/system/*
+/public/uploads/*

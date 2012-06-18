@@ -1,0 +1,80 @@
+<%= content_for(:floatbar) do %>
+<%= simple_form_for @page, :wrapper => :inline, 
+                           :html => {:class => "form-inline"} do |f| %>
+<div class="row page-header-condensed">
+  <div class="span3">
+  <h3><%= t :create_page %></h3>
+  </div>
+  <div class="span2 pull-right">
+      <%= f.button :wrapped, :cancel => "#" %>
+  </div>
+</div>
+  <div class="form-inputs">
+    <div class="row">
+      <div class="span3">
+        <%= f.input :title, :input_html => {:class => "span2" }, 
+                    :required => true, :placeholder => "#{t :unknown_title}" %>
+      </div>
+      <div class="span9">
+        <%= f.input :intro, :input_html => {:class => "span7"}, 
+                    :required => true, :placeholder => "#{t :unknown_intro}" %>
+      </div>
+    </div>
+    <div id="page_components">
+      <div class="row" id="main_section">
+        <div class="span">
+          <label><%= t :main_section %></label>
+        </div>
+        <div class="span2">
+          <%= f.check_box :has_billboard %><%= f.label :has_billboard %>
+        </div>
+        <div class="span2">
+          <%= f.check_box :has_posters %><%= f.label :has_posters %>
+        </div>
+        <div class="span2">
+          <%= f.check_box :has_whiteboard %><%= f.label :has_whiteboard %>
+        </div>
+      </div>
+      <div class="row" id="child_section">
+        <div class="span">
+          <label><%= t :child_section %></label>
+        </div>
+        <div class="span2">
+          <%= f.check_box :twittable %><%= f.label :twittable %>
+        </div>
+        <div class="span2">
+          <%= f.check_box :picturable %><%= f.label :picturable %>
+        </div>
+        <div class="span2">
+          <%= f.check_box :commentable %><%= f.label :commentable %>
+        </div>
+        <div class="span2">
+          <%= f.check_box :discussable %><%= f.label :discussable %>
+        </div>
+      </div>
+      <div class="row" id="side_section">
+        <div class="span">
+          <label><%= t :side_section %></label>
+        </div>
+        <div class="span2">
+          <%= f.check_box :has_image %><%= f.label :has_image %>
+        </div>
+        <div class="span2">
+          <%= f.check_box :has_attribute_group %><%= f.label :has_attribute_group %>
+        </div>
+        <div class="span2">
+          <%= f.check_box :ratable %><%= f.label :ratable %>
+        </div>
+        <div class="span2">
+          <%= f.check_box :chatable %><%= f.label :chatable %>
+        </div>
+        <div class="span2">
+          <%= f.check_box :checkinable %><%= f.label :checkinable %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<% end %>
+<%= render 'content' %>
+

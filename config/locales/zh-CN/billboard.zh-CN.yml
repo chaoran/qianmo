@@ -1,0 +1,10 @@
+zh-CN:
+    billboard_edit_title: 编辑公告牌内容
+    
+    simple_form:
+        labels:
+            billboard:
+                header: "标题:"
+                content: "内容:"
+                button_name: "按钮标题"
+                button_value: "按钮链接地址"

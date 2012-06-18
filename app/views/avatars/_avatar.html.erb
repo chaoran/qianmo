@@ -4,7 +4,7 @@
     <h3><%= t :edit_avatar %></h3>
   </div>
   <div class="modal-body">
-		<%= simple_form_for [current_user, @profile], :remote => true do |f| %>
+		<%= simple_form_for current_user, :remote => true do |f| %>
 			<%= f.file_field :avatar %>
 			<%= f.button :submit, "#{t :upload}" %>
 		<% end %>

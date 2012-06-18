@@ -1,4 +1,9 @@
 Qianmo::Application.routes.draw do
+
+  resources :pages do 
+    resource :billboard, :only => [:new, :create, :edit, :update, :show]
+  end
+
   devise_for :users, :path => '',
              :path_names => { :sign_in => "login", 
                               :sign_up => "register",
@@ -14,9 +19,8 @@ Qianmo::Application.routes.draw do
   end
     
   resources :users, :path => '', :only => '' do 
-    resource :profile, :except => :destroy do 
-      resource :avatar, :only => [:new, :create, :edit, :update]
-    end
+    resource :avatar, :only => [:new, :create, :edit, :update]
+    resource :profile, :except => :destroy
   end  
   
   #root :to => 'accounts#new'

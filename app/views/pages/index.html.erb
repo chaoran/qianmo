@@ -1,0 +1,13 @@
+<% @pages.each do |page| %>
+  <%= link_to(page) do %>
+    <div>
+      <h4><%= page.title %></h4>
+      <p><%= page.intro %></p>
+    </div>
+  <% end %>
+<% end %>
+<br />
+
+<% if user_signed_in? %>
+  <%= link_to "#{t :new_page}", new_page_path %>
+<% end %>

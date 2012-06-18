@@ -1,16 +1,15 @@
 class AvatarsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :setup_profile
-  
+    
   def create
-    if @profile.update_attributes(params[:profile])
+    if current_user.update_attributes(params[:user])
       respond_to do |format|
-        format.html { redirect_to edit_user_profile_avatar_path(current_user) }
+        format.html { redirect_to edit_user_avatar_path(current_user) }
         format.js { render 'edit', :layout => false }
       end
     else     
       respond_to do |format|
-        format.html { redirect_to new_user_profile_avatar_path(current_user) }
+        format.html { redirect_to new_user_avatar_path(current_user) }
         format.js { render 'new_with_error', :layout => false }
       end
     end
@@ -26,7 +25,7 @@ class AvatarsController < ApplicationController
   end
 
   def update
-    if @profile.update_attributes(params[:profile])
+    if current_user.update_attributes(params[:user])
       respond_to do |format|
         format.html { redirect_to user_profile_path(current_user) }
         format.js { render 'edit', :layout => false }

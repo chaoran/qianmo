@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   #before_filter :set_default_response_format
-  after_filter :flash_headers
-  before_filter :setup_profile, :if => :user_signed_in?
+  before_filter :authenticate_user!
+  after_filter :flash_headers, :unless => Proc.new {|c| c.request.xhr?}
   
   protected
   
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def flash_headers
     # This will discontinue execution if Rails detects that the request is not
     # from an AJAX request, i.e. the header wont be added for normal requests
-    return unless request.xhr?
+    #return unless request.xhr?
 
     # Add the appropriate flash messages to the header, add or remove as
     # needed, but I think you'll get the point

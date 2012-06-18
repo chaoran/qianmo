@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120611010728) do
+ActiveRecord::Schema.define(:version => 20120617043306) do
 
-  create_table "accounts", :force => true do |t|
-    t.string   "email"
-    t.string   "cell_phone"
-    t.string   "username"
-    t.string   "hashed_password", :null => false
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+  create_table "billboards", :force => true do |t|
+    t.string   "header"
+    t.text     "content"
+    t.string   "button_name"
+    t.string   "button_value"
+    t.integer  "page_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "cities", :force => true do |t|
@@ -30,18 +31,35 @@ ActiveRecord::Schema.define(:version => 20120611010728) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "pages", :force => true do |t|
+    t.string   "title"
+    t.string   "intro"
+    t.integer  "creator_id"
+    t.string   "creator_type"
+    t.boolean  "editable"
+    t.boolean  "has_billboard"
+    t.boolean  "has_whiteboard"
+    t.boolean  "has_posters"
+    t.boolean  "has_image"
+    t.boolean  "has_attribute_group"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "pages", ["creator_id"], :name => "index_pages_on_creator_id"
+
   create_table "profiles", :force => true do |t|
     t.boolean  "sex"
     t.date     "date_of_birth"
     t.string   "hometown"
     t.string   "current_city"
     t.integer  "user_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
@@ -66,6 +84,10 @@ ActiveRecord::Schema.define(:version => 20120611010728) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

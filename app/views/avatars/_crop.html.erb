@@ -6,7 +6,7 @@
 	<div class="span5">
 		<ul class="thumbnails">
 			<li class="span3">
-				<div class="thumbnail"><%= image_tag @profile.avatar.url(:frontpage), :id => "cropbox" %></div>
+				<div class="thumbnail"><%= image_tag current_user.avatar.url(:frontpage), :id => "cropbox" %></div>
 			</li>
 			<li class="span2">
 				<div class="thumbnail">
@@ -14,7 +14,7 @@
 						<label><%= t :thumb_preview %></label>
 					</div>
 					<div style="width:100px; height:100px; overflow:hidden">
-					  <%= image_tag @profile.avatar.url(:frontpage), :id => "cropbox-preview" %>
+					  <%= image_tag current_user.avatar.url(:frontpage), :id => "cropbox-preview" %>
 					</div>
 				</div>
 			</li>
@@ -22,10 +22,10 @@
 	</div>
 </div>
 <div class="modal-footer">
-	<%= simple_form_for @profile, :url => user_profile_avatar_path(current_user),
+	<%= simple_form_for current_user, :url => user_avatar_path(current_user),
 	 											 :html => { :method => :put } do |f| %>
 		<% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
-			<%= f.hidden_field attribute, :id => attribute %>
+			<%= f.hidden_field attribute %>
 		<% end %>
 		<div class="actions">
 			<%= f.button :submit, "#{t :okay}", :class => "btn-primary" %>

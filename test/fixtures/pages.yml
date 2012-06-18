@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  intro: MyString
+  creator: 
+  description: MyText
+  editable: false
+  commentable: false
+  twittable: false
+  discussable: false
+  picturable: false
+  ratable: false
+  joinable: false
+  checkinable: false
+
+two:
+  title: MyString
+  intro: MyString
+  creator: 
+  description: MyText
+  editable: false
+  commentable: false
+  twittable: false
+  discussable: false
+  picturable: false
+  ratable: false
+  joinable: false
+  checkinable: false

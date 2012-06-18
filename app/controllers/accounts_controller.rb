@@ -16,7 +16,7 @@ class AccountsController < Devise::RegistrationsController
   end
   
   def after_sign_up_path_for(resource)
-    edit_user_profile_path(resource)
+    new_user_profile_path(resource)
   end
   
   # Copied from devise. comment out set alert message.

@@ -1,0 +1,22 @@
+<% if @editable %>
+  <%= hidden_edit_button "billboard", 
+                         @page.billboard ? edit_page_billboard_path(@page) 
+                                         : new_page_billboard_path(@page) %> 
+<% end %>
+<div id="page_billboard_show">
+  <% if controller.action_name == "new" || (@page.has_billboard && !@page.billboard) %>
+    <h2><%= t :billboard_title %></h2>
+    <p><%= t :billboard_content %></p>
+  <% elsif @page.has_billboard && @page.billboard %>
+    <% @billboard = @page.billboard %>
+    <h2><%= @billboard.header %></h2>
+    <p><%= @billboard.content %></p>
+    <% if !@billboard.button_name.blank? %>
+      <p><%= link_to @billboard.button_name, @billboard.button_value, :class => "btn btn-primary btn-large" %>
+    <% end %>
+  <% end %>
+</div>
+
+
+
+

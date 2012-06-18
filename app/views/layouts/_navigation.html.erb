@@ -9,12 +9,10 @@
 	<a class="brand" href="#"><%= t :app_name %></a>
 <% end %>
 <div class="nav-collapse">
-	<% if content_for?(:topbar) %>
-	 	<%= yield(:topbar) %>
-	<% elsif user_signed_in? %>
+	<% if user_signed_in? %>
 	  <ul class="nav">
 		  <li><%= link_to "#{t :news}" %></li>
-	    <li><%= link_to "#{t :tasks}" %></li>
+	    <li><%= link_to "#{t :pages}", pages_path %></li>
 	  </ul>
 		<%= form_tag "#", :class => "navbar-search pull-left", :method => :get do %>
 			<%= text_field_tag 'search', nil, :placeholder => "#{t :search_bar_placeholder}", 
@@ -24,7 +22,7 @@
 		<ul class="nav pull-right link-group">
 			<li>
 				<a id="nav-image" href="<%= user_profile_path(current_user) %>">
-					<%= image_tag @profile.avatar.url(:thumb), :width => "35px", :height => "35px" %>
+					<%= image_tag current_user.avatar.url(:thumb), :width => "35px", :height => "35px" %>
 					<%= current_user.name %>
 				</a>
 			</li>
@@ -38,11 +36,15 @@
 			</li>
 		</ul>
 	<% else %>
-	  <div class="nav pull-right">
-	    <%= link_to "#{t :sign_up}", new_registration_path(resource_name), 
-	                                 :class => "btn btn-success" %>
-	    <%= link_to "#{t :sign_in}", new_session_path(resource_name), 
-	                                 :class => "btn btn-primary" %>
-	  </div>
+	  <% unless controller.controller_name == "accounts" && controller.action_name == "new" %>
+	    <div class="nav pull-right">
+  	    <%= link_to "#{t :sign_up}", new_user_registration_path, 
+  	                                 :class => "btn btn-success" %>
+  	  </div>
+  	<% end %>
+	  <% unless controller.controller_name == "sessions" && controller.action_name == "new" %>
+	    <%= render 'shared/login' %>
+	  <% end %>
+
 	<% end %>
 </div>

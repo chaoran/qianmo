@@ -25,4 +25,6 @@ $(document).ready(function(){
 	$('#profile_current_city').typeahead({ source: cities });
 });
 
+
+
   

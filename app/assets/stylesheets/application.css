@@ -16,13 +16,53 @@
 	color: #999999;
 }
 
-
-
-
 /* fix Jcrop and Twitter bootstrp conflict */
 .jcrop-holder img {max-width: none}
 #cropbox-preview { max-width: none }
 
 .small-thumb { width: 50px; height: 50px; }
 
+#floatbar {
+  right: 0;
+  left: 0;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+     -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding-box;
+          background-clip: padding-box;
+}
 
+#floatbar label {
+  margin: 5px 6px;
+}
+
+#floatbar .form-inline {
+  margin-bottom: 6px;
+}
+
+.form-inline input[type="checkbox"] {
+  line-height: 18px;
+  margin: 5px 0px 7px;
+}
+
+.page-header-condensed {
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+#page_side_section {
+  margin-top: 18px;
+}
+
+#main_section .carousel-control {
+  top: 48%;
+}
+
+.carousel-caption h1,
+.carousel-caption h2,
+.carousel-caption h3,
+.carousel-caption h4 {
+  color: white;
+}

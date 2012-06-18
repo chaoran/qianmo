@@ -1,6 +1,6 @@
 module SimpleFormExtensions
   def wrapped_button(*args, &block)
-    template.content_tag :div, :class => "form-actions" do
+    template.content_tag :div do
       options = args.extract_options!
       loading = self.object.new_record? ? I18n.t('simple_form.creating') : I18n.t('simple_form.updating')
       options[:"data-loading-text"] = [loading, options[:"data-loading-text"]].compact

@@ -16,6 +16,11 @@
 			</div>
 		</div>
 	</div>
+	<div id="floatbar">
+	  <div class="container">
+	    <%= yield(:floatbar) if content_for?(:floatbar) %>
+	  </div>
+	</div>
 	<div class="container">
 		<div class='content'>
 			<div class='row'>
@@ -29,7 +34,6 @@
 		</div>
 	</div>
 	<div id="modal-placeholder">
-		<%= yield(:modal) if content_for?(:modal)  %>
 	</div>
 </body>
 </html>

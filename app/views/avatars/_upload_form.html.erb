@@ -1,4 +1,4 @@
-<%= simple_form_for @profile, :url => user_profile_avatar_path(current_user),
+<%= simple_form_for current_user, :url => user_avatar_path(current_user),
  															:html => { :method => :post },
  															:remote => true do |f| %>
 <div class="modal-header">

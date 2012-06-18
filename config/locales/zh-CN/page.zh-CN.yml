@@ -1,0 +1,47 @@
+zh-CN:
+    create_page: "创建新页面"
+    unknown_title: "未命名"
+    unknown_intro: "还没有填入页面介绍"
+    billboard_title: "公告牌"
+    billboard_content: "公告牌里的内容会用大号字显示"
+    poster_header1: "你可以上传图片作为页面的海报"
+    poster_content1: "海报区域大小为620x350像素"
+    poster_header2: "图片可以嵌入链接"
+    poster_content2: "图片大小要小于1M; 最多可以循环显示5张海报; 只接受jpg和png格式的图片。"
+    attribute1: "属性名1"
+    attribute_value1: "属性内容可以是链接"
+    attribute2: "属性名2"
+    attribute_value2: "最多可以添加10条属性"
+    page_setting: "页面设置:"
+    main_section: "主页面:"
+    child_section: "子页面:"
+    side_section: "侧边栏:"
+    
+    edit_finished?: "编辑已完成? "
+    edit_page_title_and_intro: "编辑页面标题栏"
+    
+    new_page: "创建新页面"
+    
+    simple_form:
+        labels:
+            page:
+                title: "标题:"
+                intro: "一句话介绍:"
+                has_posters: "海报"
+                has_whiteboard: "白板"
+                has_billboard: "公告牌"
+                twittable: "微博页"
+                commentable: "评论页"
+                discussable: "讨论页"
+                picturable: "图片页"
+                has_image: "图片栏"
+                has_attribute_group: "属性栏"
+                ratable: "评分栏"
+                chatable: "聊天窗口"
+                checkinable: "签到表"
+                
+    errors:
+        messages:
+            you_are_not_its_creator: "你无法执行这个操作, 因为你缺少相应的权限。"
+
+    

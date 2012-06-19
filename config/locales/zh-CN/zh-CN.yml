@@ -205,7 +205,7 @@ zh-CN:
       date_of_birth: "出生日期"
       hometown: "家乡"
       current_city: "现居城市"
-    attributes:
+    properties:
       
     errors:
       template:

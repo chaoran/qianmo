@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:show, :index]
-  
+    
   # GET /pages
   # GET /pages.json
   def index
@@ -28,6 +28,7 @@ class PagesController < ApplicationController
   # GET /pages/new.json
   def new
     @page = Page.new
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @page }
@@ -37,8 +38,9 @@ class PagesController < ApplicationController
   # GET /pages/1/edit
   def edit
     @page = current_user.pages.find(params[:id])
-    if params[:component] == "attributes"
-      render "edit_attributes"
+    
+    if params[:component] 
+      render "edit_" + params[:component]
     else
       respond_to do |format|
         format.html # edit.html.erb
@@ -68,12 +70,14 @@ class PagesController < ApplicationController
   # PUT /pages/1.json
   def update
     @page = current_user.pages.find(params[:id])
+    @component = params[:component]
+    @editable = true
+    
     respond_to do |format|
-      debugger
       if @page.update_attributes(params[:page])
-        format.js
+        format.js { render @component + "_update" }
       else
-        format.js { render 'error' }
+        format.js { render @component + '_update_error' }
       end
     end
     else

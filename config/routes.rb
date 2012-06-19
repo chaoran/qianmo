@@ -3,7 +3,7 @@ Qianmo::Application.routes.draw do
   resources :pages do 
     resource :billboard, :only => [:new, :create, :edit, :update, :show]
     resource :image, :only => [:new, :create, :show]
-    resources :attributes, :only => [:index, :new, :create] do
+    resources :properties, :only => [:index, :new, :create] do
       collection do
         get 'edit'
         put 'update'

@@ -82,12 +82,12 @@ jQuery(document).ready(function($) {
     }
   );
   
-  $('#page_has_attributes_display').hover(
+  $('#page_has_properties_display').hover(
     function() {
-      $('#page_attributes_edit').show();
+      $('#page_properties_edit').show();
     },
     function() {
-      $('#page_attributes_edit').hide();
+      $('#page_properties_edit').hide();
     }
   );
 

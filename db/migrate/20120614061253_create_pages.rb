@@ -9,7 +9,7 @@ class CreatePages < ActiveRecord::Migration
       t.boolean :has_whiteboard
       t.boolean :has_posters
       t.boolean :has_image
-      t.boolean :has_attribute_group
+      t.boolean :has_attributes
       #t.boolean :twittable
       #t.boolean :picturable
       #t.boolean :commentable

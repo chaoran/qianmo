@@ -81,4 +81,14 @@ jQuery(document).ready(function($) {
       $('#page_image_edit').hide();
     }
   );
+  
+  $('#page_has_attributes_display').hover(
+    function() {
+      $('#page_attributes_edit').show();
+    },
+    function() {
+      $('#page_attributes_edit').hide();
+    }
+  );
+
 });

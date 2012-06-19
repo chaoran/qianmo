@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120618220459) do
+ActiveRecord::Schema.define(:version => 20120618235505) do
+
+  create_table "attributes", :force => true do |t|
+    t.integer  "page_id"
+    t.string   "label"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "attributes", ["page_id"], :name => "index_attributes_on_page_id"
 
   create_table "billboards", :force => true do |t|
     t.string   "header"
@@ -50,9 +60,9 @@ ActiveRecord::Schema.define(:version => 20120618220459) do
     t.boolean  "has_whiteboard"
     t.boolean  "has_posters"
     t.boolean  "has_image"
-    t.boolean  "has_attribute_group"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.boolean  "has_attributes"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   add_index "pages", ["creator_id"], :name => "index_pages_on_creator_id"

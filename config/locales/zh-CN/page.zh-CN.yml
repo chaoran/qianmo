@@ -35,7 +35,7 @@ zh-CN:
                 discussable: "讨论页"
                 picturable: "图片页"
                 has_image: "图片栏"
-                has_attribute_group: "属性栏"
+                has_attributes: "属性栏"
                 ratable: "评分栏"
                 chatable: "聊天窗口"
                 checkinable: "签到表"

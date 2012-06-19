@@ -1,0 +1,34 @@
+<% @modal_name = "attributes_modal" %>
+
+<div id="attributes_modal_content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3><%= t :image_upload_title %></h3>
+  </div>
+  <%= simple_form_for @page, :class => "form-horizontal" do |f| %>
+    <div class="modal-body">
+      <%= debug @page.attributes %>
+      <table class="table-condensed">
+        <tbody>
+          <% f.fields_for :attributes do |builder| %>
+            <%= render 'attribute_fields', :f => builder %>
+          <% end %>
+          <tr id="add_attribute">
+            <td>
+              <%= link_to_add_association "#{t :add}", f, :attributes, 
+                        :render_options => {:wrapper => 'inline' },
+                        :"data-association-insertion-node" => "#add_attribute",
+                        :"data-association-insertion-method" => "before" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer">
+    	<div class="actions">
+    		<%= f.submit "#{t :save}", :class => "btn btn-primary" %>
+      	<a href="#" class="btn" data-dismiss="modal"><%= t :cancel %></a>
+      </div>
+    </div>
+  <% end %>
+</div>

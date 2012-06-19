@@ -1,0 +1,30 @@
+<% if @editable %>
+  <%= hidden_edit_button "attributes", edit_page_path(@page, :component => "attributes") %> 
+<% end %>
+<div id="page_attributes_show">
+  <% if controller.action_name == "new" || (@page.has_attributes && @page.attributes.empty?) %>
+    <p>
+      <div>
+        <strong><%= t :attribute1 %></strong>:&nbsp;
+        <span><%= t :attribute_value1 %></span>
+      </div>
+      <div>
+        <strong><%= t :attribute2 %></strong>:&nbsp;
+        <span><%= t :attribute_value2 %></span>
+      </div>
+    </p>
+  <% elsif @page.has_attributes %>
+    <p>
+      <% for attribute in @page.attributes %>
+      <div>
+        <strong><%= attribute.label %></strong>:&nbsp;
+        <span><%= attribute.value %></span>
+      </div>
+      <% end %>
+    </p>
+  <% end %>
+</div>
+
+
+
+

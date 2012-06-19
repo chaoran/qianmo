@@ -1,6 +1,4 @@
 zh-CN:
-    
-    
     avatar_size_less_than_1m: '图片大小超过限制'
     avatar_format_is_jpg_or_png: '图片格式不正确'
     avatar_upload_hint: "图片大小必须小于1M且格式必须是jpg或者png"

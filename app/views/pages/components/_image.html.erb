@@ -1,8 +1,0 @@
-<% if @page.has_image || controller.action_name == "new" %>
-  <% if @page.image %>
-  <% else %>
-    <div id="page_has_image_display">
-      <p><%= image_tag "300x300.gif" %></p>
-    </div>
-  <% end %>
-<% end %>

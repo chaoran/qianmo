@@ -1,0 +1,10 @@
+<fieldset>
+  <tr>
+    <td><%= f.text_field :label, :class => "input-mini" %></td>
+    <td>:&nbsp;</td>
+    <td><%= f.text_field :value, :class => "input-small" %></td>
+    <td>
+      <%= link_to_remove_association "#{t :delete}", f %>
+    </td>
+  </tr>
+</fieldset>

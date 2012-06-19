@@ -37,9 +37,13 @@ class PagesController < ApplicationController
   # GET /pages/1/edit
   def edit
     @page = current_user.pages.find(params[:id])
-    respond_to do |format|
-      format.html # edit.html.erb
-      format.js { render 'edit' }
+    if params[:component] == "attributes"
+      render "edit_attributes"
+    else
+      respond_to do |format|
+        format.html # edit.html.erb
+        format.js { render 'edit' }
+      end
     end
   end
 
@@ -65,6 +69,7 @@ class PagesController < ApplicationController
   def update
     @page = current_user.pages.find(params[:id])
     respond_to do |format|
+      debugger
       if @page.update_attributes(params[:page])
         format.js
       else

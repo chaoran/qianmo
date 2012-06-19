@@ -41,6 +41,7 @@ gem 'debugger'
 # To validate form dynamically
 gem "client_side_validations"  
 gem "simple_form"
+gem "cocoon"
 
 # user management
 gem 'devise'

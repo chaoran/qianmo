@@ -16,6 +16,7 @@
 //= require jquery.remotipart
 //= require jquery.Jcrop
 //= require twitter/bootstrap
+//= require cocoon
 //= require_tree .
 
 $(document).ready(function(){

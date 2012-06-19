@@ -1,8 +1,0 @@
-zh-CN:
-    image_upload_title: 上传页面图片
-    
-    simple_form:
-        labels:
-            image:
-                img: "上传本地图片文件: "
-                remote_img_url: "或者粘贴图片链接地址: "

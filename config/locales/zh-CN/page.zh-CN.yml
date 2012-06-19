@@ -20,13 +20,21 @@ zh-CN:
     edit_finished?: "编辑已完成? "
     edit_page_title_and_intro: "编辑页面标题栏"
     
+    image_edit_title: 编辑页面图片
+    
     new_page: "创建新页面"
+    
+    new_attribute: "新属性: "
+    attribute_label: "属性名"
+    attribute_value: "属性值"
     
     simple_form:
         labels:
             page:
                 title: "标题:"
                 intro: "一句话介绍:"
+                image: "选择本地图片文件: "
+                remote_image_url: "或者粘贴图片链接地址: "
                 has_posters: "海报"
                 has_whiteboard: "白板"
                 has_billboard: "公告牌"

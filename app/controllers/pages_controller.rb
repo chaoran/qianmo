@@ -38,13 +38,12 @@ class PagesController < ApplicationController
   # GET /pages/1/edit
   def edit
     @page = current_user.pages.find(params[:id])
-    
-    if params[:component] 
-      render "edit_" + params[:component]
+    @component = params[:component]
+    if @component
+      render @component + "_edit"
     else
       respond_to do |format|
         format.html # edit.html.erb
-        format.js { render 'edit' }
       end
     end
   end

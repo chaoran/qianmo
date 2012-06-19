@@ -17,6 +17,7 @@ class CreatePages < ActiveRecord::Migration
       #t.boolean :ratable
       #t.boolean :chatable
       #t.boolean :checkinable
+      t.string :image
       t.timestamps
     end
     add_index :pages, :creator_id

@@ -1,0 +1,17 @@
+<div class="hero-unit">
+  <% if !@page.billboard %>
+    <h2><%= t :billboard_title %></h2>
+    <p><%= t :billboard_content %></p>
+  <% else %>
+    <% @billboard = @page.billboard %>
+    <h2><%= @billboard.header %></h2>
+    <p><%= @billboard.content %></p>
+    <% if !@billboard.button_name.blank? %>
+      <p><%= link_to @billboard.button_name, @billboard.button_value, :class => "btn btn-primary btn-large" %>
+    <% end %>
+  <% end %>
+</div>
+
+
+
+

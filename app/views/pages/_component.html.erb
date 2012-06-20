@@ -1,0 +1,10 @@
+<% if controller.action_name == "new" || @page.send(selector) %>
+<div class="page-component" id="page_<%= selector %>_holder">
+  <% if @editable %>
+    <%= hidden_edit_button name, edit_page_path(@page, :component => name) %>
+  <% end %>
+  <div id="page_<%= name %>_show">
+    <%= render :partial => name %>
+  </div>
+</div>
+<% end %>

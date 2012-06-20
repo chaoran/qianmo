@@ -10,4 +10,19 @@
   position: absolute;
   right: 0;
   top: 0;
+  z-index: 100;
 }
+
+#poster_group.thumbnails {
+  margin-left: 0;
+}
+
+#poster_group .thumbnail {
+  margin-bottom: 15px;
+}
+
+#main_section .carousel-control {
+  top: 48%;
+}
+
+

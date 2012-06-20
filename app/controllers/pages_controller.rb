@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   # GET /pages/1.json
   def show
     @page = Page.find(params[:id])
-    @editable = true if @page.creator == current_user
+    @editable = (@page.creator == current_user)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -70,8 +70,7 @@ class PagesController < ApplicationController
   def update
     @page = current_user.pages.find(params[:id])
     @component = params[:component]
-    @editable = true
-    
+ 
     respond_to do |format|
       if @page.update_attributes(params[:page])
         format.js { render @component + "_update" }
@@ -79,8 +78,6 @@ class PagesController < ApplicationController
         format.js { render @component + '_update_error' }
       end
     end
-    else
-      
   end
 
   # DELETE /pages/1
@@ -96,4 +93,9 @@ class PagesController < ApplicationController
   end
   
   protected
+  
+  def update_posters
+    debugger
+  end
+    
 end

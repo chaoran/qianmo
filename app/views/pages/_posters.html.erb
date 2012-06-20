@@ -1,25 +1,48 @@
-<% if @page.has_posters || controller.action_name == "new" %>
-  <% if @page.posters %>
-  <% else %>
-    <div class="carousel slide" id="page_has_posters_display">
-      <div class="carousel-inner">
-        <div class="active item">
-          <%= image_tag "carousel-example-01.jpg" %>
-          <div class="carousel-caption">
-            <h3><%= t :poster_header1 %></h3>
-            <p><%= t :poster_content1 %></p>
-          </div>
-        </div>
-        <div class="item">
-          <%= image_tag "carousel-example-02.jpg" %>
-          <div class="carousel-caption">
-            <h3><%= t :poster_header2 %></h3>
-            <p><%= t :poster_content2 %></p>
-          </div>
+<div class="carousel slide" id="page_poster_carousel">
+  <div class="carousel-inner">
+    <% if @page.posters.empty? %> 
+      <div class="active item">
+        <%= image_tag "carousel-example-01.jpg" %>
+        <div class="carousel-caption">
+          <h3><%= t :poster_header1 %></h3>
+          <p><%= t :poster_content1 %></p>
         </div>
       </div>
-      <a class="carousel-control left" href="#page_poster_display" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#page_poster_display" data-slide="next">&rsaquo;</a>
-    </div>
+      <div class="item">
+        <%= image_tag "carousel-example-02.jpg" %>
+        <div class="carousel-caption">
+          <h3><%= t :poster_header2 %></h3>
+          <p><%= t :poster_content2 %></p>
+        </div>
+      </div>
+    <% else %>
+      <% @page.posters.each_with_index do |poster, index| %>
+        <div class="item<%= " active" if index == 0 %>">
+          <%= image_tag poster.background.url %>
+          <% if !poster.caption.blank? %>
+            <% if poster.link %>
+              <%= link_to poster.link do %>
+              <div class="carousel-caption">
+                <h3><%= poster.caption %></h3>
+                <p><%= poster.text %></p>
+              </div>
+              <% end %>
+            <% else %>
+              <div class="carousel-caption">
+                <h3><%= poster.caption %></h3>
+                <p><%= poster.text %></p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <% unless @page.posters.size == 1 %>
+    <a class="carousel-control left" href="#page_poster_carousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#page_poster_carousel" data-slide="next">&rsaquo;</a>
   <% end %>
-<% end %>
+</div>
+
+
+  

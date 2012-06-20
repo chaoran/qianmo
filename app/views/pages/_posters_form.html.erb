@@ -1,0 +1,33 @@
+<% @modal_name = "posters_modal" %>
+
+<div id="posters_modal_content">
+  <%= simple_form_for @page, :html => { :class => "form-horizontal" }, :remote => true do |f| %>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">×</button>
+      <h3><%= t :poster_edit_title %></h3>
+      <%= hidden_field_tag :component, "posters" %>
+    </div>
+    <div class="modal-body">
+      <div class="thumbnails" id="poster_group">
+        <% @page.posters.each do |poster| %>
+          <%= f.fields_for :posters, poster do |builder| %>
+            <%= render 'poster_fields', :f => builder %>
+          <% end %>
+        <% end %>
+      </div>
+      <%= link_to_add_association f, :posters, 
+                :render_options => { :wrapper => 'inline' },
+                :"data-association-insertion-node" => "#poster_group",
+                :"data-association-insertion-method" => "append",
+                :class => "btn" do %>
+        <i class="icon-plus"></i>&nbsp;<%= t :add %>
+      <% end %>
+    </div>
+    <div class="modal-footer">
+    	<div class="actions">
+    		<%= f.submit "#{t :save}", :class => "btn btn-primary" %>
+      	<a href="#" class="btn" data-dismiss="modal"><%= t :cancel %></a>
+      </div>
+    </div>
+  <% end %>
+</div>

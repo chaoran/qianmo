@@ -1,0 +1,19 @@
+<div class="thumbnail nested-fields">
+  <%= link_to_remove_association f, :class => "btn pull-right" do %>
+    <i class="icon-remove"></i>&nbsp;<%= t :delete %>
+  <% end %>
+  <div class="control-group">
+    <label class="control-label"><%= t :'poster.current_background' %></label>
+    <div class="controls">
+      <span>
+        <%= f.object.background.blank?() ? t(:'poster.no_background') 
+                                         : f.object.background.to_s.split('/')[-1] %>
+      </span>
+    </div>
+  </div>
+  <h5></h5>
+  <%= f.input :background, :as => :file, :label => "#{t :'poster.background'}" %>
+  <%= f.input :caption, :label => "#{t :'poster.caption'}" %>
+  <%= f.input :text, :input_html => { :rows => 3 }, :label => "#{t :'poster.text'}" %>
+  <%= f.input :link, :label => "#{t :'poster.link'}" %>
+</div>

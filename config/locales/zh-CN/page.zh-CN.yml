@@ -21,12 +21,12 @@ zh-CN:
     edit_page_title_and_intro: "编辑页面标题栏"
     
     image_edit_title: 编辑页面图片
-    
+    poster_edit_title: 编辑海报栏
+    properties_edit_title: 编辑属性栏
     new_page: "创建新页面"
     
-    new_attribute: "新属性: "
-    attribute_label: "属性名"
-    attribute_value: "属性值"
+    property_label: "属性名"
+    property_value: "属性值"
     
     simple_form:
         labels:
@@ -47,6 +47,13 @@ zh-CN:
                 ratable: "评分栏"
                 chatable: "聊天窗口"
                 checkinable: "签到表"
+    poster:
+        current_background: "当前背景图片:"
+        no_background: "无"
+        background: "新背景图片:"
+        caption: "标题:"
+        text: "文字:"
+        link: "链接:"
                 
     errors:
         messages:

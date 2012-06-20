@@ -24,7 +24,7 @@ jQuery(document).ready(function($) {
   
   function appendOrDelete(name, section_name) {
     var trigger = "#" + name
-    var target = trigger + "_display"
+    var target = trigger + "_holder"
     var p;
     if ($(trigger).is(':checked')) {
       p = $(target).detach()
@@ -64,7 +64,7 @@ jQuery(document).ready(function($) {
     }
   );
   
-  $('#page_has_billboard_display').hover(
+  $('#page_has_billboard_holder').hover(
     function() {
       $('#page_billboard_edit').show();
     },
@@ -73,7 +73,7 @@ jQuery(document).ready(function($) {
     }
   );
   
-  $('#page_has_image_display').hover(
+  $('#page_has_image_holder').hover(
     function() {
       $('#page_image_edit').show();
     },
@@ -82,12 +82,21 @@ jQuery(document).ready(function($) {
     }
   );
   
-  $('#page_has_properties_display').hover(
+  $('#page_has_properties_holder').hover(
     function() {
       $('#page_properties_edit').show();
     },
     function() {
       $('#page_properties_edit').hide();
+    }
+  );
+  
+  $('#page_has_posters_holder').hover(
+    function() {
+      $('#page_posters_edit').show();
+    },
+    function() {
+      $('#page_posters_edit').hide();
     }
   );
 

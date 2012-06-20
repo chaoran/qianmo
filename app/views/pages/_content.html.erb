@@ -1,28 +1,27 @@
 <div class="row">
-  <div class="span8">
-    <div id="page_header" class="page-header page-component">
+  <div id="page_header" class="page-component">
+    <div class="span12">
       <% if @editable %>
-        <%= hidden_edit_button "header", edit_page_path(@page) %>
+        <%= hidden_edit_button "header", edit_page_path(@page, :component => "header") %>
       <% end %>
-      <div id="page_header_show">
-        <%= render "pages/header" %>
+      <div class="page-header" id="page_header_show">
+        <%= render "header" %>
       </div>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span8">
+
     <div id="page_main_section">
-      <div class="hero-unit page-component" id="page_has_billboard_display">
-        <%= render "billboards/show" %>
-      </div>
-      <%= render "posters" %>
+      <%= render 'component', :selector => "has_billboard", :name => "billboard" %>
+      <%= render 'component', :selector => "has_posters", :name => "posters" %>
     </div>
   </div>
   <div class="span4">
     <div id='page_side_section'>
-      <div class="page-component" id="page_has_image_display">
-        <%= render "image" %>
-      </div>
-      <div class="page-component" id="page_has_properties_display">
-        <%= render "properties" %>
-      </div>
+      <%= render 'component', :selector => "has_image", :name => "image" %>
+      <%= render 'component', :selector => "has_properties", :name => "properties" %>
     </div>
   </div>
 </div>

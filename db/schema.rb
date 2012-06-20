@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120618235505) do
+ActiveRecord::Schema.define(:version => 20120619205139) do
 
   create_table "billboards", :force => true do |t|
     t.string   "header"
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(:version => 20120618235505) do
   end
 
   add_index "pages", ["creator_id"], :name => "index_pages_on_creator_id"
+
+  create_table "posters", :force => true do |t|
+    t.integer  "page_id"
+    t.string   "background"
+    t.string   "caption"
+    t.text     "text"
+    t.string   "link"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "posters", ["page_id"], :name => "index_posters_on_page_id"
 
   create_table "profiles", :force => true do |t|
     t.boolean  "sex"

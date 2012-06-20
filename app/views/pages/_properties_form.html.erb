@@ -1,10 +1,10 @@
 <% @modal_name = "properties_modal" %>
 
 <div id="properties_modal_content">
-  <%= simple_form_for @page, :class => "form-horizontal", :remote => true do |f| %>
+  <%= simple_form_for @page, :html => { :class => "form-inline" }, :remote => true do |f| %>
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">×</button>
-      <h3><%= t :image_upload_title %></h3>
+      <h3><%= t :properties_edit_title %></h3>
       <%= hidden_field_tag :component, "properties" %>
     </div>
     <div class="modal-body">
@@ -15,10 +15,13 @@
           <% end %>
           <tr id="add_attribute">
             <td>
-              <%= link_to_add_association "#{t :add}", f, :properties, 
-                        :render_options => {:wrapper => 'inline' },
+              <%= link_to_add_association f, :properties, 
+                        :render_options => { :wrapper => 'inline' },
                         :"data-association-insertion-node" => "#add_attribute",
-                        :"data-association-insertion-method" => "before" %>
+                        :"data-association-insertion-method" => "before",
+                        :class => "btn" do %>
+                <i class="icon-plus"></i>&nbsp;<%= t :add %>
+              <% end %>
             </td>
           </tr>
         </tbody>

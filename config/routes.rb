@@ -1,14 +1,7 @@
 Qianmo::Application.routes.draw do
 
   resources :pages do 
-    resource :billboard, :only => [:new, :create, :edit, :update, :show]
-    resource :image, :only => [:new, :create, :show]
-    resources :properties, :only => [:index, :new, :create] do
-      collection do
-        get 'edit'
-        put 'update'
-      end
-    end
+    resource :billboard, :only => :update
   end
 
   devise_for :users, :path => '',

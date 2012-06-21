@@ -1,7 +1,11 @@
 <tr class="nested-fields">
-  <td><%= f.text_field :label, :class => "input-mini", :placeholder => "#{t :property_label}" %></td>
+  <td><%= f.input :label, :wrapper => :nolabel, 
+                          :input_html => {:class => "input-mini", :maxlength=>"4"}, 
+                          :placeholder => "#{t :property_label}" %></td>
   <td>:&nbsp;</td>
-  <td><%= f.text_field :value, :class => "input-small", :placeholder => "#{t :property_value}" %></td>
+  <td><%= f.input :value, :wrapper => :nolabel, 
+                          :class => "input-large", 
+                          :placeholder => "#{t :property_value}" %></td>
   <td>
     <%= link_to_remove_association "#{t :delete}", f %>
   </td>

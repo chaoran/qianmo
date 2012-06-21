@@ -1,0 +1,10 @@
+<div>
+  <% if !@page.whiteboard %>
+    <h3><%= t :whiteboard_title %></h3>
+    <p><%= t :whiteboard_text %></p>
+  <% else %>
+    <% @whiteboard = @page.whiteboard %>
+    <h3><%= @whiteboard.title %></h3>
+    <p><%= sanitize(RedCloth.new(@whiteboard.text, [:filter_html, :filter_styles]).to_html) %></p>
+  <% end %>
+</div>

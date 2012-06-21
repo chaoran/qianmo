@@ -1,6 +1,6 @@
 <div class="row">
-  <div id="page_header" class="page-component">
-    <div class="span12">
+  <div class="span8">
+    <div id="page_header" class="page-component">
       <% if @editable %>
         <%= hidden_edit_button "header", edit_page_path(@page, :component => "header") %>
       <% end %>
@@ -8,17 +8,24 @@
         <%= render "header" %>
       </div>
     </div>
-  </div>
-</div>
-<div class="row">
-  <div class="span8">
-
     <div id="page_main_section">
       <%= render 'component', :selector => "has_billboard", :name => "billboard" %>
       <%= render 'component', :selector => "has_posters", :name => "posters" %>
+      <%= render 'component', :selector => "has_whiteboard", :name => "whiteboard" %>
     </div>
   </div>
   <div class="span4">
+    <% if @editable %>
+      <div class="well">
+        <%= link_to nil, :class => "btn", 
+                         :'data-toggle' => "modal", 
+                         :'data-target' => "#page_destroy_modal" do %>
+          <i class="icon-remove"></i><%= " #{t :delete}" %>
+        <% end %>
+        <%= content_for(:modal) { render 'destroy' } %>
+      </div>
+    <% end %>
+    <div id="action_bar"><%= yield(:action_bar) if content_for?(:action_bar) %></div>
     <div id='page_side_section'>
       <%= render 'component', :selector => "has_image", :name => "image" %>
       <%= render 'component', :selector => "has_properties", :name => "properties" %>

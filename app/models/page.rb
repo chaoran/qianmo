@@ -4,7 +4,7 @@ class Page < ActiveRecord::Base
                   :twittable, :picturable, :commentable, :discussable, 
                   :ratable, :chatable, :checkinable, 
                   :properties_attributes, :posters_attributes, 
-                  :billboard, :image, :remote_image_url
+                  :image, :remote_image_url
   belongs_to :creator, :polymorphic => true
   mount_uploader :image, ImageUploader
   has_one :billboard
@@ -16,5 +16,6 @@ class Page < ActiveRecord::Base
   
   attr_accessor :twittable, :picturable, :commentable, :discussable, :ratable, :chatable, :checkinable
   
-  validates_presence_of :title, :intro, :creator 
+  validates_presence_of :title, :creator 
+  validates_uniqueness_of :title
 end

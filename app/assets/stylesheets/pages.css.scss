@@ -2,6 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#floatbar {
+  position: fixed;
+  z-index: 1030;
+  top: 50px;
+  right: 0;
+  left: 0;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+     -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding-box;
+          background-clip: padding-box;
+}
+
+#floatbar label {
+  margin: 5px 6px;
+}
+
+#floatbar .form-inline {
+  margin-bottom: 6px;
+}
+
 .page-component {
   position: relative;
 }

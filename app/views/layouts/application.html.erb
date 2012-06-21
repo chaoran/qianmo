@@ -21,7 +21,7 @@
 	    <%= yield(:floatbar) if content_for?(:floatbar) %>
 	  </div>
 	</div>
-	<div class="container">
+	<div class="container" <%= "style=\"padding-top:180px;\"".html_safe if content_for?(:floatbar) %>>
 		<div class='content'>
 			<div class='row'>
 				<div class='span12'>
@@ -34,6 +34,7 @@
 		</div>
 	</div>
 	<div id="modal-placeholder">
+	  <%= yield(:modal) if content_for?(:modal) %>
 	</div>
 </body>
 </html>

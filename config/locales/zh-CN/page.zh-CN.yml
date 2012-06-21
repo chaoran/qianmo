@@ -1,5 +1,5 @@
 zh-CN:
-    create_page: "创建新页面"
+
     unknown_title: "未命名"
     unknown_intro: "还没有填入页面介绍"
     billboard_title: "公告牌"
@@ -8,6 +8,10 @@ zh-CN:
     poster_content1: "海报区域大小为620x350像素"
     poster_header2: "图片可以嵌入链接"
     poster_content2: "图片大小要小于1M; 最多可以循环显示5张海报; 只接受jpg和png格式的图片。"
+    
+    whiteboard_title: "白版标题"
+    whiteboard_text: "这里可以显示大段的文字内容，字数不限。"
+    
     attribute1: "属性名1"
     attribute_value1: "属性内容可以是链接"
     attribute2: "属性名2"
@@ -23,10 +27,20 @@ zh-CN:
     image_edit_title: 编辑页面图片
     poster_edit_title: 编辑海报栏
     properties_edit_title: 编辑属性栏
+    whiteboard_edit_title: 编辑白板
+    billboard_edit_title: 编辑公告牌内容
+    
+    create_page: "创建新页面"
     new_page: "创建新页面"
+    delete_page: "删除页面"
+    page_deletion_confirmation: "确认删除页面"
+    are_you_sure_deleting_page1: "你确定要删除这个页面么?"
+    are_you_sure_deleting_page2: "删除之后这个页面将不能恢复"
     
     property_label: "属性名"
     property_value: "属性值"
+    
+    created_at_time_by_user_html: "<em>在&nbsp;%{time}&nbsp;前, 由&nbsp;%{user}&nbsp;创建</em>"
     
     simple_form:
         labels:
@@ -47,6 +61,16 @@ zh-CN:
                 ratable: "评分栏"
                 chatable: "聊天窗口"
                 checkinable: "签到表"
+            whiteboard:
+                title: "题目："
+                text: "内容："
+            
+            billboard:
+                header: "标题:"
+                content: "内容:"
+                button_name: "按钮标题:"
+                button_value: "按钮链接地址:"
+            
     poster:
         current_background: "当前背景图片:"
         no_background: "无"

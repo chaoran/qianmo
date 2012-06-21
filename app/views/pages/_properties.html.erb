@@ -1,25 +1,16 @@
+<dl class="dl-horizontal">
 <% if @page.properties.empty? %>
-  <p>
-    <div>
-      <strong><%= t :attribute1 %></strong>:&nbsp;
-      <span><%= t :attribute_value1 %></span>
-    </div>
-    <div>
-      <strong><%= t :attribute2 %></strong>:&nbsp;
-      <span><%= t :attribute_value2 %></span>
-    </div>
-  </p>
+  <dt><%= t :attribute1 %>:</dt>
+  <dd><%= t :attribute_value1 %></dd>
+  <dt><%= t :attribute2 %>:</dt>
+  <dd><%= t :attribute_value2 %></dd>
 <% else %>
-  <p>
-    <% for attribute in @page.properties %>
-    <div>
-      <strong><%= attribute.label %></strong>:&nbsp;
-      <span><%= attribute.value %></span>
-    </div>
-    <% end %>
-  </p>
+  <% for attribute in @page.properties %>
+    <dt><%= attribute.label %>:</dt>
+    <dd><%= attribute.value %></dd>
+  <% end %>
 <% end %>
-
+</dl>
 
 
 

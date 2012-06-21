@@ -1,2 +1,8 @@
-<%= render 'content' %>
+<% content_for :action_bar do %>
+<div class="grey right-align">
+  <p><%= "#{t :created_at_time_by_user_html, :time => time_ago_in_words(@page.created_at), 
+          :user => link_to(@page.creator.name, user_profile_path(@page.creator))}".html_safe %></p>
+</div>
+<% end %>
 
+<%= render 'content' %>

@@ -51,6 +51,8 @@ gem 'rmagick'
 gem 'carrierwave'
 gem 'remotipart', '~> 0.4'
 
+gem 'RedCloth'
+
 # omniauth
 gem 'omniauth-weibo-oauth2'
 

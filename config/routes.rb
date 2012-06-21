@@ -2,6 +2,7 @@ Qianmo::Application.routes.draw do
 
   resources :pages do 
     resource :billboard, :only => :update
+    resource :whiteboard, :only => :update
   end
 
   devise_for :users, :path => '',

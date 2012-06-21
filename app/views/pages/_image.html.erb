@@ -1,9 +1,7 @@
+<div>
 <% if !@page.image %>
   <p><%= image_tag "fallback/300x300.gif" %></p>
 <% else %>
   <p><%= image_tag @page.image.url %></p>
 <% end %>
-
-
-
-
+</div>

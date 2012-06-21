@@ -99,5 +99,14 @@ jQuery(document).ready(function($) {
       $('#page_posters_edit').hide();
     }
   );
+  
+  $('#page_has_whiteboard_holder').hover(
+    function() {
+      $('#page_whiteboard_edit').show();
+    },
+    function() {
+      $('#page_whiteboard_edit').hide();
+    }
+  );
 
 });

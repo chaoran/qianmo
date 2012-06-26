@@ -52,6 +52,7 @@ zh-CN:
                 has_posters: "海报"
                 has_whiteboard: "白板"
                 has_billboard: "公告牌"
+                has_posts: "@此页面的"
                 twittable: "微博页"
                 commentable: "评论页"
                 discussable: "讨论页"

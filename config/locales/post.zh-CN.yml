@@ -1,0 +1,14 @@
+zh-CN:
+    something_to_say?: "有什么想说的么?"
+    publish: "发布"
+    posted_at_time: "%{time}前"
+    posted_through_source: "通过%{source}发布"
+    reply: "回复"
+    repost: "转发"
+    like: "喜欢"
+    
+    comment: "评论"
+    
+    leave_a_message?: "我想说..."
+    expand: "展开"
+    collapse: "收起"

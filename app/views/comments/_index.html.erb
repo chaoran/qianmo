@@ -1,0 +1,8 @@
+<div class="comments">
+  <% comments = @commentable.comments.order("created_at").limit(20) %>
+  <% for comment in comments %>
+    <%= @comment = comment; render 'comments/show' %>
+  <% end %>
+  <%= render 'comments/new' %>
+</div>
+

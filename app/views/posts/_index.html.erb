@@ -1,0 +1,5 @@
+<div class="stream">
+  <% @posts.each do |post| %>
+    <%= render 'show', :post => post %>
+  <% end %>
+</div>

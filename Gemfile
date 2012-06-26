@@ -52,6 +52,7 @@ gem 'carrierwave'
 gem 'remotipart', '~> 0.4'
 
 gem 'RedCloth'
+gem 'sanitize'
 
 # omniauth
 gem 'omniauth-weibo-oauth2'

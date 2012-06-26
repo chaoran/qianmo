@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   has_one :profile
   has_many :pages, :as => :creator
+  has_many :posts
+  has_many :events, :as => :receiver
   mount_uploader :avatar, AvatarUploader
   
   # Setup accessible (or protected) attributes for your model

@@ -36,4 +36,10 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
+  
+  def link_to_with_icon(name, url, icon, options={})
+    link_to(url, options) do
+      "<i class=\"#{icon}\"></i>&nbsp;#{name}".html_safe
+    end 
+  end
 end

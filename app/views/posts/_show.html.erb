@@ -1,0 +1,36 @@
+<div class="stream-post">
+  <div class="post-holder">
+    <div class="post-header">
+      <a>
+        <%= image_tag @post.user.avatar.url(:thumb), :class => "avatar" %>
+        <strong><%= @post.user.name %></strong>
+      </a>
+      <small class="grey pull-right">
+        <%= "#{t :posted_at_time, :time => time_ago_in_words(@post.created_at)}".html_safe %>
+        <% if @post.source %>
+          <%= "#{t :posted_through_source, :source => @post.source}".html_safe %>
+        <% end %>
+      </small>
+    </div>
+    <p class="post-body">
+      <%= @post.text.html_safe %>
+    </p>
+    <div class="post-actions">
+      <%= link_to_with_icon "#{t :expand}", nil, "icon-caret-right", :class => "action-expand"  %>
+      <%= link_to_with_icon "#{t :collapse}", nil, "icon-caret-down", 
+                            :class => "action-collapse", :style => "display:none;"  %>
+      <ul style="display:none;">
+        <li><%= link_to_with_icon "#{t :comment}", nil, "icon-comment", :class => "action-comment"  %></li>
+        <li><%= link_to_with_icon "#{t :repost}", nil, "icon-share-alt" %></li>
+        <li><%= link_to_with_icon "#{t :like}", nil, "icon-heart" %></li>
+        <% if @post.user == current_user %>
+          <li><%= link_to_with_icon "#{t :delete}", nil, "icon-remove", 
+                                    :class => "action-delete smoke" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="post-comments-holder" style="display: none;">
+    <%= @commentable = @post; render 'comments/index' %>
+  </div>
+</div>

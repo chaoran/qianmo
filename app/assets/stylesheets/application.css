@@ -16,6 +16,22 @@
 	color: #999999;
 }
 
+.red {
+  color: #B94A48;
+}
+
+.smoke {
+  color: whitesmoke;
+}
+
+.white {
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
 .right-align {
   text-align: right;
 }
@@ -46,4 +62,9 @@
   color: white;
 }
 
+.avatar {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
 

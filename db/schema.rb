@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621023907) do
+ActiveRecord::Schema.define(:version => 20120625184652) do
 
   create_table "billboards", :force => true do |t|
     t.string   "header"
@@ -31,6 +31,31 @@ ActiveRecord::Schema.define(:version => 20120621023907) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "comments", :force => true do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.text     "text"
+    t.integer  "user_id"
+    t.string   "source"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "events", :force => true do |t|
+    t.integer  "receiver_id"
+    t.string   "receiver_type"
+    t.integer  "trigger_id"
+    t.string   "trigger_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "events", ["receiver_id"], :name => "index_events_on_receiver_id"
+  add_index "events", ["trigger_id"], :name => "index_events_on_trigger_id"
+
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.string   "intro"
@@ -45,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20120621023907) do
     t.string   "image"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.boolean  "has_posts"
   end
 
   add_index "pages", ["creator_id"], :name => "index_pages_on_creator_id"
@@ -60,6 +86,19 @@ ActiveRecord::Schema.define(:version => 20120621023907) do
   end
 
   add_index "posters", ["page_id"], :name => "index_posters_on_page_id"
+
+  create_table "posts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "text"
+    t.integer  "num_reposts"
+    t.integer  "parent_id"
+    t.string   "source"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "posts", ["parent_id"], :name => "index_posts_on_parent_id"
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "profiles", :force => true do |t|
     t.boolean  "sex"

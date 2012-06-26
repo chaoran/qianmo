@@ -85,6 +85,7 @@ GEM
     mime-types (1.18)
     multi_json (1.3.6)
     multipart-post (1.1.5)
+    nokogiri (1.5.5)
     oauth2 (0.6.1)
       faraday (~> 0.7)
       httpauth (~> 0.1)
@@ -128,6 +129,8 @@ GEM
       json (~> 1.4)
     remotipart (0.4.2)
     rmagick (2.13.1)
+    sanitize (2.0.3)
+      nokogiri (>= 1.4.4, < 1.6)
     sass (3.1.19)
     sass-rails (3.2.5)
       railties (~> 3.2.0)
@@ -177,6 +180,7 @@ DEPENDENCIES
   rails (= 3.2.3)
   remotipart (~> 0.4)
   rmagick
+  sanitize
   sass-rails (~> 3.2.3)
   simple_form
   twitter-bootstrap-rails

@@ -1,5 +1,9 @@
 Qianmo::Application.routes.draw do
 
+  resources :posts
+    
+  resources :comments
+
   resources :pages do 
     resource :billboard, :only => :update
     resource :whiteboard, :only => :update

@@ -1,0 +1,5 @@
+var new_comment = $('input[type="hidden"][value="<%= escape_javascript(params[:authenticity_token]) %>"]').closest('.new-comment');
+new_comment.before("<%= escape_javascript(render :partial => 'show') %>").hide().slideDown();
+new_comment.find("input[type='text']").val("");
+new_comment.find("#fake-input").show();
+new_comment.find("form").hide();

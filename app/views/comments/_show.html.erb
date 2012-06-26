@@ -1,0 +1,19 @@
+<div class="comment">
+  <div class="comment-header">
+    <%= link_to user_profile_path(@comment.user) do %>
+      <%= image_tag @comment.user.avatar.url(:thumb), :class => "avatar" %>
+      <%= @comment.user.name %>
+    <% end %>
+    <span class="post-time">
+      <%= "#{t :posted_at_time, :time => time_ago_in_words(@comment.created_at)}".html_safe %>
+    </span>
+  </div>
+  <div class="comment-body">
+    <%= @comment.text.html_safe %>
+  </div>
+  <div class="comment-actions" style="display:none;">
+    <%= link_to_with_icon "#{t :like}", "#", "icon-heart-empty", :class => "action-like"  %>
+    <span class="grey">|</span>
+    <%= link_to_with_icon "#{t :reply}", "#", "icon-comment-alt", :class => "action-reply"  %>
+  </div>
+</div>

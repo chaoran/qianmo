@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  text: MyString
+  num_reposts: 1
+  parent: 
+  source: MyString
+
+two:
+  user: 
+  text: MyString
+  num_reposts: 1
+  parent: 
+  source: MyString

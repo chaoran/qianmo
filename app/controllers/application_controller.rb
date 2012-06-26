@@ -37,12 +37,15 @@ class ApplicationController < ActionController::Base
     new_user_registration_path
   end
   
-  def after_sign_in_path_for(resource)     
+  def after_sign_in_path_for(resource)    
     sign_in_url = url_for(:action => 'new', :controller => 'sessions', 
                           :only_path => false, :protocol => 'http')  
     sign_up_url = url_for(:action => 'new', :controller => 'accounts', 
                           :only_path => false, :protocol => 'http')
-    if (request.referer && request.referer != sign_up_url && request.referer != sign_in_url)  
+    if (request.referer && 
+        request.referer != sign_up_url && 
+        request.referer != sign_in_url && 
+        request.referer != root_url)  
       request.referer
     else                                                                                                               
       user_profile_path(resource)   

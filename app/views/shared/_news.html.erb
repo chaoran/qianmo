@@ -1,0 +1,10 @@
+<div class="news-stream">
+  <% for event in @events %>
+    <div class="news-item">
+      <% if event.trigger_type == 'Post' %>
+        <%= @post = event.trigger; 
+            render 'posts/show' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

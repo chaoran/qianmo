@@ -7,9 +7,9 @@ jQuery(document).ready(function($) {
   $('#page_title').keyup(function() {
     var value = $(this).val();
     if (value == "") {
-      $('#page_title_display').text(title_ph);
+      $('.page-title').text(title_ph);
     } else {
-      $('#page_title_display').text(value);
+      $('.page-title').text(value);
     }
   }).keyup();
   

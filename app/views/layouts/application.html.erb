@@ -33,6 +33,46 @@
 			</div>
 		</div>
 	</div>
+	<footer>
+	 <div class="container">
+	   <div class="row">
+	     <div class="span3">
+	       <h3><%= t :product %></h3>
+	       <ul>
+	         <li><a href=""><%= t :website %></a></li>
+	         <li><a href=""><%= t :english_website %></a></li>
+	         <li><a href=""><%= t :iphone_app %></a></li>   
+	         <li><a href=""><%= t :andriod_app %></a></li>
+	       </ul>
+	     </div>
+	     <div class="span3">
+	       <h3><%= t :developer %></h3>
+	       <ul>
+	         <li><a href=""><%= t :work_with_us %></a></li>
+	         <li><a href=""><%= t :api %></a></li>   
+	         <li><a href=""><%= t :website_connections %></a></li>
+	         <li><a href=""><%= t :developers_forum %></a></li>
+	       </ul>
+	     </div>
+	     <div class="span3">
+	       <h3><%= t :others %></h3>
+	       <ul>
+	         <li><a href=""><%= t :about_us %></a></li>
+	         <li><a href=""><%= t :contact_us %></a></li>   
+	         <li><a href=""><%= t :disclaimer %></a></li>
+	         <li><a href=""><%= t :partnership %></a></li>
+	       </ul>
+	     </div>
+	   </div>
+	 </div>
+	 <div class="floor">
+	   <div class="container">
+	     <div class="row">
+  	     <p><%= t :floor_text %></p>
+  	   </div>
+	   </div>
+	 </div>
+	</footer>
 	<div id="modal-placeholder">
 	  <%= yield(:modal) if content_for?(:modal) %>
 	</div>

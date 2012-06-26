@@ -36,6 +36,34 @@
   text-align: right;
 }
 
+footer {
+  background: #252525;
+  margin-top: 20px;
+  padding-top: 16px;
+}
+
+footer .floor {
+  padding-top: 10px;
+  background: #1B1B1B;
+}
+
+footer .floor p {
+  color: #999;
+}
+
+footer h3 {
+  color: #999;
+}
+
+footer a,
+footer a:hover {
+  color: #999;
+}
+
+footer ul li {
+  color: #999;
+}
+
 /* fix Jcrop and Twitter bootstrp conflict */
 .jcrop-holder img {max-width: none}
 #cropbox-preview { max-width: none }

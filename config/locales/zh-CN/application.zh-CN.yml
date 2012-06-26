@@ -17,5 +17,24 @@ zh-CN:
     save: '保存'
     delete: '删除'
     
+    product: '产品'
+    website: "阡陌网"
+    english_website: "阡陌英文版"
+    iphone_app: "阡陌iPhone手机客户端"
+    andriod_app: "阡陌安卓手机客户端"
+    developer: '开发者'
+    work_with_us: '在阡陌工作'
+    api: 阡陌API
+    website_connections: "网站链接"
+    developers_forum: "开发者论坛"
+    
+    others: '其他'
+    about_us: '关于阡陌'
+    contact_us: '联系我们'
+    disclaimer: '免责声明'
+    partnership: '寻求合作'
+    
+    floor_text: '© 2012 1000mo.com, all rights reserved'
+    
 
 

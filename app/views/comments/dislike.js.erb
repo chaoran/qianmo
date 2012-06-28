@@ -1,0 +1,6 @@
+$("#comment_<%= @comment.id %> .action-dislike").hide().prev().show();
+<% if @comment.like_comments.size > 0 %>
+$("#comment_<%= @comment.id %> .num-likes").text("(" + <%= @comment.like_comments.size %> + ")");
+<% else %>
+$("#comment_<%= @comment.id %> .num-likes").text("");
+<% end %>

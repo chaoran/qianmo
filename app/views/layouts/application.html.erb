@@ -21,7 +21,7 @@
 	    <%= yield(:floatbar) if content_for?(:floatbar) %>
 	  </div>
 	</div>
-	<div class="container" <%= "style=\"padding-top:180px;\"".html_safe if content_for?(:floatbar) %>>
+	<div class="container body" <%= "style=\"padding-top:180px;\"".html_safe if content_for?(:floatbar) %>>
 		<div class='content'>
 			<div class='row'>
 				<div class='span12'>
@@ -68,7 +68,9 @@
 	 <div class="floor">
 	   <div class="container">
 	     <div class="row">
-  	     <p><%= t :floor_text %></p>
+	       <div class="span12">
+	         <p><%= t :floor_text %></p>
+	       </div>
   	   </div>
 	   </div>
 	 </div>

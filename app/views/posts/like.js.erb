@@ -1,0 +1,2 @@
+$("#post_<%= @post.id %> .action-like").hide().next().show();
+$("#post_<%= @post.id %> .num-likes").text("(" + <%= @post.like_posts.size %> + ")");

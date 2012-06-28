@@ -1,20 +1,8 @@
 class ProfilesController < ApplicationController    
-  def show
-    if @profile.nil?
-      @profile = current_user.create_profile()
-    end
-  end
-
+  before_filter :setup_profile, :except => [:new, :create, :update]
+  
   def new
     @profile = current_user.build_profile()
-  end
-
-  def edit
-    @profile = if current_user.profile
-      current_user.profile
-    else
-      current_user.build_profile
-    end 
   end
 
   def create
@@ -34,4 +22,10 @@ class ProfilesController < ApplicationController
     end
   end
   
+  protected
+  
+  def setup_profile
+    @profile = current_user.profile
+    @profile = current_user.create_profile() if !@profile
+  end
 end

@@ -1,17 +1,27 @@
 .post-form,
 .stream-post {
-  padding: 9px 12px;
   position: relative;
+}
+
+.stream-post {
+  padding: 9px 7px;
   border-bottom: 1px solid #E8E8E8;
 }
 
+.post-form {
+  padding: 9px 0 0 7px;
+}
+
 .post-holder {
-  margin-left: 58px;
+  margin-left: 55px;
+}
+
+.stream-post .post-holder {
   cursor: pointer;
 }
 
 .post-comments-holder {
-  margin-left: 50px;
+  margin-left: 45px;
 }
 
 .stream-post-hover {
@@ -26,7 +36,7 @@
 .post-header .avatar {
   position: absolute;
   top: 10px;
-  left: 12px;
+  left: 6px;
   width: 48px;
   height: 48px;
 }
@@ -48,15 +58,18 @@
 
 .post-actions ul li {
   display: inline-block;
+  margin-right: 6px;
 }
 
 .post-actions a {
   display: inline-block;
-  margin-right: 4px;
 }
 
-.post-actions > a {
-  width: 40px;
+.post-actions > span > a {
+  width: 60px;
+}
+
+[class^="num-"] {
 }
 
 .post-actions .post-extra-inputs li {
@@ -79,7 +92,7 @@
   margin-top: 4px;
 }
 
-.action-delete {
+.post-holder .action-delete {
   position: absolute;
   right: 0;
   bottom: 0px;
@@ -87,4 +100,12 @@
 
 .action-delete:hover {
   color: #08C;
+}
+
+.post-body .post-input {
+  width: 96%;
+}
+
+.modal-body .post-body .post-input {
+  width: 98%;
 }

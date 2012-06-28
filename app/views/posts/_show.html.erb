@@ -1,5 +1,5 @@
 <div class="stream-post">
-  <div class="post-holder">
+  <div class="post-holder" id="post_<%= @post.id %>">
     <div class="post-header">
       <a>
         <%= image_tag @post.user.avatar.url(:thumb), :class => "avatar" %>
@@ -16,16 +16,36 @@
       <%= @post.text.html_safe %>
     </p>
     <div class="post-actions">
-      <%= link_to_with_icon "#{t :expand}", nil, "icon-caret-right", :class => "action-expand"  %>
-      <%= link_to_with_icon "#{t :collapse}", nil, "icon-caret-down", 
-                            :class => "action-collapse", :style => "display:none;"  %>
+      <span>
+        <%= link_to_with_icon "#{t :expand}", nil, "icon-caret-right", :class => "action-expand"  %>
+        <%= link_to_with_icon "#{t :collapse}", nil, "icon-caret-down", 
+                              :class => "action-collapse", :style => "display:none;"  %>
+      </span>
       <ul style="display:none;">
-        <li><%= link_to_with_icon "#{t :comment}", nil, "icon-comment", :class => "action-comment"  %></li>
-        <li><%= link_to_with_icon "#{t :repost}", nil, "icon-share-alt" %></li>
-        <li><%= link_to_with_icon "#{t :like}", nil, "icon-heart" %></li>
+        <li>
+          <%= link_to_with_icon "#{t :comment}", nil, "icon-comment#{ "-alt" if @post.comments.size == 0}", :class => "action-comment"  %>
+        </li>
+        <li>
+          <%= link_to_with_icon "#{t :repost}", post_path(@post), "icon-share-alt", :remote => true %>
+          <%= post_stat("num-reposts", @post.children.size) %>
+        </li>
+        <li>
+          <% @liked = @post.like_posts.where(:user_id => current_user.id).size != 0 %>
+          <%= link_to_with_icon "#{t :like}", like_post_path(@post), "icon-heart-empty", 
+                                :style => "#{"display:none;" if @liked}",
+                                :class => "action-like", :remote => true, :method => :post %>
+          <%= link_to_with_icon "#{t :like}", dislike_post_path(@post), "icon-heart", 
+                                :style => "#{"display:none;" if !@liked}",
+                                :class => "action-dislike", :remote => true, :method => :delete %>
+          <%= post_stat("num-likes", @post.liked_users.size) %>
+        </li>
         <% if @post.user == current_user %>
-          <li><%= link_to_with_icon "#{t :delete}", nil, "icon-remove", 
-                                    :class => "action-delete smoke" %></li>
+          <li>
+            <%= link_to_with_icon "", post_path(@post), "icon-remove", 
+                                    :class => "action-delete grey", 
+                                    :rel => "tooltip", :remote => true, :method => :delete,
+                                    :title => "#{t :delete}" %>
+          </li>
         <% end %>
       </ul>
     </div>

@@ -12,21 +12,25 @@ module Trigger
     users = []
     pages = []
     
-    self.text.sub!(/@[^\s;]*/) do |m|
+    self.text.gsub!(/@[^\s;:]*/) do |m|
       name = m.to_s[1..-1]
       unless name.blank?
         if user = User.find_by_name(name)
-          users << user
+          users << user unless users.include?(user)
           replace = "<a href=\"#{user_profile_path(user)}\">" + m + "</a>"
+        else
+          m
         end
       end
     end
-    self.text.sub!(/#[^\s;]*/) do |m|
+    self.text.gsub!(/#[^\s;:]*/) do |m|
       title = m.to_s[1..-1]
       unless title.blank?
         if page = Page.find_by_title(title)
-          pages << page
+          pages << page unless pages.include?(page)
           replace = "<a href=\"#{page_path(page)}\">" + m + "</a>"
+        else
+          m
         end
       end
     end

@@ -2,10 +2,19 @@ zh-CN:
     helpers:
         label:
             user:
-                email: "*邮件地址:"
-                name: "*真实姓名:"
-                password: "*密码:"
-                password_confirmation: "*密码确认:"
+                email: "邮件地址:"
+                name: "名字:"
+                password: "密码:"
+                password_confirmation: "密码确认:"
+    
+    simple_form:
+        labels:
+            defaults:
+                email: '邮件地址'
+                account: '账号'
+                password: '密码'
+                password_confirmation: '确认密码'
+                name: "名字"
     
     delete_account: "删除我的账号"
     account_deletion_confirmation: "确认删除账号"

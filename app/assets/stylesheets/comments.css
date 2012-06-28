@@ -28,7 +28,6 @@
   text-decoration: none;
 }
 
-
 .comment-header {
   margin-left: 40px;
 }
@@ -42,7 +41,7 @@
 }
 
 .comment-body {
-  margin: 4px 100px 4px 40px;
+  margin: 4px 150px 4px 40px;
 }
 
 .comment-actions {

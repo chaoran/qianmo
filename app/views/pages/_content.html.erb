@@ -19,21 +19,21 @@
     </div>
   </div>
   <div class="span4">
-    <% if @editable %>
-      <div class="well">
-        <%= link_to nil, :class => "btn", 
-                         :'data-toggle' => "modal", 
-                         :'data-target' => "#page_destroy_modal" do %>
-          <i class="icon-remove"></i><%= " #{t :delete}" %>
-        <% end %>
-        <%= content_for(:modal) { render 'destroy' } %>
-      </div>
-    <% end %>
-    <div id="action_bar"><%= yield(:action_bar) if content_for?(:action_bar) %></div>
-    <%= @post = current_user.posts.build; 
-        @placeholder = "##{@page.title}"; 
-        render "posts/new" %>
     <div id='page_side_section'>
+      <% if @editable %>
+        <div class="well">
+          <%= link_to nil, :class => "btn", 
+                           :'data-toggle' => "modal", 
+                           :'data-target' => "#page_destroy_modal" do %>
+            <i class="icon-remove"></i><%= " #{t :delete}" %>
+          <% end %>
+          <%= content_for(:modal) { render 'destroy' } %>
+        </div>
+      <% end %>
+      <div id="action_bar"><%= yield(:action_bar) if content_for?(:action_bar) %></div>
+      <%= @post = current_user.posts.build; 
+          @placeholder = "##{@page.title}"; 
+          render "posts/new" %>
       <%= render 'component', :selector => "has_image", :name => "image" %>
       <%= render 'component', :selector => "has_properties", :name => "properties" %>
     </div>

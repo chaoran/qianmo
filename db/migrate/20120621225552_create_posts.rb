@@ -2,8 +2,7 @@ class CreatePosts < ActiveRecord::Migration
   def change
     create_table :posts do |t|
       t.references :user
-      t.string :text
-      t.integer :num_reposts
+      t.text :text
       t.references :parent
       t.string :source
 

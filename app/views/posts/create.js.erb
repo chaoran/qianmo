@@ -1,1 +1,7 @@
 $("<%= escape_javascript(render :partial => 'show') %>").hide().prependTo('.news-stream').slideDown();
+$("#repost_modal").modal("hide")
+$(".post-form textarea").val("").blur()
+
+<% if @post.parent_id %>
+$("#post_<%= @post.parent_id %> .num-reposts").text("(" + <%= @post.parent.children.size %> + ")");
+<% end %>

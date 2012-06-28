@@ -1,8 +1,19 @@
 Qianmo::Application.routes.draw do
 
-  resources :posts
+  resources :posts, :except => [:new] do
+    member do
+      get :new
+      post :like
+      delete :dislike
+    end
+  end
     
-  resources :comments
+  resources :comments do 
+    member do
+      post :like
+      delete :dislike
+    end
+  end
 
   resources :pages do 
     resource :billboard, :only => :update

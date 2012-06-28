@@ -39,7 +39,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'debugger'
 
 # To validate form dynamically
-gem "client_side_validations"  
+gem 'client_side_validations', :git => 'git://github.com/bcardarella/client_side_validations.git'
 gem "simple_form"
 gem "cocoon"
 

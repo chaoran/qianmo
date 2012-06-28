@@ -56,12 +56,27 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @comment = comment.find(params[:id])
+    @comment = Comment.find(params[:id])
     @comment.destroy
 
     respond_to do |format|
       format.html { redirect_to comments_url }
       format.json { head :no_content }
+      format.js
     end
+  end
+  
+  def like
+    @comment = Comment.find(params[:id])
+    @like = LikeComment.new(:user => current_user, :comment => @comment)
+    unless @like.save
+      render :nothing => true
+    end
+  end
+  
+  def dislike
+    @comment = Comment.find(params[:id])
+    @like = LikeComment.where(:comment_id => @comment.id, :user_id => current_user.id).first
+    @like.destroy
   end
 end

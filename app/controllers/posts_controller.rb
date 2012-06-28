@@ -21,14 +21,15 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/new
-  # GET /posts/new.json
+  # GET /posts/1/new Repost a post
   def new
-    @post = current_user.posts.build
+    @parent = Post.find_by_id(params[:id])
+    @post = @parent.children.build
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
+      format.js
     end
   end
 
@@ -41,7 +42,6 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = current_user.posts.build(params[:post])
-    
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -78,6 +78,21 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.json { head :no_content }
+      format.js
     end
+  end
+  
+  def like
+    @post = Post.find(params[:id])
+    @like = LikePost.new(:user => current_user, :post => @post)
+    unless @like.save
+      render :nothing => true
+    end
+  end
+  
+  def dislike
+    @post = Post.find(params[:id])
+    @like = LikePost.where(:post_id => @post.id, :user_id => current_user.id).first
+    @like.destroy
   end
 end

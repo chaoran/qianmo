@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120625184652) do
+ActiveRecord::Schema.define(:version => 20120627063247) do
 
   create_table "billboards", :force => true do |t|
     t.string   "header"
@@ -56,6 +56,26 @@ ActiveRecord::Schema.define(:version => 20120625184652) do
   add_index "events", ["receiver_id"], :name => "index_events_on_receiver_id"
   add_index "events", ["trigger_id"], :name => "index_events_on_trigger_id"
 
+  create_table "like_comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "comment_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "like_comments", ["comment_id"], :name => "index_like_comments_on_comment_id"
+  add_index "like_comments", ["user_id"], :name => "index_like_comments_on_user_id"
+
+  create_table "like_posts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "like_posts", ["post_id"], :name => "index_like_posts_on_post_id"
+  add_index "like_posts", ["user_id"], :name => "index_like_posts_on_user_id"
+
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.string   "intro"
@@ -70,7 +90,6 @@ ActiveRecord::Schema.define(:version => 20120625184652) do
     t.string   "image"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.boolean  "has_posts"
   end
 
   add_index "pages", ["creator_id"], :name => "index_pages_on_creator_id"
@@ -89,12 +108,11 @@ ActiveRecord::Schema.define(:version => 20120625184652) do
 
   create_table "posts", :force => true do |t|
     t.integer  "user_id"
-    t.string   "text"
-    t.integer  "num_reposts"
+    t.text     "text"
     t.integer  "parent_id"
     t.string   "source"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "posts", ["parent_id"], :name => "index_posts_on_parent_id"

@@ -1,0 +1,36 @@
+<% @modal_name = "repost_modal" %>
+
+<%= simple_form_for @post, :html => {:class => "form-horizontal"}, 
+                           :remote => true do |f| %>
+  <div class="modal-header">
+   <button type="button" class="close" data-dismiss="modal">×</button>
+   <h3><%= t :repost_to_your_folloer? %></h3>
+   <%= f.hidden_field :parent_id %>
+  </div>
+  <div class="modal-body">
+    <div class="post-form">
+      <div class="post-holder">
+        <div class="post-header">
+          <%= link_to user_profile_path(current_user) do %>
+            <%= image_tag current_user.avatar.url(:thumb), :class => "avatar" %>
+            <strong><%= current_user.name %></strong>
+          <% end %>
+          <em class="grey pull-right" style="display: none;">
+            <span class="post-wordcount"></span>/140
+          </em>
+        </div>
+        <div class="post-body">
+          <%= f.text_area :text, :rows => 4, 
+                          :placeholder => @placeholder, 
+                          :class => "post-input" %>
+        </div>
+      </div>
+    </div>   
+  </div> 
+  <div class="modal-footer">
+  	<div class="post-actions">
+  	  <a href="#" class="btn" data-dismiss="modal"><%= t :cancel %></a>
+  		<%= f.button :submit, "#{t :repost}", :class => "pull-right", :disabled => true %>
+    </div>
+  </div>
+<% end %>

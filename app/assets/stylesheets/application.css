@@ -36,6 +36,10 @@
   text-align: right;
 }
 
+.body {
+  min-height: 800px;
+}
+
 footer {
   background: #252525;
   margin-top: 20px;

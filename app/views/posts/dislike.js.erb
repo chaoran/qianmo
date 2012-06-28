@@ -1,0 +1,6 @@
+$("#post_<%= @post.id %> .action-dislike").hide().prev().show();
+<% if @post.like_posts.size > 0 %>
+$("#post_<%= @post.id %> .num-likes").text("(" + <%= @post.like_posts.size %> + ")");
+<% else %>
+$("#post_<%= @post.id %> .num-likes").text("");
+<% end %>

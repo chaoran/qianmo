@@ -14,11 +14,13 @@
 				<h2><%= t :join_now %></h2>
 				<p><%= t :join_slogan %></p>
 			</div>
-			<%= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f| %>
+			<%= simple_form_for @user, :as => :user, 
+			                           :url => registration_path(:user),
+			                           :validate => true do |f| %>
 				<div class="inputs">
 					<%= f.input :email %>
 					<%= f.input :name %>
-					<%= f.input :password %>
+					<%= f.input :password, :required => true %>
 					<%= f.input :password_confirmation, :required => true %>
 				</div>
 				<div class="actions">

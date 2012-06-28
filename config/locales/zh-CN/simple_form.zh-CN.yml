@@ -11,13 +11,6 @@ zh-CN:
     error_notification:
       default_message: 
     # Labels and hints examples
-    labels:
-      defaults:
-        email: '邮件地址'
-        account: '账号'
-        password: '密码'
-        password_confirmation: '确认密码'
-        name: "真实姓名"
 
     buttons:
       session:

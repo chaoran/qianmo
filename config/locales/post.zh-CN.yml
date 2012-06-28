@@ -12,3 +12,5 @@ zh-CN:
     leave_a_message?: "我想说..."
     expand: "展开"
     collapse: "收起"
+    
+    repost_to_your_folloer?: "转发这条微博给你的关注者么?"

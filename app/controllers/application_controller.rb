@@ -26,11 +26,6 @@ class ApplicationController < ActionController::Base
     flash.discard
   end
 
-  protected
-  def setup_profile
-    @profile = current_user.profile.nil? ? current_user.build_profile() : current_user.profile
-  end
-
   private
   
   def after_sign_out_path_for(resource_or_scope)

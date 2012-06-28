@@ -1,0 +1,3 @@
+$("#modal-placeholder").html("<%= escape_javascript(render :partial => 'repost_form', :layout => "layouts/modal") %>")
+$("#repost_modal").modal("show")
+$("#repost_modal .post-input").focus();

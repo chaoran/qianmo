@@ -15,7 +15,7 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :posters, :limit => 5, :allow_destroy => true
   has_many :events, :as => :receiver, :order => "created_at DESC", :limit => 50
   
-  attr_accessor :picturable, :commentable, :discussable, :ratable, :chatable, :checkinable
+  attr_accessor :has_posts, :picturable, :commentable, :discussable, :ratable, :chatable, :checkinable
   
   validates_presence_of :title, :creator 
   validates_uniqueness_of :title

@@ -1,0 +1,4 @@
+$("#user_<%= @user.id %> .friend_buttons").html("<%= escape_javascript( render "starts_at" ) %>")
+<%= render :partial => "friend_events/update", :locals => {:user => @user} %>
+<%= render :partial => "friend_events/destroy" %>
+$(".body").prepend("<%= escape_javascript( render "shared/messages" )%>")

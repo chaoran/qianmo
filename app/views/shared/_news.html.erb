@@ -2,8 +2,7 @@
   <% for event in @events %>
     <div class="news-item">
       <% if event.trigger_type == 'Post' %>
-        <%= @post = event.trigger; 
-            render 'posts/show' %>
+        <%= render 'posts/show', :post => event.trigger %>
       <% end %>
     </div>
   <% end %>

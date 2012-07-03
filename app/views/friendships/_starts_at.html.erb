@@ -1,0 +1,8 @@
+<p class="hover_button right-align" style="width:180px;">
+  <em class="grey">
+    <%= t :friendship_starts_at, :time => time_ago_in_words(@user.friendships.where(:friend_id => current_user.id).first.created_at) %>
+  </em>
+  <%= my_link_to "#{t :destroy_friendship}", user_friendship_path(@user), :method => :delete,
+                 :icon => "icon-remove", :class => "grey", :remote => true,
+                 :style => "display:none;" %>
+</p>

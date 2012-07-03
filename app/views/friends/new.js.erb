@@ -1,0 +1,4 @@
+$("#request_friendship").hide().next().show();
+<% publish_to "/user/#{@user.id}" do %>
+  $("#friend_event_list").find("a").replaceWith("<% escape_javascript( my_link_to nil, "#", :icon => "nav-people", :badge => "#{@user.friend_events.where(:consumed => false).size}", :'badge-class' => "badge-important" ) %>")
+<% end %>

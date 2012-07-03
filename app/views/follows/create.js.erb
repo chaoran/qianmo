@@ -1,0 +1,4 @@
+$("#user_<%= @user.id %> .friend_buttons").html("<%= escape_javascript( render "request_or_unfollow" ) %>")
+<%= render :partial => "friend_events/update", :locals => {:user => @user} %>
+<%= render :partial => "friend_events/destroy" if @deleted_events > 0 %>
+$(".body").prepend("<%= escape_javascript( render "shared/messages" )%>")

@@ -1,5 +1,11 @@
 Qianmo::Application.routes.draw do
 
+  get "friends/create"
+
+  get "friends/destroy"
+
+  get "friends/new"
+
   resources :posts, :except => [:new] do
     member do
       get :new
@@ -37,7 +43,11 @@ Qianmo::Application.routes.draw do
   resources :users, :path => '', :only => '' do 
     resource :avatar, :only => [:new, :create, :edit, :update]
     resource :profile, :except => :destroy
+    resource :friendship, :only => [:create, :destroy]
+    resource :follow, :only => [:create, :destroy]
   end  
+  
+  resources :friend_events, :only => [:create, :destroy, :update]
   
   #root :to => 'accounts#new'
   

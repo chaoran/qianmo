@@ -21,12 +21,12 @@
 	    <%= yield(:floatbar) if content_for?(:floatbar) %>
 	  </div>
 	</div>
-	<div class="container body" <%= "style=\"padding-top:180px;\"".html_safe if content_for?(:floatbar) %>>
+	<div class="container" <%= "style=\"padding-top:180px;\"".html_safe if content_for?(:floatbar) %>>
 		<div class='content'>
 			<div class='row'>
 				<div class='span12'>
 					<div id="alert-placeholder">					
-						<%= render 'layouts/messages' %>						
+						<%= render 'shared/messages' %>						
 					</div>
 					<%= yield %>
 				</div>

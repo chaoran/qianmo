@@ -42,4 +42,37 @@ module ApplicationHelper
       "<i class=\"#{icon}\"></i>&nbsp;#{name}".html_safe
     end 
   end
+  
+  def my_link_to(name, url, options={})
+    if (options.has_key?(:tooltip))
+      tooltip = options.delete(:tooltip)
+      options[:rel] = "tooltip"
+      options[:title] = tooltip
+    end
+    html = link_to(url, options) do
+      content = ""
+      if (options.has_key?(:icon)) 
+        icon = options.delete(:icon)
+        content << "<i class=\"#{icon}\""
+        if options.has_key?(:"icon-background")
+          content << " style=\"background-image:url(" + options.delete(:"icon-background") + ");\""
+        end
+        content << "></i>"
+      end
+      content << "&nbsp;#{name}" if name
+      if (options.has_key?(:badge))
+        badge = options.delete(:badge)
+        content << "<span class=\"badge" 
+        if options.has_key?(:"badge-class")
+          content << " #{options.delete(:"badge-class")}"
+        else
+          content << " badge-important"
+        end
+        content << "\">#{badge}</span>"
+      end
+      content.html_safe
+    end
+    html.slice!(" nofollow") if html.include?("tooltip")
+    html.html_safe
+  end
 end

@@ -1,0 +1,20 @@
+<% size = user.unread_friend_events.size %>
+<li class="dropdown" id="friend_event_list">
+  <% if size > 0 %>
+    <%= my_link_to nil, "#", :icon => "nav-people", :badge => size, 
+                        :class => "dropdown-toggle",
+                        :'data-toggle' => "dropdown" %>
+  <% else %>
+    <%= my_link_to nil, "#", :icon => "nav-people", :class => "dropdown-toggle",
+                        :'data-toggle' => "dropdown" %>
+  <% end %>
+  <ul class="dropdown-menu events">
+    <% if user.friend_events.size > 0 %>
+      <% for e in user.friend_events do %>
+        <%= render "friend_events/show", :event => e %>
+      <% end %>
+    <% else %>
+      <li><%= t :no_events %></li>
+    <% end %>
+  </ul>
+</li>

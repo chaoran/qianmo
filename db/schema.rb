@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120627063247) do
+ActiveRecord::Schema.define(:version => 20120630192057) do
 
   create_table "billboards", :force => true do |t|
     t.string   "header"
@@ -55,6 +55,38 @@ ActiveRecord::Schema.define(:version => 20120627063247) do
 
   add_index "events", ["receiver_id"], :name => "index_events_on_receiver_id"
   add_index "events", ["trigger_id"], :name => "index_events_on_trigger_id"
+
+  create_table "follows", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "follower_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "follows", ["follower_id"], :name => "index_follows_on_follower_id"
+  add_index "follows", ["user_id"], :name => "index_follows_on_user_id"
+
+  create_table "friend_events", :force => true do |t|
+    t.integer  "trigger_id"
+    t.integer  "receiver_id"
+    t.string   "event_type"
+    t.boolean  "consumed",    :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "friend_events", ["receiver_id"], :name => "index_friend_events_on_receiver_id"
+  add_index "friend_events", ["trigger_id"], :name => "index_friend_events_on_trigger_id"
+
+  create_table "friendships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "friendships", ["friend_id"], :name => "index_friendships_on_friend_id"
+  add_index "friendships", ["user_id"], :name => "index_friendships_on_user_id"
 
   create_table "like_comments", :force => true do |t|
     t.integer  "user_id"

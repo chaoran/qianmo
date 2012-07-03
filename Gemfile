@@ -57,4 +57,7 @@ gem 'sanitize'
 # omniauth
 gem 'omniauth-weibo-oauth2'
 
+gem "private_pub"
+gem "thin"
+
 

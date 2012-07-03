@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  trigger: 
+  receiver: 
+  need_response: false
+  consumed: false
+
+two:
+  trigger: 
+  receiver: 
+  need_response: false
+  consumed: false

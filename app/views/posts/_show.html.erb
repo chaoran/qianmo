@@ -1,19 +1,19 @@
 <div class="stream-post">
-  <div class="post-holder" id="post_<%= @post.id %>">
+  <div class="post-holder" id="post_<%= post.id %>">
     <div class="post-header">
       <a>
-        <%= image_tag @post.user.avatar.url(:thumb), :class => "avatar" %>
-        <strong><%= @post.user.name %></strong>
+        <%= image_tag post.user.avatar.url(:thumb), :class => "avatar" %>
+        <strong><%= post.user.name %></strong>
       </a>
       <small class="grey pull-right">
-        <%= "#{t :posted_at_time, :time => time_ago_in_words(@post.created_at)}".html_safe %>
-        <% if @post.source %>
-          <%= "#{t :posted_through_source, :source => @post.source}".html_safe %>
+        <%= "#{t :posted_at_time, :time => time_ago_in_words(post.created_at)}".html_safe %>
+        <% if post.source %>
+          <%= "#{t :posted_through_source, :source => post.source}".html_safe %>
         <% end %>
       </small>
     </div>
     <p class="post-body">
-      <%= @post.text.html_safe %>
+      <%= post.text.html_safe %>
     </p>
     <div class="post-actions">
       <span>
@@ -23,25 +23,25 @@
       </span>
       <ul style="display:none;">
         <li>
-          <%= link_to_with_icon "#{t :comment}", nil, "icon-comment#{ "-alt" if @post.comments.size == 0}", :class => "action-comment"  %>
+          <%= link_to_with_icon "#{t :comment}", nil, "icon-comment#{ "-alt" if post.comments.size == 0}", :class => "action-comment"  %>
         </li>
         <li>
-          <%= link_to_with_icon "#{t :repost}", post_path(@post), "icon-share-alt", :remote => true %>
-          <%= post_stat("num-reposts", @post.children.size) %>
+          <%= link_to_with_icon "#{t :repost}", post_path(post), "icon-share-alt", :remote => true %>
+          <%= post_stat("num-reposts", post.children.size) %>
         </li>
         <li>
-          <% @liked = @post.like_posts.where(:user_id => current_user.id).size != 0 %>
-          <%= link_to_with_icon "#{t :like}", like_post_path(@post), "icon-heart-empty", 
+          <% @liked = post.like_posts.where(:user_id => current_user.id).size != 0 %>
+          <%= link_to_with_icon "#{t :like}", like_post_path(post), "icon-heart-empty", 
                                 :style => "#{"display:none;" if @liked}",
                                 :class => "action-like", :remote => true, :method => :post %>
-          <%= link_to_with_icon "#{t :like}", dislike_post_path(@post), "icon-heart", 
+          <%= link_to_with_icon "#{t :like}", dislike_post_path(post), "icon-heart", 
                                 :style => "#{"display:none;" if !@liked}",
                                 :class => "action-dislike", :remote => true, :method => :delete %>
-          <%= post_stat("num-likes", @post.liked_users.size) %>
+          <%= post_stat("num-likes", post.liked_users.size) %>
         </li>
-        <% if @post.user == current_user %>
+        <% if post.user == current_user %>
           <li>
-            <%= link_to_with_icon "", post_path(@post), "icon-remove", 
+            <%= link_to_with_icon "", post_path(post), "icon-remove", 
                                     :class => "action-delete grey", 
                                     :rel => "tooltip", :remote => true, :method => :delete,
                                     :title => "#{t :delete}" %>
@@ -51,6 +51,6 @@
     </div>
   </div>
   <div class="post-comments-holder" style="display: none;">
-    <%= @commentable = @post; render 'comments/index' %>
+    <%= render 'comments/index', :commentable => post %>
   </div>
 </div>

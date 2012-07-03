@@ -1,0 +1,23 @@
+<div id="basic_info" class="pinable">
+  <% if current_user == @user %>
+  <a href="<%= edit_user_profile_path(current_user) %>"
+		 class="btn pin-top-right hidden">
+		<i class="icon-pencil"></i>
+		<%= t :edit %>
+	</a>
+	<% end %>
+	<ul class="unstyled">
+	  <li>
+	    <strong><%= t :born_on %></strong>
+      <span><%= @profile.date_of_birth %></span>
+	  </li>
+	  <li>
+	    <strong><%= t :from %></strong>
+      <span><%= @profile.hometown %></span>
+	  </li>
+	  <li>
+	    <strong><%= t :now_lives_in %></strong>
+      <span><%= @profile.current_city %></span>
+	  </li>
+	</ul>
+</div>

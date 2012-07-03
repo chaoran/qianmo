@@ -1,6 +1,6 @@
 <div class="new-comment">
   <%= text_field_tag "fake-input", nil, :placeholder => "#{t :leave_a_message?}" %>
-  <%= form_for @comment = @commentable.comments.build(), :html => {:style => "display:none;"},
+  <%= form_for @comment = commentable.comments.build(), :html => {:style => "display:none;"},
                :remote => true do |f| %>
     <div class="comment-header">
       <%= link_to user_profile_path(current_user) do %>
@@ -9,7 +9,7 @@
       <% end %>
     </div>
     <div class="comment-body">
-      <%= f.text_field :text, :placeholder => "@#{@post.user.name}" %>
+      <%= f.text_field :text, :placeholder => "@#{commentable.user.name}" %>
     </div>
     <div class="comment-actions">
       <%= f.hidden_field :commentable_id %>

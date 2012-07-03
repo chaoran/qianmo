@@ -1,5 +1,5 @@
 <div class="post-form">
-  <%= form_for @post, :remote => true do |f| %>
+  <%= form_for post, :remote => true do |f| %>
     <div class="post-holder">
       <div class="post-header">
         <div>
@@ -12,8 +12,8 @@
       </div>
       <div class="post-body">
         <%= f.text_area :text, :rows => 1, 
-                        :placeholder => @placeholder, 
-                        :class => "post-input" %>
+                        :placeholder => placeholder, 
+                        :class => "post-input max-width" %>
       </div>
       <div class="post-actions" style="display:none;">
         <ul class="post-extra-inputs">

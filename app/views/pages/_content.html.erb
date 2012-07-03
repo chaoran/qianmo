@@ -31,9 +31,7 @@
         </div>
       <% end %>
       <div id="action_bar"><%= yield(:action_bar) if content_for?(:action_bar) %></div>
-      <%= @post = current_user.posts.build; 
-          @placeholder = "##{@page.title}"; 
-          render "posts/new" %>
+      <%= render "posts/new", :post => current_user.posts.build, :placeholder => "##{@page.title}" %>
       <%= render 'component', :selector => "has_image", :name => "image" %>
       <%= render 'component', :selector => "has_properties", :name => "properties" %>
     </div>

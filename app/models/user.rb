@@ -8,8 +8,20 @@ class User < ActiveRecord::Base
   attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :remote_avatar_url
 
   has_one :profile
+  
+  has_many :follows, :dependent => :delete_all
+  has_many :followers, :through => :follows, :source => :follower
+  
+  has_many :friendships, :dependent => :destroy
+  has_many :friends, :through => :friendships, :source => :friend, :dependent => :destroy
+  has_many :friend_events, :foreign_key => "receiver_id", :dependent => :delete_all, 
+                           :order => "created_at"
+  has_many :unread_friend_events, :class_name => "FriendEvent", :foreign_key => "receiver_id",
+                                  :dependent => :delete_all, 
+                                  :conditions => "consumed = false"
+  
   has_many :pages, :as => :creator
-  has_many :posts
+  has_many :posts, :order => "created_at DESC"
   has_many :events, :as => :receiver
   
   has_many :like_posts, :dependent => :destroy
@@ -25,6 +37,10 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username, :email, :name
   validates :avatar, :file_size => { :maximum => 0.5.megabytes.to_i }
   after_update :crop_avatar
+  
+  def is_male?
+    return profile.sex;
+  end
   
   protected
   

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   #before_filter :set_default_response_format
   before_filter :authenticate_user!
-  after_filter :flash_headers, :unless => Proc.new {|c| c.request.xhr?}
+  after_filter :flash_headers, :if => Proc.new {|c| c.request.xhr?}
   
   protected
   
@@ -20,8 +20,7 @@ class ApplicationController < ActionController::Base
     # needed, but I think you'll get the point
     response.headers['x-flash'] = flash[:error]  unless flash[:error].blank?
     response.headers['x-flash'] = flash[:notice]  unless flash[:notice].blank?
-    response.headers['x-flash'] = flash[:alert]  unless flash[:warning].blank?
-
+    response.headers['x-flash'] = flash[:alert]  unless flash[:alert].blank?
     # Stops the flash appearing when you next refresh the page
     flash.discard
   end

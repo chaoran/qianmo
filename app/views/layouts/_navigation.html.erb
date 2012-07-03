@@ -10,37 +10,40 @@
 <% end %>
 <div class="nav-collapse">
 	<% if user_signed_in? %>
-	  <ul class="nav">
-		  <li><%= link_to "#{t :news}" %></li>
-	    <li><%= link_to "#{t :pages}", pages_path %></li>
-	  </ul>
-		<%= form_tag "#", :class => "navbar-search pull-left", :method => :get do %>
-			<%= text_field_tag 'search', nil, :placeholder => "#{t :search_bar_placeholder}", 
-																				:class => "search-query" %>
-		<% end %>
-
-		<ul class="nav pull-right link-group">
-			<li>
-				<a id="nav-image" href="<%= user_profile_path(current_user) %>">
-					<%= image_tag current_user.avatar.url(:thumb), :width => "35px", :height => "35px" %>
-					<%= current_user.name %>
-				</a>
-			</li>
-			<li class="divider-vertical"></li>
-			<li class="dropdown">
-				<a id="nav-caret" href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<li><%= link_to "#{t :account_setting}", edit_user_registration_path %></li>
-					<li><%= link_to "#{t :logout}", destroy_user_session_path, :method => :delete %></li>
-				</ul>
-			</li>
-		</ul>
+  	<%= subscribe_to "/user/#{current_user.id}" %>
+		<div class="pull-right">
+		  <ul class="nav">
+		    <%= form_tag "#", :class => "navbar-search pull-left", :method => :get do %>
+    			<%= text_field_tag 'search', nil, :placeholder => "#{t :search_bar_placeholder}", 
+    																				:class => "search-query" %>
+    		<% end %>
+		    <li class="divider-vertical"></li>
+        <%= render "friend_events/index", :user => current_user %>
+		    <li><%= my_link_to "", "#", :icon => "nav-at" %></li>
+		    <li><%= my_link_to "", "#", :icon => "nav-about" %></li>
+		    <li class="divider-vertical"></li>
+		    <li class="pinable">
+		      <%= link_to user_profile_path(current_user), :style => "margin-left: 25px;" do %>
+		        <%= image_tag current_user.avatar.url(:thumb), :width => "30px", :height => "30px", :class => "pin-top7-left" %>
+		        <%= current_user.name %>
+		      <% end %>
+		    </li>
+        <li class="dropdown">
+          <%= link_to "<b class=\"caret\"></b>".html_safe, "#", 
+                         :"data-toggle" => "dropdown", :class => "dropdown-toggle" %>
+   				<ul class="dropdown-menu">
+   					<li><%= my_link_to "#{t :account_setting}", edit_user_registration_path, :icon => "icon-cog" %></li>
+   					<li><%= my_link_to "#{t :logout}", destroy_user_session_path, :method => :delete, :icon => "icon-signout" %></li>
+   				</ul>
+        </li>
+		  </ul>
+		</div>
 	<% else %>
 	  <% unless controller.controller_name == "accounts" && controller.action_name == "new" %>
-	    <div class="nav pull-right">
-  	    <%= link_to "#{t :sign_up}", new_user_registration_path, 
+      <div class="nav pull-right">
+        <%= link_to "#{t :sign_up}", new_user_registration_path, 
   	                                 :class => "btn btn-success" %>
-  	  </div>
+      </div>
   	<% end %>
 	  <% unless controller.controller_name == "sessions" && controller.action_name == "new" %>
 	    <%= render 'shared/login' %>

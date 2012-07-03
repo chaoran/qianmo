@@ -1,0 +1,60 @@
+.navbar li [class^="nav-"] {
+  display: inline-block;
+  height: 24px;
+}
+
+.navbar li b {
+  display: inline-block;
+  line-height: 24px;
+}
+
+.navbar .nav .divider-vertical {
+  height: 45px;
+}
+
+.navbar .nav > form {
+  margin-top: 0px;
+}
+
+.navbar .brand {
+  font-size: 30px;
+  padding-top: 6px;
+  padding-bottom: 9px;
+}
+
+.navbar .nav > li > label {
+  display: inline-block;
+  padding: 12px 10px 4px;
+  line-height: 19px;
+}
+
+.navbar .nav > li > label > input[type="checkbox"] {
+  margin-right: 4px;
+  margin-top: 0;
+}
+
+.navbar .nav li a > .badge {
+  vertical-align: top;
+}
+
+.events.dropdown-menu li {
+  padding-right: 30px;
+}
+
+.events.dropdown-menu li a {
+  margin: 6px 0 8px 4px;
+  display: inline-block;
+}
+
+.navbar .nav .events.dropdown-menu .btn {
+  margin: 1px 0 4px 4px;
+  padding: 2px 8px 3px;
+}
+
+.navbar .nav input[type="text"],
+.navbar .nav input[type="submit"],
+.navbar .nav input[type="password"],
+.navbar .nav a.btn {
+  margin: 8px 2px 0;
+}
+

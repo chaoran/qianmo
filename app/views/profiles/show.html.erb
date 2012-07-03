@@ -1,49 +1,53 @@
-<div class='row'>
-	<div class='span3'>
-		<div id="avatar" class="thumbnail">
-			<%= image_tag current_user.avatar.url %>
-			<div class="caption">
-				<%= link_to "#{t :edit_avatar}", new_user_avatar_path(current_user), :remote => true, 
-																				 :class => "pull-right" %>
-				<p></p>
-			</div>
-		</div>
+<div class='row' id="user_<%= @user.id %>">
+	<div class='span3' style="margin-top: 18px;">
+	  <div id="profile_side" class="well">
+	    <p id="profile_avatar" class="pinable">
+	      <%= my_link_to "#{t :edit}", new_user_avatar_path(current_user), 
+	                                       :class => "pin-top-right btn hidden",
+	                                       :icon => "icon-pencil",
+	                                       :remote => true if current_user == @user %>
+  			<%= image_tag @user.avatar.url %>
+  			<%= render :partial => 'basic' %>
+  		</p>
+	  </div>
 	</div>
-	<div class='span9'>
-		<div id="basic_info">
-			<%= simple_fields_for @profile do |f| %>
-			<table class="table">
-				<thead>
-					<tr>
-						<td><h3 style="display: inline-block;"><%= t :basic_info %></h3></td>
-						<td style="border-top: none; display: block;">
-							<a href="<%= edit_user_profile_path(current_user) %>"
-								 class="btn btn-info pull-right">
-								<i class="icon-pencil"></i>
-								<%= t :edit %>
-							</a>
-						</td>
-					</tr>
-				</thead>
-				<tr>
-					<td><%= f.label :sex, :required => false %></td>
-					<td><%= to_sex(@profile.sex) %></td>
-				</tr>
-				<tr>
-					<td><%= f.label :date_of_birth, :required => false %></td>
-					<td><%= @profile.date_of_birth %></td>
-				</tr>
-				<tr>
-					<td><%= f.label :hometown, :required => false %></td>
-					<td><%= @profile.hometown %></td>
-				</tr>
-				<tr>
-					<td><%= f.label :current_city, :required => false %></td>
-					<td><%= @profile.current_city %></td>
-				</tr>
-			</table>
-			<% end %>
-		</div>
+	<div class='span9 body'>
+    <div class="page-header pinable">
+      <h1><%= @user.name %>
+        <small>
+          <%= t :friends %>:&nbsp;<span><%= @user.friends.size %></span>
+          <%= t :followers %>:&nbsp;<span><%= @user.followers.size %></span>
+        </small>
+      </h1>
+      <% if current_user != @user %>
+      <div class="pin-bottom5-right">
+        <%= render :partial => 'friendships/friend_buttons' %>
+      </div>
+      <% end %>
+    </div>
+    <div>
+      <%= render 'posts/new', :post => @user.posts.build, :placeholder => "@#{@user.name}" %>
+    </div>
+    <div id="profile_histroy">
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li class="active"><%= link_to "#{t :news}", "#page_news_holder", :"data-toggle" => "tab" %></li>
+          <li><%= link_to "#{t :pictures}", "#"%></li>
+          <li><%= link_to "#{t :articles}", "#" %></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="user_news_holder">
+            <%= render 'posts/index', :posts => @user.posts.limit(50) %>
+          </div>
+          <div class="tab-pane" id="user_pictures_holder">
+          </div>
+          <div class="tab-pane" id="user_articles_holder">
+          </div>
+          <div class="tab-pane" id="user_pages_holder">
+          </div>
+        </div>
+      </div>
+    </div>
 	</div>
 </div>
 

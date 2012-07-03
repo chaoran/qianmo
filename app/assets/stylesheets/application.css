@@ -28,16 +28,16 @@
   color: white;
 }
 
-.hidden {
-  display: none;
-}
-
 .right-align {
   text-align: right;
 }
 
 .body {
   min-height: 800px;
+}
+
+.delete {
+  margin-left: 10px;
 }
 
 footer {
@@ -98,5 +98,52 @@ footer ul li {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+}
+
+.pinable {
+  position: relative;
+}
+
+.pinable a.edit {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.pinable .pin-top-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.pinable .pin-bottom5-right {
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+}
+
+.pinable .pin-top7-left {
+  position: absolute;
+  left: 0;
+  top: 7px;
+}
+
+.pinable .pin-right {
+  position: absolute;
+  right: 0;
+}
+
+.pinable .pin-right8 {
+  position: absolute;
+  right: 8px;
+}
+
+.max-width {
+  width: 100%;
+  box-sizing: border-box; /* css3 rec */
+  -moz-box-sizing: border-box; /* ff2 */
+  -ms-box-sizing: border-box; /* ie8 */
+  -webkit-box-sizing: border-box; /* safari3 */
+  -khtml-box-sizing: border-box; /* konqueror */
 }
 

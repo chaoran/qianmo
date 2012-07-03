@@ -1,0 +1,27 @@
+<li class="removable perishable pinable" id="friend_event_<%= event.id %>">
+  <% unless event.consumed %>
+    <%= my_link_to nil, friend_event_path(event.id), :method => :post, 
+                        :remote => true, :badge => "NEW", :tooltip => "标记为已读" %>
+  <% end %>
+  
+  <%= link_to "#{event.trigger.name}", user_profile_path(event.trigger, :fe => event.id), :class => "perish" %>
+
+  <% case event.event_type %>
+    <% when "follow" %>
+      <span><%= t :has_followed_you %></span>
+      <% unless event.trigger.followers.include?(event.receiver) %>
+        <%= link_to "#{event.trigger.is_male? ? t(:follow_him_back) : t(:follow_her_back)}", user_follow_path(event.trigger), 
+                    :class => "btn btn-success", :remote => true, :method => :post %>
+      <% end %>
+    <% when "request" %>
+      <span><%= t :wants_to_add_you_as_friend %></span>
+      <%= link_to "#{t :agree}", user_friendship_path(event.trigger, :event_id => event.id), :class => "btn btn-success",
+                  :remote => true, :method => :post %>
+    <% when "accepted" %>
+      <span><%= t :became_your_friend %></span>
+  <% end %>
+  <em class="grey"><%= t :ago, :time => time_ago_in_words(event.created_at) %></em>
+  <%= my_link_to nil, friend_event_path(event), :icon => "icon-remove", :tooltip => "#{t :delete}",
+                 :class => "grey invisible remove pin-right8", :remote => true,
+                 :method => :delete %>
+</li>

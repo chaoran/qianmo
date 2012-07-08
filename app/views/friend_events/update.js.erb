@@ -1,1 +1,8 @@
-$("#friend_event_list").replaceWith("<%= escape_javascript( render "friend_events/index", :user => current_user )%>");
+$("#friend_event_<%= params[:id] %> .new-badge").remove();
+var num = $("#mention_event_list .dropdown-toggle .badge").text();
+num = parseInt(num);
+if (num > 1) {
+  $("#friend_event_list .dropdown-toggle .badge").text(String(num-1));
+} else {
+  $("#friend_event_list .dropdown-toggle .badge").remove();
+}

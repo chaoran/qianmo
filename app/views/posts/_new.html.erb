@@ -1,9 +1,9 @@
-<div class="post-form">
+<div class="new-post pinable">
   <%= form_for post, :remote => true do |f| %>
-    <div class="post-holder">
+    <div class="post-content">
       <div class="post-header">
         <div>
-          <%= image_tag current_user.avatar.url(:thumb), :class => "avatar" %>
+          <%= image_tag current_user.avatar.url(:thumb), :class => "avatar pin-top7-left5" %>
           <span class="grey"><%= t :something_to_say? %></span>
           <em class="grey pull-right" style="display: none;">
             <span class="post-wordcount"></span>/140
@@ -22,7 +22,7 @@
           <li><a><i class="icon-music icon-xlarge"></i></a></li>
           <li><a><i class="icon-film icon-xlarge"></i></a></li>
         </ul>
-        <%= f.submit "#{t :publish}", :class => "btn pull-right", :disabled => true %>
+        <%= f.submit "#{t :publish}", :class => "btn btn-wide pull-right", :disabled => true %>
       </div>
     </div>
   <% end %>

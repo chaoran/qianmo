@@ -12,13 +12,13 @@ class FriendEventsController < ApplicationController
   # mark an event as read
   def update
     @event = FriendEvent.find_by_id(params[:id])
-    @event.update_attribute(:consumed, true) if @event
-    render :nothing => true
+    unless @event && @event.update_attribute(:consumed, true)
+      render :nothing => true
+    end
   end
   
   def destroy
     @event = FriendEvent.delete(params[:id])
     @count = current_user.friend_events.size
-    render "update"
   end
 end

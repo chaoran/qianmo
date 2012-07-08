@@ -10,10 +10,15 @@
  *
  *= require_self
  *= require jquery.Jcrop
+ *= require jquery.montage
  *= require_tree .
 */
 .grey {
 	color: #999999;
+}
+
+.blue {
+  color: #08C;
 }
 
 .red {
@@ -128,6 +133,12 @@ footer ul li {
   top: 7px;
 }
 
+.pinable .pin-top7-left5 {
+  position: absolute;
+  left: 5px;
+  top: 7px;
+}
+
 .pinable .pin-right {
   position: absolute;
   right: 0;
@@ -147,3 +158,7 @@ footer ul li {
   -khtml-box-sizing: border-box; /* konqueror */
 }
 
+.montage {
+  width: 40px;
+  height: 40px;
+}

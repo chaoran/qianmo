@@ -1,5 +1,5 @@
 <div class="comments">
-  <% comments = commentable.comments.order("created_at").limit(20) %>
+  <% comments = commentable.comments %>
   <% for comment in comments %>
     <%= render 'comments/show', :comment => comment %>
   <% end %>

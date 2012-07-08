@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630192057) do
+ActiveRecord::Schema.define(:version => 20120707193137) do
 
   create_table "billboards", :force => true do |t|
     t.string   "header"
@@ -108,6 +108,29 @@ ActiveRecord::Schema.define(:version => 20120630192057) do
   add_index "like_posts", ["post_id"], :name => "index_like_posts_on_post_id"
   add_index "like_posts", ["user_id"], :name => "index_like_posts_on_user_id"
 
+  create_table "likes", :force => true do |t|
+    t.integer  "likable_id"
+    t.string   "likable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "likes", ["likable_id"], :name => "index_likes_on_likable_id"
+  add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
+
+  create_table "mention_events", :force => true do |t|
+    t.integer  "trigger_id"
+    t.string   "trigger_type"
+    t.integer  "receiver_id"
+    t.boolean  "consumed",     :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "mention_events", ["receiver_id"], :name => "index_mention_events_on_receiver_id"
+  add_index "mention_events", ["trigger_id"], :name => "index_mention_events_on_trigger_id"
+
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.string   "intro"
@@ -143,8 +166,9 @@ ActiveRecord::Schema.define(:version => 20120630192057) do
     t.text     "text"
     t.integer  "parent_id"
     t.string   "source"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "children_count", :default => 0
   end
 
   add_index "posts", ["parent_id"], :name => "index_posts_on_parent_id"

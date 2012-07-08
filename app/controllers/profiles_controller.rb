@@ -28,6 +28,8 @@ class ProfilesController < ApplicationController
     
     if params[:fe]
       FriendEvent.update_all({:consumed => true}, {:id => params[:fe]})
+    elsif params[:me]
+      MentionEvent.update_all({:consumed => true}, {:id => params[:me]})
     end
   end
   

@@ -1,0 +1,7 @@
+<div class="stream">
+  <% for event in @events %>
+    <% if event.trigger_type == 'Post' %>
+      <%= render 'posts/show', :post => event.trigger %>
+    <% end %>
+<% end %>
+</div>

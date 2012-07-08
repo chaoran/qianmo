@@ -43,36 +43,47 @@ module ApplicationHelper
     end 
   end
   
-  def my_link_to(name, url, options={})
-    if (options.has_key?(:tooltip))
-      tooltip = options.delete(:tooltip)
-      options[:rel] = "tooltip"
-      options[:title] = tooltip
-    end
-    html = link_to(url, options) do
-      content = ""
-      if (options.has_key?(:icon)) 
-        icon = options.delete(:icon)
-        content << "<i class=\"#{icon}\""
-        if options.has_key?(:"icon-background")
-          content << " style=\"background-image:url(" + options.delete(:"icon-background") + ");\""
-        end
-        content << "></i>"
+  def my_link_to(*args, &block)
+    if block_given?
+      options = args.first || {}
+      html_options = args.second
+      my_link_to(capture(&block), options, html_options)
+    else
+      name = args[0]
+      url = args[1] || {}
+      options = args[2] || {}
+      
+      if (options.has_key?(:tooltip))
+        tooltip = options.delete(:tooltip)
+        options[:rel] = "tooltip"
+        options[:title] = tooltip
       end
-      content << "&nbsp;#{name}" if name
-      if (options.has_key?(:badge))
-        badge = options.delete(:badge)
-        content << "<span class=\"badge" 
-        if options.has_key?(:"badge-class")
-          content << " #{options.delete(:"badge-class")}"
-        else
-          content << " badge-important"
+      html = link_to(url, options) do
+        content = ""
+        if (options.has_key?(:icon)) 
+          icon = options.delete(:icon)
+          content << "<i class=\"#{icon}\""
+          if options.has_key?(:"icon-background")
+            content << " style=\"background-image:url(" + 
+                       options.delete(:"icon-background") + ");\""
+          end
+          content << "></i>&nbsp;"
         end
-        content << "\">#{badge}</span>"
+        content << "#{name}" if name
+        if (options.has_key?(:badge))
+          badge = options.delete(:badge)
+          content << "<span class=\"badge" 
+          if options.has_key?(:"badge-class")
+            content << " #{options.delete(:"badge-class")}"
+          else
+            content << " badge-important"
+          end
+          content << "\">#{badge}</span>"
+        end
+        content.html_safe
       end
-      content.html_safe
+      html.slice!(" nofollow") if html.include?("tooltip")
+      html.html_safe
     end
-    html.slice!(" nofollow") if html.include?("tooltip")
-    html.html_safe
   end
 end

@@ -1,3 +1,7 @@
-<% publish_to "/user/#{user.id}" do %>
-  $("#friend_event_list").replaceWith("<%= escape_javascript( render "friend_events/index", :user => user )%>");
+<% if user != current_user %>
+  <% publish_to "/user/#{user.id}" do %>
+    $("#friend_event_list").replaceWith("<%= escape_javascript( render "friend_events/index", :user => user )%>");
+  <% end %>
+<% else %>
+    $("#friend_event_list").replaceWith("<%= escape_javascript( render "friend_events/index", :user => user )%>");
 <% end %>

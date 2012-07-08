@@ -1,7 +1,11 @@
-$("<%= escape_javascript(render :partial => 'show') %>").hide().prependTo('.news-stream').slideDown();
+$("<%= escape_javascript(render :partial => 'show', :locals => {:post => @post}) %>").hide().prependTo('.stream').slideDown();
 $("#repost_modal").modal("hide")
-$(".post-form textarea").val("").blur()
+$(".new-post textarea").val("").blur()
 
 <% if @post.parent_id %>
-$("#post_<%= @post.parent_id %> .num-reposts").text("(" + <%= @post.parent.children.size %> + ")");
+$("#post_<%= @post.parent_id %> .num-reposts").text("(<%= Post.find(@post.parent_id).children_count %>)");
+<% end %>
+
+<% for event in @post.mention_events %>
+  <%= render :partial => "mention_events/update", :locals => {:user => event.receiver} %>
 <% end %>

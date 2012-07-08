@@ -54,7 +54,7 @@ jQuery(document).ready(function($) {
     }
   });
   
-  $(".post-form input[type='submit']").live("click", function (event) {
+  $(".new-post input[type='submit']").live("click", function (event) {
     $('.post-input').trigger('blur');
     event.stopPropagation();
   });
@@ -65,48 +65,32 @@ jQuery(document).ready(function($) {
       var form = $(this).closest("form")
       form.find(".post-actions").hide();
       $(this).val("");
+      form.find(".post-header em").hide();
     }
   });
   
-  $(".stream-post").live({
-    mouseenter: function() {
-      if ($(this).find(".post-comments-holder").is(":visible") == false) {
-        $(this).addClass("stream-post-hover");
-        //$(this).find(".action-delete").removeClass("white").addClass("smoke");
-        $(this).find(".post-actions ul").show();
-      }
-    },
-    mouseleave: function() {
-      if ($(this).find(".post-comments-holder").is(":visible") == false) {
-        $(this).removeClass("stream-post-hover");
-        //$(this).find(".action-delete").removeClass("smoke").addClass("white");
-        $(this).find(".post-actions ul").hide();
-      }
-    }
-  });
-  
-  $(".post-holder").live("click", function(event) {
+  $(".post-content").live("click", function(event) {
     var comments = $(this).next();
     if (comments.is(":visible")) {
       comments.slideUp("fast");
       $(this).find(".action-expand").show().next().hide();
+      $(this).parent().addClass("hoverable")
     } else {
       comments.slideDown("fast");
       $(this).find(".action-expand").hide().next().show();
-      $(this).parent().removeClass("stream-post-hover");
-      //$(this).find(".action-delete").removeClass("smoke").addClass("white");
+      $(this).parent().removeClass("hoverable").removeClass("hover")
     }
   });
     
   $(".post-actions .action-comment").live("click", function(event) {
-    var comments = $(this).closest(".post-holder").next();
-    var fake_input = $(this).closest(".stream-post").find("#fake-input");
+    var comments = $(this).closest(".post-content").next();
+    var fake_input = $(this).closest(".post").find("#fake-input");
     if (comments.is(":visible")) {
       if (fake_input.is(":visible")) {
         fake_input.trigger('focus');      
       }
     } else {
-      $(this).closest(".post-holder").trigger('click');
+      $(this).closest(".post-content").trigger('click');
       if (fake_input.is(":visible")) {
         setTimeout(function(){
           fake_input.trigger('focus');

@@ -1,0 +1,24 @@
+<div class='row'>
+	<div class='span2 sidebar'>
+	  <ul class="nav nav-list">
+	    <li><a><%= t :recent %></a></li>
+	    <li><a><%= t :hot %></a></li>
+	    <li><a><%= t :worth_notice %></a></li>
+	    <li class="nav-header"><%= t :pages_by_category %></li>
+	    <li><a><%= t :news %></a></li>
+	    <li><a><%= t :restaurants %></a></li>
+	    <li><a><%= t :movie %></a></li>
+	    <li><a><%= t :music %></a></li>
+	    <li><a><%= t :books %></a></li>
+	  </ul>
+	</div>
+	<div class='span7 body'>
+    <div>
+      <%= render 'posts/new', :post => current_user.posts.build, :placeholder => "@#{current_user.name}" %>
+    </div>
+    <div id="home_main">
+      <%= render 'posts/index', :posts => current_user.stream_posts %>
+    </div>
+	</div>
+</div>
+

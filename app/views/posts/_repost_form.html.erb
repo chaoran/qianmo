@@ -8,11 +8,11 @@
    <%= f.hidden_field :parent_id %>
   </div>
   <div class="modal-body">
-    <div class="post-form">
-      <div class="post-holder">
+    <div class="new-post pinable">
+      <div class="post-content">
         <div class="post-header">
           <%= link_to user_profile_path(current_user) do %>
-            <%= image_tag current_user.avatar.url(:thumb), :class => "avatar" %>
+            <%= image_tag current_user.avatar.url(:thumb), :class => "avatar pin-top7-left5" %>
             <strong><%= current_user.name %></strong>
           <% end %>
           <em class="grey pull-right" style="display: none;">
@@ -22,7 +22,7 @@
         <div class="post-body">
           <%= f.text_area :text, :rows => 4, 
                           :placeholder => @placeholder, 
-                          :class => "post-input" %>
+                          :class => "post-input max-width" %>
         </div>
       </div>
     </div>   

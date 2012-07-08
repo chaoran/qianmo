@@ -1,10 +1,10 @@
-<li class="removable perishable pinable" id="friend_event_<%= event.id %>">
+<li class="pinable hoverable" id="friend_event_<%= event.id %>">
   <% unless event.consumed %>
-    <%= my_link_to nil, friend_event_path(event.id), :method => :post, 
-                        :remote => true, :badge => "NEW", :tooltip => "标记为已读" %>
+    <%= my_link_to nil, friend_event_path(event.id), :method => :put, :class => "new-badge",
+                        :remote => true, :badge => "NEW" %>
   <% end %>
   
-  <%= link_to "#{event.trigger.name}", user_profile_path(event.trigger, :fe => event.id), :class => "perish" %>
+  <%= link_to "#{event.trigger.name}", user_profile_path(event.trigger, :fe => event.id) %>
 
   <% case event.event_type %>
     <% when "follow" %>
@@ -21,7 +21,7 @@
       <span><%= t :became_your_friend %></span>
   <% end %>
   <em class="grey"><%= t :ago, :time => time_ago_in_words(event.created_at) %></em>
-  <%= my_link_to nil, friend_event_path(event), :icon => "icon-remove", :tooltip => "#{t :delete}",
-                 :class => "grey invisible remove pin-right8", :remote => true,
+  <%= my_link_to nil, friend_event_path(event), :icon => "icon-remove",
+                 :class => "grey show-on-hover hidden pin-right8", :remote => true,
                  :method => :delete %>
 </li>

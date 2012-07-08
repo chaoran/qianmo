@@ -81,18 +81,4 @@ class PostsController < ApplicationController
       format.js
     end
   end
-  
-  def like
-    @post = Post.find(params[:id])
-    @like = LikePost.new(:user => current_user, :post => @post)
-    unless @like.save
-      render :nothing => true
-    end
-  end
-  
-  def dislike
-    @post = Post.find(params[:id])
-    @like = LikePost.where(:post_id => @post.id, :user_id => current_user.id).first
-    @like.destroy
-  end
 end

@@ -65,18 +65,4 @@ class CommentsController < ApplicationController
       format.js
     end
   end
-  
-  def like
-    @comment = Comment.find(params[:id])
-    @like = LikeComment.new(:user => current_user, :comment => @comment)
-    unless @like.save
-      render :nothing => true
-    end
-  end
-  
-  def dislike
-    @comment = Comment.find(params[:id])
-    @like = LikeComment.where(:comment_id => @comment.id, :user_id => current_user.id).first
-    @like.destroy
-  end
 end

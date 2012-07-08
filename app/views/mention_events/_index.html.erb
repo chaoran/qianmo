@@ -1,0 +1,21 @@
+<% events = user.mention_events %>
+<% num_new = events.where(:consumed => false).length %>
+<li class="dropdown" id="mention_event_list">
+  <% if num_new > 0 %>
+    <%= my_link_to nil, "#", :icon => "nav-at", :badge => num_new, 
+                        :class => "dropdown-toggle",
+                        :'data-toggle' => "dropdown" %>
+  <% else %>
+    <%= my_link_to nil, "#", :icon => "nav-at", :class => "dropdown-toggle", 
+                        :'data-toggle' => "dropdown" %>
+  <% end %>
+  <ul class="dropdown-menu events">
+    <% if events.length > 0 %>
+      <% for e in events do %>
+        <%= render "mention_events/show", :event => e %>
+      <% end %>
+    <% else %>
+      <li><%= t :no_events %></li>
+    <% end %>
+  </ul>
+</li>

@@ -15,20 +15,32 @@
 //= require jquery.form
 //= require jquery.remotipart
 //= require jquery.Jcrop
+//= require jquery.montage
 //= require twitter/bootstrap
 //= require cocoon
 //= require private_pub
 //= require_tree .
 
 $(document).ready(function(){
-  $(".pinable").live({
+  $(".has_hidden_buttons").live({
     mouseenter: function() {
-      $(this).find("a[class*='pin-']").removeClass("hidden");
+      $(this).find("hidden_button").removeClass("hidden");
     },
     mouseleave: function() {
-      $(this).find("a[class*='pin-']").addClass("hidden");
+      $(this).find("hidden_button").addClass("hidden");
     }
   });
+  
+  $(".hoverable").live({
+    mouseenter: function() {
+      $(this).addClass("hover");
+      $(this).find(".show-on-hover").removeClass("hidden")
+    },
+    mouseleave: function() {
+      $(this).removeClass("hover");
+      $(this).find(".show-on-hover").addClass("hidden")
+    }
+  })
   
   $(".removable").live({
     mouseenter: function() {

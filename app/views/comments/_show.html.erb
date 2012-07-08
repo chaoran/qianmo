@@ -1,29 +1,24 @@
-<div class="comment" id="comment_<%= comment.id %>">
+<div class="comment hoverable" id="comment_<%= comment.id %>">
   <div class="comment-header">
     <%= link_to user_profile_path(comment.user) do %>
       <%= image_tag comment.user.avatar.url(:thumb), :class => "avatar" %>
       <%= comment.user.name %>
     <% end %>
-    <span class="post-time">
+    <span class="grey pull-right">
       <%= "#{t :posted_at_time, :time => time_ago_in_words(comment.created_at)}".html_safe %>
     </span>
   </div>
   <div class="comment-body">
     <%= comment.text.html_safe %>
   </div>
-  <div class="comment-actions" style="display:none;">
-    <% @liked = comment.like_comments.where(:user_id => current_user.id).size != 0 %>
-    <%= link_to_with_icon "#{t :like}", like_comment_path(comment), "icon-heart-empty", 
-                          :style => "#{"display:none;" if @liked}",
-                          :class => "action-like", :remote => true, :method => :post %>
-    <%= link_to_with_icon "#{t :like}", dislike_comment_path(comment), "icon-heart", 
-                          :style => "#{"display:none;" if !@liked}",
-                          :class => "action-dislike", :remote => true, :method => :delete %>
-    <%= post_stat("num-likes", comment.liked_users.size) %>
-    <span class="grey">|</span>
+  <div class="comment-actions hidden show-on-hover">
+    <%= render "likes/show", :likable => comment %>
+    <span class="grey"> · </span>
     <%= link_to_with_icon "#{t :reply}", "#", "icon-comment-alt", :class => "action-reply"  %>
-    <span class="grey">|</span>
+    <% if current_user == comment.user %>
+    <span class="grey"> · </span>
     <%= link_to_with_icon "", comment_path(comment), "icon-remove", :class => "action-delete grey", :remote => true,
                           :title => "#{t :delete}", :rel => "tooltip", :method => :delete  %>
+    <% end %>
   </div>
 </div>

@@ -1,9 +1,9 @@
 <div class='row' id="user_<%= @user.id %>">
 	<div class='span3' style="margin-top: 18px;">
 	  <div id="profile_side" class="well">
-	    <p id="profile_avatar" class="pinable">
+	    <p id="profile_avatar" class="pinable hoverable">
 	      <%= my_link_to "#{t :edit}", new_user_avatar_path(current_user), 
-	                                       :class => "pin-top-right btn hidden",
+	                                       :class => "pin-top-right btn hidden show-on-hover",
 	                                       :icon => "icon-pencil",
 	                                       :remote => true if current_user == @user %>
   			<%= image_tag @user.avatar.url %>
@@ -13,12 +13,7 @@
 	</div>
 	<div class='span9 body'>
     <div class="page-header pinable">
-      <h1><%= @user.name %>
-        <small>
-          <%= t :friends %>:&nbsp;<span><%= @user.friends.size %></span>
-          <%= t :followers %>:&nbsp;<span><%= @user.followers.size %></span>
-        </small>
-      </h1>
+      <h1><%= @user.name %></h1>
       <% if current_user != @user %>
       <div class="pin-bottom5-right">
         <%= render :partial => 'friendships/friend_buttons' %>
@@ -28,15 +23,22 @@
     <div>
       <%= render 'posts/new', :post => @user.posts.build, :placeholder => "@#{@user.name}" %>
     </div>
+    <div id="friends_montage">
+      <%= render 'friendships/show', :user => @user %>
+    </div>
+    <div id="followers_montage">
+      <%= render 'follows/show', :user => @user %>
+    </div>
+
     <div id="profile_histroy">
       <div class="tabbable">
         <ul class="nav nav-tabs">
-          <li class="active"><%= link_to "#{t :news}", "#page_news_holder", :"data-toggle" => "tab" %></li>
+          <li class="active"><%= link_to "#{t :stream}", "#page_stream_holder", :"data-toggle" => "tab" %></li>
           <li><%= link_to "#{t :pictures}", "#"%></li>
           <li><%= link_to "#{t :articles}", "#" %></li>
         </ul>
         <div class="tab-content">
-          <div class="tab-pane active" id="user_news_holder">
+          <div class="tab-pane active" id="user_stream_holder">
             <%= render 'posts/index', :posts => @user.posts.limit(50) %>
           </div>
           <div class="tab-pane" id="user_pictures_holder">

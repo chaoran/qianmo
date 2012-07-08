@@ -1,5 +1,11 @@
 <div class="stream">
-  <% posts.each do |post| %>
-    <%= render 'posts/show', :post => post %>
+  <% if posts.size > 0 %>
+    <% posts.each do |post| %>
+      <%= render 'posts/show', :post => post %>
+    <% end %>
+  <% else %>
+    <div class="stream-post">
+      <p><%= t :no_posts %></p>
+    </div>
   <% end %>
 </div>

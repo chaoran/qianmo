@@ -1,0 +1,1 @@
+$("#<%= params[:type] %>_<%= params[:id]%> .like-show").first().replaceWith("<%= escape_javascript( render :partial => "show", :locals => {:likable => @likable} )%>")

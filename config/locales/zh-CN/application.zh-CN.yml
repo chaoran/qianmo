@@ -3,7 +3,7 @@ zh-CN:
     app_slogan: '互联网上的桃花源'
     
     tasks: '任务列表'
-    news: '新鲜事'
+    stream: '新鲜事'
     my_page: '我的主页'
     pages: "阡陌页面"
     pictures: "图片"
@@ -20,6 +20,10 @@ zh-CN:
     delete: '删除'
     
     ago: "%{time}前"
+    his: "他的"
+    her: "她的"
+    my: "我的"
+    people: "人"
     
     product: '产品'
     website: "阡陌网"
@@ -38,7 +42,12 @@ zh-CN:
     disclaimer: '免责声明'
     partnership: '寻求合作'
     
-    floor_text: '© 2012 1000mo.com, all rights reserved'
+    floor_text: '© 2012 Chaoran Yang, all rights reserved'
+    
+    recent: "最近访问的"
+    hot: "热门的"
+    worth_notice: "值得一看的"
+    pages_by_category: "页面分类"
     
 
 

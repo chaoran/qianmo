@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  trigger: 
+  receiver: 
+  mentioned_in: 
+
+two:
+  trigger: 
+  receiver: 
+  mentioned_in: 

@@ -1,0 +1,29 @@
+<div class="new-post pinable">
+  <%= form_for post, :remote => true do |f| %>
+    <div class="post-content">
+      <div class="post-header">
+        <div>
+          <%= image_tag current_user.avatar.url(:thumb), :class => "avatar pin-top7-left5" %>
+          <span class="grey"><%= t :something_to_say? %></span>
+          <em class="grey pull-right" style="display: none;">
+            <span class="post-wordcount"></span>/140
+          </em>
+        </div>
+      </div>
+      <div class="post-body">
+        <%= f.text_area :text, :rows => 1, 
+                        :placeholder => placeholder, 
+                        :class => "post-input max-width" %>
+      </div>
+      <div class="post-actions" style="display:none;">
+        <ul class="post-extra-inputs">
+          <li><a><i class="icon-camera icon-xlarge"></i></a></li>
+          <li><a><i class="icon-globe icon-xlarge"></i></a></li>
+          <li><a><i class="icon-music icon-xlarge"></i></a></li>
+          <li><a><i class="icon-film icon-xlarge"></i></a></li>
+        </ul>
+        <%= f.submit "#{t :publish}", :class => "btn btn-wide pull-right", :disabled => true %>
+      </div>
+    </div>
+  <% end %>
+</div>

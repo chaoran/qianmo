@@ -22,9 +22,9 @@ jQuery(document).ready(function($) {
   comment_input.live("keyup", function() {
     var value = $.trim($(this).val());    
     if (value.length > 0 && value != $(this).attr('placeholder')) {
-      comment_submit.addClass("btn-success").removeAttr("disabled");
+      comment_submit.addClass("btn-primary").removeAttr("disabled");
     } else {
-      comment_submit.removeClass("btn-success").attr("disabled", "disabled");
+      comment_submit.removeClass("btn-primary").attr("disabled", "disabled");
     }
   });
   
@@ -39,15 +39,6 @@ jQuery(document).ready(function($) {
     var value = $.trim($(this).val());    
     if (value.length == 0 || value == $(this).attr('placeholder')) {
       $(this).closest("form").hide().prev().show();
-    }
-  });
-  
-  $(".comment").live({
-    mouseenter: function() {
-      $(this).find(".comment-actions").show();
-    },
-    mouseleave: function() {
-      $(this).find(".comment-actions").hide();
     }
   });
 });

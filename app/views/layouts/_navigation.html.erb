@@ -6,7 +6,8 @@
 <% if content_for?(:brand) %>
 	<%= yield :brand %>
 <% else %>
-	<a class="brand" href="#"><%= t :app_name %></a>
+  <%= link_to "#{t :app_name}", user_signed_in? ? root_path : new_user_registration_path, 
+                                :class => "brand" %>
 <% end %>
 <div class="nav-collapse">
 	<% if user_signed_in? %>
@@ -19,7 +20,7 @@
     		<% end %>
 		    <li class="divider-vertical"></li>
         <%= render "friend_events/index", :user => current_user %>
-		    <li><%= my_link_to "", "#", :icon => "nav-at" %></li>
+		    <%= render "mention_events/index", :user => current_user %>
 		    <li><%= my_link_to "", "#", :icon => "nav-about" %></li>
 		    <li class="divider-vertical"></li>
 		    <li class="pinable">

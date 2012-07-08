@@ -3,16 +3,16 @@ class Post < ActiveRecord::Base
   include Trigger  
   belongs_to :user
   
-  belongs_to :parent, :class_name => 'Post'
+  belongs_to :parent, :class_name => 'Post', :counter_cache => :children_count
   has_many :children, :class_name => 'Post', :foreign_key => "parent_id"
   
-  has_many :events, :as => :trigger, :dependent => :destroy
-  has_many :comments, :as => :commentable, :dependent => :destroy
-  has_many :like_posts, :dependent => :destroy
-  has_many :liked_users, :through => :like_posts, :source => :user, :class_name => "User"
+  has_many :mention_events, :as => :trigger, :dependent => :delete_all
+  has_many :comments, :as => :commentable, :dependent => :destroy, :include => [:user, :liked_users]
+  has_many :likes, :as => :likable, :dependent => :destroy
+  has_many :liked_users, :through => :likes, :source => :user
   attr_accessible :source, :text, :parent_id
 
-  after_initialize do |post| # repost
+  after_initialize do |post| # repost's initial text
     if post.parent_id && !post.text
       parent = Post.find(post.parent_id)
       post.text = " //@" + parent.user.name + ": " + Sanitize.clean(parent.text)

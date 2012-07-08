@@ -1,7 +1,7 @@
-<div id="basic_info" class="pinable">
+<div id="basic_info" class="pinable hoverable">
   <% if current_user == @user %>
   <a href="<%= edit_user_profile_path(current_user) %>"
-		 class="btn pin-top-right hidden">
+		 class="btn pin-top-right hidden show-on-hover">
 		<i class="icon-pencil"></i>
 		<%= t :edit %>
 	</a>

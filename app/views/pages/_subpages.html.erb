@@ -1,15 +1,15 @@
-<%= render 'news' %>
+<%= render 'stream' %>
 <div id="page_child_section">
   <div class="tabbable">
     <ul class="nav nav-tabs">
-      <%= yield(:page_news_tab) if content_for(:page_news_tab) %>
+      <%= yield(:page_stream_tab) if content_for(:page_stream_tab) %>
       <%= yield(:page_comments_tab) if content_for(:page_comments_tab) %>
       <%= yield(:page_pictures_tab) if content_for(:page_pictures_tab) %>
       <%= yield(:page_discussions_tab) if content_for(:page_discussions_tab) %>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="page_posts_holder">
-        <%= yield(:page_news) if content_for(:page_news) %>
+        <%= yield(:page_stream) if content_for(:page_stream) %>
       </div>
       <div class="tab-pane" id="page_comments_holder">
         <%= yield(:page_comments_pane) if content_for(:page_comments_pane) %>

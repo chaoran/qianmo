@@ -1,108 +1,54 @@
-.post-form,
-.stream-post {
-  position: relative;
-}
-
-.stream-post {
-  padding: 9px 7px;
+.post {
+  margin: 0;
   border-bottom: 1px solid #E8E8E8;
 }
 
-.post-form {
-  padding: 9px 0 0 7px;
-}
-
-.post-holder {
-  margin-left: 55px;
-}
-
-.stream-post .post-holder {
-  cursor: pointer;
-}
-
-.post-comments-holder {
-  margin-left: 45px;
-}
-
-.stream-post-hover {
+.post.hover {
   background-color: whitesmoke;
 }
 
-.post-header a,
-.post-actions a {
-  text-decoration: none;
+.post-content {
+  padding: 4px 5px 6px 55px;
+  cursor: pointer;
 }
 
-.post-header .avatar {
-  position: absolute;
-  top: 10px;
-  left: 6px;
-  width: 48px;
-  height: 48px;
+.post-header img {
+  width: 45px;
+  height: 45px;
 }
 
-.post-actions {
-  position: relative;
-}
-
-.post-comments-holder {
-  margin-top: 6px;
+p.post-body {
+  margin: 5px;
 }
 
 .post-actions ul {
   list-style: none;
   display: inline-block;
-  width: 70%;
   margin: 0;
 }
 
 .post-actions ul li {
   display: inline-block;
+}
+
+.post a,
+.new-post a {
+  text-decoration: none;
+}
+
+ul.post-extra-inputs li {
   margin-right: 6px;
-}
-
-.post-actions a {
-  display: inline-block;
-}
-
-.post-actions > span > a {
-  width: 60px;
-}
-
-[class^="num-"] {
-}
-
-.post-actions .post-extra-inputs li {
-  margin-right: 8px;
-  margin-top: 5px;
 }
 
 .post-actions .icon-camera {
   padding-right: 4px;
 }
 
-.post-time {
-  float: right;
-  color: #999999;
-  font-size: 12px;
+.post-details {
+  margin-left: 50px;
 }
 
-.stream-post p {
+.post-details .post-likes {
   margin-bottom: 4px;
-  margin-top: 4px;
-}
-
-.post-holder .action-delete {
-  position: absolute;
-  right: 0;
-  bottom: 0px;
-}
-
-.action-delete:hover {
-  color: #08C;
-}
-
-
-.modal-body .post-body .post-input {
-  width: 98%;
+  border-bottom: 1px solid #E8E8E8;
 }

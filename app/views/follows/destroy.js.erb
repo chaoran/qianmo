@@ -1,3 +1,2 @@
-$("#user_<%= @user.id %> .friend_buttons").html("<%= escape_javascript( render "follow" ) %>");
-<%= render :partial => "friend_events/destroy", :locals => {:user => current_user} %>
-$(".body").prepend("<%= escape_javascript( render "shared/messages" )%>")
+$(".user_<%= params[:user_id] %>.follow_button").replaceWith("<%= escape_javascript( render :partial => 'shared/follow_button', :locals => {:user => @user} )%>")
+<%= render :partial => "follows/notify", :locals => {:user => @user} %>

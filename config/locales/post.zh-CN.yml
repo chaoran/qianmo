@@ -1,5 +1,6 @@
 zh-CN:
-    something_to_say?: "有什么想说的么?"
+    say_something_about_page: "关于 %{page} 想说些什么?"
+    say_something_to_him: "想对 %{user} 说点什么？" 
     publish: "发布"
     posted_at_time: "%{time}前"
     posted_through_source: "通过%{source}发布"

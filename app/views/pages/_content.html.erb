@@ -1,39 +1,38 @@
-<div class="row">
+<div class="page row" id="<%= @page.id %>">
   <div class="span8">
-    <div id="page_header" class="page-component">
-      <% if @editable %>
-        <%= hidden_edit_button "header", edit_page_path(@page, :component => "header") %>
+    <%= page_section "header", @editable do %>
+      <%= render 'pages/header' %>
+    <% end %>
+    <div class="front">
+      <%= page_section "billboard", @editable do %>
+        <%= render 'billboard/show', :page => @page %>
       <% end %>
-      <div class="page-header" id="page_header_show">
-        <%= render "header" %>
-      </div>
+      <%= page_section "posters", @editable do %>
+        <%= render 'posters/show', :page => @page %>
+      <% end %>
+      <%= page_section "whiteboard", @editable do %>
+        <%= render 'whiteboard/show', :page => @page %>
+      <% end %>
     </div>
-
-    <div id="page_main_section">
-      <%= render 'component', :selector => "has_billboard", :name => "billboard" %>
-      <%= render 'component', :selector => "has_posters", :name => "posters" %>
-      <%= render 'component', :selector => "has_whiteboard", :name => "whiteboard" %>
-    </div>
-    <div id="page_child_section">
-      <%= render 'subpages' %>
+    <div class="main">
+      <%= page_section "articles", :editable => false do %>
+        <h1><%= t :page_articles %></h1>
+        <%= render 'articles', :articles => @page.hot_articles %>
+      <% end %>
     </div>
   </div>
-  <div class="span4">
-    <div id='page_side_section'>
-      <% if @editable %>
-        <div class="well">
-          <%= link_to nil, :class => "btn", 
-                           :'data-toggle' => "modal", 
-                           :'data-target' => "#page_destroy_modal" do %>
-            <i class="icon-remove"></i><%= " #{t :delete}" %>
-          <% end %>
-          <%= content_for(:modal) { render 'destroy' } %>
-        </div>
-      <% end %>
-      <div id="action_bar"><%= yield(:action_bar) if content_for?(:action_bar) %></div>
-      <%= render "posts/new", :post => current_user.posts.build, :placeholder => "##{@page.title}" %>
-      <%= render 'component', :selector => "has_image", :name => "image" %>
-      <%= render 'component', :selector => "has_properties", :name => "properties" %>
-    </div>
+  <div class="span4 side">
+    <%= yield(:status_bar) if content_for?(:status_bar) %>
+    <%= render "posts/new", :post => current_user.posts.build, :placeholder => "##{@page.title}",
+                            :title => "#{t :say_something_about_page, :page => @page.title}" %>
+    <%= page_section "image", @editable do %>
+      <%= image_tag @page.image %>
+    <% end %>
+    <%= page_section "properties", @editable do %>
+      <%= render 'pages/properties' %>
+    <% end %>
+    <%= page_section "events", :editable => false do %>
+      <%= render 'events/index', :events => @page.events.limit(20) %>
+    <% end %>
   </div>
 </div>

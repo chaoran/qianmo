@@ -10,7 +10,6 @@
  *
  *= require_self
  *= require jquery.Jcrop
- *= require jquery.montage
  *= require_tree .
 */
 .grey {
@@ -121,6 +120,12 @@ footer ul li {
   top: 0;
 }
 
+.pinable .pin-top18-right15 {
+  position: absolute;
+  right: 15px;
+  top: 18px;
+}
+
 .pinable .pin-bottom5-right {
   position: absolute;
   right: 0;
@@ -161,4 +166,9 @@ footer ul li {
 .montage {
   width: 40px;
   height: 40px;
+}
+
+.actions .divider {
+  color: #999999;
+  margin: 0 8px;
 }

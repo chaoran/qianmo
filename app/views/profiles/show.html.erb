@@ -1,4 +1,4 @@
-<div class='row' id="user_<%= @user.id %>">
+<div class='row user' id="<%= @user.id %>">
 	<div class='span3' style="margin-top: 18px;">
 	  <div id="profile_side" class="well">
 	    <p id="profile_avatar" class="pinable hoverable">
@@ -12,22 +12,19 @@
 	  </div>
 	</div>
 	<div class='span9 body'>
-    <div class="page-header pinable">
-      <h1><%= @user.name %></h1>
+    <div class="page-header">
+      <h1 style="display: inline-block">
+        <%= @user.name %>
+      </h1>
       <% if current_user != @user %>
-      <div class="pin-bottom5-right">
-        <%= render :partial => 'friendships/friend_buttons' %>
-      </div>
+        <div class="pull-right">
+          <%= render 'shared/follow_button', :user => @user %>
+        </div>
       <% end %>
     </div>
     <div>
-      <%= render 'posts/new', :post => @user.posts.build, :placeholder => "@#{@user.name}" %>
-    </div>
-    <div id="friends_montage">
-      <%= render 'friendships/show', :user => @user %>
-    </div>
-    <div id="followers_montage">
-      <%= render 'follows/show', :user => @user %>
+      <%= render 'posts/new', :post => @user.posts.build, :placeholder => "@#{@user.name}", 
+                              :title => "#{t :say_something_to_him, :user => @user.name}" %>
     </div>
 
     <div id="profile_histroy">

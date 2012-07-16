@@ -1,0 +1,9 @@
+<div class="page-event" rel="popover" data-content="<%= render 'shared/popover', :content => event.content %>">
+  <%= link_to user_profile_path(event.user) do %>
+    <%= image_tag event.user.avatar(:thumb) %>
+  <% end %>
+  <div class="page-event-body">
+    <%= link_to event.user.name, user_profile_path(event.user) %>
+    <%= t event.action %><%= ": #{event.content.brief}" if event.content %>
+  </div>
+</div>

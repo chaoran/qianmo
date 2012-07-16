@@ -1,0 +1,15 @@
+zh-CN:
+    follow_him: '关注他'
+    follow_her: '关注她'
+    has_followed: '已关注'
+    unfollow: "取消关注"
+    and_also: '并且'
+    add_as_friend: '加为我的好友'
+    add_as_special_follow: '加为特别关注'
+    no_new_follows: '暂时没有更多人关注你'
+    has_also_followed_you: '回应了你的关注'
+    has_followed_you: '关注了你'
+    added_you_as_friend: '把你加为了好友'
+    and_special_follow: '和特别关注'
+    added_you_as_special_follow: '把你加为了特别关注'
+    has_displayed_all: '已显示全部关注通知'

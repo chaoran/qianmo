@@ -15,34 +15,10 @@ zh-CN:
   from: '来自'
   now_lives_in: '现住在'
   
-  add_as_friend: '加为好友'
-  wants_to_add_you_as_friend: "想把你加为好友"
-  request_sent: '好友请求已发送'
-  agree: "同意"
-  accept_friend_request: "同意加为好友"
-  became_your_friend: "成为了你的好友"
-  friendship_starts_at: "好友关系开始于 %{time}前"
-  friendship_has_ended: "你和 %{name} 的好友关系已解除"
-  destroy_friendship: "解除好友关系"
-  follow_him: '关注他'
-  follow_her: '关注她'
-  unfollow: "取消关注"
-  follow_him_back: "也关注他"
-  follow_her_back: "也关注她"
-  has_followed_you: "关注了你"
-  successfully_followed: "你关注了 %{name} "
-  successfully_unfollowed: "你对 %{name} 的关注已经取消了"
-  no_events: "目前没有需要你注意的消息..."
-  no_followers: "目前暂时还没有粉丝..."
-  no_friends: "目前暂时还没有好友..."
-  
   mark_as_read: "标记为已读"
   view: "查看"
   mentioned_you_in_a_post: "在一条微博中提到了你"
   mentioned_you_in_a_comment: "在一条评论中提到了你"
-  
-  friends: "好友"
-  followers: "粉丝"
   
   simple_form:
       labels:

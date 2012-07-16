@@ -1,23 +1,17 @@
-<% size = user.followers.size - user.friends.size %>
-<% if size > 0 %>
-  <p>
-    <h4>
-      <% if user == current_user %>
-        <%= "#{t :my}#{t :followers}" %>
-      <% else %>
-        <%= "#{t :his}#{t :followers}" if user.is_male? %>
-        <%= "#{t :her}#{t :followers}" if !user.is_male? %>
-      <% end %>
-      <small><%= user.followers.size - user.friends.size %><%= t :people %></small>
-    </h4>
-  </p>
-  <div>
-    <% for follower in (user.followers - user.friends) do %>
-      <%= link_to user_profile_path(follower) do %>
-        <%= image_tag follower.avatar.url(:thumb), :class => "montage" %>
-      <% end %>
-    <% end %>
+<li class="hoverable pinable <%= "color-background" unless follow.read %>" id="<%= follow.id %>">
+  <%= link_to user_profile_path(follow.follower, :follow_id => follow.id), :class => "follow" do %>
+    <div>
+        <%= image_tag follow.follower.avatar.url(:thumb), :class => "small-thumb" %>
+        <%= follow.follower.name %>
+      <div class="grey pull-right">
+        <%= t :ago, :time => time_ago_in_words(follow.created_at) %>
+      </div>
+    </div>
+    <p>
+      <%= follow_notification(follow) %>
+    </p>
+  <% end %>
+  <div class="pin-top18-right15">
+    <%= render 'shared/follow_button', :user => follow.follower unless follow.pair %>
   </div>
-<% else %>
-  <p><%= t :no_followers %></p>
-<% end %>
+</li>

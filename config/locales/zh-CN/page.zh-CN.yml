@@ -1,5 +1,4 @@
 zh-CN:
-
     unknown_title: "未命名"
     unknown_intro: "还没有填入页面介绍"
     billboard_title: "公告牌"
@@ -41,6 +40,8 @@ zh-CN:
     property_value: "属性值"
     
     created_at_time_by_user_html: "<em>在&nbsp;%{time}&nbsp;前, 由&nbsp;%{user}&nbsp;创建</em>"
+    
+    page_articles: "关于 %{title} 的文章"
     
     simple_form:
         labels:

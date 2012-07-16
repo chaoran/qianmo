@@ -1,0 +1,155 @@
+/* FACEBOOK LIKE DROPDOWN MENUS */
+@import "mixins";
+
+.dropdown.open {
+  // IE7's z-index only goes to the nearest positioned ancestor, which would
+  // make the menu appear below buttons that appeared later on the page
+  *z-index: 1000;
+
+  & > .dropdown-menu-fb {
+    display: block;
+  }
+}
+
+.dropdown-menu-fb {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none; // none by default, but block on "open" of the menu
+  float: left;
+  width: 330px;
+  padding: 4px 0 0;
+  margin: 1px 0 0; // override default ul
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.2);
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+  @include border-radius(5px);
+  @include box-shadow(0 5px 10px rgba(0,0,0,.2));
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box;
+
+  // Aligns the dropdown menu to right
+  &.pull-right {
+    right: 0;
+    left: auto;
+  }
+  
+  .color-background {
+    background-color: rgba(237, 239, 245, 0.98);
+  }
+
+  & > li {
+    border-bottom: 1px solid #E8E8E8;
+    position: relative;
+    
+    & > a,
+    & > span {
+      padding: 6px 15px;
+      display: block;
+      clear: both;
+      white-space: nowrap;
+    }
+    
+    & > a:hover {
+      text-decoration: none;
+      background-color: #eee;
+    }
+    
+    .follow,
+    .notification,
+    .message {
+      padding-left: 60px;
+      min-height: 52px;
+      color: #333;
+      
+      img {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 6px;
+        left: 14px;
+      }
+    }
+  }
+  
+  .footer {
+    text-align: center;
+  }
+
+  .footer,
+  .footer:hover,
+  .footer > a,
+  .footer > a:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+// Right aligned dropdowns
+// ---------------------------
+.pull-right > .dropdown-menu-fb {
+  right: 0;
+  left: auto;
+}
+
+// Menu position and menu carets
+.navbar .dropdown-menu-fb {
+  &:before {
+    content: '';
+    display: inline-block;
+    border-left:   7px solid transparent;
+    border-right:  7px solid transparent;
+    border-bottom: 7px solid #ccc;
+    border-bottom-color: rgba(0,0,0,.2);
+    position: absolute;
+    top: -7px;
+    left: 9px;
+  }
+  &:after {
+    content: '';
+    display: inline-block;
+    border-left:   6px solid transparent;
+    border-right:  6px solid transparent;
+    border-bottom: 6px solid #fff;
+    position: absolute;
+    top: -6px;
+    left: 10px;
+  }
+}
+
+// Menu position and menu caret support for dropups via extra dropup class
+.navbar-fixed-bottom .dropdown-menu-fb {
+  &:before {
+    border-top: 7px solid #ccc;
+    border-top-color: rgba(0,0,0,.2);
+    border-bottom: 0;
+    bottom: -7px;
+    top: auto;
+  }
+  &:after {
+    border-top: 6px solid #fff;
+    border-bottom: 0;
+    bottom: -6px;
+    top: auto;
+  }
+}
+
+// Right aligned menus need alt position
+// TODO: rejigger this at some point to simplify the selectors
+.navbar .pull-right .dropdown-menu-fb,
+.navbar .dropdown-menu-fb.pull-right {
+  left: auto;
+  right: 0;
+  &:before {
+    left: auto;
+    right: 12px;
+  }
+  &:after {
+    left: auto;
+    right: 13px;
+  }
+}

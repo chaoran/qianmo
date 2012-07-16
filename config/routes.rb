@@ -1,10 +1,7 @@
 Qianmo::Application.routes.draw do
 
-  
-  resources :posts, :except => [:new] do
-    member do
-      get :new
-    end
+  resources :posts do
+    get :repost, :on => :member
   end
     
   resources :comments do 
@@ -13,6 +10,7 @@ Qianmo::Application.routes.draw do
   resources :pages do 
     resource :billboard, :only => :update
     resource :whiteboard, :only => :update
+    resources :articles
   end
   
   devise_for :users, :path => '',
@@ -26,18 +24,19 @@ Qianmo::Application.routes.draw do
                                :sessions => "sessions" }
   
   as :user do
-    root :to => 'homes#show'
+    root :to => 'accounts#new'
   end
     
   resources :users, :path => '', :only => '' do
     resource :avatar, :only => [:new, :create, :edit, :update]
     resource :profile, :except => :destroy
-    resource :friendship, :only => [:create, :destroy]
-    resource :follow, :only => [:create, :destroy]
+    resources :follows, :only => [:create, :destroy, :update, :index]
+    
+    shallow do
+      resources :articles
+      resources :notifications, :only => [:create, :destroy, :update, :index]
+    end
   end  
-  
-  resources :friend_events, :only => [:create, :destroy, :update]
-  resources :mention_events, :only => [:create, :destroy, :update]
   
   match 'like/:type/:id' => 'likes#create', :via => :post, :as => :like
   match 'like/:type/:id' => 'likes#destroy', :via => :delete, :as => :unlike

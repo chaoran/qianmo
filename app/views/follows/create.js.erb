@@ -1,4 +1,4 @@
-$("#user_<%= @user.id %> .friend_buttons").html("<%= escape_javascript( render "request_or_unfollow" ) %>")
-<%= render :partial => "friend_events/update", :locals => {:user => @user} %>
-<%= render :partial => "friend_events/destroy" if @deleted_events > 0 %>
-$(".body").prepend("<%= escape_javascript( render "shared/messages" )%>")
+$(".user_<%= @user.id %>.follow_button").replaceWith("<%= escape_javascript(render :partial => 'shared/follow_button', 
+  :locals => {:user => @user}) %>");
+$('#<%= @user.object_id %>').addClass("open");
+<%= render :partial => "follows/notify", :locals => {:user => @user} %>

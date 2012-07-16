@@ -26,10 +26,10 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:user_id])
     @profile = @user.profile
     
-    if params[:fe]
-      FriendEvent.update_all({:consumed => true}, {:id => params[:fe]})
-    elsif params[:me]
-      MentionEvent.update_all({:consumed => true}, {:id => params[:me]})
+    if params[:follow_id]
+      Follow.update_all({:read => true}, {:id => params[:follow_id]})
+    elsif params[:no]
+      Notification.update_all({:read => true}, {:id => params[:no]})
     end
   end
   

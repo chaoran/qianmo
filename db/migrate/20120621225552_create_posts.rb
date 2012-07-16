@@ -4,7 +4,9 @@ class CreatePosts < ActiveRecord::Migration
       t.references :user
       t.text :text
       t.references :parent
-      t.string :source
+      t.integer :children_count, :default => 0
+      t.integer :likes_count, :default => 0
+      t.integer :comments_count, :default => 0
 
       t.timestamps
     end

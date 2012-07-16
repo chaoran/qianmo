@@ -1,7 +1,7 @@
 class Comment < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   include Trigger
-  belongs_to :commentable, :polymorphic => true
+  belongs_to :commentable, :polymorphic => true, :counter_cache => :comments_count
   belongs_to :user
   has_many :mention_events, :as => :trigger, :dependent => :delete_all
   has_many :likes, :as => :likable, :dependent => :destroy

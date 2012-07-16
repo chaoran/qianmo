@@ -9,7 +9,7 @@
       <% end %>
     </div>
     <div class="comment-body">
-      <%= f.text_field :text, :placeholder => "@#{commentable.user.name}" %>
+      <%= f.text_area :text, :placeholder => "@#{commentable.user.name}", :rows => rows %>
     </div>
     <div class="comment-actions">
       <%= f.hidden_field :commentable_id %>

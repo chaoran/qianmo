@@ -4,8 +4,5 @@
   </li>
 <% end %>
 <% content_for(:page_stream) do %>
-  <% if @events = @page.events  %>
-    <%= render 'shared/stream' %>
-  <% else %>
-  <% end %>
+  <%= render "posts/index", :posts => @page.posts.limit(50) %>
 <% end %>

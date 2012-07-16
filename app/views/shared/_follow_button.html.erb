@@ -1,0 +1,42 @@
+<div class="follow_button navbar dropdown user_<%= user.id %>" id="<%= user.object_id %>">
+  <% if @follow = user.follows.where(:follower_id => current_user.id).first %>
+    <%= link_to "#", :class => "btn btn-success dropdown-toggle active", :remote => true, 
+                :method => :post, :'data-toggle' => "dropdown-persist" do %>
+      <%= "#{t :has_followed}" %>
+      <b class="caret"></b>
+    <% end %>
+    <ul class="dropdown-menu persist pull-right">
+      <div><%= t :and_also %></div>
+      <li>
+        <%= my_link_to "#{t :add_as_friend}", user_follow_path(user, @follow, :friend => !@follow.friend), 
+                         :remote => true, :method => :put, :class => "flipdown-on-click",
+                         :icon => "icon-check#{ "-empty" if !@follow.friend}" %>
+        <%= my_link_to "#{t :add_as_friend}", user_follow_path(user, @follow, :friend => @follow.friend), 
+                        :remote => true, :method => :put, :class => "flipup-on-click", :style => "display:none;",
+                        :icon => "icon-check#{ "-empty" if @follow.friend}" %>
+      </li>
+      <li>
+        <%= my_link_to "#{t :add_as_special_follow}", user_follow_path(user, @follow, :special => !@follow.special),
+                         :remote => true, :method => :put, :class => "flipdown-on-click",
+                         :icon => "icon-check#{ "-empty" if !@follow.special}" %>
+        <%= my_link_to "#{t :add_as_special_follow}", user_follow_path(user, @follow, :special => @follow.special), 
+                         :remote => true, :method => :put, :class => "flipup-on-click", :style => "display:none;",
+                         :icon => "icon-check#{ "-empty" if @follow.special}" %>
+      </li>
+      <li class="flipup-on-click" style="display:none;">
+
+      </li>
+      <li class="divider"></li>
+      <li>
+        <%= link_to "#{t :unfollow}", user_follow_path(user, @follow), 
+                                      :remote => true, :method => :delete %>
+      </li>
+    </ul>
+  <% else %>
+    <%= link_to user_follows_path(user), :class => "btn btn-success", :remote => true, 
+                                         :method => :post do %>
+      <%= "#{user.is_male?() ? t('follow_him') : t('follow_her')}" %>
+      <b class="caret"></b>
+    <% end %>
+  <% end %>
+</div>

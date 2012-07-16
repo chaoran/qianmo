@@ -1,0 +1,21 @@
+<ul class="dropdown-menu-fb persist">
+  <% if !@follows 
+    @follows = user.latest_follows
+  else 
+    @has_all = true 
+  end %>
+  <% if @follows.length > 0 %>
+    <% for f in @follows do %>
+      <%= render "follows/show", :follow => f %>
+    <% end %>
+  <% else %>
+    <li><span><%= t :no_new_follows %><span></li>
+  <% end %>
+  <li class="footer">
+    <% if @has_all %>
+      <span><%= t :has_displayed_all %></span>
+    <% else %>
+      <%= link_to "#{t :display_all}", user_follows_path(user), :remote => true %>
+    <% end %>
+  </li>
+</ul>

@@ -37,24 +37,10 @@
   vertical-align: top;
 }
 
-.events.dropdown-menu li {
-  padding-right: 30px;
-}
-
-.events.dropdown-menu li a {
-  margin: 6px 0 8px 4px;
-  display: inline-block;
-}
-
-.navbar .nav .events.dropdown-menu .btn {
-  margin: 1px 0 4px 4px;
-  padding: 2px 8px 3px;
-}
-
-.navbar .nav input[type="text"],
-.navbar .nav input[type="submit"],
-.navbar .nav input[type="password"],
-.navbar .nav a.btn {
+.navbar input[type="text"],
+.navbar input[type="submit"],
+.navbar input[type="password"],
+.navbar .btn {
   margin: 8px 2px 0;
 }
 

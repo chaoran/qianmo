@@ -1,0 +1,40 @@
+<div class="article-preview" id="<%= article.id %>">
+  <%= link_to user_profile_path(article.user) do %>
+    <%= image_tag user.avatar.url(:thumb) %>
+  <% end %>
+  <div class="article-preview-holder">
+    <div class="article-preview-title">
+      <%= link_to article.title, article_path(article) %>
+      <%= my_link_to "#{t :expand}", nil, :icon => "icon-caret-right", :class => "action-expand" %>
+    </div>
+    <div class="article-preview-header">
+      <%= link_to article.user.name, user_profile_path(user) %>
+      <small class="timestamp">
+        <%= "#{t :posted_at_time, :time => time_ago_in_words(article.created_at)}".html_safe %>
+      </small>
+    </div>
+    <div class="article-footer">
+      <ul class="actions">
+        <li><%= render 'likes/show', :likable => post %></li>
+        <li class="divider">·</li>
+        <li>
+          <%= my_link_to "#{t :share}", new_post_path, "icon-share-alt", :remote => true, :class => "share" %>
+          <%= link_to article_path(article), :class => "num-shares" do %>
+            <%= "(#{article.shares_count})" if article.shares_count > 0 %>
+          <% end %>
+        </li>
+        <li class="divider">·</li>
+        <li>
+          <%= my_link_to "#{t :reply}", nil, 
+                         "icon-comment#{ "-alt" if article.comments_count == 0}", :class => "comment" %>
+          <%= link_to article_path(article), :class => "num-comments" do %>
+            <%= "(#{article.comments_count})" if article.comments_count > 0 %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="article-new-comment" style="display:none;">
+      <%= render 'comments/new', :commentable => article, :rows => 1 %>
+    </div>
+  </div>
+</div>

@@ -28,7 +28,7 @@
         </li>
         <li><span class="grey">·</span></li>
         <li>
-          <%= link_to_with_icon "#{t :repost}", post_path(post), "icon-share-alt", :remote => true %>
+          <%= link_to_with_icon "#{t :repost}", repost_post_path(post), "icon-share-alt", :remote => true %>
           <%= post_stat("num-reposts", post.children_count) %>
         </li>
         <li><span class="grey">·</span></li>

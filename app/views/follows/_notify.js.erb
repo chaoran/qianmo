@@ -1,0 +1,3 @@
+<% publish_to "/user/#{user.id}" do %>
+  $(".navbar .follows").replaceWith("<%= escape_javascript( render "follows/dropdown", :user => user )%>");
+<% end %>

@@ -3,6 +3,6 @@
   <% for comment in comments %>
     <%= render 'comments/show', :comment => comment %>
   <% end %>
-  <%= render 'comments/new', :commentable => commentable %>
+  <%= render 'comments/new', :commentable => commentable, :rows => 1 %>
 </div>
 

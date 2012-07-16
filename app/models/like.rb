@@ -1,5 +1,5 @@
 class Like < ActiveRecord::Base
-  belongs_to :likable, :polymorphic => true
+  belongs_to :likable, :polymorphic => true, :counter_cache => "likes_count"
   belongs_to :user
 
   attr_accessible :user

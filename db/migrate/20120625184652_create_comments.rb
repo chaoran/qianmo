@@ -4,8 +4,8 @@ class CreateComments < ActiveRecord::Migration
       t.references :commentable, :polymorphic => true
       t.text :text
       t.references :user
-      t.string :source
-
+      t.integer :likes_count, :default => 0
+      
       t.timestamps
     end
     add_index :comments, :commentable_id

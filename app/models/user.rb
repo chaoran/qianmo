@@ -9,21 +9,13 @@ class User < ActiveRecord::Base
 
   has_one :profile
   
-  has_many :follows, :dependent => :delete_all
+  has_many :follows, :dependent => :delete_all, :order => "created_at DESC"
   has_many :followers, :through => :follows, :source => :follower
   has_many :followed, :class_name => "Follow", :foreign_key => "follower_id"
   has_many :followed_users, :through => :followed, :source => "user"
   
-  has_many :friendships, :dependent => :destroy
-  has_many :friends, :through => :friendships, :source => :friend, :dependent => :destroy
-  
-  has_many :friend_events, :foreign_key => "receiver_id", :dependent => :delete_all, 
-                           :order => "created_at"
-  has_many :unread_friend_events, :class_name => "FriendEvent", :foreign_key => "receiver_id",
-                                  :dependent => :delete_all, :order => "created_at",
-                                  :conditions => "consumed = false"
-  has_many :mention_events, :foreign_key => "receiver_id", :dependent => :delete_all,
-                            :order => "created_at"
+  has_many :messages, :dependent => :delete_all, :order => "created_at DESC"
+  has_many :notifications, :dependent => :delete_all, :order => "created_at DESC"
   
   has_many :pages, :as => :creator
   has_many :posts, :order => "created_at DESC"
@@ -48,6 +40,22 @@ class User < ActiveRecord::Base
   
   def stream_posts
     return Post.where("user_id IN (?)", self.followed_user_ids << self.id).order("created_at DESC").includes(:comments, :user, :liked_users)
+  end
+  
+  def num_unread_follows
+    self.follows.where(:read => false).size
+  end
+  
+  def latest_follows
+    follows = self.follows.where("created_at > ? OR read = false", 1.week.ago).order("created_at")
+  end
+  
+  def unread_messages
+    self.messages.where(:read => false).order("created_at")
+  end
+  
+  def unread_notifications
+    self.notifications.where(:read => false).order("created_at")
   end
   
   protected

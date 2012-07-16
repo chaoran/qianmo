@@ -1,5 +1,0 @@
-<%= link_to "#{t :add_as_friend}", friend_events_path(:user_id => @user.id),
-            :remote => true, :method => :post, :class => "btn btn-info" %>
-<%= my_link_to "#{t :unfollow}", user_follow_path(@user),
-            :class => "btn btn-warning",
-            :remote => true, :method => :delete %>

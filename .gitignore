@@ -18,4 +18,4 @@
 /public/uploads/*
 
 # Ignore cache
-/vender/cache
+/vendor/cache

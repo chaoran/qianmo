@@ -16,3 +16,6 @@
 
 # Ignore avatars
 /public/uploads/*
+
+# Ignore cache
+/vender/cache/*

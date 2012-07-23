@@ -1,7 +1,0 @@
-<%= simple_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put } do |f| %>
-	<%= f.input :email, :label => "#{t :new_email}" %>
-	<%= hidden_field_tag :field, @edit_field %>
-	<%= f.input :current_password, :label => "#{t :current_passowrd}", 
-																 :hint => "#{t :why_current_password_is_needed}", :required => true %>
-	<%= f.button :wrapped, :cancel => edit_user_registration_path(current_user) %>
-<% end %>

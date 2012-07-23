@@ -1,23 +1,33 @@
-class PasswordsController < Devise::PasswordsController
-  def new
-    super
+class PasswordsController < ApplicationController
+  def create
+    @account = Account.find_by_email(params[:email])
+    if @account
+      @account.sent_reset_password_instructions
+      flash.now[:notice] = I18n.t(:'passwords.sent', :email => params[:email]).html_safe
+    else
+      flash.now[:error] = I18n.t(:'passwords.email_not_found', :email => params[:email]).html_safe
+    end
   end
   
-  def create
-    self.resource = resource_class.send_reset_password_instructions(resource_params)
-
-    if successfully_sent?(resource)
-      respond_to do |format|
-        format.js { render :layout => false }
-      end
-      #respond_with({}, :location => after_sending_reset_password_instructions_path_for(resource_name))
+  def edit
+    @account = Account.find_by_password_reset_token(params[:token])
+    if @account && @account.valid?
+      render 'edit'
     else
-      #raise "error"
-      #render 'create_error', :formats => [:js], :layout => false
-      respond_to do |format|
-        format.js { render 'create_error', :layout => false }
-      end
-      #respond_with(resource)
+      @account = Account.new if !@account
+      flash[:error] = I18n.t(:'activerecord.errors.accounts.password_reset_token_invalid')
+      redirect_to root_path
+    end
+  end
+  
+  def update
+    @account = Account.find(params[:account_id])
+    @account.remembered_at = nil # reset remembered_at to clear user cookies
+    @account.password_set_at = Time.now
+    if @account.update_attributes(params[:account])
+      redirect_to root_path, :notice => I18n.t(:'passwords.updated')
+    else
+      render 'edit'
     end
   end
 end

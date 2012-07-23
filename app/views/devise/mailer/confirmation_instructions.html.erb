@@ -1,7 +1,0 @@
-<p><%= @resource.name %>, <%= t :confirmation_email_1, :app_name => "#{t :app_name}" %></p>
-
-<p><%= t :confirmation_email_2 %></p>
-<p>
-  <%= link_to "#{confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)}", 
-          confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
-</p>

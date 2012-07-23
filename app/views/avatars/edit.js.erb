@@ -1,5 +1,6 @@
 <%= remotipart_response do %>
-	$("#avatar_modal").html("<%= escape_javascript( render 'crop' ) %>")
+  $("#avatar_modal").modal("hide")
+	$("#modal-placeholder").html("<%= j render 'crop' %>")
 	$("#avatar_modal").modal("show")
 
   $('#cropbox').Jcrop({

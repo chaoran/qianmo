@@ -14,7 +14,6 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = current_user.profile
-    @profile = current_user.create_profile() if !@profile
     if @profile.update_attributes(params[:profile])
       redirect_to user_profile_path current_user
     else

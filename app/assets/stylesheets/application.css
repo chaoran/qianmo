@@ -37,7 +37,7 @@
 }
 
 .body {
-  min-height: 800px;
+  min-height: 600px;
 }
 
 .delete {
@@ -172,3 +172,10 @@ footer ul li {
   color: #999999;
   margin: 0 8px;
 }
+
+.btn-align {
+  padding: 5px 2px;
+  vertical-align: top;
+  display: inline-block;
+}
+

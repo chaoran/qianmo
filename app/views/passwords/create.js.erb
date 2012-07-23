@@ -1,2 +1,2 @@
-$("#passwordModal").html("<%= escape_javascript( render 'reset_password_sent') %>")
-$("#passwordModal").modal("show")
+$("#password_modal").modal('hide');
+$(".alert-placeholder").replaceWith("<%= j render 'shared/messages' %>");

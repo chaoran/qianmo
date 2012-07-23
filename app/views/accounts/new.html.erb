@@ -1,32 +1,36 @@
-<%= title "#{t :register_new_account}" %>
-<!-- Display a login form on register page's top bar -->
-<%= content_for :brand do %>
-	<a class="brand" href="#"><%= t :app_name %></a>
-<% end %>
+<%= title "#{t :'accounts.title'}" %>
+<%= render 'shared/messages' %>
 
-<div class="row">
-	<div class="span7">
-		 &nbsp;
-	</div>
-	<div class="span5">
-		<div class="hero-unit">
-			<div class="page-header">
-				<h2><%= t :join_now %></h2>
-				<p><%= t :join_slogan %></p>
-			</div>
-			<%= simple_form_for @user, :as => :user, 
-			                           :url => registration_path(:user),
-			                           :validate => true do |f| %>
-				<div class="inputs">
-					<%= f.input :email %>
-					<%= f.input :name %>
-					<%= f.input :password, :required => true %>
-					<%= f.input :password_confirmation, :required => true %>
-				</div>
-				<div class="actions">
-			    <%= f.button :submit, "#{t :sign_up}", :class => 'btn-success' %>
-				</div>
+<div class="span7">
+	 &nbsp;
+</div>
+<div class="span5">
+	<div class="hero-unit">
+	  <div class="page-header">
+	    <h2><%= t :'accounts.join_now' %></h2>
+			<h3><%= t :'accounts.join_slogan' %></h3>
+	  </div>
+		<%= simple_form_for @account,
+		                    :html => {:class => "form-horizontal compact"},
+		                    :validate => true do |f| %>
+			<%= f.input :email %>
+			<%= f.input :password, :required => true, :validate => { :confirmation => false } %>
+			
+			<%= f.fields_for :user do |ff| %>
+			  <%= ff.input :name %>
+			  <%= ff.input :sex, :collection => [["#{t 'male'}", true], ["#{t 'female'}", false]], 
+                          :required => true, :prompt => ["t :please_choose", nil],
+         									:input_html => { :class => "span2" }%>
+        <%= ff.input :date_of_birth, :as => :date, 
+        														 :start_year => Date.today.year - 12, 
+         														 :end_year => Date.today.year - 90,
+         														 :prompt => true, :input_html => { :class => "span1" } %>
 			<% end %>
-		</div>
+
+		  <label class="control-label">&nbsp;</label>
+		  <div class="form-actions">
+		    <%= f.button :submit, "#{t :'accounts.signup'}", :class => 'btn-success btn-register' %>
+		  </div>
+		<% end %>
 	</div>
 </div>

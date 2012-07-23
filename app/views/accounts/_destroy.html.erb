@@ -1,4 +1,4 @@
-<%= content_tag :div, :class => "modal fade", 
+<%= content_tag :div, :class => "modal hide", 
  											:id => "destroyAccountModal" do %>
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">×</button>
@@ -14,7 +14,7 @@
   </div>
   <div class="modal-footer">
 		<div class="actions">
-			<%= link_to "#{t :okay}", user_registration_path, :method => :delete, :class => "btn btn-danger" %>
+			<%= link_to "#{t :okay}", account_path, :method => :delete, :class => "btn btn-danger" %>
     	<a href="#" class="btn" data-dismiss="modal"><%= t :cancel %></a>
 	  </div>
   </div>

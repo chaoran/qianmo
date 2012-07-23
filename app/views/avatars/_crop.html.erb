@@ -1,36 +1,39 @@
-<div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal">×</button>
-  <h3><%= t :generate_thumb %></h3>
-</div>
-<div class="modal-body">
-	<div class="span5">
-		<ul class="thumbnails">
-			<li class="span3">
-				<div class="thumbnail"><%= image_tag current_user.avatar.url, :id => "cropbox" %></div>
-			</li>
-			<li class="span">
-				<div class="thumbnail">
-				  <div class="caption">
-						<span><%= t :thumb_preview %></span>
-					</div>
-					<div style="width:100px; height:100px; overflow:hidden">
-					  <%= image_tag current_user.avatar.url, :id => "cropbox-preview" %>
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div>
-</div>
-<div class="modal-footer">
-	<%= simple_form_for current_user, :url => user_avatar_path(current_user),
-	 											 :html => { :method => :put } do |f| %>
-		<% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
-			<%= f.hidden_field attribute %>
-		<% end %>
-		<div class="actions">
-			<%= f.button :submit, "#{t :okay}", :class => "btn-primary" %>
-			<a href="#" class="btn" data-dismiss="modal"><%= t :cancel %></a>
-		</div>
-	<% end %>
-</div>
+<%= content_tag :div, :class => "modal hide", 
+ 											:id => "avatar_modal" do %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3><%= t :generate_thumb %></h3>
+  </div>
+  <div class="modal-body">
+  	<div class="span5">
+  		<ul class="thumbnails">
+  			<li class="span3">
+  				<div class="thumbnail"><%= image_tag @user.avatar.url, :id => "cropbox" %></div>
+  			</li>
+  			<li class="span">
+  				<div class="thumbnail">
+  				  <div class="caption">
+  						<span><%= t :thumb_preview %></span>
+  					</div>
+  					<div style="width:100px; height:100px; overflow:hidden">
+  					  <%= image_tag @user.avatar.url, :id => "cropbox-preview" %>
+  					</div>
+  				</div>
+  			</li>
+  		</ul>
+  	</div>
+  </div>
+  <div class="modal-footer">
+  	<%= simple_form_for @user, :url => avatar_path,
+  	 											 :html => { :method => :put } do |f| %>
+  		<% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
+  			<%= f.hidden_field attribute %>
+  		<% end %>
+  		<div class="actions">
+  			<%= f.button :submit, "#{t :okay}", :class => "btn-primary" %>
+  			<a href="#" class="btn" data-dismiss="modal"><%= t :cancel %></a>
+  		</div>
+  	<% end %>
+  </div>
+<% end %>
 

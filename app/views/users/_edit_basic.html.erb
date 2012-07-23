@@ -1,0 +1,31 @@
+<%= content_tag :div, :class => "modal hide", 
+ 											:id => "user_basic_modal" do %>
+  <%= simple_form_for @user, :html => { :class => "form-horizontal" }, :remote => true do |f| %>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">×</button>
+      <h3><%= t :'users.edit_basic_info' %></h3>
+    </div>
+    <div class="modal-body">
+    	<div class="inputs">
+    	  <%= f.input :sex, :collection => [["#{t 'male'}", true], ["#{t 'female'}", false]], 
+                          :required => true, :prompt => ["t :please_choose", nil],
+         									:input_html => { :class => "span2" }%>
+    	  <%= f.input :date_of_birth, :as => :date, 
+        														:start_year => Date.today.year - 12, 
+         														:end_year => Date.today.year - 90,
+         														:prompt => true, :input_html => { :class => "span1" } %>
+    	  <%= f.input :lives_in, :input_html => { :class => "input-medium" } %>
+    		<%= f.input :hometown, :input_html => { :class => "input-medium" } %>
+      </div>
+    </div>
+    <div class="modal-footer">
+    	<div class="actions">
+    		<%= f.button :submit, "#{t :'actions.save'}", :class => "btn-primary" %>
+    		<a href="#" class="btn" data-dismiss="modal"><%= t :cancel %></a>
+    	</div>
+    </div>
+  <% end %>
+<% end %>
+
+
+

@@ -1,13 +1,7 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :token_authenticatable, :registerable, 
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
-         :omniauthable
-  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h, :remote_avatar_url
-
-  has_one :profile
+  belongs_to :account
+  
+  mount_uploader :avatar, AvatarUploader
   
   has_many :follows, :dependent => :delete_all, :order => "created_at DESC"
   has_many :followers, :through => :follows, :source => :follower
@@ -23,19 +17,22 @@ class User < ActiveRecord::Base
   has_many :like_posts, :dependent => :destroy
   has_many :liked_posts, :through => :like_posts, :class_name => "Post"
   
-  mount_uploader :avatar, AvatarUploader
+  attr_accessor :crop_x, :crop_y, :crop_h, :crop_w
   
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :username, :name, :password, :password_confirmation, :remember_me,
-                  :avatar, :remote_avatar_url, :crop_x, :crop_y, :crop_w, :crop_h
+  attr_accessible :name, :sex, :date_of_birth, 
+                  :hometown, :lives_in, 
+                  :status, :last_seen_at, 
+                  :avatar, :remote_avatar_url, :crop_x, :crop_y, :crop_h, :crop_w
+
+  validates_presence_of :name, :date_of_birth
+  validates_inclusion_of :sex, :in => [true, false]
+  validates_uniqueness_of :name
   
-  validates_presence_of :name, :email
-  validates_uniqueness_of :username, :email, :name
   validates :avatar, :file_size => { :maximum => 0.5.megabytes.to_i }
   after_update :crop_avatar
   
   def is_male?
-    return profile.sex;
+    return self.sex;
   end
   
   def stream_posts
@@ -63,5 +60,4 @@ class User < ActiveRecord::Base
   def crop_avatar
       avatar.recreate_versions! if crop_x.present?
   end
-  
 end

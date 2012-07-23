@@ -1,0 +1,31 @@
+<% if params[:edit] == "name" %>
+<li class="name">
+  <div class="edit">
+    <div class="header"><%= t :'users.name' %></div>
+    <div class="content">
+      <%= simple_form_for @account, :html => { :class => 'form-horizontal compact' } do |f| %>
+        <%= f.simple_fields_for :user, @account.user do |ff| %>
+      	  <%= ff.input :name, :label => "#{t :'users.name'}", 
+        										 :required => true, 
+        										 :input_html => { :class => 'span2' } %>
+        <% end %>
+      	<%= hidden_field_tag :edit, "name" %>
+      	<%= f.input :current_password, :label => "#{t :'accounts.current_password'}", 
+      												 :hint => "#{t :'accounts.need_password_to_make_changes'}", 
+      												 :required => true %>
+      	<div class="actions">
+      	<%= f.button :wrapped, :cancel => edit_account_path %>
+      	</div>
+      <% end %>
+    </div>
+  </div>
+</li>
+<% else %>
+<li class="name">
+  <%= link_to edit_account_path(:edit => "name"), :class => "show-icon-on-hover" do %>
+    <span class="header"><%= t :'users.name' %></span>
+    <span><%= @account.user.name %></span>
+    <span class="action"><i class="icon-pencil"></i><%= t :'actions.edit' %></span>
+  <% end %>
+</li>
+<% end %>

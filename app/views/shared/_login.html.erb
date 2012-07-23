@@ -1,14 +1,14 @@
-<%= form_tag user_session_path, :class => "navbar-form" do |f| %>
+<%= form_tag sessions_path, :class => "form-inline" do |f| %>
 <ul class="nav pull-right">
   <li><%= text_field_tag :email, nil, :class => "span2", 
-                                 :placeholder => "#{t :email}" %></li>
+                                 :placeholder => "#{t :'sessions.email'}" %></li>
   <li>
     <%= password_field_tag :password, nil, :class => "span2", 
-                           :placeholder => "#{t :password}" %>
+                           :placeholder => "#{t :'sessions.password'}" %>
   </li>
-  <li><label><%= check_box_tag :remember_me %><%= t :remember_me %></label></li>
-  <li><%= submit_tag "#{t :sign_in}", :class => "btn btn-primary" %></li>
-  <li><%= link_to "#{t :forgot_password}", new_user_password_path, :remote => true %></li>
-  </ul>
+  <li><label class="checkbox"><%= check_box_tag :remember_me %><%= t :remember_me %></label></li>
+  <li><%= submit_tag "#{t :'sessions.login'}", :class => "btn btn-primary" %></li>
+  <li><%= link_to "#{t :'sessions.forgot_password'}", new_password_path, :remote => true %></li>
+</ul>
 <% end %>
 

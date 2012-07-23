@@ -99,7 +99,7 @@ zh-CN:
     format: ! '%{attribute} %{message}'
     messages:
       accepted: 必须是可被接受的
-      blank: 不能为空
+      blank: 不能是空的
       confirmation: 与确认值不匹配
       empty: 不能留空
       equal_to: 必须等于 %{count}
@@ -107,7 +107,7 @@ zh-CN:
       exclusion: 是保留关键字
       greater_than: 必须大于 %{count}
       greater_than_or_equal_to: 必须大于或等于 %{count}
-      inclusion: 不包含于列表中
+      inclusion: 必须从列表中选择一项
       invalid: 是无效的
       less_than: 必须小于 %{count}
       less_than_or_equal_to: 必须小于或等于 %{count}
@@ -200,11 +200,6 @@ zh-CN:
           
       #<<: *errors
   activerecord:
-    profile:
-      sex: "性别"
-      date_of_birth: "出生日期"
-      hometown: "家乡"
-      current_city: "现居城市"
     properties:
       
     errors:

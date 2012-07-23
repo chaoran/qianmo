@@ -1,0 +1,16 @@
+zh-CN:
+    actions:
+        edit: '修改'
+        okay: '确定'
+        upload: '上传'
+        save: '保存'
+        
+    errors:
+        messages:
+            size_too_big: "图片大小超过限制 (最多可以是%{file_size})"
+            extension_white_list_error: "图片格式必须为jpg或者png"
+            invalid_remote_url: '链接地址无效'
+    
+    unconfirmed_notification1: '你的邮箱地址: ' 
+    unconfirmed_notification2: ' 尚未确认; 邮件地址未经确认的账户无法在阡陌发表任何内容。'
+    resend_confirmation_email: '重新发送确认邮件?'

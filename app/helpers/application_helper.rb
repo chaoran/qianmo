@@ -1,11 +1,5 @@
 # encoding: utf-8
 module ApplicationHelper
-  # This makes form_for helper usable for singular nested resource 
-  # It should be reported to Rails community as a bug
-  def user_profiles_path (*args)
-    user_profile_path(*args)
-  end
-  
   def icon(name)
     "<i class=\"icon-#{name}\"></i>"
   end
@@ -85,5 +79,15 @@ module ApplicationHelper
       html.slice!(" nofollow") if html.include?("tooltip")
       html.html_safe
     end
+  end
+  
+  def unconfirmed_notification(email)
+    html = ""
+    html << I18n.t("unconfirmed_notification1")
+    html << "<em>#{email}</em>"
+    html << I18n.t("unconfirmed_notification2")
+    html << link_to("#{t :resend_confirmation_email}", confirmation_path, 
+                    :method => :post, :remote => true)
+    html.html_safe
   end
 end

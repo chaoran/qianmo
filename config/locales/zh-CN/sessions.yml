@@ -1,0 +1,16 @@
+zh-CN:
+    sessions:
+        # new.html.erb
+        title: '登录账户'
+        login: '登录'
+        forgot_password: '忘记了密码?'
+        remember_me: '记住我'
+        
+        email: '邮箱'
+        password: '密码'   
+        logged_out: "你已经成功退出了你的账户。"     
+    
+    activerecord:
+        session:
+            errors:
+                login_failed: 用户名或密码错误

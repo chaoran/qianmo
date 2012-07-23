@@ -17,7 +17,7 @@ module Trigger
       unless name.blank?
         if user = User.find_by_name(name)
           users << user unless users.include?(user)
-          replace = "<a href=\"#{user_profile_path(user)}\">" + m + "</a>"
+          replace = "<a href=\"#{user_path(user)}\">" + m + "</a>"
         else
           m
         end

@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  email: boshisheng@bupt.edu.cn
-  cell_phone: 
-  hashed_password: $2a$10$8vFMnDLOmgfPBDkMJ8Oh2OtG2JbrxlGLCQp6MILC22QLxcmbnaPAm
+  email: MyString
+  password_digest: MyString
+  username: MyString
+  remembered_at: 2012-07-18 03:46:08
 
 two:
-  email: 
-  cell_phone: 13766533689
-  hashed_password: $2a$10$.JyvTQbR7M6iY6HYz.3.KusbbqK021pmJVwBqBIvr/CWfHUWhkOfq
+  email: MyString
+  password_digest: MyString
+  username: MyString
+  remembered_at: 2012-07-18 03:46:08

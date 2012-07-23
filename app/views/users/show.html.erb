@@ -1,0 +1,52 @@
+<div class='row user' id="<%= @user.id %>">
+	<div class='span3'>
+	  <div id="user_side" class="well">
+	    <p id="user_avatar" class="pinable hoverable">
+	      <%= my_link_to "#{t :edit}", new_avatar_path, 
+                                     :class => "pin-top-right btn hidden show-on-hover",
+                                     :icon => "icon-pencil",
+                                     :remote => true if current_user == @user %>
+  			<%= image_tag @user.avatar.url %>
+  			<%= render :partial => 'basic' %>
+  		</p>
+	  </div>
+	</div>
+	<div class='span9 body'>
+    <div class="page-header no-margin-top">
+      <h1 style="display: inline-block">
+        <%= @user.name %>
+      </h1>
+      <% if current_user != @user %>
+        <div class="pull-right">
+          <%= render 'shared/follow_button', :user => @user %>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <%= render 'posts/new', :post => @user.posts.build, :placeholder => "@#{@user.name}", 
+                              :title => "#{t :say_something_to_him, :user => @user.name}" %>
+    </div>
+
+    <div id="profile_histroy">
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li class="active"><%= link_to "#{t :stream}", "#page_stream_holder", :"data-toggle" => "tab" %></li>
+          <li><%= link_to "#{t :pictures}", "#"%></li>
+          <li><%= link_to "#{t :articles}", "#" %></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="user_stream_holder">
+            <%= render 'posts/index', :posts => @user.posts.limit(50) %>
+          </div>
+          <div class="tab-pane" id="user_pictures_holder">
+          </div>
+          <div class="tab-pane" id="user_articles_holder">
+          </div>
+          <div class="tab-pane" id="user_pages_holder">
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
+</div>
+

@@ -1,0 +1,5 @@
+zh-CN:
+    confirmations:
+        confirmed: "你的邮箱 <em>%{email}</em> 已成功验证！"
+        invalid_token: '邮箱验证失败! 你的确认邮箱链接已经过期或不正确。'
+        sent: "一封确认邮件已经发送到你的邮箱: <em>%{email}</em>, 请登录你的邮箱查收。"

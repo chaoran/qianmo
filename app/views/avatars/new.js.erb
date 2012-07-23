@@ -1,4 +1,5 @@
-$("#modal-placeholder").html("<%= escape_javascript( render :partial => 'upload', :layout => "layouts/modal" ) %>")
+$("#avatar_modal").modal("hide")
+$("#modal-placeholder").html("<%= j render 'upload' %>")
 $("#avatar_modal").modal("show")
 $('.btn-primary').click(function(){
   $(this).addClass('loading disabled');

@@ -1,4 +1,5 @@
 zh-CN:
+    say_something: "想说些什么?"
     say_something_about_page: "关于 %{page} 想说些什么?"
     say_something_to_him: "想对 %{user} 说点什么？" 
     publish: "发布"

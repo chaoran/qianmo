@@ -5,8 +5,6 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <!-- verify ownership for weibo auth2 -->
-  <meta property="wb:webmaster" content="581141a7b0ea5cca" />
 </head>
 <body>
 	<div class="navbar navbar-fixed-top">
@@ -16,20 +14,10 @@
 			</div>
 		</div>
 	</div>
-	<div id="floatbar">
-	  <div class="container">
-	    <%= yield(:floatbar) if content_for?(:floatbar) %>
-	  </div>
-	</div>
-	<div class="container" <%= "style=\"padding-top:180px;\"".html_safe if content_for?(:floatbar) %>>
+	<div class="container body"%>
 		<div class='content'>
 			<div class='row'>
-				<div class='span12'>
-					<div id="alert-placeholder">					
-						<%= render 'shared/messages' %>						
-					</div>
 					<%= yield %>
-				</div>
 			</div>
 		</div>
 	</div>

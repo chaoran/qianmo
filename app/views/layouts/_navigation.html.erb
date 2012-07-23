@@ -6,8 +6,7 @@
 <% if content_for?(:brand) %>
 	<%= yield :brand %>
 <% else %>
-  <%= link_to "#{t :app_name}", user_signed_in? ? root_path : new_user_registration_path, 
-                                :class => "brand" %>
+  <%= link_to "#{t :app_name}", user_signed_in? ?  root_path : signup_path, :class => "brand" %>
 <% end %>
 <div class="nav-collapse">
 	<% if user_signed_in? %>
@@ -22,7 +21,7 @@
         <%= render "follows/dropdown", :user => current_user %>
         <li class="divider-vertical"></li>
         <li class="pinable">
-          <%= link_to user_profile_path(current_user), :style => "margin-left: 25px;" do %>
+          <%= link_to user_path(current_user), :style => "margin-left: 25px;" do %>
             <%= image_tag current_user.avatar.url(:thumb), :width => "30px", :height => "30px", 
                                                            :class => "pin-top7-left" %>
             <%= current_user.name %>
@@ -32,8 +31,8 @@
           <%= link_to "<b class=\"caret\"></b>".html_safe, "#", 
                          :"data-toggle" => "dropdown", :class => "dropdown-toggle" %>
    				<ul class="dropdown-menu">
-   					<li><%= my_link_to "#{t :account_setting}", edit_user_registration_path, :icon => "icon-cog" %></li>
-   					<li><%= my_link_to "#{t :logout}", destroy_user_session_path, :method => :delete, :icon => "icon-signout" %></li>
+   					<li><%= my_link_to "#{t :account_setting}", edit_account_path, :icon => "icon-cogs icon-large" %></li>
+   					<li><%= my_link_to "#{t :logout}", logout_path, :method => :delete, :icon => "icon-signout icon-large" %></li>
    				</ul>
         </li>
 		  </ul>
@@ -41,7 +40,7 @@
 	<% else %>
 	  <% unless controller.controller_name == "accounts" && controller.action_name == "new" %>
       <div class="nav pull-right">
-        <%= link_to "#{t :sign_up}", new_user_registration_path, 
+        <%= link_to "#{t :'accounts.signup'}", signup_path, 
   	                                 :class => "btn btn-success" %>
       </div>
   	<% end %>

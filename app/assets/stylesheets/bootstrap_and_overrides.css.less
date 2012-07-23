@@ -1,7 +1,7 @@
 @import "twitter/bootstrap/bootstrap";
 body { 
-	padding-top: 50px;
-//	padding-left: 20px;
+	padding-top: 70px;
+/*  padding-left: 20px;*/
 }
 
 @import "twitter/bootstrap/responsive";
@@ -46,13 +46,77 @@ h1, h2, h3, h4, h5, h6, strong {
 	font-family: Tahoma, STHeiTi, Arial, Helvetica, sans-serif, Verdana, "Helvetica Neue"
 }
 
+/* page-header */
+
+.page-header {
+  padding: 0;
+  
+  &.no-margin {
+    margin: 0;
+  }
+  &.no-margin-top {
+    margin-top: 0;
+  }
+  &.no-border {
+    border: 0;
+  }
+  
+  h1 {
+    margin-bottom: 18px;
+  }
+  
+  h2 {
+    margin-bottom: 10px;
+  }
+}
+
+/* hero-unit */ 
+
 .hero-unit {
   padding: 40px;
   margin-bottom: 20px;
+  
+  .page-header {
+    border-bottom: 1px solid @grayLight
+  }
+  
+  .form-horizontal {
+    .control-group {
+      margin-bottom: 18px;
+    }
+  }
+  
+  .form-actions {
+    background-color: inherit;
+  }
 }
 
-.hero-unit .pull-right {
-  margin: -40px -40px 0 0;
+/* form-horizontal */
+
+.form-horizontal.compact {
+  .control-group {
+    margin-bottom: 9px;
+  }
+  .control-label {
+    width: 70px;
+  }
+  .controls {
+    margin-left: 80px;
+  }
+  .form-actions,
+  .actions {
+    padding-left: 80px;
+  }
+}
+
+/* sidebar 
+   use the same style as dropdown-menu */
+
+
+/* navbar */
+
+.navbar .form-inline {
+  margin: 0;
 }
 
 .navbar .nav > li > a {
@@ -81,6 +145,10 @@ h1, h2, h3, h4, h5, h6, strong {
   padding-right: 16px;
 }
 
+li .icon-large {
+  margin-right: 1em;
+}
+
 .icon-xlarge::before {
   vertical-align: middle;
   font-size: 2em;
@@ -102,12 +170,22 @@ h1, h2, h3, h4, h5, h6, strong {
   padding: 9px;
 }
 
-.alert {
-  margin-bottom: 10px;
-  margin-top: 18px;
-}
-
 .dropdown-menu div {
   padding: 3px 10px;
 }
 
+.btn-register {
+  padding: 6px 30px;
+  font-size: 15px;
+}
+
+label.checkbox {
+  margin-right: 4px;
+  margin-top: 0;
+}
+
+/* make input hint look grey */
+.help-block, 
+.help-inline {
+  color: @grayLight;
+}

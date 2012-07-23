@@ -1,0 +1,24 @@
+<div class="basic_info pinable hoverable">
+  <% if current_user == @user %>
+    <%= my_link_to "#{t :'actions.edit'}", edit_user_path, :remote => true, 
+                   :icon => 'icon-pencil', :class => "show-on-hover btn pin-top-right hidden" %>
+	<% end %>
+	<ul class="unstyled">
+	  <li>
+	    <strong><%= t :'users.was_born_on' %></strong>
+      <span><%= @user.date_of_birth %></span>
+	  </li>
+	  <% unless @user.lives_in.blank? %>
+	  <li>
+	    <strong><%= t :'users.now_lives_in' %></strong>
+      <span><%= @user.lives_in %></span>
+	  </li>
+	  <% end %>
+	  <% unless @user.hometown.blank? %>
+	  <li>
+	    <strong><%= t :'users.from' %></strong>
+      <span><%= @user.hometown %></span>
+	  </li>
+	  <% end %>
+	</ul>
+</div>

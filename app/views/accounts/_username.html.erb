@@ -1,0 +1,45 @@
+<% if params[:edit] == "username" %>
+<li class="username">
+  <div class="edit">
+    <div class="header"><%= t :'accounts.username' %></div>
+    <div class="content">
+      <%= simple_form_for @account, :html => { :class => 'form-horizontal compact' } do |f| %>
+        <% if @account.username.blank? || !@account.errors[:username].any? %>
+          <p>
+            <%= username_introduction %>
+          </p>
+      	<% else %>
+        	<p>
+        		<label><%= t :personal_url_introduction %>:</label>
+        		<span><%= "http://#{request.host_with_port}/" %><strong><%= current_user.username %></strong></span>
+        	</p>
+      	<% end %>
+      	<%= f.input :username, :label => "#{t :'accounts.username'}", 
+      												 :required => true, 
+      												 :input_html => { :class => 'span2' } %>
+      	<%= hidden_field_tag :edit, "username" %>
+      	<%= f.input :current_password, :label => "#{t :'accounts.current_password'}", 
+      												 :hint => "#{t :'accounts.need_password_to_make_changes'}", 
+      												 :required => true %>
+      	<div class="actions">
+      	<%= f.button :wrapped, :cancel => edit_account_path %>
+      	</div>
+      <% end %>
+    </div>
+  </div>
+</li>
+<% else %>
+<li class="username">
+  <%= link_to edit_account_path(:edit => "username"), :class => "show-icon-on-hover" do %>
+    <span class="header"><%= t :'accounts.username' %></span>
+    <span>
+      <% if @account.username.blank? %>
+        <%= username_introduction %>
+			<% else %>
+				<%= username_display(@account.username) %>
+			<% end %>
+    </span>
+    <span class="action"><i class="icon-pencil"></i><%= t :'actions.edit' %></span>
+  <% end %>
+</li>
+<% end %>

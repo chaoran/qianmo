@@ -1,7 +1,9 @@
-<% flash.each do |name, msg| %>
-  <% class_type = {:notice => "success", :error => "error", :alert => "warning"}%>
-  <div class="alert alert-<%= class_type[name] %>">
-    <a class="close" data-dismiss="alert">×</a>
-    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-  </div>
-<% end %>
+<div class="alert-placeholder">					
+	<% flash.each do |name, msg| %>
+    <% class_type = {:notice => "success", :error => "error", :alert => "warning"}%>
+    <div class="alert alert-<%= class_type[name] %>">
+      <a class="close" data-dismiss="alert">×</a>
+      <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    </div>
+  <% end %>					
+</div>

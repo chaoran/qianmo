@@ -1,0 +1,52 @@
+<li class="email">
+<% if params[:edit] == "email" %>
+  <div class="edit">
+    <div class="header"><%= t :'accounts.email' %></div>
+    <div class="content">
+      <% unless @account.unconfirmed_email.nil? %>
+        <p>
+          <span><%= t :'accounts.your_email_address' %>
+          <span><%= @account.unconfirmed_email %></span>
+          <span class="label label-important"><%= t :'accounts.unconfirmed' %></span>
+          <%= link_to "#{t :resend_confirmation_email}", confirmation_path, 
+                      :method => :post %>
+        </p>
+      <% end %>
+      <%= simple_form_for @account, :html => { :class => "form-horizontal compact" } do |f| %>
+      	<%= f.input :email, :label => "#{t :email}" %>
+      	<%= hidden_field_tag :edit, "email" %>
+      	<%= f.input :current_password, :label => "#{t :'accounts.current_password'}", 
+      																 :hint => "#{t :'accounts.need_password_to_make_changes'}", 
+      																 :required => true %>
+        <div class="actions">
+      	  <%= f.button :wrapped, :cancel => edit_account_path %>
+      	</div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <%= link_to edit_account_path(:edit => "email"), :class => "show-icon-on-hover" do %>
+    <div class="header"><%= t :'accounts.email' %></div>
+    <div class="content">
+      <div>
+        <%= @account.email %>
+        <% if @account.confirmed? %>
+          <span class="label label-success"><%= t :'accounts.confirmed' %></span>
+        <% else %>
+          <span class="label label-important"><%= t :'accounts.unconfirmed' %></span>
+          <small class="grey"><%= t :'accounts.warning_for_unconfirmed_account'%></small>
+        <% end %>
+      </div>
+      <% if @account.unconfirmed_email && @account.unconfirmed_email != @account.email %>
+        <div>
+          <strong><%= t :'accounts.new_email' %></strong>
+          <%= @account.unconfirmed_email %>
+          <span class="label label-important"><%= t :'accounts.unconfirmed' %></span>
+          <small class="grey"><%= t :'accounts.cannot_use_new_email_unless_confirmed'%></small>
+        </div>
+      <% end %>
+    </div>
+    <div class="action"><i class="icon-pencil"></i><%= t :'actions.edit' %></div>
+  <% end %>
+<% end %>
+</li>

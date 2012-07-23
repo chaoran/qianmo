@@ -1,0 +1,11 @@
+<%= title "#{t :account_setting}" %>
+<ul class="table-list">
+  <%= render 'name' %>
+  <%= render 'email' %>
+  <%= render 'username' %>
+  <%= render 'password' %>
+</ul>
+<div>
+  <%= link_to "#{t :delete_account}", nil, :'data-toggle' => "modal", :'data-target' => "#destroyAccountModal" %>
+  <%= content_for(:modal) { render 'destroy' } %>
+</div>

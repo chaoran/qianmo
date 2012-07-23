@@ -1,0 +1,65 @@
+@import "twitter/bootstrap/variables";
+@import "twitter/bootstrap/mixins";
+
+.table-list {
+  list-style: none;
+  margin-left: 0;
+  margin-bottom: 18px;
+  
+  & > li {
+    & + li > a,
+    & + li > .edit {
+      border-top: 1px solid #ddd;
+    }
+    
+    &:first-child > a,
+    &:first-child > .edit {
+      padding-top: 10px; 
+    }
+    
+    &:last-child > a,
+    &:last-child > .edit {
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 9px;
+    }
+    
+    & > a,
+    & > .edit {
+      padding: 9px 15px;
+      display: block;
+      
+      .header {
+        float: left;
+        width: 100px;
+        font-weight: bold;
+      }
+      
+      .content {
+        display: inline-block;
+      }
+    }
+    
+    & > a {
+      color: @textColor;
+      text-decoration: none;
+      
+      &:hover {
+        background-color: @tableBackgroundHover;
+
+        .action {
+          color: @linkColorHover;
+        }
+      }
+      
+      .action {
+        float: right;
+        text-align: right;
+        color: @linkColor;
+      }
+    }
+    
+    & > .edit {
+      background-color: @tableBackgroundAccent;
+    }
+  }
+}

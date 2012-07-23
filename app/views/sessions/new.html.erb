@@ -1,14 +1,31 @@
-<%= title "#{t :sign_in_title}" %>
-
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div class="inputs">
-    <%= f.input :email, :required => false, :autofocus => true %>
-    <%= f.input :password, :required => false %>
-    <%= f.input :remember_me, :as => :boolean, :wrapper => :checkbox if devise_mapping.rememberable? %>
+<%= title "#{t :'sessions.title'}" %>
+<div class="span6">
+<%= render 'shared/messages' %>
+<%= form_tag sessions_path, :method => :post, :class => 'form-horizontal' do %>
+  <div class="form-inputs">
+    <div class="control-group" for="email">
+      <label class="control-label" for="email"><%= t :'sessions.email' %>:</label>
+      <div class="controls">
+        <%= text_field_tag :email, params[:email] %>
+      </div>
+    </div>
+    <div class="control-group" for="password">
+      <label class="control-label" for="password"><%= t :'sessions.password' %>:</label>
+      <div class="controls">
+        <%= password_field_tag :password %>
+      </div>
+    </div>
+    <div class="control-group" for="remember_me">
+      <label class="control-label" for="remember_me"></label>
+      <div class="controls">
+        <label class="checkbox"><%= check_box_tag :remember_me %><%= t :remember_me %></label>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.button :submit, "#{t :sign_in}", :class => "btn-primary" %>&nbsp;
-		<%= link_to "#{t :forgot_password}", new_user_password_path, :remote => true %>
+  <div class="form-actions">
+    <%= submit_tag "#{t :'sessions.login'}", :class => "btn btn-primary btn-wide" %>
+		<%= link_to "#{t :'sessions.forgot_password'}", new_password_path, 
+		            :class => 'btn-align', :remote => true %>
   </div>
 <% end %>
+</div>

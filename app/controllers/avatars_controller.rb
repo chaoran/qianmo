@@ -1,42 +1,27 @@
-class AvatarsController < ApplicationController
-  before_filter :authenticate_user!
+class AvatarsController < AuthenticatedController
   around_filter :capture_download_error, :only => [:create]
     
   def create
-    if current_user.update_attributes(params[:user])
-      respond_to do |format|
-        format.html { redirect_to edit_user_avatar_path(current_user) }
-        format.js { render 'edit', :layout => false }
-      end
-    else     
-      respond_to do |format|
-        format.html { redirect_to new_user_avatar_path(current_user) }
-        format.js { render 'new_with_error', :layout => false }
-      end
+    @user = current_user
+    if @user.update_attributes(params[:user])
+      render 'edit'
+    else
+      render 'new'
     end
   end
 
   def new
-    respond_to do |format|
-      format.js { render :layout => false}
-    end 
+    @user = current_user
   end
 
   def edit
+    @user = current_user
   end
 
   def update
-    if current_user.update_attributes(params[:user])
-      respond_to do |format|
-        format.html { redirect_to user_profile_path(current_user) }
-        format.js { render 'edit', :layout => false }
-      end
-    else      
-      #respond_to do |format|
-      #  format.html { redirect_to 'edit' }
-      #  format.js { render 'new', :layout => false }
-      #end
-    end
+    @user = current_user
+    @user.update_attributes(params[:user])
+    redirect_to user_path(@user)
   end
   
   protected
@@ -44,10 +29,8 @@ class AvatarsController < ApplicationController
     begin
       yield
     rescue CarrierWave::DownloadError
-      current_user.errors.add(:remote_avatar_url, I18n.t('errors.messages.invalid_remote_url'))
-      respond_to do |format|
-        format.js { render 'new_with_error', :layout => false }
-      end
+      @user.errors.add(:remote_avatar_url, I18n.t('errors.messages.invalid_remote_url'))
+      render 'new'
     end
   end
 end

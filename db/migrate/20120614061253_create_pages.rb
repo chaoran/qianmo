@@ -20,5 +20,6 @@ class CreatePages < ActiveRecord::Migration
       t.timestamps
     end
     add_index :pages, :creator_id
+    add_index :pages, :title
   end
 end

@@ -1,0 +1,3 @@
+$('#user_basic_modal').modal('hide');
+$('#user_basic_modal').remove();
+$('#<%= @user.id %>.user .basic_info').replaceWith("<%= j render 'basic' %>");

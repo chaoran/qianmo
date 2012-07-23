@@ -1,0 +1,10 @@
+<p><%= t :'user_mailer.hello' %> <%= @account.user.name %>,</p>
+<p>
+  <%= t :'user_mailer.confirm_email.content' %>:
+</p>
+<p>
+  <%= link_to confirmation_url(:token => @confirmation.confirmation_token) do %>
+    <%= "#{confirmation_url(:token => @confirmation.confirmation_token)}".html_safe %>
+  <% end %>
+</p>
+

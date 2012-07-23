@@ -1,0 +1,34 @@
+zh-CN:
+    accounts:
+        # new.html.erb
+        title: '注册新账号'
+        join_now: '现在就加入'
+        join_slogan: '共同建造我们的桃花源'
+        signup: '注册'
+        
+        account_setting: '账户设置'
+        general: '通用设置'
+        security: '账户安全'
+        notification: '通知系统'
+        privacy: '账户隐私'
+            
+        email: '账户邮箱'
+        new_email: '新邮箱'
+        username: '用户名'
+        password: '密码'
+        new_password: '新密码'
+        password_confirmation: '确认密码'
+        current_password: '当前密码'
+        
+        confirmed: '已验证'        
+        unconfirmed: '尚未验证'
+        password_set_at: '%{time}前更新过'
+        cannot_use_new_email_unless_confirmed: '新邮箱在验证之后才会取代当前的账户邮箱'
+        
+        your_email_address: '你的邮箱: '
+        warning_for_unconfirmed_account: '未验证址的账户无法发表任何评论、微博或图片等内容'
+        username_introduction1: "添加用户名之后别人可以通过地址 "
+        username_introduction2: " 来访问你的阡陌主页"
+        need_password_to_make_changes: '请输入账户密码以保存你所作的修改'
+        
+        wrong_password: '密码错误'

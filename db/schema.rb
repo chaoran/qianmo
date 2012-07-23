@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120713081858) do
+ActiveRecord::Schema.define(:version => 20120719051749) do
 
   create_table "abouts", :force => true do |t|
     t.integer  "post_id"
@@ -22,6 +22,23 @@ ActiveRecord::Schema.define(:version => 20120713081858) do
 
   add_index "abouts", ["page_id"], :name => "index_abouts_on_page_id"
   add_index "abouts", ["post_id"], :name => "index_abouts_on_post_id"
+
+  create_table "accounts", :force => true do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "username"
+    t.datetime "remembered_at"
+    t.datetime "confirmed_at"
+    t.datetime "password_set_at"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "accounts", ["email"], :name => "index_accounts_on_email", :unique => true
+  add_index "accounts", ["password_reset_token"], :name => "index_accounts_on_password_reset_token", :unique => true
+  add_index "accounts", ["username"], :name => "index_accounts_on_username", :unique => true
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -45,14 +62,6 @@ ActiveRecord::Schema.define(:version => 20120713081858) do
     t.datetime "updated_at",   :null => false
   end
 
-  create_table "cities", :force => true do |t|
-    t.string   "town"
-    t.string   "admin"
-    t.string   "country"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id"
     t.string   "commentable_type"
@@ -65,6 +74,18 @@ ActiveRecord::Schema.define(:version => 20120713081858) do
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "confirmations", :force => true do |t|
+    t.string   "unconfirmed_email"
+    t.string   "confirmation_token"
+    t.datetime "confirmation_sent_at"
+    t.integer  "account_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "confirmations", ["account_id"], :name => "index_confirmations_on_account_id", :unique => true
+  add_index "confirmations", ["confirmation_token"], :name => "index_confirmations_on_confirmation_token", :unique => true
 
   create_table "follows", :force => true do |t|
     t.integer  "follower_id"
@@ -144,6 +165,7 @@ ActiveRecord::Schema.define(:version => 20120713081858) do
   end
 
   add_index "pages", ["creator_id"], :name => "index_pages_on_creator_id"
+  add_index "pages", ["title"], :name => "index_pages_on_title"
 
   create_table "posters", :force => true do |t|
     t.integer  "page_id"
@@ -171,18 +193,6 @@ ActiveRecord::Schema.define(:version => 20120713081858) do
   add_index "posts", ["parent_id"], :name => "index_posts_on_parent_id"
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
-  create_table "profiles", :force => true do |t|
-    t.boolean  "sex"
-    t.date     "date_of_birth"
-    t.string   "hometown"
-    t.string   "current_city"
-    t.integer  "user_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
-
   create_table "properties", :force => true do |t|
     t.integer  "page_id"
     t.string   "label"
@@ -205,32 +215,21 @@ ActiveRecord::Schema.define(:version => 20120713081858) do
   add_index "updates", ["updater_id"], :name => "index_updates_on_updater_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "username"
     t.string   "name"
+    t.boolean  "sex"
+    t.date     "date_of_birth"
     t.string   "avatar"
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.string   "authentication_token"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "last_seen_at"
+    t.string   "status"
+    t.string   "lives_in"
+    t.string   "hometown"
+    t.integer  "account_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
-  add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
-  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["account_id"], :name => "index_users_on_account_id", :unique => true
+  add_index "users", ["name"], :name => "index_users_on_name", :unique => true
 
   create_table "whiteboards", :force => true do |t|
     t.integer  "page_id"

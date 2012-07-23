@@ -1,18 +1,19 @@
-<h2><%= t :create_new_password %></h2>
-<p>
-<%= simple_form_for(resource, :as => resource_name, 
-                              :url => password_path(resource_name), 
-                              :html => { :method => :put }) do |f| %>
-  <%= f.input :reset_password_token, :as => :hidden %>
-  <%= f.full_error :reset_password_token %>
-
-  <div class="inputs">
-    <%= f.input :password, :required => true %>
-    <%= f.input :password_confirmation, :required => true %>
+<div class="span6">
+  <div class="page-header">
+    <h2><%= t :'passwords.set_new_password' %></h2>
   </div>
-
-  <div class="actions">
-    <%= f.button :submit, "#{t :okay}", :class => "btn-primary" %>
+  <div>
+    <%= simple_form_for @account, :url => password_path(:account_id => @account.id), 
+                        :html => { :method => :put, :class => 'form-horizontal' } do |f| %>
+      <%= f.input :password_reset_token, :as => :hidden %>
+      <%= f.full_error :password_reset_token %>
+      <div class="inputs">
+        <%= f.input :password, :required => true %>
+        <%= f.input :password_confirmation, :required => true %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "#{t :'actions.okay'}", :class => "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
-</p>
+</div>

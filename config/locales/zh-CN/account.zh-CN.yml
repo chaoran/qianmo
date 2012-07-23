@@ -15,6 +15,8 @@ zh-CN:
                 password: '密码'
                 password_confirmation: '确认密码'
                 name: "名字"
+                sex: "性别"
+                date_of_birth: "出生日期"
     
     delete_account: "删除我的账号"
     account_deletion_confirmation: "确认删除账号"
@@ -23,14 +25,10 @@ zh-CN:
     
     create_new_password: "设置新密码"
     
-    real_name: "真实姓名"
-    why_use_real_name: "阡陌网是一个实名制网站。使用真实姓名可以帮助你的朋友更快找到你。"
-    
     username_introduction: '添加用户名可以让你的朋友通过以下地址访问你的主页:'
     your_username: '你的用户名'
     why_current_password_is_needed: '你需要输入当前密码来授权系统更改你的数据'
     current_passowrd: '当前密码'
-    register_new_account: '注册新账号'
     confirmed: '已验证'
     unconfirmed: '未验证'
     resend_confirmation_email: '重新发送验证邮件'
@@ -41,13 +39,11 @@ zh-CN:
     remember_me: '记住我'
     sign_up_account: '注册账号'
     
-    join_now: '现在就加入'
-    join_slogan: '开始建造属于你的桃花源'
+
     
     # registrations#new
     password: "密码"
     confirm_password: "确认密码"
-    sign_up: '注册'
     sign_up_title: '注册新账号'
     
     # shared/_login

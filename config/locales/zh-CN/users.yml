@@ -1,0 +1,18 @@
+zh-CN:
+    users:
+        name: '名字'
+        
+        was_born_on: '生于'
+        now_lives_in: '现住在'
+        from: '来自'
+        
+        change_avatar: '修改头像'
+        edit_basic_info: '编辑基本资料'
+    
+    simple_form:
+        labels:
+            user:
+                sex: 性别
+                date_of_birth: 出生日期
+                lives_in: 现居城市
+                hometown: 家乡

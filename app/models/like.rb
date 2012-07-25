@@ -13,6 +13,6 @@ class Like < ActiveRecord::Base
   protected
   
   def notify
-    self.notifications.build(:user => self.post.user)
+    self.notifications.build(:user => self.post.user) unless self.post.user == self.user
   end
 end

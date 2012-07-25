@@ -1,3 +1,4 @@
+$(".empty-stream-holder").remove()
 $("<%= j render :partial => 'show', :locals => {:post => @post} %>").hide().prependTo('.stream').slideDown();
 $("#repost_modal").modal("hide")
 $(".new-post textarea").val("").blur()

@@ -3,7 +3,7 @@ class CreatePages < ActiveRecord::Migration
     create_table :pages do |t|
       t.string :title
       t.string :intro
-      t.references :creator, :polymorphic => true
+      t.references :owner
       t.boolean :editable
       t.boolean :has_billboard
       t.boolean :has_whiteboard
@@ -19,7 +19,7 @@ class CreatePages < ActiveRecord::Migration
       t.string :image
       t.timestamps
     end
-    add_index :pages, :creator_id
+    add_index :pages, :owner_id
     add_index :pages, :title
   end
 end

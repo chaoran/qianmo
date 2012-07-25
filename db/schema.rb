@@ -62,19 +62,6 @@ ActiveRecord::Schema.define(:version => 20120719051749) do
     t.datetime "updated_at",   :null => false
   end
 
-  create_table "comments", :force => true do |t|
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.text     "text"
-    t.integer  "user_id"
-    t.integer  "likes_count",      :default => 0
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-  end
-
-  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
-
   create_table "confirmations", :force => true do |t|
     t.string   "unconfirmed_email"
     t.string   "confirmation_token"
@@ -102,14 +89,13 @@ ActiveRecord::Schema.define(:version => 20120719051749) do
   add_index "follows", ["user_id"], :name => "index_follows_on_user_id"
 
   create_table "likes", :force => true do |t|
-    t.integer  "likable_id"
-    t.string   "likable_type"
+    t.integer  "post_id"
     t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "likes", ["likable_id"], :name => "index_likes_on_likable_id"
+  add_index "likes", ["post_id"], :name => "index_likes_on_post_id"
   add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
 
   create_table "mentions", :force => true do |t|
@@ -145,14 +131,13 @@ ActiveRecord::Schema.define(:version => 20120719051749) do
     t.datetime "updated_at",                       :null => false
   end
 
-  add_index "notifications", ["notifier_id"], :name => "index_notifications_on_notifier_id"
+  add_index "notifications", ["notifier_id", "notifier_type"], :name => "index_notifications_on_notifier_id_and_notifier_type"
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.string   "intro"
-    t.integer  "creator_id"
-    t.string   "creator_type"
+    t.integer  "owner_id"
     t.boolean  "editable"
     t.boolean  "has_billboard"
     t.boolean  "has_whiteboard"
@@ -164,7 +149,7 @@ ActiveRecord::Schema.define(:version => 20120719051749) do
     t.datetime "updated_at",     :null => false
   end
 
-  add_index "pages", ["creator_id"], :name => "index_pages_on_creator_id"
+  add_index "pages", ["owner_id"], :name => "index_pages_on_owner_id"
   add_index "pages", ["title"], :name => "index_pages_on_title"
 
   create_table "posters", :force => true do |t|
@@ -182,14 +167,19 @@ ActiveRecord::Schema.define(:version => 20120719051749) do
   create_table "posts", :force => true do |t|
     t.integer  "user_id"
     t.text     "text"
+    t.integer  "entity_id"
+    t.string   "entity_type"
     t.integer  "parent_id"
-    t.integer  "children_count", :default => 0
+    t.integer  "ancestor_id"
+    t.integer  "reposts_count",  :default => 0
     t.integer  "likes_count",    :default => 0
     t.integer  "comments_count", :default => 0
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
 
+  add_index "posts", ["ancestor_id"], :name => "index_posts_on_ancestor_id"
+  add_index "posts", ["entity_id", "entity_type"], :name => "index_posts_on_entity_id_and_entity_type"
   add_index "posts", ["parent_id"], :name => "index_posts_on_parent_id"
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
@@ -202,17 +192,6 @@ ActiveRecord::Schema.define(:version => 20120719051749) do
   end
 
   add_index "properties", ["page_id"], :name => "index_properties_on_page_id"
-
-  create_table "updates", :force => true do |t|
-    t.integer  "page_id"
-    t.integer  "updater_id"
-    t.string   "updater_type"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  add_index "updates", ["page_id"], :name => "index_updates_on_page_id"
-  add_index "updates", ["updater_id"], :name => "index_updates_on_updater_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

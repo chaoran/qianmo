@@ -4,6 +4,9 @@ zh-CN:
         okay: '确定'
         upload: '上传'
         save: '保存'
+        delete: '删除'
+        reply: '回复'
+        repost: '转发'
         
     errors:
         messages:

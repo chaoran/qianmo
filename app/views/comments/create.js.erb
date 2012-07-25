@@ -1,9 +1,9 @@
-var new_comment = $('input[type="hidden"][value="<%= escape_javascript(params[:authenticity_token]) %>"]').closest('.new-comment');
-new_comment.before("<%= escape_javascript(render :partial => 'show', :locals => {:comment => @comment}) %>").hide().slideDown();
-new_comment.find("input[type='text']").val("");
-new_comment.find("#fake-input").show();
+var new_comment = $('#post_<%= @comment.parent_id %>').find('.new-comment');
+new_comment.before("<%= j render :partial => 'show', :locals => {:comment => @comment} %>").hide().slideDown();
+new_comment.find("#post_text").val("");
+new_comment.find(".fake-input").show();
 new_comment.find("form").hide();
 
-<% for user in @comment.mention_events.map{|e|e.receiver}.uniq %>
-  <%= render :partial => "mention_events/update", :locals => {:user => user} %>
+<% for user in @comment.publish_to_users %>
+  <%= render :partial => "notifications/update", :locals => {:user => user} %>
 <% end %>

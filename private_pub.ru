@@ -5,7 +5,7 @@ require "faye"
 require "private_pub"
 require 'active_record'
 
-require File.expand_path("../app/models/profile.rb", __FILE__)
+# require File.expand_path("../app/models/user.rb", __FILE__)
 
 db_config = YAML::load( File.open(File.expand_path("../config/database.yml", __FILE__)))
 ActiveRecord::Base.establish_connection( db_config["development"])
@@ -21,7 +21,6 @@ server.bind :subscribe do |client_id, channel|
     user_id = m[:user_id]
   end
   ActiveRecord::Base.transaction do
-    puts Profile.all
   end
 end
 

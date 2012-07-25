@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class PostsController < AuthenticatedController
   # GET /posts
   # GET /posts.json
   def index
@@ -21,21 +21,15 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/1/new Repost a post
+  # GET /posts/1/new 
   def new
-    @parent = Post.find_by_id(params[:id])
-    @post = @parent.children.build
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @post }
-      format.js
-    end
+    @post = Post.new
   end
 
-  # GET /posts/1/edit
+  # GET /posts/1/edit Repost a post
   def edit
-    @post = Post.find(params[:id])
+    @ancestor = Post.find(params[:id])
+    @post = @ancestor.reposts.build
   end
 
   # POST /posts
@@ -53,32 +47,20 @@ class PostsController < ApplicationController
     end
   end
 
-  # PUT /posts/1
-  # PUT /posts/1.json
+  # PUT /posts/1.js
   def update
-    @post = Post.find(params[:id])
-
-    respond_to do |format|
-      if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    @ancester = Post.find(params[:id])
+    @post = @ancester.reposts.build(params[:post])
+    if @post.save
+      render 'update'
+    else
+      render 'edit'
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
+  # DELETE /posts/1.js
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
-      format.js
-    end
   end
 end

@@ -1,33 +1,35 @@
 <span class="blue like-show">
 <% list = [] %>
-<% if likable.liked_users.include?(current_user) %>
+<% if post.liked_users.include?(current_user) %>
   <% list << current_user %>
   <% liked = true %>
 <% else %>
   <% liked = false %>
 <% end %>
-<% list += likable.liked_users & current_user.friends %>
+<% list += post.liked_users & current_user.friends %>
 <% 5.times do %>
   <% user = list.shift %>
   <% if user %>
     <% link_name = user == current_user ? t('you') : user.name %>
     <% if list.length > 1 %>
-      <%= link_to "#{link_name},", user_profile_path(user) %>
+      <%= link_to "#{link_name},", user_path(user) %>
     <% elsif list.length == 1 %>
-      <%= link_to "#{link_name}", user_profile_path(user) %>
+      <%= link_to "#{link_name}", user_path(user) %>
       <span><%= t :and %></span>
     <% else %>
-      <%= link_to "#{link_name}", user_profile_path(user) %>
+      <%= link_to "#{link_name}", user_path(user) %>
     <% end %>
   <% end %>
 <% end %>
 <% if list.length > 0 %>
-  <%= link_to "#{t :and_other_num_people, :num => (likable.liked_users.length - 5)}", likes_path(likable) %>
+  <%= link_to "#{t :and_other_num_people, :num => (post.liked_users.length - 5)}", likes_path(post) %>
 <% end %>
-<%= link_to_with_icon "#{t :like}", like_path(:id => likable.id, :type => likable.class.to_s.downcase), "icon-heart-empty", 
-                      :style => "#{"display:none;" if liked}",
-                      :class => "action-like", :remote => true, :method => :post %>
-<%= link_to_with_icon "#{t :like}", unlike_path(:id => likable.id, :type => likable.class.to_s.downcase), "icon-heart", 
-                      :style => "#{"display:none;" if !liked}",
-                      :class => "action-dislike", :remote => true, :method => :delete %>
+<%= my_link_to "#{t :like}", like_post_path(post), 
+                             :icon => "icon-heart-empty", :remote => true, :method => :post,
+                             :style => "#{"display:none;" if liked}",
+                             :class => "action-like flipdown-on-click"  %>
+<%= my_link_to "#{t :like}", like_post_path(post), 
+                             :icon => "icon-heart", :remote => true, :method => :delete,
+                             :style => "#{"display:none;" if !liked}",
+                             :class => "action-dislike flipup-on-click" %>
 </span>

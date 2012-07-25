@@ -1,20 +1,46 @@
-<li class="pinable hoverable" id="mention_event_<%= event.id %>">
-  <% unless event.consumed %>
-    <%= my_link_to nil, mention_event_path(event.id), :method => :put, 
-                        :remote => true, :badge => "NEW", :class => "new-badge" %>
+<li class="hoverable pinable notification <%= "unread" unless notification.read %>" id="<%= notification.id %>">
+  <% case notification.notifier_type %>
+  <% when "Post" %>
+    <% post = notification.notifier %>
+    <%= link_to post_path(post), :class => "notification" do %>
+      <div>
+        <%= image_tag post.user.avatar.url(:thumb) %>
+        <%= post.user.name %>
+        <%= time_label post.created_at %>
+      </div>
+      <p>
+        <% if post.is_repost? && 
+              post.ancestor.user == notification.user %>
+          <%= repost_notification(post) %>
+        <% elsif post.is_comment? &&
+              post.parent.user == notification.user %>
+          <%= comment_notification(post) %>
+        <% else %>
+          <%= post_notification(post) %>
+        <% end %>
+      </p>
+    <% end %>
+  <% when "Mention" %>
+    <% mention = notification.notifier %>
+    <% post = mention.post %>
+    <%= link_to post_path(post), :class => "notification" do %>
+      <div>
+        <%= image_tag post.user.avatar.url(:thumb), :class => "small-thumb" %>
+        <%= post.user.name %>
+        <%= time_label mention.created_at %>
+      </div>
+      <p><%= mention_notification(post) %></p>
+    <% end %>
+  <% when "Like" %>
+    <% like = notification.notifier %>
+    <% post = like.post %>
+    <%= link_to post_path(post), :class => "notification" do %>
+      <div>
+        <%= image_tag post.user.avatar.url(:thumb), :class => "small-thumb" %>
+        <%= post.user.name %>
+        <%= time_label like.created_at %>
+      </div>
+      <p><%= like_notification(post) %></p>
+    <% end %>
   <% end %>
-  
-  <%= link_to "#{event.trigger.user.name}", user_profile_path(event.trigger.user, :me => event.id) %>
-
-  <% case event.trigger_type %>
-    <% when "Post" %>
-      <span><%= t :mentioned_you_in_a_post %></span>
-      <em class="grey"><%= t :ago, :time => time_ago_in_words(event.created_at) %></em>
-    <% when "Comment" %>
-      <span><%= t :mentioned_you_in_a_comment %></span>
-      <em class="grey"><%= t :ago, :time => time_ago_in_words(event.created_at) %></em>
-  <% end %>
-  <%= my_link_to nil, mention_event_path(event), :icon => "icon-remove", 
-                 :class => "grey show-on-hover pin-right8", :remote => true,
-                 :method => :delete %>
 </li>

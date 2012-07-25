@@ -1,0 +1,12 @@
+<% size = user.num_unread_nofitications %>
+<li class="dropdown notifications pull-right">
+  <% if size > 0 %>
+    <%= my_link_to nil, "#", :icon => "icon-rss icon-large", :badge => size, 
+                        :class => "dropdown-toggle",
+                        :'data-toggle' => "dropdown-persist" %>
+  <% else %>
+    <%= my_link_to nil, "#", :icon => "icon-rss icon-large", :class => "dropdown-toggle",
+                        :'data-toggle' => "dropdown-persist" %>
+  <% end %>
+  <%= render 'notifications/index', :user => user %>
+</li>

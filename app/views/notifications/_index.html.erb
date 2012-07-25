@@ -1,21 +1,21 @@
-<% events = user.mention_events %>
-<% num_new = events.where(:consumed => false).length %>
-<li class="dropdown" id="mention_event_list">
-  <% if num_new > 0 %>
-    <%= my_link_to nil, "#", :icon => "nav-at", :badge => num_new, 
-                        :class => "dropdown-toggle",
-                        :'data-toggle' => "dropdown" %>
-  <% else %>
-    <%= my_link_to nil, "#", :icon => "nav-at", :class => "dropdown-toggle", 
-                        :'data-toggle' => "dropdown" %>
-  <% end %>
-  <ul class="dropdown-menu events">
-    <% if events.length > 0 %>
-      <% for e in events do %>
-        <%= render "mention_events/show", :event => e %>
-      <% end %>
-    <% else %>
-      <li><%= t :no_events %></li>
+<ul class="dropdown-menu-fb persist">
+  <% if !@notifications 
+    @notifications = user.latest_notifications
+  else 
+    @has_all = true 
+  end %>
+  <% if @notifications.length > 0 %>
+    <% for notification in @notifications do %>
+      <%= render "notifications/show", :notification => notification %>
     <% end %>
-  </ul>
-</li>
+  <% else %>
+    <li><span><%= t :'notifications.no_new_notifications' %><span></li>
+  <% end %>
+  <li class="footer">
+    <% if @has_all %>
+      <span><%= t :'notifications.has_displayed_all' %></span>
+    <% else %>
+      <%= link_to "#{t :'notifications.display_all'}", user_notifications_path(user), :remote => true %>
+    <% end %>
+  </li>
+</ul>

@@ -1,0 +1,11 @@
+zh-CN:
+    notifications:
+        posted_a_new_post: '发布了一条新微博: "%{text}"'
+        reposted_your_post: '转发了你的微博: "%{text}"'
+        commented_your_post: '回复了你的微博: "%{text}"'
+        mentioned_you_in_a_post: '在一条回复中提到了你: "%{text}"'
+        mentioned_you_in_a_comment: '在一条微博中提到了你: "%{text}"'
+        liked_your_post: '喜欢了你的微博: "%{text}"'
+        no_new_notifications: '暂时没有新的通知'
+        has_displayed_all: '已显示全部通知'
+        display_all: '显示全部通知'

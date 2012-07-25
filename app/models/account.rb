@@ -18,7 +18,8 @@ class Account < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_confirmation_of :password, :on => :update
   validates_presence_of :email
-  validates_uniqueness_of :email, :username
+  validates_uniqueness_of :email
+  validates_uniqueness_of :username, :allow_blank => true
   validate :password_reset_token_is_valid, :on => :update
   
   def self.deserialize(id, token)

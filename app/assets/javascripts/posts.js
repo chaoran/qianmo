@@ -84,10 +84,12 @@ jQuery(document).ready(function($) {
     
   $(".post-actions .action-comment").live("click", function(event) {
     var comments = $(this).closest(".post-content").next();
-    var fake_input = $(this).closest(".post").find("#fake-input");
+    var fake_input = $(this).closest(".post").find(".fake-input");
     if (comments.is(":visible")) {
       if (fake_input.is(":visible")) {
         fake_input.trigger('focus');      
+      } else {
+        $(this).closest(".post").find('.new-comment #post_text').focus();
       }
     } else {
       $(this).closest(".post-content").trigger('click');

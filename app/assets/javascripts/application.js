@@ -34,11 +34,11 @@ $(document).ready(function(){
   $(".hoverable").live({
     mouseenter: function() {
       $(this).addClass("hover");
-      $(this).find(".show-on-hover").removeClass("hidden")
+      $(this).find(".show-on-hover").removeClass('invisible')
     },
     mouseleave: function() {
       $(this).removeClass("hover");
-      $(this).find(".show-on-hover").addClass("hidden")
+      $(this).find(".show-on-hover").addClass("invisible")
     }
   })
   

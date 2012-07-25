@@ -90,4 +90,10 @@ module ApplicationHelper
                     :method => :post, :remote => true)
     html.html_safe
   end
+  
+  def time_label(time)
+    content_tag :div, :class => "time-label" do
+      I18n.t(:ago, :time => time_ago_in_words(time))
+    end
+  end
 end

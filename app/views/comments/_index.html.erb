@@ -1,8 +1,8 @@
 <div class="comments">
-  <% comments = commentable.comments %>
+  <% comments = post.comments %>
   <% for comment in comments %>
     <%= render 'comments/show', :comment => comment %>
   <% end %>
-  <%= render 'comments/new', :commentable => commentable, :rows => 1 %>
+  <%= render 'comments/new', :post => post, :rows => 1 %>
 </div>
 

@@ -21,10 +21,14 @@ Qianmo::Application.routes.draw do
   resources :passwords, :only => [:new, :create, :edit, :update]
 
   resources :posts do
-    get :repost, :on => :member
-  end
-    
-  resources :comments do 
+    shallow do
+      resources :comments, :only => [:new, :create, :destroy]
+    end
+    member do
+      get 'repost' => 'posts#edit'
+      post 'like' => 'likes#create'
+      delete 'like' => 'likes#destroy'
+    end
   end
 
   resources :pages do 
@@ -32,9 +36,6 @@ Qianmo::Application.routes.draw do
     resource :whiteboard, :only => :update
     resources :articles
   end
-  
-  match 'like/:type/:id' => 'likes#create', :via => :post, :as => :like
-  match 'like/:type/:id' => 'likes#destroy', :via => :delete, :as => :unlike
   
   resources :users, :only => [:show, :edit, :update], :path => '' do
     

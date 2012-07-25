@@ -1,7 +1,7 @@
-<li class="hoverable pinable <%= "color-background" unless follow.read %>" id="<%= follow.id %>">
-  <%= link_to user_profile_path(follow.follower, :follow_id => follow.id), :class => "follow" do %>
+<li class="hoverable pinable <%= "unread" unless follow.read %>" id="<%= follow.id %>">
+  <%= link_to user_path(follow.follower, :follow_id => follow.id), :class => "follow" do %>
     <div>
-        <%= image_tag follow.follower.avatar.url(:thumb), :class => "small-thumb" %>
+        <%= image_tag follow.follower.avatar.url(:thumb) %>
         <%= follow.follower.name %>
       <div class="grey pull-right">
         <%= t :ago, :time => time_ago_in_words(follow.created_at) %>

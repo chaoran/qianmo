@@ -6,12 +6,7 @@
         <%= image_tag post.user.avatar.url(:thumb), :class => "avatar pin-top7-left5" %>
         <strong><%= post.user.name %></strong>
       </a>
-      <small class="grey pull-right">
-        <%= "#{t :posted_at_time, :time => time_ago_in_words(post.created_at)}".html_safe %>
-        <% if post.source %>
-          <%= "#{t :posted_through_source, :source => post.source}".html_safe %>
-        <% end %>
-      </small>
+      <%= time_label post.created_at %>
     </div>
     <p class="post-body">
       <%= post.text.html_safe %>
@@ -22,26 +17,28 @@
         <%= link_to_with_icon "#{t :collapse}", nil, "icon-caret-down", 
                               :class => "action-collapse", :style => "display:none;"  %>
       </span>
-      <ul class="pull-right show-on-hover <%= "hidden" if closed_mode %>">
+      <ul class="pull-right show-on-hover <%= "invisible" if closed_mode %>">
         <li>
-          <%= render 'likes/show', :likable => post %>
+          <%= render 'likes/show', :post => post %>
         </li>
         <li><span class="grey">·</span></li>
         <li>
-          <%= link_to_with_icon "#{t :repost}", repost_post_path(post), "icon-share-alt", :remote => true %>
-          <%= post_stat("num-reposts", post.children_count) %>
+          <%= my_link_to "#{t :'actions.repost'}", repost_post_path(post), :icon => "icon-share-alt", 
+                                         :remote => true %>
+          <%= post_stat("num-reposts", post.reposts_count) %>
         </li>
         <li><span class="grey">·</span></li>
         <li>
-          <%= link_to_with_icon "#{t :reply}", nil, "icon-comment#{ "-alt" if post.comments.length == 0}", :class => "action-comment"  %>
+          <%= my_link_to "#{t :'actions.reply'}", nil, :class => "action-comment",
+                         :icon => "icon-comment#{ "-alt" if post.comments.length == 0}" %>
           <%= post_stat("num-comments", post.comments.length) %>
         </li>
         <% if post.user == current_user %>
           <li>
-            <%= link_to_with_icon "", post_path(post), "icon-remove", 
-                                    :class => "action-delete grey", 
-                                    :rel => "tooltip", :remote => true, :method => :delete,
-                                    :title => "#{t :delete}" %>
+            <%= my_link_to "", post_path(post), :icon => "icon-remove", 
+                               :class => "action-delete grey", 
+                               :tooltip => "#{t :'actions.delete'}", :remote => true, 
+                               :method => :delete%>
           </li>
         <% end %>
       </ul>
@@ -49,7 +46,7 @@
   </div>
   <div class="post-details well" <%= "style=\"display:none;\"".html_safe if closed_mode %>>
     <div class="post-comments">
-      <%= render 'comments/index', :commentable => post %>
+      <%= render 'comments/index', :post => post %>
     </div>
   </div>
 </div>

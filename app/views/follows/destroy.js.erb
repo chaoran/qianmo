@@ -1,2 +1,2 @@
-$(".user_<%= params[:user_id] %>.follow_button").replaceWith("<%= escape_javascript( render :partial => 'shared/follow_button', :locals => {:user => @user} )%>")
+$(".user_<%= params[:user_id] %>.follow_button").replaceWith("<%= j render :partial => 'shared/follow_button', :locals => {:user => @user} %>")
 <%= render :partial => "follows/notify", :locals => {:user => @user} %>

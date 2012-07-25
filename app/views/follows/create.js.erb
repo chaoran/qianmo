@@ -6,6 +6,6 @@ var num_unread = menu.find(".unread").length
 if (num_unread == 0) {
   menu.prev().find('.badge').remove();
 } else {
-  menu.prev().find('.badge').val(toString(num_unread))
+  menu.prev().find('.badge').text(num_unread)
 }
 <%= render :partial => "follows/notify", :locals => {:user => @user} %>

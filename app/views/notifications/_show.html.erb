@@ -1,8 +1,8 @@
-<li class="hoverable pinable notification <%= "unread" unless notification.read %>" id="<%= notification.id %>">
+<li class="hoverable pinable <%= "unread" unless notification.read %>" id="notification_<%= notification.id %>">
   <% case notification.notifier_type %>
   <% when "Post" %>
     <% post = notification.notifier %>
-    <%= link_to post_path(post), :class => "notification", :remote => true do %>
+    <%= link_to post_path(post, :notice => notification.id), :class => "notification", :remote => true do %>
       <div>
         <%= image_tag post.user.avatar.url(:thumb) %>
         <%= post.user.name %>
@@ -23,7 +23,7 @@
   <% when "Mention" %>
     <% mention = notification.notifier %>
     <% post = mention.post %>
-    <%= link_to post_path(post), :class => "notification", :remote => true do %>
+    <%= link_to post_path(post, :notice => notification.id), :class => "notification", :remote => true do %>
       <div>
         <%= image_tag post.user.avatar.url(:thumb), :class => "small-thumb" %>
         <%= post.user.name %>
@@ -34,7 +34,7 @@
   <% when "Like" %>
     <% like = notification.notifier %>
     <% post = like.post %>
-    <%= link_to post_path(post), :class => "notification", :remote => true do %>
+    <%= link_to post_path(post, :notice => notification.id), :class => "notification", :remote => true do %>
       <div>
         <%= image_tag post.user.avatar.url(:thumb), :class => "small-thumb" %>
         <%= post.user.name %>

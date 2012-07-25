@@ -14,6 +14,9 @@ class PostsController < AuthenticatedController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    if params[:notice]
+      Notification.update_all({:read => true}, {:id => params[:notice]})
+    end
   end
 
   # GET /posts/1/new 

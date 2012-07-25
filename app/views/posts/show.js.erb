@@ -1,2 +1,11 @@
 $("#modal-placeholder").html("<%= j render "modal" %>")
 $("#post_show_modal").modal("show")
+
+$('#notification_<%= params[:notice] %>').removeClass("unread");
+var menu = $('#notification_<%= params[:notice] %>').closest('ul');
+var num_unread = menu.find(".unread").length
+if (num_unread == 0) {
+  menu.prev().find('.badge').remove();
+} else {
+  menu.prev().find('.badge').text(num_unread)
+}

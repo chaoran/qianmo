@@ -1,1 +1,1 @@
-$("#post_<%= params[:id]%>").find(".like-show").first().replaceWith("<%= j render :partial => "show", :locals => {:post => @post} %>")
+$(".post_<%= params[:id] %>").find(".post-content .like-show").replaceWith("<%= j render :partial => "show", :locals => {:post => @post} %>")

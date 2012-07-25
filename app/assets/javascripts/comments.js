@@ -24,11 +24,12 @@ jQuery(document).ready(function($) {
   });
   
   comment_input.live("keyup", function() {
-    var value = $.trim($(this).val());    
+    var value = $.trim($(this).val());   
+    var button = $(this).parent().next().find("input[type='submit']") 
     if (value.length > 0 && value != $(this).attr('placeholder')) {
-      comment_submit.addClass("btn-primary").removeAttr("disabled");
+      button.addClass("btn-primary").removeAttr("disabled");
     } else {
-      comment_submit.removeClass("btn-primary").attr("disabled", "disabled");
+      button.removeClass("btn-primary").attr("disabled", "disabled");
     }
   });
   

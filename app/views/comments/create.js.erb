@@ -1,4 +1,4 @@
-var new_comment = $('#post_<%= @comment.parent_id %>').find('.new-comment');
+var new_comment = $('.post_<%= @comment.parent_id %>').find('.new-comment');
 new_comment.before("<%= j render :partial => 'show', :locals => {:comment => @comment} %>").hide().slideDown();
 new_comment.find("#post_text").val("");
 new_comment.find(".fake-input").show();

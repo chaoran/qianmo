@@ -3,10 +3,10 @@ $("#repost_modal").modal("hide")
 $(".new-post textarea").val("").blur()
 
 <% if @post.is_comment? %>
-$("#post_<%= @post.parent_id %> .num-comments").text("(<%= Post.find(@post.parent_id).comments_count %>)");
+$(".post_<%= @post.parent_id %> .num-comments").text("(<%= Post.find(@post.parent_id).comments_count %>)");
 <% end %>
 <% if @post.is_repost? %>
-$("#post_<%= @post.ancestor_id %> .num-reposts").text("(<%= Post.find(@post.ancestor_id).reposts_count %>)");
+$(".post_<%= @post.ancestor_id %> .num-reposts").text("(<%= Post.find(@post.ancestor_id).reposts_count %>)");
 <% end %>
 
 <% for user in @post.publish_to_users %>

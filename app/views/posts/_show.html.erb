@@ -1,5 +1,5 @@
-<% closed_mode = (post.comments.length == 0) %>
-<div class="post pinable has_hidden_buttons <%= "hoverable" if closed_mode %>" id="post_<%= post.id %>">
+<% closed_mode = (post.comments.length == 0) if local_assigns[:closed_mode].nil? %>
+<div class="post post_<%= post.id %> pinable has_hidden_buttons <%= "hoverable" if closed_mode %>">
   <div class="post-content">
     <div class="post-header">
       <a>

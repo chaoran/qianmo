@@ -1,3 +1,3 @@
 <% publish_to "/user/#{user.id}" do %>
-  $(".dropdown .notifications").replaceWith("<%= j render :partial => "notifications/dropdown", :locals => {:user => user} %>");
+  $(".dropdown.notifications").replaceWith("<%= j render :partial => "notifications/dropdown", :locals => {:user => user} %>");
 <% end %>

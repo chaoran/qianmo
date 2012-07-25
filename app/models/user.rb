@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :follows
   has_many :special_follows, :class_name => 'Follow', :conditions => { :special => true }
   has_many :followers, :through => :follows, :source => :follower
-  has_many :subscribers, :through => :special_follows, :source => :user
+  has_many :subscribers, :through => :special_follows, :source => :follower
                            
   has_many :followed, :class_name => "Follow", :foreign_key => "follower_id"
   has_many :followed_users, :through => :followed, :source => "user"
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   # has_many :mentions 
   # has_many :mentioned_in_posts, :through => :mentions, :source => :post
   
-  has_many :notifications, :order => "created_at DESC"
+  has_many :notifications, :order => "created_at DESC", :include => [:notifier]
   
   has_many :pages, :foreign_key => "owner_id"
   has_many :posts, :order => "created_at DESC"

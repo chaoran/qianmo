@@ -34,8 +34,8 @@ class Post < ActiveRecord::Base
   before_validation :sanitize_input
   before_save :notify_parent, :if => :is_comment?
   before_save :notify_ancestor, :if => :is_repost?
-  before_save :notify_subscribers, :unless => :is_comment?
   before_save :setup_mentions, :setup_abouts
+  after_save :notify_subscribers, :unless => :is_comment?
   
   validates_presence_of :user, :text
   
@@ -50,7 +50,7 @@ class Post < ActiveRecord::Base
   
   def publish_to_users
     users = self.notified_users
-    users << self.mentioned_users
+    users += self.mentioned_users
     users.uniq! if users.length > 0
     users
   end
@@ -95,7 +95,7 @@ class Post < ActiveRecord::Base
         end
       end
     end
-    
+    users.uniq! if users.length > 0
     for user in users
       self.mentions.build(:user => user)
     end
@@ -114,13 +114,14 @@ class Post < ActiveRecord::Base
         end
       end
     end
+    pages.uniq! if pages.length > 0
     for page in pages
       self.abouts.build(:page => page)
     end
   end
   
   def notify_subscribers
-    for subscriber in self.user.subscribers.select {|s| self.is_repost? && self.ancestor.user == s }
+    for subscriber in self.user.subscribers.reject {|s| self.mentioned_users.include?(s) }
       self.notifications.build(:user => subscriber)
     end
   end

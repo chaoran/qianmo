@@ -61,6 +61,10 @@ class User < ActiveRecord::Base
     follows = self.follows.where("created_at > ? OR read = false", 1.week.ago).order("created_at")
   end
   
+  def unread_follows
+    follows = self.follows.where(:read => false).order("created_at")
+  end
+  
   def unread_messages
     self.messages.where(:read => false).order("created_at")
   end

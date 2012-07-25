@@ -1,6 +1,6 @@
 <ul class="dropdown-menu-fb persist">
   <% if !@notifications 
-    @notifications = user.latest_notifications
+    @notifications = user.unread_notifications
   else 
     @has_all = true 
   end %>

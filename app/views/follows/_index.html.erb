@@ -1,6 +1,6 @@
 <ul class="dropdown-menu-fb persist">
   <% if !@follows 
-    @follows = user.latest_follows
+    @follows = user.unread_follows
   else 
     @has_all = true 
   end %>

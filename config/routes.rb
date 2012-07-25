@@ -38,9 +38,7 @@ Qianmo::Application.routes.draw do
   end
   
   resources :users, :only => [:show, :edit, :update], :path => '' do
-    
     resources :follows, :only => [:create, :destroy, :update, :index]
-    
     shallow do
       resources :articles
       resources :notifications, :only => [:create, :destroy, :update, :index]

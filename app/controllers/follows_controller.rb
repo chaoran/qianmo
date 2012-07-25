@@ -8,11 +8,11 @@ class FollowsController < ApplicationController
   def create
     @follow = Follow.new(:follower => current_user, :user => @user)
     @follow.pair = Follow.find_by_user_id_and_follower_id(current_user.id, @user.id)
+    @follow.save
     if @follow.pair
-      @follow.pair.update_attributes(:read => true)
-      @follow.pair.update_attributes(:pair_id => @follow.id)
+      @follow.pair.update_attributes(:read => true, :pair_id => @follow.id)
     end 
-    return render :nothing => true unless @follow.save
+    return render :nothing => true unless @follow.persisted?
   end
   
   def update

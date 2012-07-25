@@ -1,6 +1,10 @@
 class UsersController < AuthenticatedController  
   def show
     @user = User.find(params[:id])
+    if params[:follow_id]
+      Follow.update_all({:read => true}, {:id => params[:follow_id]})
+      redirect_to user_path(@user)
+    end
   end
   
   def edit

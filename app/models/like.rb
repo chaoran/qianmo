@@ -2,7 +2,7 @@ class Like < ActiveRecord::Base
   belongs_to :post, :counter_cache => "likes_count"
   belongs_to :user
   
-  has_many :notifications, :as => :notifier
+  has_many :notifications, :as => :notifier, :dependent => :delete_all
 
   attr_accessible :user
   

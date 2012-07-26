@@ -4,7 +4,7 @@ class Mention < ActiveRecord::Base
   belongs_to :post
   belongs_to :user
   
-  has_many :notifications, :as => :notifier
+  has_many :notifications, :as => :notifier, :dependent => :delete_all
   
   before_save :notify, :unless => :user_is_ancestor_or_parent?
   

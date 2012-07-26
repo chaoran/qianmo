@@ -15,18 +15,18 @@ class Post < ActiveRecord::Base
   has_many :reposts, :class_name => 'Post', :foreign_key => "ancestor_id", :dependent => :destroy
   
   # A post can mention many users
-  has_many :mentions  
+  has_many :mentions, :dependent => :destroy
   has_many :mentioned_users, :through => :mentions, :source => :user
   
   # A post can be about many pages
-  has_many :abouts
+  has_many :abouts, :dependent => :delete_all
   
   # A post can be liked by many users
-  has_many :likes
+  has_many :likes, :dependent => :destroy
   has_many :liked_users, :through => :likes, :source => :user
   
   # A post can be subscribed by many followers
-  has_many :notifications, :as => :notifier
+  has_many :notifications, :as => :notifier, :dependent => :delete_all
   has_many :notified_users, :through => :notifications, :source => :user
   
   # If this is a repost, initialize its text

@@ -3,9 +3,11 @@ class CreateArticles < ActiveRecord::Migration
     create_table :articles do |t|
       t.string :title
       t.text :text
+      t.boolean :published
+      
       t.references :user
       t.references :page
-
+      
       t.timestamps
     end
     add_index :articles, :user_id

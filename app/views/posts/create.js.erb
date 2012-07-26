@@ -2,6 +2,7 @@ $(".empty-stream-holder").remove()
 $("<%= j render :partial => 'show', :locals => {:post => @post} %>").hide().prependTo('.stream').slideDown();
 $("#repost_modal").modal("hide")
 $(".new-post textarea").val("").blur()
+$('.dropdown').removeClass("open")
 
 <% if @post.is_comment? %>
 $(".post_<%= @post.parent_id %> .num-comments").text("(<%= Post.find(@post.parent_id).comments_count %>)");

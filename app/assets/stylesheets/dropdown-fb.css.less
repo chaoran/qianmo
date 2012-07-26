@@ -29,8 +29,8 @@
   border: 1px solid rgba(0,0,0,.2);
   *border-right-width: 2px;
   *border-bottom-width: 2px;
-  @include border-radius(5px);
-  @include box-shadow(0 5px 10px rgba(0,0,0,.2));
+  .border-radius(5px);
+  .box-shadow(0 5px 10px rgba(0,0,0,.2));
   -webkit-background-clip: padding-box;
      -moz-background-clip: padding;
           background-clip: padding-box;
@@ -98,7 +98,7 @@
 }
 
 // Menu position and menu carets
-.navbar .dropdown.have-carets.open {
+.dropdown.have-carets.open {
   &:before {
     z-index: 1000;
     content: '';
@@ -143,8 +143,8 @@
 
 // Right aligned menus need alt position
 // TODO: rejigger this at some point to simplify the selectors
-.navbar .pull-right .dropdown-menu-fb,
-.navbar .dropdown-menu-fb.pull-right {
+.pull-right .dropdown-menu-fb,
+.dropdown-menu-fb.pull-right {
   left: auto;
   right: 0;
   &:before {

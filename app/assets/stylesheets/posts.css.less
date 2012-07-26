@@ -1,0 +1,129 @@
+@import "twitter/bootstrap/variables";
+@import "mixins";
+
+.post {
+  margin: 0;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.post.hover {
+  background-color: whitesmoke;
+}
+
+.post-content {
+  padding: 4px 5px 6px 55px;
+  cursor: pointer;
+}
+
+.post-header img {
+  width: 45px;
+  height: 45px;
+}
+
+p.post-body {
+  margin: 5px;
+}
+
+.post-actions ul {
+  list-style: none;
+  display: inline-block;
+  margin: 0;
+}
+
+.post-actions ul li {
+  display: inline-block;
+}
+
+.post a,
+.new-post a {
+  text-decoration: none;
+}
+
+ul.post-extra-inputs li {
+  margin-right: 6px;
+}
+
+.post-actions .icon-camera {
+  padding-right: 4px;
+}
+
+.post-details {
+  margin-left: 50px;
+}
+
+.post-details .post-likes {
+  margin-bottom: 4px;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+/* new implementation */
+
+.new-post {  
+  padding: 10px 8px;
+  
+  form {
+    margin: 0;
+  }
+  
+  .word-count {
+    float: right;
+    color: @grayLight;
+    &.red {
+      color: @red;
+    }
+  }
+  
+  .input {
+    height: 64px; /* 3 row */
+    .max-width();
+  }
+  
+  .actions {
+    height: 30px;
+    
+    input {
+      float: right;
+    }
+    
+    input[disabled] {
+      display: inline-block;
+    }
+    
+    input.ready {
+      display: none;
+    }
+  }
+  
+  &.ready {
+    .actions input[disabled] {
+      display: none;
+    }
+    .actions input.ready {
+      display: inline-block;
+    }
+  }
+  
+  &.auto-hide {
+    .word-count {
+      display: none;
+    }
+    .input {
+      height: 28px; /* 1 row */
+    }
+    .actions {
+      display: none;
+    }
+  }
+  
+  &.auto-hide.focus {
+    .word-count {
+      display: inline-block;
+    }
+    .actions {
+      display: block;
+    }
+    .input {
+      height: 64px; /* 3 rows */
+    }
+  }
+}

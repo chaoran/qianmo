@@ -13,11 +13,7 @@
 </div>
 <div class='span7 main'>
   <%= render "shared/messages" %>
-  <div>
-    <%= render 'posts/new', :post => current_user.posts.build, 
-                            :placeholder => nil,
-                            :title => "#{t :say_something}" %>
-  </div>
+  <%= render 'head' %>
   <div id="home_main">
     <%= render 'posts/index', :posts => current_user.stream_posts %>
   </div>

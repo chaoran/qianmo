@@ -74,6 +74,10 @@ module ApplicationHelper
           end
           content << "\">#{badge}</span>"
         end
+        if (options.has_key?(:caret))
+          caret = options.delete(:caret)
+          content << "&nbsp;<b class='caret'></b>" if caret
+        end
         content.html_safe
       end
       html.slice!(" nofollow") if html.include?("tooltip")

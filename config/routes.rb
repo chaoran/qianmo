@@ -30,6 +30,8 @@ Qianmo::Application.routes.draw do
       delete 'like' => 'likes#destroy'
     end
   end
+  
+  resources :articles
 
   resources :pages do 
     resource :billboard, :only => :update

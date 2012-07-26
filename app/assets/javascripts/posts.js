@@ -110,5 +110,31 @@ jQuery(document).ready(function($) {
   $(".post-actions .action-repost").live("click", function(event) {
     event.stopPropagation();
   });
+  
+  /* new implementation */
+  $(".new-post .input").live("focus", function () {
+    $(this).closest('.new-post').addClass('focus')
+  });
+  
+  $(".new-post .input").live("blur", function () {
+    $(this).closest('.new-post').removeClass('focus')
+  });
+  
+  $(".new-post .input").live("keyup", function () {
+    var new_post = $(this).closest('.new-post');
+    var length = $(this).val().length;
+    new_post.find(".word-count .count").text(length) // update word-count value
+    if (length > parseInt(new_post.find(".word-count .max-count").text())) {
+      new_post.find(".word-count").addClass("red");  // make color red
+      new_post.removeClass("ready")
+    } else {
+      new_post.find(".word-count").removeClass("red");
+      if (length == 0) {
+        new_post.removeClass("ready")
+      } else {
+        new_post.addClass("ready")
+      }
+    }
+  });
 
 });

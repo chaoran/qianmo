@@ -8,4 +8,5 @@ zh-CN:
         liked_your_post: '喜欢了你的微博: "%{text}"'
         no_new_notifications: '暂时没有新的通知'
         has_displayed_all: '已显示全部通知'
-        display_all: '显示全部通知'
+        display_all: '显示已读的通知'
+        mark_all_as_read: '全部标记为已读'

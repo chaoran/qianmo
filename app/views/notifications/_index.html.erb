@@ -1,5 +1,5 @@
 <ul class="dropdown-menu-fb persist">
-  <% @notifications = user.unread_notifications if controller_name != "notifications" %>
+  <% @notifications = user.unread_notifications unless controller_name == "notifications" && action_name == 'index' %>
   <% if @notifications.length > 0 %>
     <% for notification in @notifications do %>
       <%= render "notifications/show", :notification => notification %>
@@ -8,10 +8,12 @@
     <li><span><%= t :'notifications.no_new_notifications' %><span></li>
   <% end %>
   <li class="footer">
-    <% if controller_name == "notifications" %>
+    <% if controller_name == "notifications" && action_name == "index" %>
       <span><%= t :'notifications.has_displayed_all' %></span>
-    <% else %>
+    <% elsif @notifications.length == 0 %>
       <%= link_to "#{t :'notifications.display_all'}", notifications_path(user), :remote => true %>
+    <% else %>
+    <%= link_to "#{t :'notifications.mark_all_as_read'}", notifications_path(user), :remote => true, :method => :put %>
     <% end %>
   </li>
 </ul>

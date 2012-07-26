@@ -39,7 +39,9 @@ Qianmo::Application.routes.draw do
     resources :articles
   end
   
-  resources :notifications, :only => [:index]
+  resources :notifications, :only => [:index] do
+    put 'update', :on => :collection
+  end
   
   resources :users, :only => [:show, :edit, :update], :path => '' do
     resources :follows, :only => [:create, :destroy, :update, :index]

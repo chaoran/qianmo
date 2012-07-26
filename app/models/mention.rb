@@ -4,7 +4,7 @@ class Mention < ActiveRecord::Base
   belongs_to :post
   belongs_to :user
   
-  has_many :notifications, :as => :notifier, :dependent => :delete_all
+  has_one :notification, :as => :notifier, :dependent => :delete, :include => [:user]
   
   before_save :notify, :unless => :user_is_ancestor_or_parent?
   
@@ -15,6 +15,6 @@ class Mention < ActiveRecord::Base
   end
   
   def notify
-    self.notifications.build(:user => self.user)
+    self.build_notification(:user => self.user) unless self.post.user == self.user
   end
 end

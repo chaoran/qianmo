@@ -2,8 +2,8 @@ class Like < ActiveRecord::Base
   belongs_to :post, :counter_cache => "likes_count"
   belongs_to :user
   
-  has_many :notifications, :as => :notifier, :dependent => :delete_all
-
+  has_one :notification, :as => :notifier, :dependent => :delete, :include => [:user]
+  
   attr_accessible :user
   
   validates :user_id, :uniqueness => { :scope => :post_id }
@@ -13,6 +13,6 @@ class Like < ActiveRecord::Base
   protected
   
   def notify
-    self.notifications.build(:user => self.post.user) unless self.post.user == self.user
+    self.build_notification(:user => self.post.user) unless self.post.user == self.user
   end
 end

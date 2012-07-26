@@ -5,6 +5,5 @@ class NotificationsController < AuthenticatedController
   
   def update # mark_all_as_read
     current_user.notifications.update_all({:read => true}, {:read => false})
-    render 'index'
   end
 end

@@ -32,6 +32,10 @@ class FollowsController < ApplicationController
     Follow.delete(params[:id])
   end
   
+  def update_all
+    current_user.follows.update_all({:read => true}, {:read => false})
+  end
+  
   protected
   def setup_user
     @user = User.find(params[:user_id])

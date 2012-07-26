@@ -44,7 +44,10 @@ Qianmo::Application.routes.draw do
   end
   
   resources :users, :only => [:show, :edit, :update], :path => '' do
-    resources :follows, :only => [:create, :destroy, :update, :index]
+    resources :follows, :only => [:create, :destroy, :update, :index] do 
+      put "update_all", :on => :collection
+    end
+
     shallow do
       resources :articles
     end

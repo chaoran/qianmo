@@ -1,0 +1,22 @@
+lang: 'zh_cn'
+buttons: 
+    - bold
+    - italic
+    - '|'
+    - unorderedlist
+    - orderedlist
+    - outdent
+    - indent
+    - '|'
+    - image
+    - link
+    - '|'
+    - fontcolor
+    - backcolor
+    - '|'
+    - alignleft
+    - aligncenter
+    - alignright
+    - justify
+    - '|'
+    - horizontalrule

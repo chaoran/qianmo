@@ -1,12 +1,15 @@
 class PostsController < AuthenticatedController
-  # GET /posts
-  # GET /posts.json
+  before_filter :alert_if_unconfirmed
+  # GET /:user_id/posts
+  # GET /
   def index
-    @posts = Post.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @posts = @user.posts
+      render :layout => "user"
+    else
+      @posts = current_user.stream_posts
+      render :layout => "home"
     end
   end
 
@@ -45,20 +48,20 @@ class PostsController < AuthenticatedController
     end
   end
 
-  # PUT /posts/1.js
-  def update
-    @ancester = Post.find(params[:id])
-    @post = @ancester.reposts.build(params[:post])
-    if @post.save
-      render 'update'
-    else
-      render 'edit'
-    end
-  end
-
   # DELETE /posts/1.js
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
+  end
+  
+  protected
+  def alert_if_unconfirmed
+    unless session[:confirmed]
+      if current_user.account.confirmed?
+        session[:confirmed] = true
+      else
+        flash.now[:alert] = view_context.unconfirmed_notification(current_user.account.email)
+      end
+    end
   end
 end

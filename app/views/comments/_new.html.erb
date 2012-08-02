@@ -3,17 +3,16 @@
                                    :class => "fake-input", 
                                    :placeholder => "#{t :leave_a_message?}" %>
   <%= form_for @comment = post.comments.build(), :url => post_comments_path(post),
-               :html => {:style => "display:none;"},
                :remote => true do |f| %>
     <div class="comment-holder">
       <div class="header">
-        <%= link_to user_path(current_user) do %>
+        <%= link_to user_posts_path(current_user) do %>
           <%= image_tag current_user.avatar.url(:thumb), :class => "avatar" %>
           <span><%= current_user.name %></span>
         <% end %>
       </div>
       <div class="inputs">
-        <%= f.text_area :text, :rows => rows %>
+        <%= f.text_area :text %>
       </div>
       <div class="actions">
         <%= f.submit "#{t :reply}", :class => "btn", :disabled => true %>

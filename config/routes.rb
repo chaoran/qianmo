@@ -1,5 +1,4 @@
 Qianmo::Application.routes.draw do
-  
   scope constraints: lambda { |r| r.env['warden'].user.nil? } do
     root :to => 'accounts#new'
     get "signup", :to => "accounts#new", :as => "signup"
@@ -30,28 +29,26 @@ Qianmo::Application.routes.draw do
       delete 'like' => 'likes#destroy'
     end
   end
-  
-  resources :articles
-
+      
   resources :pages do 
     resource :billboard, :only => :update
     resource :whiteboard, :only => :update
-    resources :articles
+    # resources :articles
   end
+  
+  resources :articles
   
   resources :notifications, :only => [:index] do
     put 'update', :on => :collection
   end
   
   resources :users, :only => [:show, :edit, :update], :path => '' do
+    resources :posts, :only => [:index]
     resources :follows, :only => [:create, :destroy, :update, :index] do 
       put "update_all", :on => :collection
     end
-
-    shallow do
-      resources :articles
-    end
+    resources :articles, :only => [:index]
   end
   
-  root :to => 'home#show'
+  root :to => 'posts#index'
 end

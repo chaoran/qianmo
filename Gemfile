@@ -41,6 +41,7 @@ gem 'remotipart', '~> 0.4'
 
 gem 'RedCloth'
 gem 'sanitize'
+gem 'redactor-rails'
 
 # omniauth
 gem 'omniauth-weibo-oauth2'

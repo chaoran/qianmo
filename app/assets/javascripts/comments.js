@@ -4,9 +4,9 @@ jQuery(document).ready(function($) {
   var comment_form = $(".new-comment form");
   
   $(".comment .actions .action-reply").live("click", function(event) {
-    var form = $(this).closest(".comments").find(".new-comment form")
-    form.show()
-    form.prev().hide();
+    var new_comment = $(this).closest(".comments").find(".new-comment");
+    new_comment.addClass("ready");
+    var form = new_comment.find("form");
     var name = $(this).closest(".comment").find("a.header").text();
     if (form.is(":focus") != form.find("#post_text")) {
       form.find("#post_text").focus();
@@ -17,10 +17,8 @@ jQuery(document).ready(function($) {
   });
   
   $(".new-comment .fake-input").live("focus", function () {
-    $(this).hide();
-    var form = $(this).next();
-    form.show();
-    form.find("#post_text").focus();
+    $(this).closest('.new-comment').addClass("ready");
+    $(this).next().find("#post_text").focus();
   });
   
   comment_input.live("keyup", function() {
@@ -45,7 +43,7 @@ jQuery(document).ready(function($) {
   comment_input.live("blur", function () {
     var value = $.trim($(this).val());    
     if (value.length == 0 || value == $(this).attr('placeholder')) {
-      $(this).closest("form").hide().prev().show();
+      $(this).closest(".new-comment").removeClass("ready");
     }
   });
 });

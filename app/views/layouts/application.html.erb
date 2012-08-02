@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= redactor_lang('zh_cn') %>
 </head>
 <body>
 	<div class="navbar navbar-fixed-top">
@@ -17,7 +18,7 @@
 	<div class="container body"%>
 		<div class='content'>
 			<div class='row'>
-					<%= yield %>
+					<%= content_for?(:main) ? yield(:main) : yield %>
 			</div>
 		</div>
 	</div>

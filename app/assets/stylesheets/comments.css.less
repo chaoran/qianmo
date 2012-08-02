@@ -1,7 +1,12 @@
+@import "twitter/bootstrap/variables";
+
 .comment {
   border-bottom: 1px solid #E8E8E8;
   position: relative;
-  margin: 4px 0;
+  padding-bottom: 8px;
+  & + .comment {
+    margin-top: 8px;
+  }
 }
 
 .comments a {
@@ -19,7 +24,7 @@
 }
 
 .comment-holder {
-  margin: 4px 0 4px 40px;
+  margin: 0 0 0 40px;
   
   .actions {
     text-align: right;    
@@ -38,8 +43,17 @@
 }*/
 
 .new-comment {
-  margin: 4px 0;
+  margin: 8px 0 0;
   position: relative;
+  
+  &.ready {
+    .fake-input {
+      display: none;
+    }
+    form {
+      display: block;
+    }
+  }
   
   .fake-input {
     width: 98%;
@@ -48,13 +62,15 @@
   
   form {
     margin-bottom: 0;
+    display: none;
     
     .inputs {
       display: inline-block;
-      width: 85%;
+      width: 86%;
       textarea,
       input {
         width: 98%;
+        height: 18px;
         margin-bottom: 0;
       }
       
@@ -66,6 +82,63 @@
   }
 }
 
+.comments.full {  
+  margin-top: 8px;
+    
+  .avatar {
+    width: 45px;
+    height: 45px;
+  }
+    
+  .comment-holder {
+    margin-left: 50px;
+  }
+    
+  .comment {    
+    border-bottom: none;
+    
+    .header {
+      display: block;
+      background-color: @successBackground;
+      padding: 2px;
+    }
+    
+    .content {
+      display: block;
+      padding: 4px;
+    }
+  }
+  
+  .new-comment,
+  .new-comment.ready {
+    .fake-input {
+      display: none;
+    }
+    
+    form {
+      display: block;
+      
+      .inputs {
+        display: block;
+        width: auto;
+        
+        textarea {
+          width: 98%;
+          height: 54px;
+        }
+      }
+      
+      .actions {
+        display: block;
+        margin: 8px 4px;
+        .btn {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+    }
+  }
+}
 /*.new-comment .comment-actions {
   position: absolute;
   bottom: 0;

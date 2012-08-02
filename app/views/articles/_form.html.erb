@@ -1,0 +1,24 @@
+<%= simple_form_for @article do |f| %>
+<div class="span8">
+  <div class="inputs">
+    <%= f.input :title, :required => true, :input_html => { :class => "span8" } %>
+    <%= f.input :content, :required => true, :as => :text, :input_html => { :class => "redactor"} %>
+    <%= redactor %>
+  </div>
+  <div class="form-actions">
+    <div style="text-align:center;">
+      <%= f.button :submit, "#{@article.published ? t('actions.republish') : t('actions.publish')}", :name => "publish", :class => "btn btn-success btn-wide" %>
+      <%= f.button :submit, "#{@article.published ? t('actions.save') : t('actions.save_as_draft')}", :class => "btn btn-primary btn-wide"%>
+      <%= link_to "#{t :'actions.cancel'}", root_path, :class => "btn btn-wide" %>
+    </div>
+  </div>
+</div>
+<div class="span4">
+  <div class="inputs">
+    <%= f.input :abouts, :placeholder => "#", :input_html => { :class => 'span3'} %>
+    <%= f.input :mentions, :placeholder => "@", :input_html => { :class => 'span3'} %>
+    <%= f.input :intro, :placeholder => "#{t :'articles.will_show_as_post'}", 
+                        :input_html => { :class => 'span4'} %>
+  </div>
+</div>
+<% end %>

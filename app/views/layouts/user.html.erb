@@ -1,0 +1,32 @@
+<% content_for(:main) do %>
+  <div class='row' id="user_<%= @user.id %>">
+  	<div class='span3'>
+  	  <div id="user_side" class="well">
+  	    <p id="user_avatar" class="pinable hoverable">
+  	      <%= my_link_to "#{t :edit}", new_avatar_path, 
+                                       :class => "pin-top-right btn hidden show-on-hover",
+                                       :icon => "icon-pencil",
+                                       :remote => true if current_user == @user %>
+    			<%= image_tag @user.avatar.url %>
+    			<%= render :partial => 'users/basic' %>
+    		</p>
+  	  </div>
+  	</div>
+  	<div class='span9 body'>
+      <div class="page-header no-margin-top">
+        <h1 style="display: inline-block">
+          <%= link_to @user.name, user_path(@user) %>
+        </h1>
+        <% if current_user != @user %>
+          <div class="pull-right">
+            <%= render 'shared/follow_button', :user => @user %>
+          </div>
+        <% end %>
+      </div>
+      <%= render 'posts/new', :post => @user.posts.build, :placeholder => "@#{@user.name}", 
+                              :title => "#{t :say_something_to_him, :user => @user.name}" if current_user != @user %>
+      <%= yield %>
+  	</div>
+  </div>
+<% end %>
+<%= render :file => "layouts/application.html.erb" %>

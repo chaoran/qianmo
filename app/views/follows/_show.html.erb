@@ -1,5 +1,5 @@
 <li class="hoverable pinable <%= "unread" unless follow.read %>" id="<%= follow.id %>">
-  <%= link_to user_path(follow.follower, :follow_id => follow.id), :class => "follow" do %>
+  <%= link_to user_posts_path(follow.follower, :follow_id => follow.id), :class => "follow" do %>
     <div>
         <%= image_tag follow.follower.avatar.url(:thumb) %>
         <%= follow.follower.name %>

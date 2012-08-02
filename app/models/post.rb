@@ -1,9 +1,10 @@
 class Post < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   
-  attr_accessible :text, :type, :parent_id, :ancestor_id
+  attr_accessible :text, :type, :parent_id, :ancestor_id, :user
   
   belongs_to :user
+  belongs_to :entity, :polymorphic => true
   
   # If a post has a parent, it is a comment post
   belongs_to :parent, :class_name => 'Post', :counter_cache => :comments_count, :include => [:user]
@@ -15,11 +16,11 @@ class Post < ActiveRecord::Base
   has_many :reposts, :class_name => 'Post', :foreign_key => "ancestor_id", :dependent => :destroy
   
   # A post can mention many users
-  has_many :mentions, :dependent => :destroy
+  has_many :mentions, :dependent => :destroy, :autosave => true
   has_many :mentioned_users, :through => :mentions, :source => :user
   
   # A post can be about many pages
-  has_many :abouts, :dependent => :delete_all
+  has_many :abouts, :dependent => :delete_all, :autosave => true
   
   # A post can be liked by many users
   has_many :likes, :dependent => :destroy
@@ -32,6 +33,7 @@ class Post < ActiveRecord::Base
   # If this is a repost, initialize its text
   after_initialize :initialize_repost, :if => :is_repost?
   before_validation :sanitize_input
+  before_save :setup_entity, :if => :is_repost?
   before_save :notify_parent, :if => :is_comment?
   before_save :notify_ancestor, :if => :is_repost?
   before_save :setup_mentions, :setup_abouts
@@ -65,12 +67,18 @@ class Post < ActiveRecord::Base
   
   protected
   def initialize_repost
-    ancestor = Post.find(self.ancestor_id)
-    self.text = " //@" + ancestor.user.name + ": " + Sanitize.clean(ancestor.text)
+    unless self.text
+      self.text = " //@" + ancestor.user.name
+      self.text += ": " + Sanitize.clean(ancestor.text) if ancestor.text.length > 0
+    end
   end
   
   def sanitize_input
     self.text = Sanitize.clean(self.text) # Sanitize input first to avoid security holes
+  end
+  
+  def setup_entity
+    self.entity = self.ancestor.entity
   end
   
   def notify_parent
@@ -89,7 +97,7 @@ class Post < ActiveRecord::Base
       unless name.blank?
         if user = User.find_by_name(name)
           users << user unless users.include?(user)
-          replace = "<a href=\"#{user_path(user)}\">" + m + "</a>" # replace with a link
+          replace = "<a href=\"#{user_posts_path(user)}\">" + m + "</a>" # replace with a link
         else
           m
         end
@@ -122,7 +130,7 @@ class Post < ActiveRecord::Base
   
   def notify_subscribers
     for subscriber in self.user.subscribers.reject {|s| self.mentioned_users.include?(s) }
-      self.notifications.build(:user => subscriber)
+      self.notifications.create!(:user => subscriber)
     end
   end
 end

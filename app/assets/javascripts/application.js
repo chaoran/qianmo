@@ -19,6 +19,7 @@
 //= require cocoon
 //= require private_pub
 //= require rails.validations
+//= require redactor-rails
 //= require_tree .
 
 $(document).ready(function(){

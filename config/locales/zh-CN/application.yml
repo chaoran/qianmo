@@ -1,12 +1,16 @@
 zh-CN:
     actions:
-        edit: '修改'
+        edit: '编辑'
+        change: '修改'
         okay: '确定'
         upload: '上传'
         save: '保存'
         delete: '删除'
         reply: '回复'
         repost: '转发'
+        cancel: '取消'
+        publish: '发布'
+        republish: '重新发布'
         
     errors:
         messages:

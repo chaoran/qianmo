@@ -73,6 +73,10 @@ h1, h2, h3, h4, h5, h6, strong {
   h2 {
     margin-bottom: 10px;
   }
+  
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 /* hero-unit */ 
@@ -114,6 +118,21 @@ h1, h2, h3, h4, h5, h6, strong {
   }
 }
 
+
+/* form-horizontal */
+
+.form-horizontal .control-label {
+  padding-right: 8px;
+}
+
+.form-horizontal .controls span {
+  line-height: 28px;
+}
+
+.form-horizontal .thumbnail .control-group {
+  margin-bottom: 10px;
+}
+
 /* sidebar 
    use the same style as dropdown-menu */
 
@@ -142,18 +161,19 @@ h1, h2, h3, h4, h5, h6, strong {
   margin-bottom: 0;
 }
 
-.form-horizontal .control-label {
-  padding-right: 8px;
+/* blockquote */
+blockquote {
+  padding-left: 8px;
+  
+  a {
+    padding-bottom: 6px;
+  }
+  p {
+    margin-left: 4px;
+    font-size: @baseFontSize;
+    color: @grayLight;
+  }
 }
-
-.form-horizontal .controls span {
-  line-height: 28px;
-}
-
-.form-horizontal .thumbnail .control-group {
-  margin-bottom: 10px;
-}
-
 
 .btn-wide {
   padding-left: 16px;
@@ -161,7 +181,7 @@ h1, h2, h3, h4, h5, h6, strong {
 }
 
 li .icon-large {
-  margin-right: 1em;
+  width: 26px;
 }
 
 .icon-xlarge::before {
@@ -205,6 +225,9 @@ label.checkbox {
 .time-label {
   color: @grayLight;
   font-style: italic;
+  font-weight: normal;
+  font-size: @baseFontSize;
   float: right;
   display: inline-block;
+  padding-right: 2px;
 }

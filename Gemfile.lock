@@ -123,6 +123,7 @@ GEM
     omniauth-weibo-oauth2 (0.2.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
+    orm_adapter (0.4.0)
     pg (0.14.0)
     polyglot (0.3.3)
     private_pub (1.0.1)
@@ -152,6 +153,9 @@ GEM
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
+    redactor-rails (0.2.5)
+      mime-types
+      orm_adapter
     remotipart (0.4.2)
     rmagick (2.13.1)
     sanitize (2.0.3)
@@ -210,6 +214,7 @@ DEPENDENCIES
   pg
   private_pub
   rails (>= 3.2)
+  redactor-rails
   remotipart (~> 0.4)
   rmagick
   sanitize

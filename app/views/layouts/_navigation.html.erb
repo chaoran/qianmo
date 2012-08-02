@@ -22,7 +22,7 @@
         <%= render "notifications/dropdown", :user => current_user %>
         <li class="divider-vertical"></li>
         <li class="pinable">
-          <%= link_to user_path(current_user), :style => "margin-left: 25px;" do %>
+          <%= link_to user_posts_path(current_user), :style => "margin-left: 25px;" do %>
             <%= image_tag current_user.avatar.url(:thumb), :width => "30px", :height => "30px", 
                                                            :class => "pin-top7-left" %>
             <%= current_user.name %>

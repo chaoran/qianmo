@@ -31,7 +31,9 @@ class User < ActiveRecord::Base
   has_many :notifications, :order => "created_at DESC", :include => [:notifier]
   
   has_many :pages, :foreign_key => "owner_id"
-  has_many :posts, :order => "created_at DESC"
+  has_many :posts, :order => "created_at DESC", :conditions => "parent_id is null"
+  
+  has_many :articles, :order => "updated_at DESC"
   
   # has_many :like_posts
   # has_many :liked_posts, :through => :like_posts, :class_name => "Post"

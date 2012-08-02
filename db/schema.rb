@@ -42,14 +42,17 @@ ActiveRecord::Schema.define(:version => 20120719051749) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
-    t.text     "text"
+    t.text     "content"
+    t.boolean  "published"
+    t.string   "abouts"
+    t.string   "mentions"
+    t.string   "intro"
     t.integer  "user_id"
-    t.integer  "page_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "articles", ["page_id"], :name => "index_articles_on_page_id"
+  add_index "articles", ["title"], :name => "index_articles_on_title"
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
 
   create_table "billboards", :force => true do |t|

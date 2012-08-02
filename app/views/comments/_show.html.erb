@@ -1,14 +1,14 @@
-<div class="comment hoverable" id="comment_<%= comment.id %>">
+<div class="comment hoverable post_<%= comment.id %>" id="comment_<%= comment.id %>">
   <div class="comment-holder">
-    <%= time_label comment.created_at %>
-    <div class="content">
-      <%= link_to user_path(comment.user), :class => "header" do %>
+    <div>
+      <%= link_to user_posts_path(comment.user), :class => "header" do %>
+        <%= time_label comment.created_at %>
         <%= image_tag comment.user.avatar.url(:thumb), :class => "avatar" %>
         <%= comment.user.name %>
       <% end %>
-      <%= comment.text.html_safe %>
+      <span class="content"><%= comment.text.html_safe %></span>
     </div>
-    <div class="actions invisible show-on-hover align-right">
+    <div class="actions align-right">
       <%= render "likes/show", :post => comment %>
       <span class="grey"> · </span>
       <%= my_link_to "#{t :reply}", "#", :icon => "icon-comment-alt", :class => "action-reply"  %>

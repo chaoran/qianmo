@@ -1,0 +1,65 @@
+<% content_for :main do %>
+  <div class="span2">
+    <ul class="nav nav-sidebar">
+      <div class="head">
+        <%= link_to user_posts_path(current_user) do %>
+          <%= image_tag current_user.avatar.url(:thumb), :class => "small-thumb" %>
+          <%= current_user.name %>
+        <% end %>
+      </div>
+      <li class="header"><%= t :'home.my_qianmo'%></li>
+      <li class="active">
+        <%= my_link_to "#{t :'home.news'}", root_path, :icon => "icon-home" %>
+      </li>
+      <li>
+        <%= my_link_to "#{t :'home.inbox'}", root_path, :icon => "icon-inbox" %>
+      </li>
+      <li>
+        <%= my_link_to "#{t :'home.albums'}", root_path, :icon => "icon-picture" %>
+      </li>
+      <li>
+        <%= my_link_to "#{t :'home.articles'}", articles_path, :icon => "icon-book" %>
+      </li>
+    
+      <li class="header"><%= t :'home.qianmo_pages'%></li>
+      <li><%= my_link_to "#{t :'home.my_pages'}", nil, :icon => "icon-file" %></li>
+      <li><%= my_link_to "#{t :'home.followed_pages'}", nil, :icon => "icon-bookmark" %></li>
+      <li><%= my_link_to "#{t :'home.recent_pages'}", nil, :icon => "icon-flag" %></li>
+      <li>
+        <%= my_link_to "#{t :'home.hot_pages'}", nil, :icon => "icon-fire", :badge => "HOT" %>
+      </li>
+    </ul>
+  </div>
+  <div class='span7 main'>
+    <%= render "shared/messages" %>
+    <div class="subnav">
+      <ul class='nav nav-pills'>
+        <li class="dropdown have-carets">
+          <%= my_link_to "#{t :'home.new-post'}", "#", :icon => 'icon-share-alt', :caret => true,
+                         :class => "dropdown-toggle", :'data-toggle' => "dropdown" %>
+          <div class="dropdown-menu span7">
+            <div class="new-post">
+              <%= form_for current_user.posts.build, :remote => true do |f| %>
+              <%= word_count 140 %>
+              <%= f.text_area :text,
+                             :placeholder => "#{t :'home.want_to_say'}", 
+                             :class => "input" %>
+              <div class="actions">
+                <%= f.submit "#{t :publish}", :class => "btn btn-wide pull-right", :disabled => true %>
+                <%= f.submit "#{t :publish}", :class => "btn btn-wide pull-right ready btn-primary" %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </li>
+        <li><%= my_link_to "#{t :'home.new-pictures'}", nil, :icon => 'icon-picture' %></li>
+        <li><%= my_link_to "#{t :'home.new-article'}", new_article_path, :icon => 'icon-pencil' %></li>
+        <li><%= my_link_to "#{t :'home.new-page'}", new_page_path, :icon => 'icon-file' %></li>
+      </ul>
+    </div>
+    <div id="home_main">
+      <%= yield %>
+    </div>
+  </div>
+<% end %>
+<%= render :file => "layouts/application.html" %>

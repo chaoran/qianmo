@@ -24,8 +24,8 @@
 <li class="name">
   <%= link_to edit_account_path(:edit => "name"), :class => "show-icon-on-hover" do %>
     <span class="header"><%= t :'users.name' %></span>
-    <span><%= @account.user.name %></span>
-    <span class="action"><i class="icon-pencil"></i><%= t :'actions.edit' %></span>
+    <span class="content"><%= @account.user.name %></span>
+    <span class="action"><i class="icon-pencil"></i><%= t :'actions.change' %></span>
   <% end %>
 </li>
 <% end %>

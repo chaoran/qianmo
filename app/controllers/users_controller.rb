@@ -5,6 +5,7 @@ class UsersController < AuthenticatedController
       Follow.update_all({:read => true}, {:id => params[:follow_id]})
       redirect_to user_path(@user)
     end
+    render :layout => "user"
   end
   
   def edit

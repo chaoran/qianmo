@@ -10,8 +10,15 @@
     </div>
     <p class="post-body">
       <%= post.text.html_safe %>
+      <% if post.entity_type == "Article" %>
+        <% article = post.entity %>
+        <blockquote>
+          <%= link_to article.preview_title, article_path(article) %>
+          <p><%= article.preview %></p>
+        </blockquote>
+      <% end %>
     </p>
-    <div class="post-actions">
+    <div class="actions">
       <span>
         <%= link_to_with_icon "#{t :expand}", nil, "icon-caret-right", :class => "action-expand"  %>
         <%= link_to_with_icon "#{t :collapse}", nil, "icon-caret-down", 

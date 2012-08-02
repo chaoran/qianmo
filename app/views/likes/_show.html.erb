@@ -12,12 +12,12 @@
   <% if user %>
     <% link_name = user == current_user ? t('you') : user.name %>
     <% if list.length > 1 %>
-      <%= link_to "#{link_name},", user_path(user) %>
+      <%= link_to "#{link_name},", user_posts_path(user) %>
     <% elsif list.length == 1 %>
-      <%= link_to "#{link_name}", user_path(user) %>
+      <%= link_to "#{link_name}", user_posts_path(user) %>
       <span><%= t :and %></span>
     <% else %>
-      <%= link_to "#{link_name}", user_path(user) %>
+      <%= link_to "#{link_name}", user_posts_path(user) %>
     <% end %>
   <% end %>
 <% end %>

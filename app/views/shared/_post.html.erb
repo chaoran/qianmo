@@ -1,55 +1,27 @@
 <% closed_mode = (post.comments.length == 0) if local_assigns[:closed_mode].nil? %>
-<div class="post post_<%= post.id %> pinable has_hidden_buttons <%= "hoverable" if closed_mode %>">
+<div class="post post_<%= post.id %> pinable hoverable expandable <%= "expanded" unless closed_mode %>">
   <div class="post-content">
     <div class="post-header">
       <a>
         <%= image_tag post.user.avatar.url(:thumb), :class => "avatar pin-top7-left5" %>
         <strong><%= post.user.name %></strong>
       </a>
-      <%= time_label post.created_at %>
     </div>
-    <p class="post-body">
+    <div class="post-body">
       <%= post.text.html_safe %>
       <% if post.entity_type == "Article" %>
         <% article = post.entity %>
         <blockquote>
-          <%= link_to article.preview_title, article_path(article) %>
-          <p><%= article.preview %></p>
+          <% if article %>
+            <%= link_to article.preview_title, article_path(article) %>
+            <p><%= article.preview %></p>
+          <% else %>
+            <p><%= t :'articles.no_longer_exists'%></p>
+          <% end %>
         </blockquote>
       <% end %>
-    </p>
-    <div class="actions">
-      <span>
-        <%= link_to_with_icon "#{t :expand}", nil, "icon-caret-right", :class => "action-expand"  %>
-        <%= link_to_with_icon "#{t :collapse}", nil, "icon-caret-down", 
-                              :class => "action-collapse", :style => "display:none;"  %>
-      </span>
-      <ul class="pull-right show-on-hover <%= "invisible" if closed_mode %>">
-        <li>
-          <%= render 'likes/show', :post => post %>
-        </li>
-        <li><span class="grey">·</span></li>
-        <li>
-          <%= my_link_to "#{t :'actions.repost'}", repost_post_path(post), :icon => "icon-share-alt", 
-                                         :remote => true %>
-          <%= post_stat("num-reposts", post.reposts_count) %>
-        </li>
-        <li><span class="grey">·</span></li>
-        <li>
-          <%= my_link_to "#{t :'actions.reply'}", nil, :class => "action-comment",
-                         :icon => "icon-comment#{ "-alt" if post.comments.length == 0}" %>
-          <%= post_stat("num-comments", post.comments.length) %>
-        </li>
-        <% if post.user == current_user %>
-          <li>
-            <%= my_link_to "", post_path(post), :icon => "icon-remove", 
-                               :class => "action-delete grey", 
-                               :tooltip => "#{t :'actions.delete'}", :remote => true, 
-                               :method => :delete%>
-          </li>
-        <% end %>
-      </ul>
     </div>
+    <%= render 'shared/post_actions', :post => post %>
   </div>
   <div class="post-details well" <%= "style=\"display:none;\"".html_safe if closed_mode %>>
     <div class="post-comments">

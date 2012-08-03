@@ -1,22 +1,11 @@
 <div class="articles">
   <% if params[:user_id] %>
-    <%= render :partial => 'shared/articles', :collection => @articles %>
+    <%= render 'shared/post', :collection => @articles %>
   <% else %>
     <% if @articles.length > 0 %>
-      <ul class="table-list">
-        <% for article in @articles %>
-          <li>
-            <%= link_to edit_article_path(article), :class => "show-icon-on-hover" do %>
-              <span class="header"><%= article.brief_title %></span>
-              <% unless article.published %>
-              <span class="label label-info"><%= t :'articles.draft' %></span>
-              <% end %>
-              <span class="content"><%= article.brief %></span>
-              <span class="action"><i class="icon-pencil"></i><%= t :'actions.edit' %></span>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
+      <% for article in @articles %>
+        <%= render 'preview', :article => article %>
+      <% end %>
     <% else %>
       <p><%= t :'articles.no_articles' %></p>
     <% end %>

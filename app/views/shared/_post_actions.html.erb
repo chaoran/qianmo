@@ -1,0 +1,31 @@
+<div class="post-actions post_<%= post.id %>">
+  <% if local_assigns[:time_ago_in_words].nil? %>
+    <%= time_label post.created_at %>
+  <% else %>
+    <%= time_label post.created_at, false %>
+  <% end %>
+  <%= like_label post %>
+  <ul class="pull-right <%= "show-on-hover" if local_assigns[:not_expandable].nil? %>">
+    <li class="flippable <%= "flipped" if post.liked_users.include?(current_user) %>">
+      <%= my_link_to "#{t :like}", like_post_path(post), 
+                                   :icon => "icon-heart-empty", :remote => true, :method => :post,
+                                   :class => "action-like flipdown on-click"  %>
+      <%= my_link_to "#{t :like}", like_post_path(post), 
+                                   :icon => "icon-heart", :remote => true, :method => :delete,
+                                   :class => "action-dislike flipup on-click" %>
+    </li>
+    <li><span class="grey">·</span></li>
+    <li>
+      <%= my_link_to "#{t :'actions.repost'}", repost_post_path(post), 
+                     :icon => "icon-share-alt", :remote => true %>
+      <%= post_stat("num-reposts", post.reposts_count) %>
+    </li>
+    <li><span class="grey">·</span></li>
+    <li>
+      <%= my_link_to "#{t :'actions.reply'}", nil, :class => "action-comment",
+                     :icon => "icon-comment#{ "-alt" if post.comments.length == 0}" %>
+      <%= post_stat("num-comments", post.comments.length) %>
+    </li>
+  </ul>
+  <div class="clear-float"></div>
+</div>

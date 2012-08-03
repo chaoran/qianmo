@@ -5,7 +5,8 @@ class Article < ActiveRecord::Base
   attr_accessible :user, :content, :title, :abouts, :mentions, :intro, :published
   attr_accessor :publish
   
-  has_one :post, :as => :entity, :autosave => true
+  has_one :post, :as => :entity, :conditions => "ancestor_id is null", 
+                 :autosave => true, :dependent => :destroy
 
   validates_presence_of :title, :content, :user
   validates_uniqueness_of :title, :scope => [:user_id]
@@ -14,7 +15,7 @@ class Article < ActiveRecord::Base
   
   def publish_article
     self.published = true
-    self.post.destroy if self.post
+    self.posts.destroy if self.post
     self.build_post(:user => self.user, :text => self.intro + " " + self.abouts + " " + self.mentions)
   end
   
@@ -35,10 +36,10 @@ class Article < ActiveRecord::Base
     end
   end
   
-  def preview
-    text = Sanitize.clean(self.content)
-    if text.length > 100 
-      text[0..99] + "..."
+  def preview(limit = 100, styled = false)
+    text = styled ? self.content : Sanitize.clean(self.content)
+    if text.length > limit 
+      text[0..limit-1] + "..."
     else
       text
     end

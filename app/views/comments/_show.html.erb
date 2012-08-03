@@ -2,22 +2,11 @@
   <div class="comment-holder">
     <div>
       <%= link_to user_posts_path(comment.user), :class => "header" do %>
-        <%= time_label comment.created_at %>
         <%= image_tag comment.user.avatar.url(:thumb), :class => "avatar" %>
         <%= comment.user.name %>
       <% end %>
       <span class="content"><%= comment.text.html_safe %></span>
     </div>
-    <div class="actions align-right">
-      <%= render "likes/show", :post => comment %>
-      <span class="grey"> · </span>
-      <%= my_link_to "#{t :reply}", "#", :icon => "icon-comment-alt", :class => "action-reply"  %>
-      <% if current_user == comment.user %>
-      <span class="grey"> · </span>
-      <%= my_link_to nil, comment_path(comment), :icon => "icon-remove", 
-                     :class => "action-delete grey", :remote => true,
-                     :title => "#{t :delete}", :rel => "tooltip", :method => :delete  %>
-      <% end %>
-    </div>
+    <%= render 'shared/post_actions', :post => comment, :not_expandable => true %>
   </div>
 </div>

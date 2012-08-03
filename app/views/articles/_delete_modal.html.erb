@@ -1,0 +1,22 @@
+<%= content_tag :div, :class => "modal hide", 
+ 											:id => "article-delete-modal" do %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3><%= t :'articles.delete?' %></h3>
+  </div>
+  <div class="modal-body">
+    <p>
+      <%= t :'articles.are_you_sure_deleting_this_article?' %>
+    </p>
+    <div class="well">
+      <%= render 'articles/preview', :article => @article %>
+    </div>
+  </div>
+  <div class="modal-footer">
+		<div class="actions">
+			<%= link_to "#{t :okay}", article_path(@article, :confirm => true), :method => :delete, 
+			                          :class => "btn btn-danger" %>
+    	<a href="#" class="btn" data-dismiss="modal"><%= t :'actions.cancel' %></a>
+	  </div>
+  </div>
+<% end %>

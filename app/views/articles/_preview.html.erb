@@ -1,40 +1,37 @@
-<div class="article-preview" id="<%= article.id %>">
-  <%= link_to user_profile_path(article.user) do %>
-    <%= image_tag user.avatar.url(:thumb) %>
-  <% end %>
-  <div class="article-preview-holder">
-    <div class="article-preview-title">
-      <%= link_to article.title, article_path(article) %>
-      <%= my_link_to "#{t :expand}", nil, :icon => "icon-caret-right", :class => "action-expand" %>
-    </div>
-    <div class="article-preview-header">
-      <%= link_to article.user.name, user_profile_path(user) %>
-      <small class="timestamp">
-        <%= "#{t :posted_at_time, :time => time_ago_in_words(article.created_at)}".html_safe %>
-      </small>
-    </div>
-    <div class="article-footer">
+<div class="article-preview expandable" id="article_<%= article.id %>">
+  <div class="<% "shifter" if controller_name == "pages" %>">
+    <%= image_tag article.user.avatar.url(:thumb), :class => "avatar" if controller_name == "pages" %>
+    <div class="header hoverable">
+      <%= link_to article_path(article) do %>
+        <h4><%= article.title %></h4>
+        <%= expand_toggle %>
+      <% end %>
       <ul class="actions">
-        <li><%= render 'likes/show', :likable => post %></li>
-        <li class="divider">·</li>
         <li>
-          <%= my_link_to "#{t :share}", new_post_path, "icon-share-alt", :remote => true, :class => "share" %>
-          <%= link_to article_path(article), :class => "num-shares" do %>
-            <%= "(#{article.shares_count})" if article.shares_count > 0 %>
-          <% end %>
+          <%= my_link_to "#{t :'actions.edit'}", edit_article_path(article), 
+                         :icon => "icon-pencil", :class => "show-on-hover" %>
         </li>
-        <li class="divider">·</li>
         <li>
-          <%= my_link_to "#{t :reply}", nil, 
-                         "icon-comment#{ "-alt" if article.comments_count == 0}", :class => "comment" %>
-          <%= link_to article_path(article), :class => "num-comments" do %>
-            <%= "(#{article.comments_count})" if article.comments_count > 0 %>
-          <% end %>
+          <%= my_link_to "#{t :'actions.delete'}", article_path(article), :remote => true,
+                         :icon => "icon-remove", :method => :delete, :class => "show-on-hover" %>
         </li>
       </ul>
+      <%= link_to article.user.name, user_path(article.user) if controller_name == "pages" %>
+    </div> 
+    <div class="article-post">
+      <%= link_to article.user.name, user_path(article.user) %>
+      <%= article.post.text.html_safe %>
     </div>
-    <div class="article-new-comment" style="display:none;">
-      <%= render 'comments/new', :commentable => article, :rows => 1 %>
+    <div class="content">
+      <div class="partial">
+        <%= article.preview(150, :styled => true).html_safe %>
+      </div>
+      <div class="full">
+        <%= article.content.html_safe %>
+      </div>
+    </div>
+    <div class="footer">
+      <%= render 'shared/post_actions', :post => article.post, :time_ago_in_words => false %>
     </div>
   </div>
 </div>

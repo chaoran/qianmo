@@ -95,9 +95,27 @@ module ApplicationHelper
     html.html_safe
   end
   
-  def time_label(time)
+  def time_label(time, ago_in_words = true)
     content_tag :div, :class => "time-label" do
-      I18n.t(:ago, :time => time_ago_in_words(time))
+      if ago_in_words 
+        I18n.t(:ago, :time => time_ago_in_words(time))
+      else
+        time.to_s(:default)
+      end
+    end
+  end
+  
+  def expand_toggle(expand_url = "#")
+    content_tag :div, :class => "expand-toggle" do
+      html = ""
+      if expand_url == "#"
+        html += my_link_to(nil, "#", :icon => "icon-chevron-right", :class => "action-expand")
+      else
+        html += my_link_to(nil, expand_url, :icon => "icon-chevron-right", 
+                                :class => "action-expand", :remote => true)
+      end
+      html += my_link_to(nil, "#", :icon => "icon-chevron-down", :class => "action-collapse")
+      html.html_safe
     end
   end
 end

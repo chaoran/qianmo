@@ -25,7 +25,7 @@
     </div>
   </div>
 <% else %>
-  <%= link_to edit_account_path(:edit => "email"), :class => "show-icon-on-hover" do %>
+  <%= link_to edit_account_path(:edit => "email"), :class => "hoverable" do %>
     <div class="header"><%= t :'accounts.email' %></div>
     <div class="content">
       <div>
@@ -46,7 +46,7 @@
         </div>
       <% end %>
     </div>
-    <div class="action"><i class="icon-pencil"></i><%= t :'actions.change' %></div>
+    <div class="action"><i class="icon-pencil show-on-hover"></i><%= t :'actions.change' %></div>
   <% end %>
 <% end %>
 </li>

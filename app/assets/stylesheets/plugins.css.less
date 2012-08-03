@@ -1,0 +1,55 @@
+@import 'mixins';
+
+.hoverable {
+  .show-on-hover {
+    visibility: hidden;
+  }
+  
+  &.hover .show-on-hover {
+    visibility: visible;
+  }
+  
+  &.hover .expand-toggle {
+    color: @linkColorHover;
+  }
+}
+
+.expandable {
+  .expand-toggle {
+    float: right;
+    a {
+      padding-right: 4px;
+      padding-left: 6px;
+    }
+  }
+  
+  [class^="icon-chevron-"] {
+    width: 10px;
+  }
+  
+  .action-collapse {
+    display: none;
+  }
+  
+  &.expanded .action-collapse {
+    display: inline-block; /* use inline-block not inline 'cause it may need to float */
+  }
+  
+  &.expanded .action-expand {
+    display: none;
+  }
+}
+
+.flippable {
+  .flipup {
+    display: none;
+  }
+  
+  &.flipped .flipup {
+    display: inline-block;
+  }
+  
+  &.flipped .flipdown {
+    display: none;
+  }
+}

@@ -19,7 +19,6 @@ zh-CN:
     save: '保存'
     delete: '删除'
     
-    ago: "%{time}前"
     his: "他的"
     her: "她的"
     my: "我的"

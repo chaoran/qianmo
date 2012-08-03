@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
                       
   # If a post has an ancestor, it is a repost
   belongs_to :ancestor, :class_name => 'Post', :counter_cache => :reposts_count, :include => [:user]
-  has_many :reposts, :class_name => 'Post', :foreign_key => "ancestor_id", :dependent => :destroy
+  has_many :reposts, :class_name => 'Post', :foreign_key => "ancestor_id"
   
   # A post can mention many users
   has_many :mentions, :dependent => :destroy, :autosave => true

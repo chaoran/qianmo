@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.effects.highlight
 //= require jquery.form
 //= require jquery.remotipart
 //= require jquery.Jcrop
@@ -23,25 +24,45 @@
 //= require_tree .
 
 $(document).ready(function(){
-  $(".has_hidden_buttons").live({
-    mouseenter: function() {
-      $(this).find("hidden_button").removeClass("hidden");
-    },
-    mouseleave: function() {
-      $(this).find("hidden_button").addClass("hidden");
-    }
-  });
-  
+  /* PLUGIN: hoverable */
   $(".hoverable").live({
     mouseenter: function() {
       $(this).addClass("hover");
-      $(this).find(".show-on-hover").removeClass('invisible')
     },
     mouseleave: function() {
       $(this).removeClass("hover");
-      $(this).find(".show-on-hover").addClass("invisible")
     }
-  })
+  });
+  
+  /* PLUGIN: expandable */
+  $(".expandable .action-expand").live("click", function(e){
+    $(this).closest(".expandable").addClass("expanded");
+    e.preventDefault();
+  });
+  
+  $(".expandable .action-collapse").live("click", function(e){
+    $(this).closest(".expandable").removeClass("expanded");
+    e.preventDefault();
+  });
+  
+  /* PLUGIN: flippable */
+  $(".flippable .on-click").live("click", function() {
+    var flippable = $(this).closest(".flippable")
+    if (flippable.hasClass("flipped")) {
+      flippable.removeClass("flipped")
+    } else {
+      flippable.addClass("flipped")
+    }
+  });
+  
+  $(".flippable .on-hover").live({
+    mouseenter: function() {
+      $(this).closest(".flippable").addClass("flipped");
+    },
+    mouseleave: function() {
+      $(this).closest(".flippable").removeClass("flipped");
+    }
+  });
   
   $(".removable").live({
     mouseenter: function() {
@@ -60,23 +81,7 @@ $(document).ready(function(){
       $(this).children().first().show().next().hide();
     }
   });
-  
-  $(".flip-on-hover").live({
-    mouseenter: function() {
-      $(this).addClass("hidden").next().removeClass("hidden");
-    },
-    mouseleave: function() {
-      $(this).addClass("hidden").prev().removeClass("hidden");
-    }
-  });
-  
-  $(".flipdown-on-click").live("click", function() {
-    $(this).hide().next().show();
-  });
-  
-  $(".flipup-on-click").live("click", function() {
-    $(this).hide().prev().show();
-  });
+
 
   // Make client side validations use the same style as Twitter Bootstrap, http://bit.ly/Q6dHeD
   ClientSideValidations.formBuilders['SimpleForm::FormBuilder'] = {

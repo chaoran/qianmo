@@ -99,6 +99,14 @@ footer ul li {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  
+  width: 45px;
+  height: 45px;
+  
+  &.small {
+    width: 35px;
+    height: 35px;
+  }
 }
 
 .pinable {
@@ -176,3 +184,14 @@ footer ul li {
   display: inline-block;
 }
 
+.clear-float {
+  clear: both;
+}
+
+.shifter {
+  margin-left: 50px;
+}
+
+.small-shifter {
+  margin-left: 40px;
+}

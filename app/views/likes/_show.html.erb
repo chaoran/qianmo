@@ -24,12 +24,5 @@
 <% if list.length > 0 %>
   <%= link_to "#{t :and_other_num_people, :num => (post.liked_users.length - 5)}", likes_path(post) %>
 <% end %>
-<%= my_link_to "#{t :like}", like_post_path(post), 
-                             :icon => "icon-heart-empty", :remote => true, :method => :post,
-                             :style => "#{"display:none;" if liked}",
-                             :class => "action-like flipdown-on-click"  %>
-<%= my_link_to "#{t :like}", like_post_path(post), 
-                             :icon => "icon-heart", :remote => true, :method => :delete,
-                             :style => "#{"display:none;" if !liked}",
-                             :class => "action-dislike flipup-on-click" %>
+
 </span>

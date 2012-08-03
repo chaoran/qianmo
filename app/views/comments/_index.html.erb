@@ -1,4 +1,4 @@
-<div class="comments <%= "full" unless local_assigns[:full_mode].nil? %>">
+<div class="post-comments post_<%= post.id %> <%= "full" unless local_assigns[:full_mode].nil? %>">
   <% for comment in post.comments %>
     <%= render 'comments/show', :comment => comment %>
   <% end %>

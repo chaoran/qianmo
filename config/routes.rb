@@ -28,6 +28,7 @@ Qianmo::Application.routes.draw do
       post 'like' => 'likes#create'
       delete 'like' => 'likes#destroy'
     end
+    resources :likes, :only => [:index]
   end
       
   resources :pages do 

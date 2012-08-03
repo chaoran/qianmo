@@ -22,10 +22,10 @@
 </li>
 <% else %>
 <li class="name">
-  <%= link_to edit_account_path(:edit => "name"), :class => "show-icon-on-hover" do %>
+  <%= link_to edit_account_path(:edit => "name"), :class => "hoverable" do %>
     <span class="header"><%= t :'users.name' %></span>
     <span class="content"><%= @account.user.name %></span>
-    <span class="action"><i class="icon-pencil"></i><%= t :'actions.change' %></span>
+    <span class="action"><i class="icon-pencil show-on-hover"></i><%= t :'actions.change' %></span>
   <% end %>
 </li>
 <% end %>

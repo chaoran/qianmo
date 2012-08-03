@@ -14,3 +14,56 @@
     padding-left: 4px;
   }
 }
+
+.article-preview {
+  padding: 8px 0;
+  .border-radius(2px);
+  
+  a:hover {
+    text-decoration: none;
+  }
+  
+  .header {
+    padding: 6px 6px 4px;
+    .border-radius(2px);
+    background-color: @infoBackground;
+    
+    h4 {
+      display: inline;
+    }
+    
+    .actions {
+      float: right;
+      margin: 0;
+      display: inline-block;
+      li {
+        display: inline-block;
+        margin-left: 6px;
+      }
+    }
+  }
+  
+  .content {
+    margin-top: 6px;
+    padding-left: 8px;    
+  }
+  
+  .full {
+    display: none;
+  }
+  
+  &.expanded .full {
+    display: block;
+  }
+  
+  &.expanded .partial {
+    display: none;
+  }
+}
+
+.article-post {
+  margin: 4px 0 10px 8px;
+  padding: 4px 8px;
+  .border-radius(2px);
+  background-color: @warningBackground;
+}

@@ -1,31 +1,44 @@
-@import "twitter/bootstrap/variables";
 @import "mixins";
 
 .post {
   margin: 0;
   border-bottom: 1px solid #E8E8E8;
   
-  .actions {
-    height: 20px;
+  blockquote {
+    margin-top: 6px;
+    margin-bottom: 0;
+  }
+}
 
-    ul {
-      list-style: none;
+.post-actions {  
+  margin-top: 8px;
+  
+  ul {
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+
+    li {
       display: inline-block;
-      margin: 0;
-
-      li {
-        display: inline-block;
-      }
     }
+  }
 
-    a {
-      text-decoration: none;
-    }
+  a {
+    text-decoration: none;
+  }
+  
+  .like-label {
+    display: inline-block;
   }
 }
 
 .post.hover {
-  background-color: whitesmoke;
+  background-color: @tableBackgroundHover;
+  .border-radius(2px);
+  
+  &.expanded {
+    background-color: transparent;
+  }
 }
 
 .post-content {

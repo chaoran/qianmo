@@ -1,4 +1,4 @@
-$(".post_<%= params[:id] %>").find(".actions .like-show").first().replaceWith("<%= j render :partial => "show", :locals => {:post => @post} %>")
+$(".post_<%= params[:id] %>.post-actions .like-label").replaceWith("<%= j like_label(@post) %>")
 <% if @like && !@like.notification.nil? %>
   <%= render :partial => "notifications/update", :locals => {:user => @like.notification.user} %>
 <% end %>

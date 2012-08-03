@@ -45,11 +45,20 @@ class ArticlesController < AuthenticatedController
   end
   
   def destroy
+    @article = Article.find(params[:id])
+    if params[:confirm]
+      @article.destroy
+      redirect_to articles_path, :notice => I18n.t(:'articles.deleted', 
+                                                   :title => @article.title).html_safe
+    end
   end
   
   def show
     @article = Article.find(params[:id])
     @user = @article.user
-    render :layout => "user"
+    respond_to do |format|
+      format.html { render :layout => "user" }
+      format.js 
+    end
   end
 end

@@ -11,7 +11,12 @@ zh-CN:
         cancel: '取消'
         publish: '发布'
         republish: '重新发布'
-        
+        trash: '不再显示'
+    
+    etc: '等<span class="num-likes">%{num}</span>人'
+    clicked_like: '点了喜欢'
+    ago: "%{time}前"
+    
     errors:
         messages:
             size_too_big: "图片大小超过限制 (最多可以是%{file_size})"

@@ -8,7 +8,7 @@
   <div class="form-actions">
     <div style="text-align:center;">
       <%= f.button :submit, "#{@article.published ? t('actions.republish') : t('actions.publish')}", :name => "publish", :class => "btn btn-success btn-wide" %>
-      <%= f.button :submit, "#{@article.published ? t('actions.save') : t('actions.save_as_draft')}", :class => "btn btn-primary btn-wide"%>
+      <%= f.button :submit, "#{@article.published ? t('actions.save') : t('articles.save_as_draft')}", :class => "btn btn-primary btn-wide"%>
       <%= link_to "#{t :'actions.cancel'}", root_path, :class => "btn btn-wide" %>
     </div>
   </div>

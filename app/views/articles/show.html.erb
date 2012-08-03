@@ -9,28 +9,6 @@
     <%= @article.content.html_safe %>
   </div>
   <% post = @article.post %>
-  <div class="post post_<%= post.id %>">
-    <div class="actions">
-      <ul class="pull-right">
-        <li>
-          <%= render 'likes/show', :post => post %>
-        </li>
-        <li><span class="grey">·</span></li>
-        <li>
-          <%= my_link_to "#{t :'actions.repost'}", repost_post_path(post), :icon => "icon-share-alt", 
-                                         :remote => true %>
-          <%= post_stat("num-reposts", post.reposts_count) %>
-        </li>
-        <li><span class="grey">·</span></li>
-        <li>
-          <%= my_link_to "#{t :'actions.reply'}", nil, :class => "action-comment",
-                         :icon => "icon-comment#{ "-alt" if post.comments.length == 0}" %>
-          <%= post_stat("num-comments", post.comments.length) %>
-        </li>
-      </ul>
-    </div>
-    <div class="post-comments">
-      <%= render 'comments/index', :post => post, :full_mode => true %>
-    </div>
-  </div>
+  <%= render 'shared/post_actions', :post => post, :time_ago_in_words => false %>
+  <%= render 'comments/index', :post => post, :full_mode => true %>
 </div>

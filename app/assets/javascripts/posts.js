@@ -73,12 +73,10 @@ jQuery(document).ready(function($) {
     var comments = $(this).next();
     if (comments.is(":visible")) {
       comments.slideUp("fast");
-      $(this).find(".action-expand").show().next().hide();
-      $(this).parent().addClass("hoverable")
+      $(this).closest(".expandable").removeClass("expanded")
     } else {
       comments.slideDown("fast");
-      $(this).find(".action-expand").hide().next().show();
-      $(this).parent().removeClass("hoverable").removeClass("hover")
+      $(this).closest(".expandable").addClass("expanded")
     }
   });
     

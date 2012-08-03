@@ -5,6 +5,11 @@
       <a>
         <%= image_tag post.user.avatar.url(:thumb), :class => "avatar pin-top7-left5" %>
         <strong><%= post.user.name %></strong>
+        <% if current_user == post.user %>
+          <%= my_link_to nil, post_path(post), :icon => "icon-remove", 
+                         :method => :delete, :remote => true, 
+                         :class => "pull-right show-on-hover" %>
+        <% end %>
       </a>
     </div>
     <div class="post-body">

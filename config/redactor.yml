@@ -2,14 +2,12 @@ lang: 'zh_cn'
 buttons: 
     - bold
     - italic
+    - link
     - '|'
     - unorderedlist
     - orderedlist
     - outdent
     - indent
-    - '|'
-    - image
-    - link
     - '|'
     - fontcolor
     - backcolor

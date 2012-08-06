@@ -32,6 +32,10 @@ body {
 // Example:
 // @linkColor: #ff0000;
 
+a, a:hover {
+  text-decoration: none;
+}
+
 /* BODY COMPONENTS */
 
 .body {
@@ -55,8 +59,11 @@ footer {
     color: @grayLight;
   }
   
-  a, a:hover {
+  a {
     color: #4F81A6;
+    &:hover {
+      color: darken(#4F81A6, 15%);
+    } 
   }
   
   ul li {

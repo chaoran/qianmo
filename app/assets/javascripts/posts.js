@@ -17,13 +17,12 @@ jQuery(document).ready(function($) {
       if (has_value($(this))) {
         buttonValid(form.find("input[type='submit']"));
       } else {
-        if ($(this).attr('placeholder') != undefined) {
+        if ($(this).attr('placeholder').match(/^[@#].+/)) {
           $(this).val($(this).attr('placeholder') + ' ');
         }
       }
       form.find(".post-wordcount").text($(this).val().length);
       form.find(".post-actions").show();
-      form.find(".post-header em").show();
   });
   
   function buttonInvalid(button) {
@@ -65,7 +64,6 @@ jQuery(document).ready(function($) {
       var form = $(this).closest("form")
       form.find(".post-actions").hide();
       $(this).val("");
-      form.find(".post-header em").hide();
     }
   });
   

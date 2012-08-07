@@ -10,6 +10,10 @@ zh-CN:
         default_gallery: '默认相册'
         remove_gallery: '使用已有相册'
         new_gallery_name: '新相册名'
+        my_galleries: '我的相册'
+        num_pictures_in_gallery: '(共 %{num} 张)'
+        posted: '你的图片已发布。'
+        post_failed: '图片发布失败。'
         
     simple_form:
         labels:

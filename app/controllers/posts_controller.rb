@@ -39,10 +39,8 @@ class PostsController < AuthenticatedController
     @post = current_user.posts.build(params[:post])
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.js
       else
-        format.html { render action: "new" }
         format.js { render 'create_error' }
       end
     end

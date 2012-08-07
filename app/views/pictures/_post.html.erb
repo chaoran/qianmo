@@ -1,26 +1,25 @@
 <%= content_tag :div, :class => "modal hide", 
  											:id => "post_picture_modal" do %>
-  <%= simple_form_for @post, :url => posts_path,
-                             :html => {:method => :post}, 
-                             :remote => true do |f| %>
-    <div class="modal-header">
-     <button type="button" class="close" data-dismiss="modal">×</button>
-     <h3><%= t :'pictures.add_description' %></h3>
-     <%= f.hidden_field :entity_id %>
-     <%= f.hidden_field :entity_type %>
-    </div>
-    <div class="modal-body">
-      <div style="text-align:center;">
-        <%= image_tag @picture.image.url, :style => "max-height:300px;margin-bottom:8px;" %>
+  <%= simple_form_for @picture, :html => {:method => :put}, 
+                                :remote => request.referer == root_url do |f| %>
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal">×</button>
+       <h3><%= t :'pictures.add_description' %></h3>
       </div>
-      <%= f.input :text, :label => t('pictures.description'), 
-                         :input_html => {:rows => 1, :class => "max-width"}, 
-                         :placeholder => t('pictures.description_placeholder') %>
-    </div> 
+      <div class="modal-body">
+        <div style="text-align:center;">
+          <%= image_tag @picture.image.url, :style => "max-height:300px;margin-bottom:8px;" %>
+        </div>
+        <%= f.simple_fields_for :post do |ff| %>
+          <%= ff.input :text, :label => t('pictures.description'), 
+                              :input_html => {:rows => 1, :class => "max-width"}, 
+                              :placeholder => t('pictures.description_placeholder') %>
+        <% end %>
+      </div> 
     <div class="modal-footer">
     	<div class="post-actions">
     	  <a href="#" class="btn" data-dismiss="modal"><%= t :cancel %></a>
-    		<%= f.button :submit, "#{t :publish}", :class => "pull-right" %>
+    		<%= f.button :submit, "#{t :publish}", :class => "pull-right btn-primary" %>
       </div>
     </div>
   <% end %>

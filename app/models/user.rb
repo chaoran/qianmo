@@ -35,11 +35,7 @@ class User < ActiveRecord::Base
   
   has_many :articles, :include => [:post], :order => "created_at DESC"
   
-  has_many :galleries
-  has_many :pictures, :include => [:post], :order => "created_at DESC"
-  has_many :picture_albums, :as => :owner, :conditions => {:type => "Picture"}, 
-                            :class_name => "Album"
-  
+  has_many :galleries, :include => [:pictures], :order => "created_at DESC"
   
   # has_many :like_posts
   # has_many :liked_posts, :through => :like_posts, :class_name => "Post"

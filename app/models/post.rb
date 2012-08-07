@@ -36,7 +36,7 @@ class Post < ActiveRecord::Base
   before_save :setup_entity, :if => :is_repost?
   before_save :notify_parent, :if => :is_comment?
   before_save :notify_ancestor, :if => :is_repost?
-  before_save :setup_mentions, :setup_abouts
+  before_save :setup_mentions, :setup_abouts, :if => "!text.blank?"
   after_save :notify_subscribers, :unless => :is_comment?
   
   validates_presence_of :user

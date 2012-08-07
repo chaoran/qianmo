@@ -15,8 +15,7 @@ class Article < ActiveRecord::Base
   
   def publish_article
     self.published = true
-    self.posts.destroy if self.post
-    self.intro = I18n.t("articles.posted_a_article") if self.intro.blank?
+    self.post.destroy if self.post
     text = self.intro + " " + self.abouts + " " + self.mentions
     self.build_post(:user => self.user, :text => text)
   end

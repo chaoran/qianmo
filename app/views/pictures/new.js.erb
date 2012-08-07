@@ -1,0 +1,17 @@
+$("#modal-placeholder").html("<%= j render 'upload' %>")
+$("#upload_picture_modal").modal("show")
+$('.btn-primary').click(function(){
+  $(this).addClass('loading disabled');
+});
+
+$("#new_picture a.add_fields").
+  data("association-insertion-method", 'after').
+  data("association-insertion-node", '#gallery_list');
+
+$('#new_picture').bind('insertion-callback', function() {
+  $("#gallery_list").hide();
+});
+
+$('#new_picture').bind("removal-callback", function() {
+  $("#gallery_list").show();
+});

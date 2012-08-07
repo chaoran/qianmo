@@ -26,3 +26,6 @@ zh-CN:
     unconfirmed_notification1: '你的邮箱地址: ' 
     unconfirmed_notification2: ' 尚未确认; 邮件地址未经确认的账户无法在阡陌发表任何内容。'
     resend_confirmation_email: '重新发送确认邮件?'
+    
+    simple_form: 
+        or: '或'

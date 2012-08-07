@@ -1,0 +1,34 @@
+<%= content_tag :div, :class => "modal hide", 
+ 											:id => "picture_modal" do %>
+  <div class="navigation-container">
+    <div id="thumbs" class="navigation">
+      <%= link_to nil, "#", :class => "pageLink prev", :style => "visibility: hidden", 
+                  :title => t("actions.previous_page") %>
+      <ul class="thumbs noscript">
+        <% for picture in @gallery.pictures do %>
+          <li>
+            <%= link_to picture_path(picture), :name => picture.description, :class => "thumb" do %>
+              <%= image_tag picture.url(:thumb) %>
+            <% end %>
+            <div class="caption">
+              <%= render "shared/post", :post => picture.post %>
+            </div>
+          </li>
+        <% end %>
+        <%= link_to nil, "#", :class => "pageLink next", :style => "visibility: hidden", 
+                    :title => t("actions.next_page") %>
+      </ul>
+    </div>
+    <div class="content">
+  		<div class="slideshow-container">
+  			<div id="controls" class="controls"></div>
+  			<div id="loading" class="loader"></div>
+  			<div id="slideshow" class="slideshow"></div>
+  		</div>
+  		<div id="caption" class="caption-container">
+  			<div class="photo-index"></div>
+  		</div>
+  	</div>
+  	<div style="clear: both;"></div>
+  </div>
+<% end %>

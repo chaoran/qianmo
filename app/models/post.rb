@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   
-  attr_accessible :text, :type, :parent_id, :ancestor_id, :user
+  attr_accessible :text, :type, :parent_id, :ancestor_id, :user, :entity_id, :entity_type
   
   belongs_to :user
   belongs_to :entity, :polymorphic => true
@@ -39,7 +39,8 @@ class Post < ActiveRecord::Base
   before_save :setup_mentions, :setup_abouts
   after_save :notify_subscribers, :unless => :is_comment?
   
-  validates_presence_of :user, :text
+  validates_presence_of :user
+  validates_presence_of :text, :if => "entity_id.nil?"
   
   def brief
     text = Sanitize.clean(self.text)

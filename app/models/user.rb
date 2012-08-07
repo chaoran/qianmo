@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   
   has_many :articles, :include => [:post], :order => "created_at DESC"
   
+  has_many :galleries
   has_many :pictures, :include => [:post], :order => "created_at DESC"
   has_many :picture_albums, :as => :owner, :conditions => {:type => "Picture"}, 
                             :class_name => "Album"

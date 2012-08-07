@@ -13,8 +13,8 @@
       </a>
     </div>
     <div class="post-body">
-      <%= post.text.html_safe %>
       <% if post.entity_type == "Article" %>
+        <%= post.text.blank? ? t('articles.posted_an_article') : post.text.html_safe %>
         <% article = post.entity %>
         <blockquote>
           <% if article %>
@@ -24,6 +24,20 @@
             <p><%= t :'articles.no_longer_exists'%></p>
           <% end %>
         </blockquote>
+      <% elsif post.entity_type == "Picture" %>
+        <%= post.text.blank? ? t('pictures.posted_a_picture') : post.text.html_safe %>
+        <% picture = post.entity %>
+        <div class="picture">
+          <% if picture %>
+            <%= link_to picture_path(picture) do %>
+              <%= image_tag picture.image.url %>
+            <% end %>
+          <% else %>
+            <p><%= t :'pictures.no_longer_exists'%></p>
+          <% end %>
+        </div>
+      <% else %>
+        <%= post.text.html_safe %>
       <% end %>
     </div>
     <%= render 'shared/post_actions', :post => post %>

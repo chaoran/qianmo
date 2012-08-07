@@ -11,7 +11,7 @@ zh-CN:
         are_you_sure_deleting_this_article?: '你确定要删除这篇文章么? 文章被删除之后将不能被恢复。'
         deleted: '你的文章: <em>%{title}</em> 已经被删除了。'
         no_longer_exists: '这篇文章已经被作者或者管理员删除。'
-        posted_a_article: '发表了一篇新文章'
+        posted_an_article: '发表了一篇新文章'
     simple_form:
         labels:
             article:

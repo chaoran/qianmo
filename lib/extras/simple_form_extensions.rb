@@ -13,6 +13,7 @@ module SimpleFormExtensions
       end
     end
   end
+
   
   class ErrorMessages < SimpleForm::ErrorNotification
     def error_message

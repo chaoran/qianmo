@@ -52,7 +52,8 @@
           </div>
           <% end %>
         </li>
-        <li><%= my_link_to "#{t :'home.new-pictures'}", nil, :icon => 'icon-upload-alt' %></li>
+        <li><%= my_link_to "#{t :'home.new-pictures'}", new_picture_path, 
+                           :icon => 'icon-upload-alt', :remote => true %></li>
         <li><%= my_link_to "#{t :'home.new-article'}", new_article_path, :icon => 'icon-edit' %></li>
         <li><%= my_link_to "#{t :'home.new-page'}", new_page_path, :icon => 'icon-external-link' %></li>
       </ul>

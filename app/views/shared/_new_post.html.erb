@@ -1,0 +1,17 @@
+<div class="new-post pinable">
+  <div class="post-content">
+    <div class="post-header">
+      <%= link_to user_path(current_user) do %>
+        <%= image_tag current_user.avatar.url(:thumb), :class => "avatar pin-top7-left5" %>
+        <strong><%= current_user.name %></strong>
+      <% end %>
+      <em class="grey pull-right" style="display: none;">
+        <span class="post-wordcount"></span>/140
+      </em>
+    </div>
+    <div class="post-body">
+      <%= builder.text_area :text, :rows => 4, :class => "post-input max-width",
+                            :placeholder => "#{placeholder unless local_assigns[:placeholder].nil?}"  %>
+    </div>
+  </div>
+</div> 

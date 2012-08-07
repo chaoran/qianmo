@@ -38,6 +38,8 @@ Qianmo::Application.routes.draw do
   end
   
   resources :articles
+  resources :pictures
+  resources :galleries, :only => [:new, :create]
   
   resources :notifications, :only => [:index] do
     put 'update', :on => :collection

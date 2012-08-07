@@ -1,6 +1,6 @@
 $(".empty-stream-holder").remove()
 $("<%= j render :partial => "shared/post", :locals => {:post => @post} %>").hide().prependTo('.stream').slideDown();
-$("#repost_modal").modal("hide")
+$(".modal").modal("hide")
 $(".new-post textarea").val("").blur()
 $('.dropdown').removeClass("open")
 

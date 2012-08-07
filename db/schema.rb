@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120719051749) do
+ActiveRecord::Schema.define(:version => 20120805020139) do
 
   create_table "abouts", :force => true do |t|
     t.integer  "post_id"
@@ -91,6 +91,18 @@ ActiveRecord::Schema.define(:version => 20120719051749) do
   add_index "follows", ["follower_id"], :name => "index_follows_on_follower_id"
   add_index "follows", ["user_id"], :name => "index_follows_on_user_id"
 
+  create_table "galleries", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "page_id"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "galleries", ["page_id"], :name => "index_galleries_on_page_id"
+  add_index "galleries", ["title", "user_id"], :name => "index_galleries_on_title_and_user_id"
+  add_index "galleries", ["user_id"], :name => "index_galleries_on_user_id"
+
   create_table "likes", :force => true do |t|
     t.integer  "post_id"
     t.integer  "user_id"
@@ -154,6 +166,17 @@ ActiveRecord::Schema.define(:version => 20120719051749) do
 
   add_index "pages", ["owner_id"], :name => "index_pages_on_owner_id"
   add_index "pages", ["title"], :name => "index_pages_on_title"
+
+  create_table "pictures", :force => true do |t|
+    t.integer  "gallery_id"
+    t.string   "description"
+    t.string   "mentions"
+    t.string   "image"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "pictures", ["gallery_id"], :name => "index_pictures_on_gallery_id"
 
   create_table "posters", :force => true do |t|
     t.integer  "page_id"

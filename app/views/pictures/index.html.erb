@@ -1,0 +1,20 @@
+<div class="galleries">
+  <ul class="thumbnails">
+    <% for gallery in @galleries do %>
+      <li class="span2">
+        <% pictures = gallery.pictures[0..3] %>
+        <% if pictures.length == 1 %>
+          <%= link_to picture_path(pictures[0]) do %>
+            <%= image_tag gallery.pictures[0], :class => "single-thumb" %>
+          <% end %>
+        <% else %>
+          <% for picture in pictures do %>
+            <%= link_to picture_path(picture) do %>
+              <%= image_tag picture, :class => "cluster-thumb" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

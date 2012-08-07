@@ -1,0 +1,21 @@
+zh-CN:
+    pictures:
+        upload_new_picture: '上传新图片'
+        create_new_gallery: '创建新相册'
+        description: '图片描述:'
+        description_placeholder: '你可以在这里@其它人'
+        add_description: '添加图片描述'
+        posted_a_picture: '新上传了一张图片'
+        no_longer_exists: '这张图片已经被它的所有者删除了'
+        default_gallery: '默认相册'
+        remove_gallery: '使用已有相册'
+        new_gallery_name: '新相册名'
+        
+    simple_form:
+        labels:
+            picture:
+                image: "从本地上传新图片: "
+                remote_image_url: "或者粘贴图片链接地址: "
+                gallery: '上传到相册: '
+            gallery:
+                title: '上传到相册: '

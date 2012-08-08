@@ -2,17 +2,14 @@
 
 .galleries {  
   list-style: none;
-  margin: 0;
+  margin-left: -18px;
   
   .gallery {
     width: 168px;
     margin-top: 18px;
+    margin-left: 18px;
     padding: 0;
     float: left;
-    
-    & + .gallery {
-      margin-left: 18px;
-    }
     
     .caption {
       margin-bottom: 6px;
@@ -38,4 +35,187 @@
       border: 1px solid @tableBorder;
     }
   }
+}
+
+#gallery_modal {
+  width: 860px;
+  height: 640px;
+  margin: -330px 0 0 -430px;
+  
+  button.close {
+    padding-right: 8px;
+    float: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2000;
+  }
+  
+  .gallery {
+    position: relative;
+
+    .navigation-container {
+      height: 80px;
+      width: 542px;
+      position: relative;
+      background-color: @black;
+
+      .navigation {
+        .pageLink {
+        	width: 30px;
+        	height: 80px;
+        	background-position: center center;
+        	background-repeat: no-repeat;
+        	background-color: @black;
+        	position: absolute;
+        	opacity: 0.5;
+        	filter: alpha(opacity=50);
+        	&.prev {
+        	  background-image: asset-url("prevPageArrowWhite.gif");
+        	  left: 0;
+        	}
+        	&.next {
+        	  background-image: asset-url("nextPageArrowWhite.gif");
+        	  right: 0;
+        	}
+        	&:hover {
+        	  opacity: 0.9;
+        	  filter: alpha(opacity=90);
+        	}
+      	}
+
+      	.thumbs {
+          list-style: none;
+          margin: 0 30px; /* save space for pageLinks */
+        	.thumb {
+        	  float: left;
+        	  img {
+          	  width: 80px;
+              height: 80px;
+            }
+        	} 
+        }
+      }
+    }
+
+    & > .content { 
+      position: absolute;
+      left: 0;
+      top: 80px;
+
+      .slideshow-container {
+        background-color: @black;
+      	position: relative;
+        width: 542px;
+        height: 560px;
+        float: left;
+
+      	.slideshow {
+      	  .image-wrapper {
+      	    width: 540px;
+      	    position: absolute;
+      	    top: 20px;
+      	    left: 0;
+          	display: block;
+            text-align: center;
+          }
+
+          .caption {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 10px 15px;
+            background: @grayDark;
+            background: rgba(0, 0, 0, 0.75);
+            color: @white;
+            z-index: 2000;
+
+            .photo-index {
+              margin-left: 10px;
+              font-size: 13px;
+            }
+            
+            img {
+              margin-right: 10px;
+            }
+          }
+      	}
+
+      	.loader {
+        	position: absolute;
+        	top: 0;
+        	left: 0;
+        	background-image: asset-url("loader.gif");
+        	background-repeat: no-repeat;
+        	background-position: center;
+        }
+
+        .controls {
+          .nav-controls a {
+            position: absolute;
+            top: 35%;
+            left: 15px;
+            height: 40px;
+            width: 40px;
+            z-index: 2000;
+            vertical-align: middle;
+            font-size: 60px;
+            font-weight: 200;
+            line-height: 30px;
+            color: @white;
+            text-align: center;
+            background: @grayDarker;
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+            &:hover {
+              opacity: 0.9;
+              filter: alpha(opacity=90);
+            }
+            &.next {
+              right: 15px;
+              left: auto;
+            }
+          }
+        }
+      }
+
+      .caption-container {
+        overflow: auto;
+      	position: relative;
+      	width: 310px;
+      	height: 620px;
+      	float: right;
+      	margin-top: -60px;
+
+      	.image-caption {
+        	display: block;
+        	position: absolute;
+        	top: 10px;
+        	left: 10px;
+        	
+        	.picture-post {
+        	  .content {
+        	    margin-top: 6px;
+        	  }
+        	  .comment-holder {
+        	    margin-left: 40px;
+        	    .avatar {
+        	      width: 35px;
+        	      height: 35px;
+        	    }
+        	  }
+        	  .new-comment textarea {
+        	    height: 36px;
+        	    width: 250px;
+        	  }
+        	  .new-comment .actions {
+        	    margin-right: 0;
+        	  }
+        	}
+        }
+      }
+    }
+  }
+
 }

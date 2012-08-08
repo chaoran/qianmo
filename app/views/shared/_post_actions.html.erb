@@ -1,5 +1,5 @@
 <div class="post-actions post_<%= post.id %>">
-  <% if local_assigns[:time_ago_in_words].nil? %>
+  <% if local_assigns[:time_ago_in_words].nil? || local_assigns[:time_ago_in_words]  %>
     <%= time_label post.created_at %>
   <% else %>
     <%= time_label post.created_at, false %>

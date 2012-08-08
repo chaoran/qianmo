@@ -21,6 +21,9 @@
 //= require private_pub
 //= require rails.validations
 //= require redactor-rails
+//= require jquery.galleriffic
+//= require jquery.history
+//= require jquery.opacityrollover
 //= require_tree .
 
 $(document).ready(function(){

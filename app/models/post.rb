@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   attr_accessible :text, :type, :parent_id, :ancestor_id, :user, :entity_id, :entity_type
   
   belongs_to :user
-  belongs_to :entity, :polymorphic => true
+  belongs_to :entity, :polymorphic => true, :dependent => :destroy
   
   # If a post has a parent, it is a comment post
   belongs_to :parent, :class_name => 'Post', :counter_cache => :comments_count, :include => [:user]

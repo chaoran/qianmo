@@ -1,0 +1,14 @@
+<%= content_tag :div, :class => "modal hide", 
+ 											:id => "picture_modal" do %>
+  <div id="picture<%= @picture.id %>" class="picture">
+    <div class="holder hoverable">
+      <%= image_tag @picture.image.url %>
+      <div class="caption show-on-hover">
+        <h4><%= @picture.gallery.title %></h4>
+        <%= my_link_to t("actions.download"), @picture.image.url, :icon => "icon-download" %>
+      </div>
+      <%= link_to "&lsaquo;", "#", :class => "picture-control left" %>
+      <%= link_to "&rsaquo;", "#", :class => "picture-control right" %>
+    </div>
+  </div>
+<% end %>

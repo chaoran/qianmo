@@ -1,34 +1,54 @@
 <%= content_tag :div, :class => "modal hide", 
- 											:id => "picture_modal" do %>
-  <div class="navigation-container">
-    <div id="thumbs" class="navigation">
-      <%= link_to nil, "#", :class => "pageLink prev", :style => "visibility: hidden", 
-                  :title => t("actions.previous_page") %>
-      <ul class="thumbs noscript">
-        <% for picture in @gallery.pictures do %>
-          <li>
-            <%= link_to picture_path(picture), :name => picture.description, :class => "thumb" do %>
-              <%= image_tag picture.url(:thumb) %>
-            <% end %>
-            <div class="caption">
-              <%= render "shared/post", :post => picture.post %>
-            </div>
-          </li>
-        <% end %>
-        <%= link_to nil, "#", :class => "pageLink next", :style => "visibility: hidden", 
-                    :title => t("actions.next_page") %>
-      </ul>
-    </div>
-    <div class="content">
-  		<div class="slideshow-container">
-  			<div id="controls" class="controls"></div>
-  			<div id="loading" class="loader"></div>
-  			<div id="slideshow" class="slideshow"></div>
-  		</div>
-  		<div id="caption" class="caption-container">
-  			<div class="photo-index"></div>
-  		</div>
-  	</div>
-  	<div style="clear: both;"></div>
-  </div>
+ 											:id => "gallery_modal" do %>
+ 	<button type="button" class="close" data-dismiss="modal">×</button>
+ 	<div class="gallery" id="gallery_<%= @gallery.id %>">
+ 	  <div class="navigation-container">
+ 	    <div id="thumbs" class="navigation">
+ 	      <a class="pageLink prev" style="visibility: hidden;" href="#" title="Previous Page"></a>
+ 	      <ul class="thumbs noscript">
+ 	        <% for picture in @gallery.pictures do %>
+ 	        <li>
+ 	          <%= link_to picture.image.url, :class => "thumb" do %>
+ 	            <%= image_tag picture.image.url(:thumb), :alt => picture.image %>
+ 	          <% end %>
+ 	          <div class="caption">
+ 	            <% post = picture.post %>
+ 	            <div class="picture-post">
+ 	              <%= link_to post.user.name, user_path(post.user) %>
+ 	              <div class="content">
+                  <%= post.text.html_safe if post.text %>
+                </div>
+                <div class="footer">
+                  <%= render 'shared/post_actions', :post => post %>
+                </div>
+ 	              <%= render 'comments/index', :post => post, :full_mode => true %>
+ 	            </div>
+ 	          </div>
+ 	        </li>
+ 	        <% end %>
+ 	      </ul>
+ 	      <a class="pageLink next" style="visibility: hidden;" href="#" title="Next Page"></a>
+ 	    </div>
+ 	  </div>
+ 	  <div class="content">
+			<div class="slideshow-container hoverable">
+				<div id="controls" class="controls show-on-hover"></div>
+				<div id="loading" class="loader"></div>
+				<div id="slideshow" class="slideshow">
+				  <div class="caption show-on-hover">
+				    <h4>
+				      <%= link_to user_path(@gallery.user) do %>
+  				      <%= image_tag @gallery.user.avatar.url(:thumb), :class => "avatar" %>
+  				    <% end %>
+				      <%= @gallery.title %>
+				      <small class="photo-index"></small>
+				    </h4>
+				  </div>
+				</div>
+			</div>
+			<div id="caption" class="caption-container">
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+ 	</div>
 <% end %>

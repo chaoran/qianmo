@@ -1,3 +1,81 @@
 $(".modal").modal("hide")
 $("#modal-placeholder").html("<%= j render 'gallery' %>")
-$("#picture_modal").modal("show")
+$(".modal").modal("show")
+
+// Initially set opacity on thumbs and add
+// additional styling for hover effect on thumbs
+var onMouseOutOpacity = 0.67;
+$('#thumbs ul.thumbs li, div.navigation').opacityrollover({
+	mouseOutOpacity:   onMouseOutOpacity,
+	mouseOverOpacity:  1.0,
+	fadeSpeed:         'fast',
+	exemptionSelector: '.selected'
+});
+
+// Initialize Advanced Galleriffic Gallery
+var gallery = $('#thumbs').galleriffic({
+	delay:                     500,
+	numThumbs:                 6,
+	preloadAhead:              6,
+	enableTopPager:            false,
+	enableBottomPager:         false,
+	imageContainerSel:         '#slideshow',
+	controlsContainerSel:      '#controls',
+	captionContainerSel:       '#caption',
+	loadingContainerSel:       '#loading',
+	renderSSControls:          false,
+	renderNavControls:         true,
+	playLinkText:              'Play Slideshow',
+	pauseLinkText:             'Pause Slideshow',
+	prevLinkText:              '&lsaquo;',
+	nextLinkText:              '&rsaquo;',
+	nextPageLinkText:          '&rsaquo;',
+	prevPageLinkText:          '&lsaquo;',
+	enableHistory:             false,
+	autoStart:                 false,
+	syncTransitions:           true,
+	defaultTransitionDuration: 500,
+	onSlideChange:             function(prevIndex, nextIndex) {
+		// 'this' refers to the gallery, which is an extension of $('#thumbs')
+		this.find('ul.thumbs').children()
+			.eq(prevIndex).fadeTo('fast', onMouseOutOpacity).end()
+			.eq(nextIndex).fadeTo('fast', 1.0);
+
+		// Update the photo index display
+		this.$imageContainer.find('.photo-index')
+			.html((nextIndex+1) +' / '+ this.data.length);
+	},
+	onPageTransitionOut:       function(callback) {
+		this.fadeTo('fast', 0.0, callback);
+	},
+	onPageTransitionIn:        function() {
+		var prevPageLink = this.find('a.prev').css('visibility', 'hidden');
+		var nextPageLink = this.find('a.next').css('visibility', 'hidden');
+		
+		// Show appropriate next / prev page links
+		if (this.displayedPage > 0)
+			prevPageLink.css('visibility', 'visible');
+
+		var lastPage = this.getNumPages() - 1;
+		if (this.displayedPage < lastPage)
+			nextPageLink.css('visibility', 'visible');
+
+		this.fadeTo('fast', 1.0);
+	}
+});
+
+/**************** Event handlers for custom next / prev page links **********************/
+
+gallery.find('a.prev').click(function(e) {
+	gallery.previousPage();
+	e.preventDefault();
+});
+
+gallery.find('a.next').click(function(e) {
+	gallery.nextPage();
+	e.preventDefault();
+});
+
+/*********** Go to current index ****************/
+gallery.gotoIndex(<%= @index %>)
+

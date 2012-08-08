@@ -1,5 +1,5 @@
 <% title t('pictures.my_galleries')%>
-<div class="page-header">
+<div class="page-header no-margin">
   <h2><%= t :'pictures.my_galleries' %></h2>
 </div>
 <ul class="galleries">
@@ -11,20 +11,20 @@
           <small><%= t 'pictures.num_pictures_in_gallery', :num => gallery.pictures.length %></small>
         </h4>
       </div>
-      <% pictures = gallery.pictures[0..3] %>
+      <% pictures = gallery.pictures %>
       <% if pictures.length < 4 %>
-        <%= link_to picture_path(pictures[0]) do %>
+        <%= link_to picture_path(pictures[0]), :remote => true do %>
           <%= image_tag gallery.pictures[0].image.url(:thumb), :class => "single-thumb" %>
         <% end %>
       <% elsif pictures.length < 9 %>
         <% for picture in pictures[0..3] do %>
-          <%= link_to picture_path(picture) do %>
+          <%= link_to picture_path(picture), :remote => true do %>
             <%= image_tag picture.image.url(:thumb), :class => "quadruple-thumbs" %>
           <% end %>
         <% end %>
       <% elsif pictures.length >= 9 %>
         <% for picture in pictures[0..8] do %>
-          <%= link_to picture_path(picture) do %>
+          <%= link_to picture_path(picture), :remote => true do %>
             <%= image_tag picture.image.url(:thumb), :class => "nona-thumbs" %>
           <% end %>
         <% end %>

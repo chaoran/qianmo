@@ -1,7 +1,7 @@
 <div class="comment hoverable post_<%= comment.id %>" id="comment_<%= comment.id %>">
   <div class="comment-holder">
     <div>
-      <%= link_to user_posts_path(comment.user), :class => "header" do %>
+      <%= link_to user_path(comment.user), :class => "header" do %>
         <%= image_tag comment.user.avatar.url(:thumb), :class => "avatar" %>
         <%= comment.user.name %>
       <% end %>

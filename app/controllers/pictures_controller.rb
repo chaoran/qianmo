@@ -41,6 +41,9 @@ class PicturesController < AuthenticatedController
   
   # show gallery
   def show
+    @picture = Picture.find(params[:id])
+    @gallery = @picture.gallery
+    @index = @gallery.pictures.index(@picture)
   end
   
   # delete a picture

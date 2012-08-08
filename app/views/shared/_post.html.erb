@@ -29,7 +29,7 @@
         <% picture = post.entity %>
         <div class="picture">
           <% if picture %>
-            <%= link_to picture_path(picture) do %>
+            <%= link_to picture_path(picture), :remote => true do %>
               <%= image_tag picture.image.url %>
             <% end %>
           <% else %>

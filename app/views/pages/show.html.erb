@@ -26,10 +26,7 @@
           <%= render "movie", :movie => @page.movie %>
         <% end %>
       </div>
-      <%= render 'posts/new', :post => current_user.posts.build, 
-                              :placeholder => "##{@page.title}", 
-                              :title => "#{t 'posts.about_page_what_do_you_want_to_say?', 
-                                             :name => @page.title}" %>
+
       <div class="galleries">
       
       </div>
@@ -38,7 +35,10 @@
       </div>
     </div>
     <div class="span4 page-side">
-    
+      <%= render 'posts/new', :post => current_user.posts.build, 
+                              :placeholder => "##{@page.title}", 
+                              :title => "#{t 'posts.about_page_what_do_you_want_to_say?', 
+                                             :name => @page.title}" %>
     </div>
   </div>
 </div>

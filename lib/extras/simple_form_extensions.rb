@@ -13,6 +13,10 @@ module SimpleFormExtensions
       end
     end
   end
+  
+  def upload_locally_or_from_url(*args, &block)
+    
+  end
 
   
   class ErrorMessages < SimpleForm::ErrorNotification

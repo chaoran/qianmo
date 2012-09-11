@@ -1,10 +1,44 @@
-<% content_for :status_bar do %>
-<div class="status_bar">
-  <p class="grey">
-    <%= "#{t :created_at_time_by_user_html, :time => time_ago_in_words(@page.created_at), 
-          :user => link_to(@page.creator.name, user_profile_path(@page.creator))}".html_safe %>
-  </p>
+<div class="page" id="page_<%= @page.id %>">
+  <div class="page-header no-margin-top">
+    <div class="row">
+      <h1 class="span9">
+        <span class="title">#<%= @page.title %></span>
+        <small class="intro"><%= @page.intro %></small>
+      </h1>
+      <div class="span3">
+        <% if current_user != @page.user %>
+          <div class="pull-right" style="padding-top: 17px;">
+            <%= "#{t :created_at_time_by_user_html, :time => time_ago_in_words(@page.created_at), 
+                  :user => link_to(@page.user.name, user_path(@page.user))}".html_safe %>
+          </div>
+        <% else %>
+          <%= my_link_to "#{t 'actions.edit'}", edit_page_path(@page), 
+                         :icon => "icon-pencil", :class => "pull-right btn btn-info" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span8 page-main">
+      <div class="info">
+        <% case @page.category %>
+        <% when "movie" %>
+          <%= render "movie", :movie => @page.movie %>
+        <% end %>
+      </div>
+      <%= render 'posts/new', :post => current_user.posts.build, 
+                              :placeholder => "##{@page.title}", 
+                              :title => "#{t 'posts.about_page_what_do_you_want_to_say?', 
+                                             :name => @page.title}" %>
+      <div class="galleries">
+      
+      </div>
+      <div class="articles">
+      
+      </div>
+    </div>
+    <div class="span4 page-side">
+    
+    </div>
+  </div>
 </div>
-<% end %>
-
-<%= render 'content' %>

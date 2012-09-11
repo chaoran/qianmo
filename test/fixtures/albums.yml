@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  page: 
+  name: MyString
+  artist: MyString
+  genre: MyString
+  released_on: 2012-09-03
+  introduction: MyText
+
+two:
+  page: 
+  name: MyString
+  artist: MyString
+  genre: MyString
+  released_on: 2012-09-03
+  introduction: MyText

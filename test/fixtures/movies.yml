@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  page: 
+  released_on: 2012-09-03
+  directed_by: MyString
+  written_by: MyString
+  starring: MyString
+  genre: MyString
+  studio: MyString
+  country: MyString
+  also_known_as: MyString
+  storyline: MyText
+
+two:
+  page: 
+  released_on: 2012-09-03
+  directed_by: MyString
+  written_by: MyString
+  starring: MyString
+  genre: MyString
+  studio: MyString
+  country: MyString
+  also_known_as: MyString
+  storyline: MyText

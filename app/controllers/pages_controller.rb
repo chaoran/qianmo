@@ -16,7 +16,7 @@ class PagesController < ApplicationController
   # GET /pages/1.json
   def show
     @page = Page.find(params[:id])
-    @editable = (@page.creator == current_user)
+    @editable = (@page.user == current_user)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,27 +24,19 @@ class PagesController < ApplicationController
     end
   end
 
-  # GET /pages/new
-  # GET /pages/new.json
+  # GET /pages/new.js
   def new
     @page = Page.new
-    
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @page }
+      format.js
     end
   end
 
   # GET /pages/1/edit
   def edit
-    @page = current_user.pages.find(params[:id])
-    @component = params[:component]
-    if @component
-      render @component + "_edit"
-    else
-      respond_to do |format|
-        format.html # edit.html.erb
-      end
+    @page = Page.find(params[:id])
+    respond_to do |format|
+      format.html # edit.html.erb
     end
   end
 
@@ -52,15 +44,19 @@ class PagesController < ApplicationController
   # POST /pages.json
   def create
     @page = Page.new(params[:page])
-    @page.creator = current_user
+    @page.user = current_user
+    case @page.category
+    when "movie"
+      @page.build_movie
+    end
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
-        format.json { render json: @page, status: :created, location: @page }
+        format.html { redirect_to edit_page_path(@page)}
+        format.js   { render :js => "window.location = '#{edit_page_path(@page)}'" }
       else
         format.html { render action: "new" }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
+        format.js   { render action: "new" }
       end
     end
   end
@@ -69,13 +65,12 @@ class PagesController < ApplicationController
   # PUT /pages/1.json
   def update
     @page = current_user.pages.find(params[:id])
-    @component = params[:component]
  
     respond_to do |format|
       if @page.update_attributes(params[:page])
-        format.js { render @component + "_update" }
+        format.html { redirect_to page_path(@page) }
       else
-        format.js { render @component + '_update_error' }
+        format.html { render action: "edit" }
       end
     end
   end
@@ -83,7 +78,7 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   # DELETE /pages/1.json
   def destroy
-    @page = current_user.pages.find(params[:id])
+    @page = Page.find(params[:id])
     @page.destroy
 
     respond_to do |format|
@@ -91,11 +86,5 @@ class PagesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  protected
-  
-  def update_posters
-    debugger
-  end
-    
+
 end

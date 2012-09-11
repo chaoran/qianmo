@@ -1,4 +1,5 @@
 <% content_for :main do %>
+<div class="row">
   <div class="span2">
     <ul class="nav nav-sidebar">
       <div class="head">
@@ -55,7 +56,7 @@
         <li><%= my_link_to "#{t :'home.new-pictures'}", new_picture_path, 
                            :icon => 'icon-upload-alt', :remote => true %></li>
         <li><%= my_link_to "#{t :'home.new-article'}", new_article_path, :icon => 'icon-edit' %></li>
-        <li><%= my_link_to "#{t :'home.new-page'}", new_page_path, :icon => 'icon-external-link' %></li>
+        <li><%= my_link_to "#{t :'home.new-page'}", new_page_path, :icon => 'icon-external-link', :remote => true %></li>
       </ul>
     </div>
     <div id="home_main">
@@ -63,5 +64,6 @@
     </div>
   </div>
   <div class="span3"></div>
+</div>
 <% end %>
 <%= render :file => "layouts/application" %>

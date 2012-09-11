@@ -1,0 +1,38 @@
+<% title "#{@page.title} - #{t 'pages.edit_page'}" %>
+<div class="page-header no-margin-top">
+  <h2><%= t 'pages.fill_in_details' %></h2>
+</div>
+<div class="row">
+  <div class="span7 page-edit">
+    <%= simple_form_for @page, :html => { :class => "form-horizontal" } do |f| %>
+      <%= f.input :title, :input_html => {:disabled => true, :class => "span5"} %>
+      <%= f.input :intro, :input_html => {:class => "span5"} %>
+      <%= f.input :category, :as => :hidden %>
+    <% case @page.category %>
+    <% when "movie" %>
+      <%= f.fields_for :movie, @page.movie do |ff| %>
+        <%= ff.input :title, :input_html => {:class => "span3"}, :extra_button => [
+              "#{t 'pages.fill_it_for_me'}", "#", {:class => "btn btn-success", :id => "auto_fillin"}] %>
+        <%= ff.input :image, :as => :file, :remote_url => "#{t 'pages.image.remote_url'}" %>
+        <%= ff.input :directed_by, :input_html => {:class => "span5"} %>
+        <%= ff.input :written_by, :input_html => {:class => "span5"} %>
+        <%= ff.input :starring, :input_html => {:class => "span5"} %>
+        <%= ff.input :genre, :input_html => {:class => "span2"} %>
+        <%= ff.input :released_on, :as => :date, 
+        													 :start_year => Date.today.year, 
+         													 :end_year => Date.today.year - 90,
+         													 :prompt => true, :input_html => { :class => "span1" } %>
+        <%= ff.input :country, :as => :string, :input_html => {:class => "span2"} %>
+        <%= ff.input :also_known_as, :input_html => {:class => "span5"} %>
+        <%= ff.input :storyline, :input_html => {:class => "span5", :rows => 4} %>
+      <% end %>
+    <% end %>
+    <div class="form-actions">
+      <%= f.button :wrapped, :cancel => page_path(@page), :class => "btn-wide" %>
+    </div>
+    <% end %>
+  </div>
+  <div class="span5" id="douban_sources">
+  
+  </div>
+</div>

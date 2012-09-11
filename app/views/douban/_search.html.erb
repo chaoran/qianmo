@@ -1,0 +1,17 @@
+<div class="header">
+  <h3><%= t 'pages.auto_fillin.do_you_mean?' %></h3>
+</div>
+<ul class="douban_items table-list">
+  <% for item in items do %>
+  <li>
+    <%= link_to douban_get_path(:id => item.douban_id, :category => params[:category]),
+                :remote => true do %> 
+      <%= image_tag item.douban_image, :class => "header" %>
+      <div class="content">
+        <h4><%= item.title %></h4>
+        <p><%= item.douban_summary %></p>
+      </div>
+    <% end %>
+    </li>
+  <% end %>
+</ul>

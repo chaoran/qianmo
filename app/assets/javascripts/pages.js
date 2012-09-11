@@ -109,4 +109,18 @@ jQuery(document).ready(function($) {
     }
   );
 
+	$('#auto_fillin').on("click", function(e) {
+	  $(this).addClass('loading disabled');
+	  
+	  var form = $(this).closest("form")
+	  var category = form.find("#page_category").val()
+	  $.ajax({
+	    url: "/douban/" + category + "/search",
+	    data: {name: $(this).prev().val()},
+	    dataType: "script"
+	  });
+
+    e.preventDefault();
+	});
+
 });

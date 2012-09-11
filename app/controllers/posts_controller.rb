@@ -1,5 +1,5 @@
 class PostsController < AuthenticatedController
-  before_filter :alert_if_unconfirmed
+  before_filter :alert_if_unconfirmed, :only => [:index]
   # GET /:user_id/posts
   # GET /
   def index

@@ -1,4 +1,7 @@
 Qianmo::Application.routes.draw do
+  match "douban/:category/search" => 'douban#search', :as => :douban_search
+  match "douban/:category/get/:id" => 'douban#get', :as => :douban_get
+
   scope constraints: lambda { |r| r.env['warden'].user.nil? } do
     root :to => 'accounts#new'
     get "signup", :to => "accounts#new", :as => "signup"
@@ -31,12 +34,7 @@ Qianmo::Application.routes.draw do
     resources :likes, :only => [:index]
   end
       
-  resources :pages do 
-    resource :billboard, :only => :update
-    resource :whiteboard, :only => :update
-    # resources :articles
-  end
-  
+  resources :pages
   resources :articles
   resources :pictures
   resources :galleries, :only => [:new, :create]

@@ -1,0 +1,24 @@
+<%= content_tag :div, :class => "modal hide", :id => "new_page_modal" do %>
+  <%= simple_form_for @page, :html => {:class => "form-horizontal"},
+                             :remote => true do |f| %>
+    <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal">×</button>
+     <h3><%= t :'pages.create_new_page' %></h3>
+    </div>
+    <div class="modal-body">
+	  	<%= f.input :title %>
+	  	<%= f.input :intro %>
+	  	<%= f.input :category, :as => :radio_buttons, :required => true, :collection => [
+	  	    ["#{t 'pages.category.topic'}", "topic"],
+	  	    ["#{t 'pages.category.movie'}", "movie"], 
+	  	    ["#{t 'pages.category.album'}", "album"],
+	  	    ["#{t 'pages.category.song'}", "song"],
+	  	    ["#{t 'pages.category.book'}", "book"],
+	  	    ["#{t 'pages.category.news'}", "news"]] %>
+    </div> 
+    <div class="modal-footer">
+   	  <a href="#" class="btn" data-dismiss="modal"><%= t :cancel %></a>
+   	  <%= f.button :submit, "#{t 'actions.create'}", :class => "pull-right btn-primary" %>
+    </div>
+  <% end %>
+<% end %>

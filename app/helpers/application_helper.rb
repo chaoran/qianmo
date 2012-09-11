@@ -91,7 +91,7 @@ module ApplicationHelper
     html << "<em>#{email}</em>"
     html << I18n.t("unconfirmed_notification2")
     html << link_to("#{t :resend_confirmation_email}", confirmation_path, 
-                    :method => :post, :remote => true)
+                    :method => :post)
     html.html_safe
   end
   

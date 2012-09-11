@@ -1,38 +1,43 @@
+<%= yield :floatbar if content_for?(:floatbar) %>
 <div class="page row" id="<%= @page.id %>">
   <div class="span8">
-    <%= page_section "header", @editable do %>
-      <%= render 'pages/header' %>
+    <%= page_section "header", @editable %>
+      <%= render 'header', :page => @page %>
     <% end %>
     <div class="front">
-      <%= page_section "billboard", @editable do %>
-        <%= render 'billboard/show', :page => @page %>
-      <% end %>
-      <%= page_section "posters", @editable do %>
-        <%= render 'posters/show', :page => @page %>
-      <% end %>
-      <%= page_section "whiteboard", @editable do %>
-        <%= render 'whiteboard/show', :page => @page %>
+      <% case @page.category %>
+      <% when "movie" %>
+        <%= page_section "movie", @editable do %>
+          <%= render @page.movie %>
+        <% end %>
+      <% when "book" %> 
+        <%= page_section "book", @editable do %>
+          <%= render @page.book %>
+        <% end %>
+      <% when "news" %>
+        <%= page_section "news", @editable do %>
+          <%= render @page.news %>
+        <% end %>
+      <% when "album" %>
+        <%= page_section "album", @editable do %>
+          <%= render @page.album %>
+        <% end %>
+      <% when "song" %>
+        <%= page_section "song", @editable do %>
+          <%= render @page.song %>
+        <% end %>
       <% end %>
     </div>
     <div class="main">
-      <%= page_section "articles", :editable => false do %>
-        <h1><%= t :page_articles %></h1>
-        <%= render 'articles', :articles => @page.hot_articles %>
-      <% end %>
     </div>
   </div>
   <div class="span4 side">
     <%= yield(:status_bar) if content_for?(:status_bar) %>
     <%= render "posts/new", :post => current_user.posts.build, :placeholder => "##{@page.title}",
                             :title => "#{t :say_something_about_page, :page => @page.title}" %>
-    <%= page_section "image", @editable do %>
-      <%= image_tag @page.image %>
-    <% end %>
+    <%= image_tag @page.image %>
     <%= page_section "properties", @editable do %>
       <%= render 'pages/properties' %>
-    <% end %>
-    <%= page_section "events", :editable => false do %>
-      <%= render 'events/index', :events => @page.events.limit(20) %>
     <% end %>
   </div>
 </div>

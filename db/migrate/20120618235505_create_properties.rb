@@ -4,7 +4,6 @@ class CreateProperties < ActiveRecord::Migration
       t.references :page
       t.string :label
       t.string :value
-
       t.timestamps
     end
     add_index :properties, :page_id

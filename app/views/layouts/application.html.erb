@@ -4,6 +4,7 @@
   <title><%= t :app_name %> - <%= content_for?(:title) ? yield(:title) : t(:app_slogan) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <script type="text/javascript" src="http://www.douban.com/js/api.js?v=2" />
   <%= csrf_meta_tags %>
   <%= redactor_lang('zh_cn') %>
 </head>
@@ -16,11 +17,7 @@
 		</div>
 	</div>
 	<div class="container body"%>
-		<div class='content'>
-			<div class='row'>
-					<%= content_for?(:main) ? yield(:main) : yield %>
-			</div>
-		</div>
+		<%= content_for?(:main) ? yield(:main) : yield %>
 	</div>
 	<footer>
 	 <div class="container">

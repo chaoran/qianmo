@@ -1,0 +1,60 @@
+zh-CN:
+    pages:
+        create_new_page: '创建新页面'
+        edit_page: '编辑页面'
+        fill_in_details: '完善页面资料'
+        fill_it_for_me: '自动从互联网抓取资料'
+        
+        auto_fillin:
+          do_you_mean?: '你是不是想找：'
+        
+        category: 
+            news: '时事'
+            movie: '电影'
+            album: '专辑'
+            song: '歌曲'
+            book: '书籍'
+            topic: '话题'
+            photography: '摄影'
+            restaurant: '饭馆'
+            travel: '旅行'
+            company: '公司'
+            organization: ' 组织'
+            none: '无分类'
+            
+        image:
+            remote_url: '图片链接地址'
+            
+        component:
+            whiteboard: '白板'
+            billboard: '公告牌'
+            posters: '海报栏'
+            
+            properties: '属性栏'
+            intro: '简介栏'
+            
+    simple_form:
+        labels:
+            movie:
+                title: '电影名'
+                image: '海报'
+                directed_by: '导演'
+                written_by: '编剧'
+                starring: '主演'
+                genre: '类别'
+                released_on: '上映日期'
+                studio: '制片商'
+                country: '制片国家'
+                also_known_as: '其他名字'
+                storyline: '剧情简介'    
+                            
+            page:
+                intro: '页面介绍'
+                title: '页面名'
+                category: '页面分类:'
+                image: '页面图片:'
+                main_section: '主要部分:'
+                side_section: '侧边栏:'
+                
+
+                

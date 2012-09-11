@@ -16,6 +16,8 @@ zh-CN:
       session:
         create: '登陆'
       cancel: '取消'
+      
+
     #     new:
     #       email: 'E-mail to sign in.'
     #     edit:

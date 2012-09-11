@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120805020139) do
+ActiveRecord::Schema.define(:version => 20120906203057) do
 
   create_table "abouts", :force => true do |t|
     t.integer  "post_id"
@@ -40,6 +40,20 @@ ActiveRecord::Schema.define(:version => 20120805020139) do
   add_index "accounts", ["password_reset_token"], :name => "index_accounts_on_password_reset_token", :unique => true
   add_index "accounts", ["username"], :name => "index_accounts_on_username", :unique => true
 
+  create_table "albums", :force => true do |t|
+    t.integer  "page_id"
+    t.string   "name"
+    t.string   "cover"
+    t.string   "artist"
+    t.string   "genre"
+    t.date     "released_on"
+    t.text     "introduction"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "albums", ["page_id"], :name => "index_albums_on_page_id"
+
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -64,6 +78,21 @@ ActiveRecord::Schema.define(:version => 20120805020139) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  create_table "books", :force => true do |t|
+    t.integer  "page_id"
+    t.string   "title"
+    t.string   "subtitle"
+    t.string   "author"
+    t.string   "cover"
+    t.string   "translator"
+    t.string   "publisher"
+    t.date     "released_on"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "books", ["page_id"], :name => "index_books_on_page_id"
 
   create_table "confirmations", :force => true do |t|
     t.string   "unconfirmed_email"
@@ -137,6 +166,36 @@ ActiveRecord::Schema.define(:version => 20120805020139) do
   add_index "messages", ["from_id"], :name => "index_messages_on_from_id"
   add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
 
+  create_table "movies", :force => true do |t|
+    t.integer  "page_id"
+    t.string   "image"
+    t.date     "released_on"
+    t.string   "directed_by"
+    t.string   "written_by"
+    t.string   "starring"
+    t.string   "genre"
+    t.string   "studio"
+    t.string   "country"
+    t.string   "also_known_as"
+    t.text     "storyline"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "title"
+  end
+
+  add_index "movies", ["page_id"], :name => "index_movies_on_page_id"
+
+  create_table "news", :force => true do |t|
+    t.integer  "page_id"
+    t.string   "title"
+    t.string   "url"
+    t.text     "summary"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "news", ["page_id"], :name => "index_news_on_page_id"
+
   create_table "notifications", :force => true do |t|
     t.integer  "user_id"
     t.integer  "notifier_id"
@@ -152,20 +211,15 @@ ActiveRecord::Schema.define(:version => 20120805020139) do
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.string   "intro"
-    t.integer  "owner_id"
+    t.string   "category"
+    t.integer  "user_id"
     t.boolean  "editable"
-    t.boolean  "has_billboard"
-    t.boolean  "has_whiteboard"
-    t.boolean  "has_posters"
-    t.boolean  "has_image"
-    t.boolean  "has_properties"
-    t.string   "image"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  add_index "pages", ["owner_id"], :name => "index_pages_on_owner_id"
   add_index "pages", ["title"], :name => "index_pages_on_title"
+  add_index "pages", ["user_id"], :name => "index_pages_on_user_id"
 
   create_table "pictures", :force => true do |t|
     t.integer  "gallery_id"
@@ -218,6 +272,20 @@ ActiveRecord::Schema.define(:version => 20120805020139) do
   end
 
   add_index "properties", ["page_id"], :name => "index_properties_on_page_id"
+
+  create_table "songs", :force => true do |t|
+    t.integer  "page_id"
+    t.integer  "album_id"
+    t.string   "name"
+    t.string   "artist"
+    t.string   "genre"
+    t.text     "lyrics"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "songs", ["album_id"], :name => "index_songs_on_album_id"
+  add_index "songs", ["page_id"], :name => "index_songs_on_page_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

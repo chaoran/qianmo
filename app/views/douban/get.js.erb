@@ -1,0 +1,13 @@
+var form = $("#auto_fillin").closest("form")
+var prefix = "#page_<%= params[:category] %>_attributes_"
+form.find(prefix + "remote_image_url").val('<%= j @movie["image"].gsub("spic", "lpic") %>')
+form.find(prefix + "directed_by").val('<%= j @movie["attrs"]["director"].join(", ") %>')
+form.find(prefix + "written_by").val('<%= j @movie["attrs"]["writer"].join(", ") %>')
+form.find(prefix + "starring").val('<%= j @movie["attrs"]["cast"].join(", ") %>')
+form.find(prefix + "genre").val('<%= j @movie["attrs"]["movie_type"].join(", ") %>')
+form.find(prefix + "country").val('<%= j @movie["attrs"]["country"].join(", ") %>')
+form.find(prefix + "also_known_as").val('<%= j @movie["alt_title"] %>')
+
+form.find(prefix + "released_on_1i").val('<%= get_year_from_date @movie["attrs"]["pubdate"].join(", ") %>')
+form.find(prefix + "released_on_2i").val('<%= get_month_from_date @movie["attrs"]["pubdate"].join(", ") %>')
+form.find(prefix + "released_on_3i").val('<%= get_day_from_date @movie["attrs"]["pubdate"].join(", ") %>')

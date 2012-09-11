@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  page: 
+  album: 
+  name: MyString
+  artist: MyString
+  genre: MyString
+  lyrics: MyText
+
+two:
+  page: 
+  album: 
+  name: MyString
+  artist: MyString
+  genre: MyString
+  lyrics: MyText

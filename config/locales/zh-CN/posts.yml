@@ -1,3 +1,4 @@
 zh-CN:
     posts:
         repost_title: '转发这条微博'
+        about_page_what_do_you_want_to_say?: '关于 %{name} 你想说点什么?'

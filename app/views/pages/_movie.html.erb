@@ -1,0 +1,27 @@
+<div class="movie">
+  <div class="row">
+    <div class="span3">
+      <%= image_tag movie.image.url %>
+    </div>
+    <div class="content span5">
+      <h2><%= movie.title %></h2>
+      <dl class="dl-horizontal content">
+        <dt><%= t 'simple_form.labels.movie.directed_by' %></dt>
+        <dd><%= movie.directed_by %></dd>
+        <dt><%= t 'simple_form.labels.movie.written_by' %></dt>
+        <dd><%= movie.written_by %></dd>
+        <dt><%= t 'simple_form.labels.movie.starring' %></dt>
+        <dd><%= movie.starring %></dd>
+        <dt><%= t 'simple_form.labels.movie.genre' %></dt>
+        <dd><%= movie.genre %></dd>
+        <dt><%= t 'simple_form.labels.movie.country' %></dt>
+        <dd><%= movie.country %></dd>
+        <dt><%= t 'simple_form.labels.movie.released_on' %></dt>
+        <dd><%= movie.released_on %></dd>
+        <dt><%= t 'simple_form.labels.movie.also_known_as' %></dt>
+        <dd><%= movie.also_known_as %></dd>
+      </dl>
+    </div>
+  </div>
+  
+</div>

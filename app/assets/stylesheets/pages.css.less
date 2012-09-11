@@ -1,0 +1,147 @@
+@import "mixins";
+
+#floatbar {
+  position: fixed;
+  z-index: 500;
+  top: 50px;
+  right: 0;
+  left: 0;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+     -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding-box;
+          background-clip: padding-box;
+}
+
+#floatbar label {
+  margin: 5px 6px;
+}
+
+#floatbar .form-inline {
+  margin-bottom: 6px;
+}
+
+.page-component {
+  position: relative;
+}
+
+.page-hidden-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+#poster_group.thumbnails {
+  margin-left: 0;
+}
+
+#poster_group .thumbnail {
+  margin-bottom: 15px;
+}
+
+#main_section .carousel-control {
+  top: 48%;
+}
+
+#page_side_section {
+  margin-top: 18px;
+}
+
+section {
+  margin-top: 20px;
+}
+
+#new_page .radio {
+  display: inline-block;
+  width: 50px;
+}
+
+.page-edit {
+  .form-horizontal {
+    border-right: 1px solid #ddd;
+    padding-right: 19px;
+    
+    .control-label {
+      width: 120px;
+    }
+
+    .controls {
+      margin-left: 140px;
+      
+      .file [class*="span"] {
+        margin-left: 0;
+        float: none;
+      }
+      
+      img {
+        width: @span3;
+      }
+      
+      .file input.file {
+        width: 165px;
+      }
+
+      .file input[type="text"] {
+        width: 184px;
+      }
+    }
+  }
+  
+
+}
+
+#douban_sources {
+  height: 800px;
+  overflow: auto;
+  
+  & > .header {
+    width: 380px;
+    position: absolute;
+    background-color: #FFF;
+  }
+  
+  .table-list {
+    margin-top: 34px;
+    
+    li > a {
+      min-height: 100px;
+    }
+    img {
+      width: auto;
+      max-width: 70px;
+      margin: 2px 8px 0 0;
+    }
+    .content {
+      width: 270px;
+      
+      p {
+        margin-top: 4px;
+      }
+    }
+  }
+}
+
+.page {
+  .page-header .small {
+    margin-top: 15px;
+    font-size: 15px;
+  }
+  
+  .new-post {
+    margin-left: 0;
+  }
+}
+
+.movie {
+  img {
+    width: @span3;
+  }
+  
+  & > .content {
+    margin-left: 20px;
+    width: @span5;
+  }
+}

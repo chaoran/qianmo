@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   
   has_many :notifications, :order => "created_at DESC", :include => [:notifier]
   
-  has_many :pages, :foreign_key => "owner_id"
+  has_many :pages
   has_many :posts, :order => "created_at DESC", :conditions => "parent_id is null"
   
   has_many :articles, :include => [:post], :order => "created_at DESC"

@@ -12,6 +12,7 @@ zh-CN:
         publish: '发布'
         republish: '重新发布'
         trash: '不再显示'
+        create: '创建'
     
     etc: '等<span class="num-likes">%{num}</span>人'
     clicked_like: '点了喜欢'

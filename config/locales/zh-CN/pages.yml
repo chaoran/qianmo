@@ -22,9 +22,6 @@ zh-CN:
             organization: ' 组织'
             none: '无分类'
             
-        image:
-            remote_url: '图片链接地址'
-            
         component:
             whiteboard: '白板'
             billboard: '公告牌'

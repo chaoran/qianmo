@@ -11,7 +11,7 @@
       <%= f.fields_for :movie, @page.movie do |ff| %>
         <%= ff.input :title, :input_html => {:class => "span3"}, :extra_button => [
               "#{t 'pages.fill_it_for_me'}", "#", {:class => "btn btn-success", :id => "auto_fillin"}] %>
-        <%= ff.input :image, :as => :file, :remote_url => "#{t 'pages.image.remote_url'}" %>
+        <%= ff.input :image, :as => :file, :remote_url => "#{t 'remote_url'}" %>
         <%= ff.input :directed_by, :input_html => {:class => "span5"} %>
         <%= ff.input :written_by, :input_html => {:class => "span5"} %>
         <%= ff.input :starring, :input_html => {:class => "span5"} %>
@@ -30,7 +30,7 @@
               "#{t 'pages.fill_it_for_me'}", "#", {:class => "btn btn-success", :id => "auto_fillin"}] %>
         <%= ff.input :alt_title, :input_html => {:class => "span5"} %>
         <%= ff.input :subtitle, :input_html => {:class => "span5"} %>
-        <%= ff.input :cover, :as => :file, :remote_url => "#{t 'pages.image.remote_url'}" %>
+        <%= ff.input :cover, :as => :file, :remote_url => "#{t 'remote_url'}" %>
         <%= ff.input :author, :input_html => {:class => "span2"} %>
         <%= ff.input :translator, :input_html => {:class => "span2"} %>
         <%= ff.input :publisher, :input_html => {:class => "span3"} %>
@@ -49,7 +49,7 @@
         <%= ff.input :title, :input_html => {:class => "span3"}, :extra_button => [
               "#{t 'pages.fill_it_for_me'}", "#", {:class => "btn btn-success", :id => "auto_fillin"}] %>
         <%= ff.input :edition, :input_html => {:class => "span5"} %>
-        <%= ff.input :cover, :as => :file, :remote_url => "#{t 'pages.image.remote_url'}" %>
+        <%= ff.input :cover, :as => :file, :remote_url => "#{t 'remote_url'}" %>
         <%= ff.input :artist, :input_html => {:class => "span2"} %>
         <%= ff.input :released_on, :as => :date, 
         													 :start_year => Date.today.year, 

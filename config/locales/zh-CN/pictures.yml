@@ -14,6 +14,7 @@ zh-CN:
         num_pictures_in_gallery: '(共 %{num} 张)'
         posted: '你的图片已发布。'
         post_failed: '图片发布失败。'
+        about_pages: "你可以#多个页面"
         
     simple_form:
         labels:
@@ -23,3 +24,4 @@ zh-CN:
                 gallery: '上传到相册: '
             gallery:
                 title: '上传到相册: '
+                page_name: '此相册的关联页面: '

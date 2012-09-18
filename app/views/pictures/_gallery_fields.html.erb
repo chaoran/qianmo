@@ -1,7 +1,10 @@
 <div class="nested-fields">
-  <%= f.input :title, :input_html => {:class => "input-medium", :placeholder => t('pictures.new_gallery_name')}, 
+  <%= f.input :title, :input_html => {:class => "span2", 
+                      :placeholder => t('pictures.new_gallery_name')},
                       :wrapper_html => {:style => "display:inline-block;"} %>
   <%= f.input :user_id, :input_html => {:value => current_user.id}, :as => :hidden %>
   <%= t 'simple_form.or' %>
   <%= link_to_remove_association t('pictures.remove_gallery'), f %>
+  <%= f.input :page_name, :input_html => {:class => "span4", 
+                          :placeholder => t('pictures.about_pages')} %>
 </div>

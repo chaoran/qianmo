@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120906203057) do
+ActiveRecord::Schema.define(:version => 20120913050732) do
 
   create_table "abouts", :force => true do |t|
     t.integer  "post_id"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(:version => 20120906203057) do
 
   create_table "albums", :force => true do |t|
     t.integer  "page_id"
-    t.string   "name"
     t.string   "cover"
     t.string   "artist"
     t.string   "genre"
@@ -50,6 +49,11 @@ ActiveRecord::Schema.define(:version => 20120906203057) do
     t.text     "introduction"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.string   "edition"
+    t.string   "studio"
+    t.string   "country"
+    t.text     "tracks"
+    t.string   "title"
   end
 
   add_index "albums", ["page_id"], :name => "index_albums_on_page_id"
@@ -90,6 +94,13 @@ ActiveRecord::Schema.define(:version => 20120906203057) do
     t.date     "released_on"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "pages"
+    t.string   "binding"
+    t.string   "isbn"
+    t.string   "genre"
+    t.string   "country"
+    t.text     "summary"
+    t.string   "alt_title"
   end
 
   add_index "books", ["page_id"], :name => "index_books_on_page_id"

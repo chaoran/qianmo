@@ -1,0 +1,38 @@
+var form = $("#auto_fillin").closest("form")
+var prefix = "#page_book_attributes_"
+<% if @item["image"] %>
+form.find(prefix + "remote_cover_url").val('<%= j @item["image"].gsub("spic", "lpic") %>')
+<% end %>
+<% if @item["title"] %>
+form.find(prefix + "title").val('<%= j @item["title"] %>')
+<% end %>
+<% if @item["attrs"]["author"] %>
+form.find(prefix + "author").val('<%= j @item["attrs"]["author"].join(", ") %>')
+<% end %>
+<% if @item["attrs"]["subtitle"] %>
+form.find(prefix + "subtitle").val('<%= j @item["attrs"]["subtitle"].join(", ") %>')
+<% end %>
+<% if @item["alt_title"] %>
+form.find(prefix + "alt_title").val('<%= j @item["alt_title"] %>')
+<% end %>
+<% if @item["attrs"]["binding"] %>
+form.find(prefix + "binding").val('<%= j @item["attrs"]["binding"].join(", ") %>')
+<% end %>
+<% if @item["attrs"]["translator"] %>
+form.find(prefix + "translator").val('<%= j @item["attrs"]["translator"].join(", ") %>')
+<% end %>
+<% if @item["attrs"]["pages"] %>
+form.find(prefix + "pages").val('<%= j @item["attrs"]["pages"].join(", ") %>')
+<% end %>
+<% if @item["attrs"]["publisher"] %>
+form.find(prefix + "publisher").val('<%= j @item["attrs"]["publisher"].join(", ") %>')
+<% end %>
+<% if @item["attrs"]["pubdate"] %>
+<% date = parse_date(@item["attrs"]["pubdate"].join(", ")) %>
+form.find(prefix + "released_on_1i").val('<%= date[0] %>')
+form.find(prefix + "released_on_2i").val('<%= date[1] %>')
+form.find(prefix + "released_on_3i").val('<%= date[2] %>')
+<% end %>
+<% if @item["summary"] %>
+form.find(prefix + "summary").val('<%= j @item["summary"] %>')
+<% end %>

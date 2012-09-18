@@ -6,24 +6,41 @@
     <div class="content span5">
       <h2><%= movie.title %></h2>
       <dl class="dl-horizontal content">
+        <% unless movie.directed_by.blank? %>
         <dt><%= t 'simple_form.labels.movie.directed_by' %>:</dt>
         <dd><%= movie.directed_by %></dd>
+        <% end %>
+        <% unless movie.written_by.blank? %>
         <dt><%= t 'simple_form.labels.movie.written_by' %>:</dt>
         <dd><%= movie.written_by %></dd>
+        <% end %>
+        <% unless movie.starring.blank? %>
         <dt><%= t 'simple_form.labels.movie.starring' %>:</dt>
         <dd><%= movie.starring %></dd>
+        <% end %>
+        <% unless movie.genre.blank? %>
         <dt><%= t 'simple_form.labels.movie.genre' %>:</dt>
         <dd><%= movie.genre %></dd>
+        <% end %>
+        <% unless movie.country.blank? %>
         <dt><%= t 'simple_form.labels.movie.country' %>:</dt>
         <dd><%= movie.country %></dd>
+        <% end %>
+        <% unless movie.released_on.blank? %>
         <dt><%= t 'simple_form.labels.movie.released_on' %>:</dt>
         <dd><%= movie.released_on %></dd>
-        <dt><%= t 'simple_form.labels.movie.also_known_as' %>:</dt>
-        <dd><%= movie.also_known_as %></dd>
-        <dt><%= t 'simple_form.labels.movie.storyline' %>:</dt>
-        <dd><%= movie.storyline %></dd>
+        <% end %>
+        <% unless movie.also_known_as.blank? %>
+          <dt><%= t 'simple_form.labels.movie.also_known_as' %>:</dt>
+          <dd><%= movie.also_known_as %></dd>
+        <% end %>
       </dl>
     </div>
   </div>
-  
+  <% unless movie.storyline.blank? %>
+    <div>
+      <h3><%= t 'simple_form.labels.movie.storyline' %></h3>
+      <%= page_intro_preview movie.storyline %>
+    </div>
+  <% end %>
 </div>

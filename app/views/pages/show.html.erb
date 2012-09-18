@@ -24,6 +24,12 @@
         <% case @page.category %>
         <% when "movie" %>
           <%= render "movie", :movie => @page.movie %>
+        <% when "book" %>
+          <%= render "book", :book => @page.book %>
+        <% when "album" %>
+          <%= render "album", :album => @page.album %>
+        <% when "song" %>
+          <%= render "song", :song => @page.song %>
         <% end %>
       </div>
 

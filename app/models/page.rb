@@ -1,12 +1,14 @@
 class Page < ActiveRecord::Base
-  attr_accessible :title, :intro, :category, :editable, 
-                  :movie_attributes
+  attr_accessible :title, :category, :editable, 
+                  :movie_attributes, :book_attributes, :album_attributes
                   
   belongs_to :user
     
-  has_one :book
-  has_one :album
-  has_one :song
+  has_one :book, :autosave => true
+  accepts_nested_attributes_for :book
+  
+  has_one :album, :autosave => true
+  accepts_nested_attributes_for :album
   
   has_one :movie, :autosave => true
   accepts_nested_attributes_for :movie

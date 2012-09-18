@@ -7,7 +7,6 @@
     </div>
     <div class="modal-body">
 	  	<%= f.input :title %>
-	  	<%= f.input :intro %>
 	  	<%= f.input :category, :as => :radio_buttons, :required => true, :collection => [
 	  	    ["#{t 'pages.category.topic'}", "topic"],
 	  	    ["#{t 'pages.category.movie'}", "movie"], 

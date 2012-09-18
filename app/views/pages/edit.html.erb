@@ -5,8 +5,6 @@
 <div class="row">
   <div class="span7 page-edit">
     <%= simple_form_for @page, :html => { :class => "form-horizontal" } do |f| %>
-      <%= f.input :title, :input_html => {:disabled => true, :class => "span5"} %>
-      <%= f.input :intro, :input_html => {:class => "span5"} %>
       <%= f.input :category, :as => :hidden %>
     <% case @page.category %>
     <% when "movie" %>
@@ -26,6 +24,42 @@
         <%= ff.input :also_known_as, :input_html => {:class => "span5"} %>
         <%= ff.input :storyline, :input_html => {:class => "span5", :rows => 4} %>
       <% end %>
+    <% when "book" %>
+      <%= f.fields_for :book, @page.book do |ff| %>
+        <%= ff.input :title, :input_html => {:class => "span3"}, :extra_button => [
+              "#{t 'pages.fill_it_for_me'}", "#", {:class => "btn btn-success", :id => "auto_fillin"}] %>
+        <%= ff.input :alt_title, :input_html => {:class => "span5"} %>
+        <%= ff.input :subtitle, :input_html => {:class => "span5"} %>
+        <%= ff.input :cover, :as => :file, :remote_url => "#{t 'pages.image.remote_url'}" %>
+        <%= ff.input :author, :input_html => {:class => "span2"} %>
+        <%= ff.input :translator, :input_html => {:class => "span2"} %>
+        <%= ff.input :publisher, :input_html => {:class => "span3"} %>
+        <%= ff.input :released_on, :as => :date, 
+        													 :start_year => Date.today.year, 
+         													 :end_year => Date.today.year - 90,
+         													 :prompt => true, :input_html => { :class => "span1" } %>
+        <%= ff.input :country, :as => :string, :input_html => {:class => "span2"} %>
+        <%= ff.input :pages, :input_html => {:class => "span2"} %>
+        <%= ff.input :binding, :input_html => {:class => "span2"} %>
+        <%= ff.input :isbn, :input_html => {:class => "span2"} %>
+        <%= ff.input :summary, :input_html => {:class => "span5", :rows => 4} %>
+      <% end %>
+    <% when "album" %>
+      <%= f.fields_for :album, @page.album do |ff| %>
+        <%= ff.input :title, :input_html => {:class => "span3"}, :extra_button => [
+              "#{t 'pages.fill_it_for_me'}", "#", {:class => "btn btn-success", :id => "auto_fillin"}] %>
+        <%= ff.input :edition, :input_html => {:class => "span5"} %>
+        <%= ff.input :cover, :as => :file, :remote_url => "#{t 'pages.image.remote_url'}" %>
+        <%= ff.input :artist, :input_html => {:class => "span2"} %>
+        <%= ff.input :released_on, :as => :date, 
+        													 :start_year => Date.today.year, 
+         													 :end_year => Date.today.year - 90,
+         													 :prompt => true, :input_html => { :class => "span1" } %>
+        <%= ff.input :studio, :input_html => {:class => "span2"} %>
+        <%= ff.input :country, :as => :string, :input_html => {:class => "span2"} %>
+        <%= ff.input :tracks, :input_html => {:class => "span5", :rows => 3} %>
+        <%= ff.input :introduction, :input_html => {:class => "span5", :rows => 5} %>
+      <% end %>
     <% end %>
     <div class="form-actions">
       <%= f.button :wrapped, :cancel => page_path(@page), :class => "btn-wide" %>
@@ -33,6 +67,6 @@
     <% end %>
   </div>
   <div class="span5" id="douban_sources">
-  
+    <%= render 'shared/messages' %>
   </div>
 </div>

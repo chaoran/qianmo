@@ -13,6 +13,8 @@ zh-CN:
         republish: '重新发布'
         trash: '不再显示'
         create: '创建'
+        expand: '展开'
+        collapse: '收起'
     
     etc: '等<span class="num-likes">%{num}</span>人'
     clicked_like: '点了喜欢'
@@ -20,6 +22,7 @@ zh-CN:
     
     errors:
         messages:
+            please_try_later: '对不起，系统出错了，请稍后再试。'
             size_too_big: "图片大小超过限制 (最多可以是%{file_size})"
             extension_white_list_error: "图片格式必须为jpg或者png"
             invalid_remote_url: '链接地址无效'

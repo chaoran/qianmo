@@ -4,12 +4,12 @@
 <ul class="douban_items table-list">
   <% for item in items do %>
   <li>
-    <%= link_to douban_get_path(:id => item.douban_id, :category => params[:category]),
+    <%= link_to douban_get_path(:id => item[:id], :category => params[:category]),
                 :remote => true do %> 
-      <%= image_tag item.douban_image, :class => "header" %>
+      <%= image_tag item[:image], :class => "header" %>
       <div class="content">
-        <h4><%= item.title %></h4>
-        <p><%= item.douban_summary %></p>
+        <h4><%= item[:title] %></h4>
+        <p><%= item[:summary] %></p>
       </div>
     <% end %>
     </li>

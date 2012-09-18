@@ -1,7 +1,7 @@
 class FileInput < SimpleForm::Inputs::FileInput
   def input
     html = ""
-    unless object.send(attribute_name).nil?
+    if object.send("#{attribute_name}?")
       template.content_tag :div, :class => "file flippable" do
         html += template.content_tag :div, :class => "pinable hoverable flipdown span3" do 
           template.image_tag(object.send(attribute_name).url) + 

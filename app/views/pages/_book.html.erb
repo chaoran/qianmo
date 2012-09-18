@@ -1,0 +1,59 @@
+<div class="book">
+  <div class="row">
+    <div class="span3">
+      <%= image_tag book.cover.url %>
+    </div>
+    <div class="content span5">
+      <h2>
+        <%= book.title %>
+        <% unless book.subtitle.empty? %>
+          <small><%= book.subtitle %></small>
+        <% end %>
+      </h2>
+      <dl class="dl-horizontal content">
+        <% unless book.alt_title.blank? %>
+          <dt><%= t 'simple_form.labels.book.alt_title' %>:</dt>
+          <dd><%= book.alt_title %></dd>
+        <% end %>
+        <% unless book.author.blank? %>
+          <dt><%= t 'simple_form.labels.book.author' %>:</dt>
+          <dd><%= book.author %></dd>
+        <% end %>
+        <% unless book.translator.blank? %>
+          <dt><%= t 'simple_form.labels.book.translator' %>:</dt>
+          <dd><%= book.translator %></dd>
+        <% end %>
+        <% unless book.genre.blank? %>
+          <dt><%= t 'simple_form.labels.book.genre' %>:</dt>
+          <dd><%= book.genre %></dd>
+        <% end %>
+        <% unless book.country.blank? %>
+          <dt><%= t 'simple_form.labels.book.country' %>:</dt>
+          <dd><%= book.country %></dd>
+        <% end %>
+        <% unless book.released_on.blank? %>
+          <dt><%= t 'simple_form.labels.book.released_on' %>:</dt>
+          <dd><%= book.released_on %></dd>
+        <% end %>
+        <% unless book.publisher.blank? %>
+          <dt><%= t 'simple_form.labels.book.publisher' %>:</dt>
+          <dd><%= book.publisher %></dd>
+        <% end %>
+        <% unless book.pages.blank? %>
+          <dt><%= t 'simple_form.labels.book.pages' %>:</dt>
+          <dd><%= book.pages %></dd>
+        <% end %>
+        <% unless book.binding.blank? %>
+          <dt><%= t 'simple_form.labels.book.binding' %>:</dt>
+          <dd><%= book.binding %></dd>
+        <% end %>
+      </dl>
+    </div>
+  </div>
+  <% unless book.summary.blank? %>
+    <div class="page-section">
+      <h3><%= t 'simple_form.labels.book.summary' %></h3>
+      <%= page_intro_preview book.summary %>
+    </div>
+  <% end %>
+</div>

@@ -49,13 +49,14 @@ $(document).ready(function(){
   });
   
   /* PLUGIN: flippable */
-  $(".flippable .on-click").live("click", function() {
+  $(".flippable .on-click").live("click", function(e) {
     var flippable = $(this).closest(".flippable")
     if (flippable.hasClass("flipped")) {
       flippable.removeClass("flipped")
     } else {
       flippable.addClass("flipped")
     }
+    e.preventDefault()
   });
   
   $(".flippable .on-hover").live({

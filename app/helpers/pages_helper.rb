@@ -18,4 +18,24 @@ module PagesHelper
       end
     end
   end
+  
+  def page_intro_preview(content)
+    content = "&nbsp;&nbsp;&nbsp;&nbsp;" + content.gsub("\r\n", "<br />&nbsp;&nbsp;&nbsp;&nbsp;")
+    if content.length > 600
+      preview_content = content[0..400] + "..."
+      html = content_tag :div, :class => "flippable" do 
+        h = content_tag :p, :class => "flipdown" do
+          content[0..400].html_safe + "... " + link_to("#{I18n.t "actions.expand"}", "#", :class => "on-click")
+        end
+        h += content_tag :p, :class => "flipup" do
+          content.html_safe + " " + link_to("#{I18n.t "actions.collapse"}", "#", :class => "on-click")
+        end
+      end
+    else
+      html = content_tag :p do
+        content
+      end
+    end
+    html.html_safe
+  end
 end

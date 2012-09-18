@@ -77,5 +77,7 @@ gallery.find('a.next').click(function(e) {
 });
 
 /*********** Go to current index ****************/
+<% if @index > 0 %>
 gallery.gotoIndex(<%= @index %>)
+<% end %>
 

@@ -1,0 +1,28 @@
+var form = $("#auto_fillin").closest("form")
+var prefix = "#page_movie_attributes_"
+<% if @item["image"] %>
+form.find(prefix + "remote_image_url").val('<%= j @item["image"].gsub("spic", "lpic") %>')
+<% end %>
+<% if @item["attrs"]["director"] %>
+form.find(prefix + "directed_by").val('<%= j @item["attrs"]["director"].join(", ") %>')
+<% end %>
+<% if @item["attrs"]["writer"] %>
+form.find(prefix + "written_by").val('<%= j @item["attrs"]["writer"].join(", ") %>')
+<% end %>
+<% if @item["attrs"]["cast"] %>
+form.find(prefix + "starring").val('<%= j @item["attrs"]["cast"].join(", ") %>')
+<% end %>
+<% if @item["attrs"]["movie_type"] %>
+form.find(prefix + "genre").val('<%= j @item["attrs"]["movie_type"].join(", ") %>')
+<% end %>
+<% if @item["attrs"]["country"] %>
+form.find(prefix + "country").val('<%= j @item["attrs"]["country"].join(", ") %>')
+<% end %>
+<% if @item["alt_title"] %>
+form.find(prefix + "also_known_as").val('<%= j @item["alt_title"] %>')
+<% end %>
+<% if @item["attrs"]["pubdate"] %>
+form.find(prefix + "released_on_1i").val('<%= get_year_from_date @item["attrs"]["pubdate"].join(", ") %>')
+form.find(prefix + "released_on_2i").val('<%= get_month_from_date @item["attrs"]["pubdate"].join(", ") %>')
+form.find(prefix + "released_on_3i").val('<%= get_day_from_date @item["attrs"]["pubdate"].join(", ") %>')
+<% end %>

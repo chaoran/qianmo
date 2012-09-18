@@ -1,0 +1,48 @@
+<div class="album">
+  <div class="row">
+    <div class="span3">
+      <%= image_tag album.cover.url %>
+    </div>
+    <div class="content span5">
+      <h2><%= album.title %></h2>
+      <dl class="dl-horizontal content">
+        <% unless album.edition.blank? %>
+        <dt><%= t 'simple_form.labels.album.edition' %>:</dt>
+        <dd><%= album.edition %></dd>
+        <% end %>
+        <% unless album.artist.blank? %>
+        <dt><%= t 'simple_form.labels.album.artist' %>:</dt>
+        <dd><%= album.artist %></dd>
+        <% end %>
+        <% unless album.released_on.blank? %>
+        <dt><%= t 'simple_form.labels.album.released_on' %>:</dt>
+        <dd><%= album.released_on %></dd>
+        <% end %>
+        <% unless album.studio.blank? %>
+        <dt><%= t 'simple_form.labels.album.studio' %>:</dt>
+        <dd><%= album.studio %></dd>
+        <% end %>
+        <% unless album.country.blank? %>
+        <dt><%= t 'simple_form.labels.album.country' %>:</dt>
+        <dd><%= album.country %></dd>
+        <% end %>
+      </dl>
+    </div>
+  </div>
+  <% unless album.introduction.blank? %>
+    <div class="page-section">
+      <h3><%= t 'simple_form.labels.album.introduction' %></h3>
+      <%= page_intro_preview(album.introduction) %>
+    </div>
+  <% end %>
+  <% unless album.tracks.blank? %>
+    <div class="page-section">
+      <h3><%= t 'simple_form.labels.album.tracks' %></h3>
+      <ul>
+        <% for track in album.tracks.split("/") %>
+          <li><%= track %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>

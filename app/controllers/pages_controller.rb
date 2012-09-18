@@ -35,6 +35,14 @@ class PagesController < ApplicationController
   # GET /pages/1/edit
   def edit
     @page = Page.find(params[:id])
+    case @page.category
+    when "movie"
+      @page.build_movie.title = @page.title
+    when "book"
+      @page.build_book.title = @page.title
+    when "album"
+      @page.build_album.title = @page.title
+    end
     respond_to do |format|
       format.html # edit.html.erb
     end
@@ -45,10 +53,6 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(params[:page])
     @page.user = current_user
-    case @page.category
-    when "movie"
-      @page.build_movie
-    end
 
     respond_to do |format|
       if @page.save

@@ -4,5 +4,6 @@ class Movie < ActiveRecord::Base
                   :released_on, :starring, :storyline, :studio, :written_by
   
   mount_uploader :image, ImageUploader
-  attr_accessor :douban_summary, :douban_id, :douban_image
+  
+  validates_presence_of :title, :image
 end

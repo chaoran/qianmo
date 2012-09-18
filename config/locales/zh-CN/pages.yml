@@ -35,6 +35,32 @@ zh-CN:
             
     simple_form:
         labels:
+            book:
+                title: '书名'
+                alt_title: '又名'
+                subtitle: '副标题'
+                cover: '封面'
+                author: '作者'
+                translator: '译者'
+                publisher: '出版商'
+                released_on: '出版日期'
+                country: '国家'
+                binding: '装桢'
+                pages: '页数'
+                isbn: 'ISBN'
+                summary: '内容简介'
+                
+            album:
+                title: '专辑名'
+                edition: '版本'
+                cover: '封面'
+                artist: '艺人名'
+                released_on: '发行时间'
+                studio: '厂牌'
+                country: '国家'
+                tracks: '歌曲列表'
+                introduction: '专辑介绍'
+                
             movie:
                 title: '电影名'
                 image: '海报'

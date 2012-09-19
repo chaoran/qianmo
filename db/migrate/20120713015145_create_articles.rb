@@ -4,15 +4,14 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.boolean :published
-      t.string :abouts
-      t.string :mentions
-      t.string :intro
-      
       t.references :user
+      t.references :page
       
       t.timestamps
     end
     add_index :articles, :user_id
-    add_index :articles, :title
+    add_index :articles, :page_id
+    add_index :articles, [:title, :user_id]
+    add_index :articles, [:title, :page_id]
   end
 end

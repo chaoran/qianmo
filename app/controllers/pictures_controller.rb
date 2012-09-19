@@ -10,25 +10,29 @@ class PicturesController < AuthenticatedController
   
   def create
     @picture = Picture.new(params[:picture])
-    if @picture.save
-      @post = @picture.create_post(:user => current_user)
-      render 'edit'
-    else
-      render 'new'
+    @post = @picture.post
+    @post.user = current_user
+    respond_to do |format|
+      if @picture.save
+        format.js { render 'posts/create' }
+        format.html { redirect_to request.referer, :notice => I18n.t('pictures.posted') }
+      else
+        format.js { render 'new' }
+        format.html { redirect_to request.referer, :error => I18n.t('pictures.post_failed')}
+      end
     end
   end
   
-  # create associated post
   def update
     @picture = Picture.find(params[:id])
     respond_to do |format|
       if @picture.update_attributes(params[:picture])
         @post = @picture.post
         format.js { render 'posts/create' }
-        format.html { redirect_to request.referer, :notice => I18n.t('pictures.posted') }
+        format.html { redirect_to root_path, :notice => I18n.t('pictures.posted') }
       else
         format.js { render 'edit' }
-        format.html { redirect_to request.referer, :error => I18n.t('pictures.post_failed')}
+        format.html { redirect_to root_path, :error => I18n.t('pictures.post_failed')}
       end
     end
   end

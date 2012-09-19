@@ -3,7 +3,6 @@
   <div class="inputs">
     <%= f.input :title, :required => true, :input_html => { :class => "span8" } %>
     <%= f.input :content, :required => true, :as => :text, :input_html => { :class => "redactor"} %>
-    <%= redactor %>
   </div>
   <div class="form-actions">
     <div style="text-align:center;">
@@ -15,10 +14,9 @@
 </div>
 <div class="span4">
   <div class="inputs">
-    <%= f.input :abouts, :placeholder => "#", :input_html => { :class => 'span3'} %>
-    <%= f.input :mentions, :placeholder => "@", :input_html => { :class => 'span3'} %>
-    <%= f.input :intro, :placeholder => "#{t :'articles.will_show_as_post'}", 
-                        :input_html => { :class => 'span4'} %>
+    <%= f.input :page_name, :placeholder => "#", :input_html => { :class => 'span2'} %>
+    <%= f.input :description, :input_html => { :class => 'span4'},
+                :placeholder => "#{t :'articles.post_placeholder'}" %>
   </div>
 </div>
 <% end %>

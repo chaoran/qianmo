@@ -29,6 +29,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
+  process :auto_orient
   process :resize_to_fit => [540, 540]
   #
   # def scale(width, height)
@@ -37,7 +38,14 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
+    process :auto_orient
     process :resize_to_fill => [180, 180]
+  end
+  
+  def auto_orient
+    manipulate! do |image|
+      image = image.auto_orient
+    end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

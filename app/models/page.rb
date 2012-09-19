@@ -20,7 +20,7 @@ class Page < ActiveRecord::Base
   
   has_many :articles
   
-  has_many :galleries
+  has_many :galleries, :order => "created_at DESC"
     
   validates_presence_of :title, :user, :category
   validates_uniqueness_of :title

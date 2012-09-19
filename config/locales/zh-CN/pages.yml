@@ -5,6 +5,10 @@ zh-CN:
         fill_in_details: '完善页面资料'
         fill_it_for_me: '自动从互联网抓取资料'
         
+        galleries: '#%{name} 的相册'
+        articles: '#%{name} 的文章'
+        no_articles: '暂时还没有 #%{name} 的文章; 所有 #%{name} 的文章会被显示这里。'
+        from: '来自'
         auto_fillin:
           do_you_mean?: '你是不是想找：'
         

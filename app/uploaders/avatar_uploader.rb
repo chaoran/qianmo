@@ -28,6 +28,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   # Process files as they are uploaded:
+  process :auto_orient
   process :scale => [210, 315]
   
   def scale(width, height)
@@ -39,9 +40,16 @@ class AvatarUploader < CarrierWave::Uploader::Base
       resize_to_fill(width, height)
     end
   end
+  
+  def auto_orient
+    manipulate! do |image|
+      image = image.auto_orient
+    end
+  end
 
   # Create different versions of your uploaded files:
   version :thumb do
+    process :auto_orient
     process :crop
     process :resize_to_fill => [100, 100]
   end

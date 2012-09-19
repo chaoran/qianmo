@@ -2,8 +2,9 @@ class Picture < ActiveRecord::Base
   belongs_to :gallery
   accepts_nested_attributes_for :gallery
   
-  attr_accessible :description, :mentions, :image, :remote_image_url, 
-                  :gallery_id, :gallery_attributes, :post_attributes
+  attr_accessible :description, :image, :remote_image_url, 
+                  :gallery_id, :gallery_attributes, :post_attributes,
+                  :image_cache
   
   mount_uploader :image, PictureUploader
   

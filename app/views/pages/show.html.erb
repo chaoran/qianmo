@@ -28,16 +28,38 @@
           <%= render "book", :book => @page.book %>
         <% when "album" %>
           <%= render "album", :album => @page.album %>
-        <% when "song" %>
-          <%= render "song", :song => @page.song %>
         <% end %>
       </div>
-
-      <div class="galleries">
-      
+      <div class="page-section">
+        <h3><%= t 'pages.galleries', :name => @page.title %></h3>
+        <ul class="galleries">
+          <% for gallery in @page.galleries do %>
+            <li class="gallery">
+              <div class="caption">
+                <h4>
+                  <%= gallery.title %>
+                  <small>
+                    <%= t 'pictures.num_pictures_in_gallery', :num => gallery.pictures.length %>
+                    <%= t 'pages.from' %>: <%= link_to gallery.user.name, user_path(gallery.user) %>
+                  </small>
+                </h4>
+              </div>
+              <%= gallery_show(gallery) %>
+            </li>
+          <% end %>
+        </ul>
       </div>
-      <div class="articles">
-      
+      <div class="page-section">
+        <h3><%= t 'pages.articles', :name => @page.title %></h3>
+        <div class="articles">
+          <% if @page.articles.length > 0 %>
+            <% for article in @page.articles %>
+              <%= render 'articles/preview', :article => article %>
+            <% end %>
+          <% else %>
+            <p class="muted"><%= t :'pages.no_articles', :name => @page.title %></p>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="span4 page-side">

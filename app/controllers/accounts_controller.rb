@@ -9,8 +9,11 @@ class AccountsController < ApplicationController
     @account.password_set_at = Time.now
     if @account.save 
       warden.set_user(@account.user)
-      @account.send_confirmation_instructions
-      redirect_to root_path, :notice => I18n.t(:'confirmations.sent', :email => @account.email).html_safe
+      if @account.send_confirmation_instructions
+        redirect_to root_path, :notice => I18n.t(:'confirmations.sent', :email => @account.email).html_safe
+      else
+        redirect_to root_path, :error => I18n.t('confirmations.sent_error')
+      end
     else
       render 'new'
     end

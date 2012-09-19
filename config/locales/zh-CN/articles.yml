@@ -3,7 +3,8 @@ zh-CN:
         new_article: '写文章'
         edit_article: '编辑文章'
         save_as_draft: '保存为草稿'
-        will_show_as_post: '将会显示为这篇文章的微博内容'
+        post_content: '微博内容'
+        post_placeholder: '你可以在这里@其他人'
         no_articles: '你尚未发表任何文章...'
         saved_successfully: '你的文章: <em>%{title}</em> 已经成功保存。'
         draft: '草稿'
@@ -17,6 +18,5 @@ zh-CN:
             article:
                 title: '标题'
                 content: '内容'
-                mentions: '与文章有关的人:'
-                abouts: '与文章有关的页面:'
-                intro: '一句话介绍:'
+                description: '文章的微博内容:'
+                page_name: '与文章有关的页面:'

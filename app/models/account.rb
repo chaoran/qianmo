@@ -58,7 +58,11 @@ class Account < ActiveRecord::Base
     self.build_confirmation if self.confirmation.nil?
     self.confirmation.unconfirmed_email = email ? email : self.email unless self.confirmation.unconfirmed_email
     self.confirmation.generate_confirmation_token!
-    UserMailer.confirm_email(self.confirmation).deliver
+    begin
+      UserMailer.confirm_email(self.confirmation).deliver
+    rescue
+      # do_nothing
+    end
   end
   
   def unconfirmed_email

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120913050732) do
+ActiveRecord::Schema.define(:version => 20120919173352) do
 
   create_table "abouts", :force => true do |t|
     t.integer  "post_id"
@@ -42,18 +42,18 @@ ActiveRecord::Schema.define(:version => 20120913050732) do
 
   create_table "albums", :force => true do |t|
     t.integer  "page_id"
+    t.string   "title"
     t.string   "cover"
     t.string   "artist"
+    t.string   "edition"
     t.string   "genre"
+    t.string   "studio"
+    t.string   "country"
     t.date     "released_on"
+    t.text     "tracks"
     t.text     "introduction"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-    t.string   "edition"
-    t.string   "studio"
-    t.string   "country"
-    t.text     "tracks"
-    t.string   "title"
   end
 
   add_index "albums", ["page_id"], :name => "index_albums_on_page_id"
@@ -62,45 +62,36 @@ ActiveRecord::Schema.define(:version => 20120913050732) do
     t.string   "title"
     t.text     "content"
     t.boolean  "published"
-    t.string   "abouts"
-    t.string   "mentions"
-    t.string   "intro"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "articles", ["title"], :name => "index_articles_on_title"
-  add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
-
-  create_table "billboards", :force => true do |t|
-    t.string   "header"
-    t.text     "content"
-    t.string   "button_name"
-    t.string   "button_value"
     t.integer  "page_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "description"
   end
+
+  add_index "articles", ["page_id"], :name => "index_articles_on_page_id"
+  add_index "articles", ["title", "page_id"], :name => "index_articles_on_title_and_page_id"
+  add_index "articles", ["title", "user_id"], :name => "index_articles_on_title_and_user_id"
+  add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
 
   create_table "books", :force => true do |t|
     t.integer  "page_id"
     t.string   "title"
+    t.string   "alt_title"
     t.string   "subtitle"
     t.string   "author"
     t.string   "cover"
     t.string   "translator"
     t.string   "publisher"
-    t.date     "released_on"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
     t.string   "pages"
     t.string   "binding"
     t.string   "isbn"
     t.string   "genre"
     t.string   "country"
+    t.date     "released_on"
     t.text     "summary"
-    t.string   "alt_title"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   add_index "books", ["page_id"], :name => "index_books_on_page_id"
@@ -132,14 +123,15 @@ ActiveRecord::Schema.define(:version => 20120913050732) do
   add_index "follows", ["user_id"], :name => "index_follows_on_user_id"
 
   create_table "galleries", :force => true do |t|
+    t.string   "title"
     t.integer  "user_id"
     t.integer  "page_id"
-    t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   add_index "galleries", ["page_id"], :name => "index_galleries_on_page_id"
+  add_index "galleries", ["title", "page_id"], :name => "index_galleries_on_title_and_page_id"
   add_index "galleries", ["title", "user_id"], :name => "index_galleries_on_title_and_user_id"
   add_index "galleries", ["user_id"], :name => "index_galleries_on_user_id"
 
@@ -179,8 +171,8 @@ ActiveRecord::Schema.define(:version => 20120913050732) do
 
   create_table "movies", :force => true do |t|
     t.integer  "page_id"
+    t.string   "title"
     t.string   "image"
-    t.date     "released_on"
     t.string   "directed_by"
     t.string   "written_by"
     t.string   "starring"
@@ -188,10 +180,10 @@ ActiveRecord::Schema.define(:version => 20120913050732) do
     t.string   "studio"
     t.string   "country"
     t.string   "also_known_as"
+    t.date     "released_on"
     t.text     "storyline"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.string   "title"
   end
 
   add_index "movies", ["page_id"], :name => "index_movies_on_page_id"
@@ -243,18 +235,6 @@ ActiveRecord::Schema.define(:version => 20120913050732) do
 
   add_index "pictures", ["gallery_id"], :name => "index_pictures_on_gallery_id"
 
-  create_table "posters", :force => true do |t|
-    t.integer  "page_id"
-    t.string   "background"
-    t.string   "caption"
-    t.text     "text"
-    t.string   "link"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "posters", ["page_id"], :name => "index_posters_on_page_id"
-
   create_table "posts", :force => true do |t|
     t.integer  "user_id"
     t.text     "text"
@@ -274,30 +254,6 @@ ActiveRecord::Schema.define(:version => 20120913050732) do
   add_index "posts", ["parent_id"], :name => "index_posts_on_parent_id"
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
-  create_table "properties", :force => true do |t|
-    t.integer  "page_id"
-    t.string   "label"
-    t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "properties", ["page_id"], :name => "index_properties_on_page_id"
-
-  create_table "songs", :force => true do |t|
-    t.integer  "page_id"
-    t.integer  "album_id"
-    t.string   "name"
-    t.string   "artist"
-    t.string   "genre"
-    t.text     "lyrics"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "songs", ["album_id"], :name => "index_songs_on_album_id"
-  add_index "songs", ["page_id"], :name => "index_songs_on_page_id"
-
   create_table "users", :force => true do |t|
     t.string   "name"
     t.boolean  "sex"
@@ -314,15 +270,5 @@ ActiveRecord::Schema.define(:version => 20120913050732) do
 
   add_index "users", ["account_id"], :name => "index_users_on_account_id", :unique => true
   add_index "users", ["name"], :name => "index_users_on_name", :unique => true
-
-  create_table "whiteboards", :force => true do |t|
-    t.integer  "page_id"
-    t.string   "title"
-    t.text     "text"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "whiteboards", ["page_id"], :name => "index_whiteboards_on_page_id"
 
 end

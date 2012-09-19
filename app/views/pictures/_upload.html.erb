@@ -19,9 +19,15 @@
     		<%= link_to_add_association t('pictures.create_new_gallery'), f,
     		                            :gallery %>
   	  </div>
-  		<%= f.input :image, :as => :file %>
-  		<%= f.input :remote_image_url, :placeholder => "https://", 
-  		            :input_html => {:class => "span4"} %>
+  	  <%= f.hidden_field :image_cache %>
+  	  <% if @picture.image? %>
+  	    <%= debug @picture.errors %>
+  	    <div class="image_cache"><%= image_tag(@picture.image_url) %></div>
+  	  <% else %>
+    		<%= f.input :image, :as => :file %>
+    		<%= f.input :remote_image_url, :placeholder => "https://", 
+    		            :input_html => {:class => "span4"} %>
+    	<% end %>
   		<%= f.simple_fields_for :post, @picture.build_post do |ff| %>
         <%= ff.input :text, :as => :string, 
                      :label => t('pictures.description'), 

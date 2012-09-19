@@ -1,6 +1,6 @@
 <% closed_mode = (post.comments.length == 0) if local_assigns[:closed_mode].nil? %>
 <div class="post post_<%= post.id %> pinable hoverable expandable <%= "expanded" unless closed_mode %>">
-  <div class="post-content">
+  <div class="post-content expand-on-click">
     <div class="post-header">
       <a>
         <%= image_tag post.user.avatar.url(:thumb), :class => "avatar pin-top7-left5" %>
@@ -42,7 +42,7 @@
     </div>
     <%= render 'shared/post_actions', :post => post %>
   </div>
-  <div class="post-details well" <%= "style=\"display:none;\"".html_safe if closed_mode %>>
+  <div class="post-details well show-on-expanded" %>
     <div class="post-comments">
       <%= render 'comments/index', :post => post %>
     </div>

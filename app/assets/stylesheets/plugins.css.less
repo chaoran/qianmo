@@ -31,12 +31,20 @@
     display: none;
   }
   
+  .show-on-expanded {
+    display: none;
+  }
+  
   &.expanded .action-collapse {
     display: inline-block; /* use inline-block not inline 'cause it may need to float */
   }
   
   &.expanded .action-expand {
     display: none;
+  }
+  
+  &.expanded .show-on-expanded {
+    display: block;
   }
 }
 

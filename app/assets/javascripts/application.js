@@ -40,11 +40,25 @@ $(document).ready(function(){
   /* PLUGIN: expandable */
   $(".expandable .action-expand").live("click", function(e){
     $(this).closest(".expandable").addClass("expanded");
+    $(this).find(".show-on-expanded").slideDown('fast');
     e.preventDefault();
   });
   
   $(".expandable .action-collapse").live("click", function(e){
+    $(this).find(".show-on-expanded").slideUp('fast');
     $(this).closest(".expandable").removeClass("expanded");
+    e.preventDefault();
+  });
+  
+  $(".expandable .expand-on-click").live("click", function(e){
+    var expandable = $(this).closest(".expandable")
+    if (expandable.hasClass("expanded")) {
+      $(this).find(".show-on-expanded").slideUp('fast');
+      expandable.removeClass("expanded");
+    } else {
+      $(this).find(".show-on-expanded").slideDown('fast');
+      expandable.addClass("expanded")
+    }
     e.preventDefault();
   });
   

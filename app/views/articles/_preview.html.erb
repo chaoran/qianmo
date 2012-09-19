@@ -1,41 +1,43 @@
 <div class="article-preview expandable pinable" id="article_<%= article.id %>">
-  <div <%= "class=shifter" if controller_name == "pages" %>>
-    <% if controller_name == "pages" %>
-      <%= link_to user_path(article.user) do %>
-        <%= image_tag article.user.avatar.url(:thumb), :class => "avatar" %>
-      <% end %>
+  <div class="<%= "shifter" if controller_name == "pages" %>">
+  <% if controller_name == "pages" %>
+    <%= link_to user_path(article.user) do %>
+      <%= image_tag article.user.avatar.url(:thumb), :class => "avatar" %>
     <% end %>
-    <div class="header hoverable">
-      <%= link_to article_path(article) do %>
-        <h4><%= article.title %></h4>
-        <%= expand_toggle %>
-      <% end %>
-      <ul class="actions">
-        <li>
-          <%= my_link_to "#{t :'actions.edit'}", edit_article_path(article), 
-                         :icon => "icon-pencil", :class => "show-on-hover" %>
-        </li>
-        <li>
-          <%= my_link_to "#{t :'actions.delete'}", article_path(article), :remote => true,
-                         :icon => "icon-remove", :method => :delete, :class => "show-on-hover" %>
-        </li>
-      </ul>
-      <%= link_to article.user.name, user_path(article.user) if controller_name == "pages" %>
-    </div> 
-    <div class="content">
-      <div class="partial">
-        <%= article.preview(150, :styled => true).html_safe %>
-      </div>
-      <div class="full">
-        <%= article.content.html_safe %>
-      </div>
+  <% end %>
+  <div class="header hoverable">
+    <%= link_to article_path(article) do %>
+      <h4><%= article.title %></h4>
+      <%= expand_toggle %>
+    <% end %>
+    <ul class="actions">
+      <li>
+        <%= my_link_to "#{t :'actions.edit'}", edit_article_path(article), 
+                       :icon => "icon-pencil", :class => "show-on-hover" %>
+      </li>
+      <li>
+        <%= my_link_to "#{t :'actions.delete'}", article_path(article), :remote => true,
+                       :icon => "icon-remove", :method => :delete, :class => "show-on-hover" %>
+      </li>
+    </ul>
+    <%= link_to article.user.name, user_path(article.user) if controller_name == "pages" %>
+  </div> 
+  <div class="content">
+    <div class="partial">
+      <%= article.preview(150, :styled => true).html_safe %>
     </div>
-    <div class="article-post">
-      <%= link_to article.user.name, user_path(article.user) %>
-      <%= article.post.text.html_safe %>
+    <div class="full">
+      <%= article.content.html_safe %>
     </div>
+  </div>
+  <div class="article-post">
+    <%= article.post.text.html_safe %>
     <div class="footer">
       <%= render 'shared/post_actions', :post => article.post, :time_ago_in_words => false %>
+      <div class="well show-on-expanded">
+        <%= render 'comments/index', :post => article.post %>
+      </div>
     </div>
+  </div>
   </div>
 </div>

@@ -38,4 +38,23 @@ module PagesHelper
     end
     html.html_safe
   end
+  
+  def page_follow_button(page)
+    if page.followed_users.exists?(current_user)
+      content_tag :div, :class => "flippable" do
+        my_link_to(t('pages.has_followed'), page_follow_path(page), 
+                   :class => "btn btn-success flipdown on-hover", 
+                   :icon => "icon-ok",
+                   :disabled => true) + 
+        my_link_to(t('pages.unfollow'), page_follow_path(page), 
+                     :class => "btn btn-danger flipup on-hover", 
+                     :remote => true, :method => :delete)
+      end
+    else
+      my_link_to(t('pages.follow'), page_follow_path(page), 
+                 :class => "btn btn-success", 
+                 :remote => true, :method => :post,
+                 :icon => "icon-plus")
+    end
+  end
 end

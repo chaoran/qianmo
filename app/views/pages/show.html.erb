@@ -1,10 +1,13 @@
 <div class="page" id="page_<%= @page.id %>">
+  <%= render 'shared/messages' %>
   <div class="page-header no-margin-top">
     <div class="row">
-      <h1 class="span9">
-        <span class="title">#<%= @page.title %></span>
-        <small class="intro"><%= @page.intro %></small>
-      </h1>
+      <div class="span9">
+        <h1 class="title">#<%= @page.title %></h1>
+        <div class="follow">
+          <%= page_follow_button(@page) %>
+        </div>
+      </div>
       <div class="span3">
         <% if current_user != @page.user %>
           <div class="pull-right" style="padding-top: 17px;">
@@ -63,10 +66,21 @@
       </div>
     </div>
     <div class="span4 page-side">
+      <div class="new-post">
       <%= render 'posts/new', :post => current_user.posts.build, 
                               :placeholder => "##{@page.title}", 
                               :title => "#{t 'posts.about_page_what_do_you_want_to_say?', 
                                              :name => @page.title}" %>
+      </div>
+      <div class="stream">
+        <% if @page.posts.size > 0 %>
+          <%= render :partial => "shared/post", :collection => @page.posts %>
+        <% else %>
+          <div class="stream-post">
+            <p class="empty-stream-holder"><%= t :no_posts %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

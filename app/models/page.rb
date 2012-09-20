@@ -18,9 +18,11 @@ class Page < ActiveRecord::Base
   has_many :abouts
   has_many :posts, :through => :abouts  
   
-  has_many :articles
-  
+  has_many :articles, :order => "created_at DESC"
   has_many :galleries, :order => "created_at DESC"
+  
+  has_many :page_follows
+  has_many :followed_users, :through => :page_follows, :source => :user
     
   validates_presence_of :title, :user, :category
   validates_uniqueness_of :title

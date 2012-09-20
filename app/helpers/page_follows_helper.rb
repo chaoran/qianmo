@@ -1,0 +1,2 @@
+module PageFollowsHelper
+end

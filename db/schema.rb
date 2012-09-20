@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120919173352) do
+ActiveRecord::Schema.define(:version => 20120919204518) do
 
   create_table "abouts", :force => true do |t|
     t.integer  "post_id"
@@ -210,6 +210,16 @@ ActiveRecord::Schema.define(:version => 20120919173352) do
 
   add_index "notifications", ["notifier_id", "notifier_type"], :name => "index_notifications_on_notifier_id_and_notifier_type"
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
+
+  create_table "page_follows", :force => true do |t|
+    t.integer  "page_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "page_follows", ["page_id"], :name => "index_page_follows_on_page_id"
+  add_index "page_follows", ["user_id"], :name => "index_page_follows_on_user_id"
 
   create_table "pages", :force => true do |t|
     t.string   "title"

@@ -34,7 +34,10 @@ Qianmo::Application.routes.draw do
     resources :likes, :only => [:index]
   end
       
-  resources :pages
+  resources :pages do 
+    resource :page_follows, :path => 'follow', :as => :follow,
+              :only => [:create, :destroy] 
+  end
   resources :articles
   resources :pictures
   resources :galleries, :only => [:new, :create]

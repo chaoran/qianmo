@@ -4,11 +4,15 @@ zh-CN:
         edit_page: '编辑页面'
         fill_in_details: '完善页面资料'
         fill_it_for_me: '自动从互联网抓取资料'
-        
+        follow: '加关注'
+        unfollow: '取消关注'
+        has_followed: '已关注'
         galleries: '#%{name} 的相册'
         articles: '#%{name} 的文章'
         no_articles: '暂时还没有 #%{name} 的文章; 所有 #%{name} 的文章会被显示这里。'
         from: '来自'
+        you_have_followed: '你成功关注了页面 #%{name}。'
+        you_have_unfollowed: '你对页面 #%{name} 的关注已经取消了。'
         auto_fillin:
           do_you_mean?: '你是不是想找：'
         

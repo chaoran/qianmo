@@ -122,5 +122,10 @@ jQuery(document).ready(function($) {
 
     e.preventDefault();
 	});
-
+	
+	$('.post.can-pop').popover({
+	  placement: "left",
+	  trigger: "hover",
+	  content: "I'm good."
+	});
 });

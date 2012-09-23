@@ -13,7 +13,7 @@
  *= require redactor-rails
  *= require_tree .
 */
-
+@import "mixins";
 
 .grey {
 	color: #999999;
@@ -39,8 +39,6 @@
 .delete {
   margin-left: 10px;
 }
-
-
 
 /* fix Jcrop and Twitter bootstrp conflict */
 .jcrop-holder img {max-width: none}
@@ -163,13 +161,18 @@
 
 .shifter {
   margin-left: 50px;
+  &.small {
+    margin-left: 40px;
+    min-height: 35px;
+    .avatar {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  
+  .avatar {
+    position: absolute;
+    left: 2px;
+  }
 }
 
-.shifter .avatar {
-  position: absolute;
-  left: 0;
-}
-
-.small-shifter {
-  margin-left: 40px;
-}

@@ -8,46 +8,43 @@
 <% else %>
   <%= link_to "#{t :app_name}", user_signed_in? ?  root_path : signup_path, :class => "brand" %>
 <% end %>
-<div class="nav-collapse">
-	<% if user_signed_in? %>
-  	<%= subscribe_to "/user/#{current_user.id}" %>
-		<div class="pull-right">
-		  <ul class="nav">
-		    <%= form_tag "#", :class => "navbar-search pull-left", :method => :get do %>
-    			<%= text_field_tag 'search', nil, :placeholder => "#{t :search_bar_placeholder}", 
-    																				:class => "search-query" %>
-    		<% end %>
-		    <li class="divider-vertical"></li>
-        <%= render "follows/dropdown", :user => current_user %>
-        <%= render "notifications/dropdown", :user => current_user %>
-        <li class="divider-vertical"></li>
-        <li class="pinable">
-          <%= link_to user_posts_path(current_user), :style => "margin-left: 25px;" do %>
-            <%= image_tag current_user.avatar.url(:thumb), :width => "30px", :height => "30px", 
-                                                           :class => "pin-top7-left" %>
-            <%= current_user.name %>
-          <% end %>
-        </li>
-        <li class="dropdown">
-          <%= link_to "<b class=\"caret\"></b>".html_safe, "#", 
-                         :"data-toggle" => "dropdown", :class => "dropdown-toggle" %>
-   				<ul class="dropdown-menu">
-   					<li><%= my_link_to "#{t :account_setting}", edit_account_path, :icon => "icon-cogs icon-large" %></li>
-   					<li><%= my_link_to "#{t :logout}", logout_path, :method => :delete, :icon => "icon-signout icon-large" %></li>
-   				</ul>
-        </li>
-		  </ul>
-		</div>
-	<% else %>
-	  <% unless controller.controller_name == "accounts" && controller.action_name == "new" %>
-      <div class="nav pull-right">
-        <%= link_to "#{t :'accounts.signup'}", signup_path, 
-  	                                 :class => "btn btn-success" %>
-      </div>
-  	<% end %>
-	  <% unless controller.controller_name == "sessions" && controller.action_name == "new" %>
-	    <%= render 'shared/login' %>
-	  <% end %>
 
+<% if user_signed_in? %>
+	<%= subscribe_to "/user/#{current_user.id}" %>
+	  <ul class="nav pull-right">
+	    <%= form_tag "#", :class => "navbar-search pull-left", :method => :get do %>
+    		<%= text_field_tag 'search', nil, :placeholder => "#{t :search_bar_placeholder}", 
+    																			:class => "search-query" %>
+    	<% end %>
+	    <li class="divider-vertical"></li>
+      <%= render "follows/dropdown", :user => current_user %>
+      <%= render "notifications/dropdown", :user => current_user %>
+      <li class="divider-vertical"></li>
+      <li class="pinable">
+        <%= link_to user_posts_path(current_user), :style => "margin-left: 25px;" do %>
+          <%= image_tag current_user.avatar.url(:thumb), :width => "30px", :height => "30px", 
+                                                         :class => "pin-top7-left" %>
+          <%= current_user.name %>
+        <% end %>
+      </li>
+      <li class="dropdown">
+        <%= link_to "<b class=\"caret\"></b>".html_safe, "#", 
+                       :"data-toggle" => "dropdown", :class => "dropdown-toggle", :role => "button", :id => "drop_end" %>
+ 				<ul class="dropdown-menu" role="menu" aria-labelledby="drop_end">
+ 					<li><%= my_link_to "#{t :account_setting}", edit_account_path, :icon => "icon-cogs icon-large" %></li>
+ 					<li><%= my_link_to "#{t :logout}", logout_path, :method => :delete, :icon => "icon-signout icon-large" %></li>
+ 				</ul>
+      </li>
+	  </ul>
+<% else %>
+  <% unless controller.controller_name == "accounts" && controller.action_name == "new" %>
+    <div class="nav pull-right">
+      <%= link_to "#{t :'accounts.signup'}", signup_path, 
+	                                 :class => "btn btn-success" %>
+    </div>
 	<% end %>
-</div>
+  <% unless controller.controller_name == "sessions" && controller.action_name == "new" %>
+    <%= render 'shared/login' %>
+  <% end %>
+
+<% end %>

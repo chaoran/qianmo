@@ -13,6 +13,7 @@ zh-CN:
         from: '来自'
         you_have_followed: '你成功关注了页面 #%{name}。'
         you_have_unfollowed: '你对页面 #%{name} 的关注已经取消了。'
+        people_has_followed: '人已关注'
         auto_fillin:
           do_you_mean?: '你是不是想找：'
         

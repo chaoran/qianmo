@@ -1,14 +1,13 @@
 @import "twitter/bootstrap/bootstrap";
 body { 
 	padding-top: 70px;
-/*  padding-left: 20px;*/
 }
 
 @import "twitter/bootstrap/responsive";
 
 // Set the correct sprite paths
 @iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
-@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+@iconWhiteSpritePath: ''; //asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
 
 // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
 // Note: If you use asset_path() here, your compiled boostrap_and_overrides.css will not 
@@ -84,10 +83,6 @@ footer {
   #gradient > .striped(auto);
   .background-size(40px 40px);
   .progress.active .bar;
-}
-
-h1, h2, h3, h4, h5, h6, strong {
-	font-family: Tahoma, STHeiTi, Arial, Helvetica, sans-serif, Verdana, "Helvetica Neue"
 }
 
 /* colors */
@@ -279,4 +274,12 @@ label.checkbox {
   font-size: @baseFontSize;
   display: inline-block;
   margin-right: 4px;
+}
+
+/* popver */
+.popover {
+  width: 400px;
+  .popover-title {
+    display: none;
+  }
 }

@@ -1,9 +1,1 @@
-<div class="stream">
-  <% if @posts.size > 0 %>
-    <%= render :partial => "shared/post", :collection => @posts %>
-  <% else %>
-    <div class="stream-post">
-      <p class="empty-stream-holder"><%= t :no_posts %></p>
-    </div>
-  <% end %>
-</div>
+<%= render "shared/stream", :posts => @posts %>

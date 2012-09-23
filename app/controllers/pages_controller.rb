@@ -37,11 +37,11 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
     case @page.category
     when "movie"
-      @page.build_movie.title = @page.title
+      @page.build_movie.title = @page.title if @page.movie.nil?
     when "book"
-      @page.build_book.title = @page.title
+      @page.build_book.title = @page.title if @page.book.nil?
     when "album"
-      @page.build_album.title = @page.title
+      @page.build_album.title = @page.title if @page.album.nil?
     end
     respond_to do |format|
       format.html # edit.html.erb

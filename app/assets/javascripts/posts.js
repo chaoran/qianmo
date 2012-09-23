@@ -67,21 +67,20 @@ jQuery(document).ready(function($) {
     }
   });
     
-  $(".post-actions .action-comment").live("click", function(event) {
+  $(".post .post-actions .action-comment").live("click", function(event) {
     var expandable = $(this).closest(".expandable")
     if (expandable.hasClass("expanded") == false) {
       expandable.find(".expand-on-click").trigger('click')
       expandable.find(".action-expand").trigger('click')
     }
-    var comments = $(this).closest(".post-content").next();
     var fake_input = expandable.find(".fake-input");
     if (fake_input.is(":visible")) {
       fake_input.trigger('focus');      
     } else {
       expandable.find('.new-comment #post_text').focus();
     }
-    event.preventDefault();
     event.stopPropagation();
+    event.preventDefault();
   });
   
   $(".post-actions span a").live("click", function(event) {
@@ -117,5 +116,23 @@ jQuery(document).ready(function($) {
       }
     }
   });
+  
+  var isVisible = false;
+  
+  $("a.post").popover({
+    content: function(){
+      return $(this).next().clone()
+    },
+    trigger: 'manual',
+    placement: 'left'
+  }).live('click', function(e) {
+    e.stopPropagation()
+    if (isVisible) {
+      isVisible = false
+      $('a.post').not(this).popover('hide')
+    }
+    isVisible = !isVisible
+    $(this).popover('toggle')
+  }).live();
 
 });

@@ -16,7 +16,7 @@ class Page < ActiveRecord::Base
   has_one :news
   
   has_many :abouts
-  has_many :posts, :through => :abouts  
+  has_many :posts, :through => :abouts, :order => "created_at DESC"
   
   has_many :articles, :order => "created_at DESC"
   has_many :galleries, :order => "created_at DESC"

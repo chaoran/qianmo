@@ -1,8 +1,0 @@
-<% content_for(:page_stream_tab) do %>
-  <li id="page_stream_tab" class="active">
-    <a href="#page_stream_holder" data-toggle="tab"><%= t :stream %></a>
-  </li>
-<% end %>
-<% content_for(:page_stream) do %>
-  <%= render "posts/index", :posts => @page.posts.limit(50) %>
-<% end %>

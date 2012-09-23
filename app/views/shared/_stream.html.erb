@@ -1,0 +1,12 @@
+<div class="stream">
+  <% if posts.size > 0 %>
+    <% for post in posts %>
+      <%= render "shared/post", :post => post,
+                 :narrow => local_assigns[:narrow] %>
+    <% end %>
+  <% else %>
+    <div class="stream-post">
+      <p class="empty-stream-holder"><%= t :no_posts %></p>
+    </div>
+  <% end %>
+</div>

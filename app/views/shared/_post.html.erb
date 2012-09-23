@@ -1,5 +1,17 @@
+<% if local_assigns[:narrow] %>
+<div class="stream-post">
+  <%= link_to "#", :class => "post post_#{post.id} pinable" do %>
+    <div class="shifter small">
+      <%= image_tag post.user.avatar.url(:thumb), :class => "avatar" %>
+      <div class="content">
+        <strong><%= post.user.name %></strong>
+        <%= post.brief %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
 <% closed_mode = (post.comments.length == 0) if local_assigns[:closed_mode].nil? %>
-<div class="post post_<%= post.id %> pinable hoverable expandable <%= "expanded" unless closed_mode %>">
+<div class="post post_<%= post.id %> pinable hoverable expandable <%= "expanded" if local_assigns[:narrow] || !closed_mode %>">
   <div class="post-content expand-on-click">
     <div class="post-header">
       <a>
@@ -48,3 +60,6 @@
     </div>
   </div>
 </div>
+<% if local_assigns[:narrow] %>
+</div>
+<% end %>

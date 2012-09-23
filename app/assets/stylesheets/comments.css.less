@@ -1,4 +1,4 @@
-@import "twitter/bootstrap/variables";
+@import "mixins";
 
 .comment {
   border-bottom: 1px solid #E8E8E8;
@@ -34,13 +34,6 @@
   }
 }
 
-/*.comment-actions {
-  position: absolute;
-  bottom: 4px;
-  right: 0;
-  font-size: 12px;
-}*/
-
 .new-comment {
   margin: 8px 0 0;
   position: relative;
@@ -55,7 +48,7 @@
   }
   
   .fake-input {
-    width: 98%;
+    width: 97%;
     margin: 0;
   }
   
@@ -63,16 +56,8 @@
     margin-bottom: 0;
     display: none;
     
-    .inputs {
-      display: inline-block;
-      width: 86%;
-      textarea,
-      input {
-        width: 98%;
-        height: 18px;
-        margin-bottom: 0;
-      }
-      
+    .inputs input {
+      width: 97%;
     }
 
     .actions {
@@ -139,12 +124,3 @@
     }
   }
 }
-/*.new-comment .comment-actions {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}*/
-
-/*.new-comment .comment-body {
-  margin: 4px 60px 4px 40px;
-}*/

@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
   
-  # DELETE /logout
+  # GET /logout
   def destroy
     warden.user #this is a bug in warden; https://github.com/hassox/warden/issues/16
     warden.logout 

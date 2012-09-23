@@ -4,7 +4,7 @@
       <%= image_tag movie.image.url %>
     </div>
     <div class="content span5">
-      <h2><%= movie.title %></h2>
+      <h3><%= movie.title %></h3>
       <dl class="dl-horizontal content">
         <% unless movie.directed_by.blank? %>
         <dt><%= t 'simple_form.labels.movie.directed_by' %>:</dt>

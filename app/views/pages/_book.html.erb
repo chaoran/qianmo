@@ -4,12 +4,12 @@
       <%= image_tag book.cover.url %>
     </div>
     <div class="content span5">
-      <h2>
+      <h3>
         <%= book.title %>
         <% unless book.subtitle.empty? %>
           <small><%= book.subtitle %></small>
         <% end %>
-      </h2>
+      </h3>
       <dl class="dl-horizontal content">
         <% unless book.alt_title.blank? %>
           <dt><%= t 'simple_form.labels.book.alt_title' %>:</dt>

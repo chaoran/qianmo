@@ -1,0 +1,56 @@
+@import 'mixins';
+
+.navbar li [class^="nav-"] {
+  display: inline-block;
+}
+
+.navbar li b {
+  display: inline-block;
+}
+
+.navbar .nav > form {
+  margin-top: 0px;
+}
+
+.navbar .brand {
+  font-size: 30px;
+}
+
+.navbar .nav > li > label {
+  display: inline-block;
+  padding: 12px 10px 4px;
+  line-height: 19px;
+}
+
+
+.navbar .nav li a > .badge {
+  vertical-align: top;
+}
+
+.navbar input[type="text"],
+.navbar input[type="submit"],
+.navbar input[type="password"],
+.navbar .btn {
+  margin: 5px 2px;
+}
+
+.navbar .nav {
+  .user-label {
+    & > a {
+      padding: 5px 0;
+      img {
+        width: 30px;
+        height: 30px;
+      }
+      .caret {
+        margin-top: 12px;
+        margin-right: 5px;
+        height: 14px;
+      }
+      &:hover .caret {
+        border-top-color: @navbarInverseLinkColorHover;
+      }
+    }
+  }
+
+}

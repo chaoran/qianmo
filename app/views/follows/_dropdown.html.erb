@@ -1,12 +1,16 @@
 <% size = user.num_unread_follows %>
 <li class="dropdown have-carets follows pull-right">
   <% if size > 0 %>
-    <%= my_link_to nil, "#", :icon => "icon-group icon-large", :badge => size, 
-                        :class => "dropdown-toggle",
-                        :'data-toggle' => "dropdown-persist" %>
+    <%= link_to "#", :class => "dropdown-toggle",
+                     :'data-toggle' => "dropdown-persist" do %>
+      <b class="icon-group icon-large"></b>
+      <span class="badge badge-important"><%= size %></span>
+    <% end %>
   <% else %>
-    <%= my_link_to nil, "#", :icon => "icon-group icon-large", :class => "dropdown-toggle",
-                        :'data-toggle' => "dropdown-persist" %>
+    <%= link_to "#", :class => "dropdown-toggle",
+                     :'data-toggle' => "dropdown-persist" do %>
+      <b class="icon-group icon-large"></b>
+    <% end %>
   <% end %>
   <%= render 'follows/index', :user => user %>
 </li>

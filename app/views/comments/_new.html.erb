@@ -6,10 +6,7 @@
                :remote => true do |f| %>
     <div class="comment-holder">
       <div class="header">
-        <%= link_to user_posts_path(current_user) do %>
-          <%= image_tag current_user.avatar.url(:thumb), :class => "avatar" %>
-          <span><%= current_user.name %></span>
-        <% end %>
+        <%= image_tag current_user.avatar.url(:thumb), :class => "avatar" %>
       </div>
       <div class="inputs">
         <%= f.text_field :text %>

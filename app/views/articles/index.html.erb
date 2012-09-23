@@ -1,6 +1,6 @@
 <div class="articles">
   <% if params[:user_id] %>
-    <%= render 'shared/post', :collection => @articles %>
+    <%= render 'shared/stream', :posts => @articles.map {|a| a.post } %>
   <% else %>
     <% if @articles.length > 0 %>
       <% for article in @articles %>

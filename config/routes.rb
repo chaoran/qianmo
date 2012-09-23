@@ -12,7 +12,7 @@ Qianmo::Application.routes.draw do
   end
   
   resource :account, :only => [:edit, :update, :destroy]
-  delete "logout", :to => 'sessions#destroy', :as => 'logout'
+  get "logout", :to => 'sessions#destroy', :as => 'logout'
   
   # belongs to user
   resource :avatar, :only => [:new, :create, :edit, :update]

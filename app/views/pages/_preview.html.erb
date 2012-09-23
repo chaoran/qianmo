@@ -1,0 +1,43 @@
+<div class="page-preview expandable pinable" id="page_<%= page.id %>">
+  <div class="<%= "shifter" if controller_name == "pages" %>">
+  <% if controller_name == "pages" %>
+    <%= link_to user_path(page.user) do %>
+      <%= image_tag page.user.avatar.url(:thumb), :class => "avatar" %>
+    <% end %>
+  <% end %>
+  <div class="header hoverable">
+    <%= link_to page_path(page) do %>
+      <h4><%= page.title %></h4>
+      <%= expand_toggle %>
+    <% end %>
+    <ul class="actions">
+      <li>
+        <%= my_link_to "#{t :'actions.edit'}", edit_page_path(page), 
+                       :icon => "icon-pencil", :class => "show-on-hover" %>
+      </li>
+      <li>
+        <%= my_link_to "#{t :'actions.delete'}", page_path(page), :remote => true,
+                       :icon => "icon-remove", :method => :delete, :class => "show-on-hover" %>
+      </li>
+    </ul>
+    <%= link_to page.user.name, user_path(page.user) if controller_name == "pages" %>
+  </div> 
+  <div class="content">
+    <div class="partial">
+      <%= page.preview(150, :styled => true).html_safe %>
+    </div>
+    <div class="full">
+      <%= page.content.html_safe %>
+    </div>
+  </div>
+  <div class="page-post">
+    <%= page.post.text.html_safe %>
+    <div class="footer">
+      <%= render 'shared/post_actions', :post => page.post, :time_ago_in_words => false %>
+      <div class="well show-on-expanded">
+        <%= render 'comments/index', :post => page.post %>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

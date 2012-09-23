@@ -1,17 +1,16 @@
 <div class="page" id="page_<%= @page.id %>">
   <%= render 'shared/messages' %>
   <div class="row">
-    <div class="span9 page-main">
+    <div class="span8 page-main">
       <div class="page-header no-margin-top">
         <div class="row">
           <div class="span6">
-            <h1 class="title">
+            <h2 class="title">
               #<%= @page.title %>
               <% if @page.followed_users.size > 0 %>
               <small><%= "#{@page.followed_users.size}#{t('pages.people_has_followed')}" %></small>
               <% end %>
-            </h1>
-
+            </h2>
           </div>
           <div class="span2 button">
             <% if current_user == @page.user %>
@@ -66,14 +65,14 @@
         </div>
       </div>
     </div>
-    <div class="span3 page-side">
+    <div class="span4 page-side">
       <div class="new-post">
       <%= render 'posts/new', :post => current_user.posts.build, 
                               :placeholder => "##{@page.title}", 
                               :title => "#{t 'posts.about_page_what_do_you_want_to_say?', 
                                              :name => @page.title}" %>
       </div>
-      <%= render 'shared/stream', :posts => @page.posts, :narrow => true %>
+      <%= render 'shared/stream', :posts => @page.posts, :stream => true %>
     </div>
   </div>
 </div>

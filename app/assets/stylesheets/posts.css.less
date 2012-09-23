@@ -22,12 +22,10 @@
 }
 
 .post-actions { 
-  margin-top: 6px;
   ul {
     list-style: none;
     display: inline-block;
-    margin-top: 0;
-    margin-left: 0;
+    margin: 0;
 
     li {
       display: inline-block;
@@ -40,6 +38,7 @@
   
   .like-label {
     display: inline-block;
+    margin-right: 8px;
   }
 }
 
@@ -76,7 +75,7 @@ ul.post-extra-inputs li {
 }
 
 .post-details {
-  margin-left: 50px;
+  margin-left: 40px;
 }
 
 .post-details .post-likes {
@@ -156,23 +155,16 @@ ul.post-extra-inputs li {
   }
 }
 
-.stream-post {
-  a {
-    display: block;
-    padding: 6px 6px;
-    color: @textColor;
-    text-decoration: none;
-    
-    &:hover {
-      background-color: @tableBackgroundHover;
-    }
-    
-    .avatar {
-      margin-left: 4px;
+.stream {
+  .post-details {
+    margin-left: 10px;
+  }
+  .post-actions {
+    li a span {
+      display: none;
     }
   }
-  
-  div.post {
-    display: none;
+  .post {
+    
   }
 }

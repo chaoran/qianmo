@@ -15,3 +15,5 @@ zh-CN:
         recent_pages: '最近访问的'
         hot_pages: '热门页面'
         followed_pages: '我关注的'
+        user_page: '我的主页'
+        account_setting: '帐户设置'

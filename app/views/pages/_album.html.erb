@@ -4,7 +4,7 @@
       <%= image_tag album.cover.url %>
     </div>
     <div class="content span5">
-      <h2><%= album.title %></h2>
+      <h3><%= album.title %></h3>
       <dl class="dl-horizontal content">
         <% unless album.edition.blank? %>
         <dt><%= t 'simple_form.labels.album.edition' %>:</dt>

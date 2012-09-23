@@ -20,19 +20,23 @@
       <%= render "follows/dropdown", :user => current_user %>
       <%= render "notifications/dropdown", :user => current_user %>
       <li class="divider-vertical"></li>
-      <li class="pinable">
-        <%= link_to user_posts_path(current_user), :style => "margin-left: 25px;" do %>
-          <%= image_tag current_user.avatar.url(:thumb), :width => "30px", :height => "30px", 
-                                                         :class => "pin-top7-left" %>
+      <li class="user-label dropdown">
+        <%= link_to '#', :'data-toggle' => 'dropdown', 
+                    :class => "dropdown-toggle",
+                    :role => "button", :id => "user-drop" do %>
+          <%= image_tag current_user.avatar.url(:thumb) %>
           <%= current_user.name %>
+          <b class="caret"></b>
         <% end %>
-      </li>
-      <li class="dropdown">
-        <%= link_to "<b class=\"caret\"></b>".html_safe, "#", 
-                       :"data-toggle" => "dropdown", :class => "dropdown-toggle", :role => "button", :id => "drop_end" %>
- 				<ul class="dropdown-menu" role="menu" aria-labelledby="drop_end">
- 					<li><%= my_link_to "#{t :account_setting}", edit_account_path, :icon => "icon-cogs icon-large" %></li>
- 					<li><%= my_link_to "#{t :logout}", logout_path, :method => :delete, :icon => "icon-signout icon-large" %></li>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="user-drop">
+          <li><%= my_link_to "#{t 'home.user_page'}", 
+                             user_posts_path(current_user), 
+ 					                   :icon => "icon-user" %></li>
+ 					<li><%= my_link_to "#{t 'home.account_setting'}", 
+ 					                   edit_account_path, 
+ 					                   :icon => "icon-cogs" %></li>
+ 					<li><%= my_link_to "#{t 'actions.logout'}", logout_path, 
+ 					                   :icon => "icon-signout" %></li>
  				</ul>
       </li>
 	  </ul>
@@ -40,7 +44,7 @@
   <% unless controller.controller_name == "accounts" && controller.action_name == "new" %>
     <div class="nav pull-right">
       <%= link_to "#{t :'accounts.signup'}", signup_path, 
-	                                 :class => "btn btn-success" %>
+	                :class => "btn btn-success" %>
     </div>
 	<% end %>
   <% unless controller.controller_name == "sessions" && controller.action_name == "new" %>
